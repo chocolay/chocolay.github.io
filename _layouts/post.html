@@ -83,7 +83,6 @@ layout: default
 {% endif %}
     
 {% for file in site.static_files %}
-  {{ post.app }}
   {% if file.path contains post.app and file.extname == ".js" %}
     <script src={{ file.path }} charset="utf-8"></script>
   {% endif %}	    
