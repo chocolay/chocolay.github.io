@@ -751,8 +751,6 @@ d3.csv(url).then(function(data) {
 });
 
     d3.select("#d3_app").append("svg")
-        .style("width","100%")
-        .style("height","100%);
                
         var key = "Status";
         var increment = 0;
