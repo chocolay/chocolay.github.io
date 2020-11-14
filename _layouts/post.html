@@ -79,13 +79,7 @@ layout: default
     </article>
     
  {{ page.app }}
-    
-      {% for file in site.static_files %}
-        {{ file.path }}
-        {% if file.path contains page.app and file.extname == ".js" %}
-        {% endif %}
-      {% endfor %}
-    
+
     <!-- end post -->
     </div>
   </div>
