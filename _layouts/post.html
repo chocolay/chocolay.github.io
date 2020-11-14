@@ -4,10 +4,8 @@ layout: default
 <div class="container">
   <div class="post-title-box">
     <div class="row">
-      <div class="col col-10 push-2 col-11 push-t-1 col-m-12 push-m-0">
-     
+      <div class="col col-10 push-2 col-11 push-t-1 col-m-12 push-m-0">    
         <h1 class="post-title">{{ page.title | escape }}</h1>
-
         <div class="post__info">
           <div class="post__author">
             <span>By</span>
@@ -30,6 +28,7 @@ layout: default
   {% if page.app %}
     <div class="post__head">
       <div "post-image" id="d3_app"></div>
+        <svg id='svg' style="width:100%;height:100%"></svg>
   {% else %}
   {% if page.image %}
     <div class="post__head">
