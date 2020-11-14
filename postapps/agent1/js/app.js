@@ -7,8 +7,6 @@
 
 //this is the model
 function runSimulation(nodes,obj) {
-
-
     updateMarketRents();
 
     makeDecision();
@@ -299,7 +297,6 @@ function runSimulation(nodes,obj) {
 
 }//runSimulation
 
-
 function deepClone (obj) {
     var _out = new obj.constructor;
 
@@ -391,7 +388,6 @@ var duration = 100;
 var color = d3.scaleOrdinal(["#999999","#6495ed","#EDBC64","#FF9586","#7AA25C","#AAAAAA"])
     .domain(codes["Status"]);
 
-
 var width = 770;
 var height = 600;
 var id = "#d3_app";
@@ -419,8 +415,7 @@ d3.csv(url).then(function(data) {
     theirvariables = ["", "", "unit_number", "beds", "", "floor_plan", "square_feet", "unit_status", "total_mark", "lease_type", "lease_term", "l_end", "notice_on", "notice_for", "lease_rent", "mtmfees", "length_of_stay", "occupancy_status", "renewal_status", "", "l_start", "lease_end_future_lease", "move_in_date", "lease_renew", "m_ready"];
 
     var obj = setup(obj, data);
-    //TY: can we get currentDate from the CSV file. It is the ReportDate column
-    //ER: fixed
+
     obj.currentDate = data[0]["Report Date"];
 
     var origData = deepClone(data); //so we can reset the model
@@ -527,7 +522,7 @@ d3.csv(url).then(function(data) {
             .classed("sortButton",1)
             .text(function(d) {return d});
 
-        d3.select(".sortButton").style("background","#4CAF50");
+        d3.select(".sortButton").style("background"," #E87722");
 
         mainVis.selectAll("button.sortButton").on("click",function() {
             d3.selectAll(".sortButton").style("background","white");
@@ -562,7 +557,6 @@ d3.csv(url).then(function(data) {
             .attr("r",function(d) {return radiusScale(d["Square Feet"])})
         clearFilters(obj);
     }//initVis
-
 
 
     function setup(obj, data) {
@@ -614,8 +608,7 @@ d3.csv(url).then(function(data) {
             .alphaTarget(0.3)
             .on("tick", visTick);
         createCenters(visualSimulation,key);
-
-
+        
         timer = d3.interval(function(tim) {
             if (obj.currentDate>new Date(2023,0,1)) {
                 timer.stop();
@@ -626,8 +619,7 @@ d3.csv(url).then(function(data) {
             runSimulation(obj.data,obj);
             createCenters(visualSimulation,key);
         },duration);
-
-
+        
         d3.selectAll("path.line").each(function() {
             variable = d3.select(this.parentElement.parentElement).attr("id");
             d3.select(this).transition()
@@ -635,8 +627,6 @@ d3.csv(url).then(function(data) {
                 .ease(d3.easeLinear)
                 .on("start", plotTick(variable));
         });
-
-
     }//start
 
     stopForecast = function() {
@@ -753,11 +743,11 @@ d3.csv(url).then(function(data) {
 
 d3.timeout(function() {
     d3.select("#d3_app").append("svg")
-    .attr("width","100%")
-    .attr("height","100%")
-        var key = "Status";
-        var increment = 0;
-        start(key);
+        .attr("width",width)
+        .attr("height",height)
+    var key = "Status";
+    var increment = 0;
+    start(key);
 },500);
 
 
