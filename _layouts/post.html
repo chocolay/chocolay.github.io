@@ -83,7 +83,7 @@ layout: default
     </article>
     
   {% for file in site.static_files %}
-    {{ file.extname }},{{ file.path }}
+    {{ file.basename }}
 {% endfor %}
     
     <!-- end post -->
