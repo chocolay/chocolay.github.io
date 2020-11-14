@@ -84,10 +84,10 @@ layout: default
    {{page.app}}
     
       {% for file in site.static_files %}
-        {% if  file.path contains page.app %}
+        {% if file.path contains page.app %}
           {{ file.path }}
         {% endif %}}
-     {% endfor %}
+      {% endfor %}
     
     <!-- end post -->
     </div>
