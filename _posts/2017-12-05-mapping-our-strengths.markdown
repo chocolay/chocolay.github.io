@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Mapping our strengths
+title:  Mapping our Strengths
 date:   2017-12-05 15:01:35 +0300
 image:  World-Map.png
 tags:   Map, Menu, NGO
