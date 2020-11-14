@@ -752,9 +752,9 @@ d3.csv(url).then(function(data) {
 });
 
 d3.timeout(function() {
-
     d3.select("#d3_app").append("svg")
-               
+    .attr("width","100%")
+    .attr("height","100%")
         var key = "Status";
         var increment = 0;
         start(key);
