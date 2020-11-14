@@ -2,7 +2,7 @@
  * Created by elise
  */
 
-console.log("here too")
+console.log({{page.app}})
 
 //this is the model
 function runSimulation(nodes,obj) {
