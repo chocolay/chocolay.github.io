@@ -526,7 +526,7 @@ d3.csv(url).then(function(data) {
 
         mainVis.selectAll("button.sortButton").on("click",function() {
             d3.selectAll(".sortButton").style("background","white");
-            d3.select(this).style("background"," #4CAF50");
+            d3.select(this).style("background"," #E87722");
             stopForecast();
             let d = d3.select(this).datum()
             start(d);
@@ -1361,7 +1361,7 @@ d3.csv(url).then(function(data) {
             .alphaTarget(0.3)
             .on("tick", visTick);
         createCenters(visualSimulation,key);
-        
+
         timer = d3.interval(function(tim) {
             if (obj.currentDate>new Date(2023,0,1)) {
                 timer.stop();
@@ -1372,7 +1372,7 @@ d3.csv(url).then(function(data) {
             runSimulation(obj.data,obj);
             createCenters(visualSimulation,key);
         },duration);
-        
+
         d3.selectAll("path.line").each(function() {
             variable = d3.select(this.parentElement.parentElement).attr("id");
             d3.select(this).transition()
@@ -1502,5 +1502,4 @@ d3.timeout(function() {
     var increment = 0;
     start(key);
 },500);
-
 
