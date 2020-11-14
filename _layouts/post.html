@@ -77,7 +77,11 @@ layout: default
         </ul>
       </div>
     </article>
-   
+   {{page.crossfilter}}
+{% if page.crossfilter %}
+  <script src="{{ site.baseurl }}/js/vendors/crossfilter.min.js"></script>
+{% endif %}
+    
     <!-- end post -->
     </div>
   </div>
