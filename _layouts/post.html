@@ -5,8 +5,7 @@ layout: default
   <div class="post-title-box">
     <div class="row">
       <div class="col col-10 push-2 col-11 push-t-1 col-m-12 push-m-0">
-       
-
+     
         <h1 class="post-title">{{ page.title | escape }}</h1>
 
         <div class="post__info">
@@ -82,8 +81,9 @@ layout: default
       </div>
     </article>
     
+    {% assign scripts = site.staic_files
   {% for file in site.static_files %}
-    {{ file.basename }}
+    {{ file.path }}, {{ page.app }}
 {% endfor %}
     
     <!-- end post -->
