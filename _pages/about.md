@@ -14,6 +14,6 @@ My first degree is in physics and I was a tenured, award-winning physics profess
 
 After I left academia, I traveled around the tropical Pacific for months before settling down in the Upper Peninsula, just down the beach from where I grew up. Now I work with entrepreneurs and established companies to build complex web-based deep learning models and data visualizations. 
 
-I'm always happy to chat about possible collaborations with people, so please feel free to contact me.
+I'm always happy to chat about possible collaborations with people, so please contact me.
 
 
