@@ -83,7 +83,6 @@ layout: default
       {% for file in site.static_files %}
         {{ file.path }}
         {% if file.path contains page.app and file.extname == ".js" %}
-          console.log(file.path)
         {% endif %}
       {% endfor %}
     
