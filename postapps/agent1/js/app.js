@@ -752,6 +752,7 @@ d3.csv(url).then(function(data) {
 
 d3.timer(function() {
         
+    console.log(d3.select("#d3_app").node())
     d3.select("#d3_app").append("svg")
                
         var key = "Status";
