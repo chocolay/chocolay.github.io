@@ -23,21 +23,23 @@ layout: default
       </div>
     </div>
   </div>
-
+  
   {% assign no-image = nil %}
   {% if page.app %}
     <div class="post__head">
       <div "post-image" id="d3_app"></div>
-    </div>
-  {% else if page.image %}
-      <div class="post__head">
-        <div class="post-image" style="background-image: url({{site.baseurl}}/images/{{page.image}})"></div>
-      </div>
   {% else %}
-      {% assign no-image = 'post-no-image' %}
+  {% if page.image %}
+    <div class="post__head">
+      <div class="post-image" style="background-image: url({{site.baseurl}}/images/{{page.image}})"></div>
+    </div>
+  {% else %}
+    {% assign no-image = 'post-no-image' %}
   {% endif %}
-</div>
-
+  {% endif %}
+      
+      
+     
   <div class="container">
   <div class="row">
     <!-- begin post -->
