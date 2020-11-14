@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Dashboards
+title:  Custom Graph
 date:   2017-01-1 15:01:35 +0300
 image:  custom_graph.png
 tags:   Tool, Graph, Table, Bespoke
