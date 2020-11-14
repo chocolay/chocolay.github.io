@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Portfolio Predictions"
+title:  "Business Forecasting"
 date:   2020-11-13 18:05:55 +0300
 image:  portfolio_predictions.png
 tags:   model agent-based visualization
