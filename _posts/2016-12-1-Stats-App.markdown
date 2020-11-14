@@ -3,7 +3,7 @@ layout: post
 title: Stats App
 date:   2016-12-1 15:01:35 +0300
 image:  stats.png
-tags:   Style
+tags:   Style, STEM, Statistics, MathJAX
 ---
 Yeah, and if you were the pope they'd be all, "Straighten your pope hat." And "Put on your good vestments." Noooooo! Perhaps, but perhaps your civilization is merely the sewer of an even greater society above you!
 
