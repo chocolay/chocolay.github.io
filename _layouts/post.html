@@ -81,6 +81,7 @@ layout: default
   <script src= "{{ site.baseurl }}/js/vendors/crossfilter.min.js" ></script>
 {% endif %}
 {% for file in site.static_files %}
+    {{ file.path }}
   {% if file.path contains post.app and file.extname == ".js" %}
     <script src={{ file.path }} charset="utf-8"></script>
   {% endif %}	     
