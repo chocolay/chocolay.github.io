@@ -77,17 +77,17 @@
 }
 
 .post {
-  margin: 80px auto;
+  margin: 20px auto;
 
   &.post-no-image {
-    margin: 0 auto 80px; 
+    margin: 0 auto 20px; 
   }
 
   @media only screen and (max-width: $mobile) {
-    margin: 40px auto;
+    margin: 10px auto;
 
     &.post-no-image {
-      margin: 0 auto 40px;
+      margin: 0 auto 10px;
     }
   }
 
@@ -129,8 +129,8 @@
 .post__navigation {
   display: flex;
   align-items: baseline;
-  margin-bottom: 80px;
-  padding-bottom: 80px;
+  margin-bottom: 20px;
+  padding-bottom: 30px;
   border-bottom: 1px solid $light-gray;
 
   .prev,
@@ -142,7 +142,7 @@
 
     .post__nav__image {
       display: block;
-      margin-bottom: 40px;
+      margin-bottom: 10px;
       background-position: center;
       background-size: cover;
       background-repeat: no-repeat;
