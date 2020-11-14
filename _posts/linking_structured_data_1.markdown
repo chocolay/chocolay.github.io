@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Find a connection with the reader
+title:  Linking Structured Data I
 date:   2020-11-1 15:01:35 +0300
 image:  linkviews.png
 tags:   Resources, Tools, Beautiful
