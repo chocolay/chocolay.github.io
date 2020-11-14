@@ -1,8 +1,9 @@
 /**
- * Created by elise
+ * Created by Elise Ralph
+ * All rights reserved
  */
 
-console.log({{page.app}})
+
 
 //this is the model
 function runSimulation(nodes,obj) {
@@ -751,13 +752,12 @@ d3.csv(url).then(function(data) {
 });
 
 d3.timeout(function() {
-        
-    console.log(d3.select("#d3_app").node())
+
     d3.select("#d3_app").append("svg")
                
         var key = "Status";
         var increment = 0;
         start(key);
-},1500);
+},500);
 
 
