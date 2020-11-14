@@ -6,7 +6,7 @@ image: Kavieng.jpg
 ---
 
 
-Hi, my name is Elise (but you can call me Ann)
+Hi, my name is Elise (but, if you met me before 1984, you can call me Ann)
 
 I'm a former academic who fell in love with deep learning and data visualization. Since leaving my academic life behind, I have created data models and visualizations for bankers, mining companies, geoscientists, life hackers, sound engineers, geneticists, election followers, department stores, historians, financial managers, network engineers, musicians, policy makers, STEM education, and baseball enthusiasts.
 
@@ -15,5 +15,3 @@ My first degree is in physics and I was a tenured, award-winning physics profess
 After I left academia, I island-hopped around the tropical Pacific for months before settling down in the Upper Peninsula, just down the beach from where I grew up. Nowadays I garden, drink coffee with my parents, and work with entrepreneurs & established companies around the world, building complex web-based deep learning models and data visualizations. 
 
 I'm always happy to chat about possible projects, so please contact me.
-
-
