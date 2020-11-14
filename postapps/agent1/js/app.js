@@ -526,7 +526,7 @@ d3.csv(url).then(function(data) {
 
         mainVis.selectAll("button.sortButton").on("click",function() {
             d3.selectAll(".sortButton").style("background","white");
-            d3.select(this).style("background","#E87722);
+            d3.select(this).style("background","#E87722");
             stopForecast();
             let d = d3.select(this).datum()
             start(d);
