@@ -25,10 +25,11 @@ layout: default
   </div>
   
   {% assign no-image = nil %}
-  {% if page.app %}
-    <div class="post__head">
-      <div "post-image" id="d3_app"></div>
-  {% else %}
+  
+{% if page.app %}
+  <div class="post__head">
+    <div "post-image" id="d3_app"></div>
+{% else %}
   {% if page.image %}
     <div class="post__head">
       <div class="post-image" style="background-image: url({{site.baseurl}}/images/{{page.image}})"></div>
@@ -80,11 +81,12 @@ layout: default
 {% if page.crossfilter %}
   <script src= "{{ site.baseurl }}/js/vendors/crossfilter.min.js" ></script>
 {% endif %}
+    
 {% for file in site.static_files %}
-    {{ file.path }}
+  {{ file.path }}
   {% if file.path contains post.app and file.extname == ".js" %}
     <script src={{ file.path }} charset="utf-8"></script>
-  {% endif %}	     
+  {% endif %}	    
 {% endfor %}
     
     <!-- end post -->
