@@ -750,8 +750,13 @@ d3.csv(url).then(function(data) {
     } //makeSlider
 });
 
+d3.timer(function() {
+        
     d3.select("#d3_app").append("svg")
                
         var key = "Status";
         var increment = 0;
         start(key);
+},1500);
+
+
