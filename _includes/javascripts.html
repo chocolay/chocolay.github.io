@@ -17,5 +17,14 @@
 <script src="{{ site.baseurl }}/js/common.js"></script>
 
 {{page.app}}
-
+{% if page.crossfilter %}
+  <script src= "{{ site.baseurl }}/js/vendors/crossfilter.min.js" ></script>
+{% endif %}
+    
+{% for file in site.static_files %}
+  {% if file.path contains page.app and file.extname == ".js" %}
+    <script src={{ file.path }} charset="utf-8"></script>
+  {% endif %}	    
+{% endfor %}
+    
 
