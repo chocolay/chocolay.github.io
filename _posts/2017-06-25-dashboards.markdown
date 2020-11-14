@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  Start the day with the right habit
+title:  Dashboards
 date:   2018-06-25 15:01:35 +0300
-image:  06.jpg
+image:  bank.png
 tags:   Style
 ---
 Yeah, and if you were the pope they'd be all, "Straighten your pope hat." And "Put on your good vestments." Noooooo! Perhaps, but perhaps your civilization is merely the sewer of an even greater society above you!
