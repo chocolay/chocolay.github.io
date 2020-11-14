@@ -5,22 +5,12 @@ date:   2020-11-13 18:05:55 +0300
 image:  portfolio_predictions.png
 tags:   model, agent-based, visualization
 ---
-You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
-
-To add new posts, simply add a file in the `_posts` directory that follows the convention `YYYY-MM-DD-name-of-post.ext` and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.
-
-Jekyll also offers powerful support for code snippets:
-
-{% highlight ruby %}
-def print_hi(name)
-  puts "Hi, #{name}"
-end
-print_hi('Tom')
-#=> prints 'Hi, Tom' to STDOUT.
-{% endhighlight %}
-
-Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll’s GitHub repo][jekyll-gh]. If you have questions, you can ask them on [Jekyll Talk][jekyll-talk].
-
-[jekyll-docs]: https://jekyllrb.com/docs/home
-[jekyll-gh]:   https://github.com/jekyll/jekyll
-[jekyll-talk]: https://talk.jekyllrb.com/
+                A client's subscription-based business grew up from a shoestring operation to a complex set of services, discounts, and enticements for renewals.
+                His whole business operation was dependant on an enormous spreadsheet filled with individual customers and their interactions.
+                It was difficult to follow and, he felt, impossible for him to delegate because it was difficult for him to explain how he saw the business worked.
+                <br><br>
+                I built an agent-based forecasting model to test assumptions in his business and to gauge what impact they made to his bottom line.
+                <br><br>
+                After talking to him about how he saw his business, the visualization of customers zipping from one category to another was also built.
+                He now has a tool for employees and investors to explore and to ultimately understand the mechanism of his business.
+  
