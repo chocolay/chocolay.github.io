@@ -750,7 +750,7 @@ d3.csv(url).then(function(data) {
     } //makeSlider
 });
 
-d3.timer(function() {
+d3.timeout(function() {
         
     console.log(d3.select("#d3_app").node())
     d3.select("#d3_app").append("svg")
