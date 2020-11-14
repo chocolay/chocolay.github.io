@@ -12,7 +12,7 @@ I'm a former academic who fell in love with deep learning and data visualization
 
 My first degree is in physics and I was a tenured, award-winning physics professor before working as a program director at the National Science Foundation. My academic research involved modeling of nonlinear partial differential equations, statistics of oceanic surface currents to improve satellite-based measurements, and observations on Lake Superior and Issyk Kul, in Kyrgyzstan. I've spent months at sea collecting data and countless hours tinkering with instrumentation and numerical models in the lab. I also served as a senior university administrator in charge of research and graduate education at two different university campuses.
 
-After I left academia, I island-hopped around the tropical Pacific for months before settling down in the Upper Peninsula, just down the beach from where I grew up. Now I work with entrepreneurs and established companies around the world, building complex web-based deep learning models and data visualizations. 
+After I left academia, I island-hopped around the tropical Pacific for months before settling down in the Upper Peninsula, just down the beach from where I grew up. Nowadays I garden, drink coffee with my parents, and work with entrepreneurs & established companies around the world, building complex web-based deep learning models and data visualizations. 
 
 I'm always happy to chat about possible projects, so please contact me.
 
