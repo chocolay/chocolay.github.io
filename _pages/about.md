@@ -6,7 +6,7 @@ image: Kavieng.jpg
 ---
 
 
-Hi, my name is Elise 
+Hi, my name is Elise (but you can call me Ann)
 
 I'm a former academic who fell in love with deep learning and data visualization. Since leaving my academic life behind, I have created data models and visualizations for bankers, mining companies, geoscientists, life hackers, sound engineers, geneticists, election followers, department stores, historians, financial managers, network engineers, musicians, policy makers, STEM education, and baseball enthusiasts.
 
