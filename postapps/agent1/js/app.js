@@ -376,7 +376,7 @@ function boundRandom(min, mean, max, std) {
     return test
 }
 
-var url = "./postapps/agent1/assets/rent.csv";
+var url = "/postapps/agent1/assets/rent.csv";
 
 var codes = {
     "Status":["VA","VL","NA","NL","OC","Down"],
