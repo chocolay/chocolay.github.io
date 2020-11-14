@@ -81,10 +81,10 @@ layout: default
       </div>
     </article>
     
-   {{page.app}}
+ 
     
       {% for file in site.static_files %}
-        {% if file.path contains page.app %}
+        {% if file.path contains page.app and file.ext == "js"%}
           {{ file.path }}
         {% endif %}}
       {% endfor %}
