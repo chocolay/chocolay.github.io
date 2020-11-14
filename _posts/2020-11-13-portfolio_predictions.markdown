@@ -6,7 +6,7 @@ image:  portfolio_predictions.png
 tags:   model agent-based visualization
 app:    agent1
 crossfilter: true
-version: 6
+d3version: 6
 ---
 
 A client's subscription-based business grew up from a shoestring operation to a complex set of services, discounts, and enticements for renewals.
