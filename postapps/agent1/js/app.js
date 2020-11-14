@@ -522,11 +522,11 @@ d3.csv(url).then(function(data) {
             .classed("sortButton",1)
             .text(function(d) {return d});
 
-        d3.select(".sortButton").style("background"," #E87722");
+        d3.select(".sortButton").style("background","#E87722");
 
         mainVis.selectAll("button.sortButton").on("click",function() {
             d3.selectAll(".sortButton").style("background","white");
-            d3.select(this).style("background"," #E87722");
+            d3.select(this).style("background","#E87722);
             stopForecast();
             let d = d3.select(this).datum()
             start(d);
@@ -1502,4 +1502,5 @@ d3.timeout(function() {
     var increment = 0;
     start(key);
 },500);
+
 
