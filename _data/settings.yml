@@ -1,7 +1,7 @@
 #-------------------------------
 # General Site Settings
 title: Elise A. Ralph
-logo: logo.jpg # You can add own logo.
+logo: logo.svg # You can add own logo.
 description: Beautiful Tools
 
 
@@ -10,7 +10,7 @@ description: Beautiful Tools
 author:
   name: Elise A. Ralph
   image: emmy.jpeg
-  say-hello: <strong>Elise Ralph:</strong>
+  say-hello: <strong>Elise:</strong>
   bio: collecting, mining, analyzing, modeling, visualizing, and machine-learning data for over 35 years. 
 
 #-------------------------------
