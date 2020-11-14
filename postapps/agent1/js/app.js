@@ -749,7 +749,7 @@ d3.csv(url).then(function(data) {
 });
 
 
-
+ console.log("here")
     d3.select("#d3_app").selectAll(".forecast").append("svg")
 .style("width","100%").style("height","100%)
         var key = "Status";
