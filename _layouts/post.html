@@ -83,7 +83,7 @@ layout: default
     
    
       {% for file in site.static_files %}
-        {% if  file.basename = "pageapps/"+page.app %}
+        {% if  file.path contains page.app %}
           {{ file.name }}
         {% endif % }}
      {% endfor %}
