@@ -750,8 +750,8 @@ d3.csv(url).then(function(data) {
 
 
 
-    d3.select("#d3_app").selectAll(".forecast").transition(1500).style("opacity",1);
+    d3.select("#d3_app").selectAll(".forecast").append("svg")
+.style("width","100%").style("height","100%)
         var key = "Status";
         var increment = 0;
-        d3.select(".linkviews").transition(1500).style("opacity",1e-6);
         start(key);
