@@ -17,8 +17,6 @@ var arc = d3.svg.arc().innerRadius(455).outerRadius(475);
         chordsTranslate = outerRadius*1.17;
 
 
-    console.log(d3.select("#d3_app").node())
-
     var svg = d3.select("#d3_app").append("div")
         .attr("id","svgDiv")
         .append("svg")
