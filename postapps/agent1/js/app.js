@@ -631,7 +631,7 @@ d3.csv(url).then(function(data) {
             .style("height",(height+200)+"px")
             .style("width",width+"px")
 
-        
+
         timer = d3.interval(function(tim) {
             if (obj.currentDate>new Date(2030,0,1)) {
                 timer.stop();
@@ -641,6 +641,13 @@ d3.csv(url).then(function(data) {
             d3.select("#timestamp").text(ttime);
             runSimulation(obj.data,obj);
             createCenters(visualSimulation,key);
+
+            var H = (d3.select("svg")+200)+"px"
+            if (d3.select(".post-image").style("height")!=H) {
+                d3.select(".post-image")
+                    .style("height",(height+200)+"px")
+                    .style("width",width+"px")
+            }
         },duration);
 
         d3.selectAll("path.line").each(function() {
