@@ -17042,6 +17042,7 @@ d3.request(fname)
 
         //convert the .xls data into json
         var data = new Uint8Array(req.response);
+        console.log(data.length)
         var arr = new Array();
         for (var i = 0; i != data.length; ++i) arr[i] = String.fromCharCode(data[i]);
         var wb = XLSX.read(arr.join(""), {type: "binary"});
@@ -17092,6 +17093,7 @@ d3.request(fname)
             .map(function (d) {
                 return d.replace(/^[0-9]*/, "")
             });
+        console.log(events.length)
 
         //find unique events for each family and nest by family & event
         //this combines the "same event/different customer" rows
