@@ -531,7 +531,7 @@ d3.csv(url).then(function(data) {
             let d = d3.select(this).datum()
             start(d);
         });
-
+        console.log(d3.select("svg").size())
                 var svg = d3.select("svg")
                     .attr("width",width)
                     .attr("height",height)
