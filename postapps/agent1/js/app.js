@@ -642,14 +642,14 @@ d3.csv(url).then(function(data) {
             runSimulation(obj.data,obj);
             createCenters(visualSimulation,key);
 
-             W = (d3.select("svg").style("width");
+            var H = (d3.select("svg").attr("height")+200)+"px";
             if (d3.select(".post-image").style("height")!=H) {
                 d3.select(".post-image")
                     .style("height",(height+200)+"px")
-                    .style("width",W);
+                    .style("width",width+"px");
                 d3.select("article.post")
                     .style("background-color","ivory")
-                    .style("width",W)
+                    .style("width",width+"px")
 
             }
         },duration);
