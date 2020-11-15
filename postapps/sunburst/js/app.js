@@ -17027,7 +17027,31 @@ var colors = ["#8dd3c7","#a6cee3","#ffffb3","#bebada","#fb8072","#80b1d3","#fdb4
 
 
 
+function initialize(obj) {
+    svg = d3.select(obj.selector).append("svg")
+        .attr("viewBox","0 0 "+obj.geom.width+" "+obj.geom.height)
+        .append("g")
+        .attr("id","chart")
+        .attr("transform","translate("+obj.geom.left+","+obj.geom.top+")");
+    if (obj.x) svg.append("g")
+        .classed("x",1)
+        .classed("axis",1)
+    if (obj.y) svg.append("g")
+        .classed("y",1)
+        .classed("axis",1);
 
+    if (obj.tooltip) {
+        var tooltip = d3.select(obj.selector).append("div")
+            .attr("id", "tooltip");
+
+        ["header1", "header-rule", "header2"]
+            .forEach(function (c) {
+                tooltip.append("div")
+                    .classed(c, 1);
+            });
+    }
+    return svg
+}
 function geomSetup () {
     //some geometry
     var width = 800;
@@ -17108,7 +17132,7 @@ function geomSetup () {
         .style("fill", "grey");
 }
 setTimeout(function() {
-    
+
 geomSetup();
 //sunbust modified from: https://bl.ocks.org/kerryrodden/766f8f6d31f645c39f488a0befa1e3c8
 d3.request(fname)
@@ -17514,31 +17538,6 @@ d3.request(fname)
                 .style("visibility", "");
         }
 
-        function initialize(obj) {
-            svg = d3.select(obj.selector).append("svg")
-                .attr("viewBox","0 0 "+obj.geom.width+" "+obj.geom.height)
-                .append("g")
-                .attr("id","chart")
-                .attr("transform","translate("+obj.geom.left+","+obj.geom.top+")");
-            if (obj.x) svg.append("g")
-                .classed("x",1)
-                .classed("axis",1)
-            if (obj.y) svg.append("g")
-                .classed("y",1)
-                .classed("axis",1);
-
-            if (obj.tooltip) {
-                var tooltip = d3.select(obj.selector).append("div")
-                    .attr("id", "tooltip");
-
-                ["header1", "header-rule", "header2"]
-                    .forEach(function (c) {
-                        tooltip.append("div")
-                            .classed(c, 1);
-                    });
-            }
-            return svg
-        }
     })
     .get();
 
@@ -17547,3 +17546,2204 @@ d3.request(fname)
 
 
 
+er: " + val); break;
+                    case 'Prot4Rev': case 'Prot4RevPass': break; /*TODO: Revision Control*/
+
+                    case 'BoundSheet8': {
+                        Directory[val.pos] = val;
+                        opts.snames.push(val.name);
+                    } break;
+                    case 'EOF': {
+                        if(--file_depth) break;
+                        if(range.e) {
+                            if(range.e.r > 0 && range.e.c > 0) {
+                                range.e.r--; range.e.c--;
+                                out["!ref"] = encode_range(range);
+                                range.e.r++; range.e.c++;
+                            }
+                            if(mergecells.length > 0) out["!merges"] = mergecells;
+                            if(objects.length > 0) out["!objects"] = objects;
+                            if(colinfo.length > 0) out["!cols"] = colinfo;
+                            if(rowinfo.length > 0) out["!rows"] = rowinfo;
+                            Workbook.Sheets.push(wsprops);
+                        }
+                        if(cur_sheet === "") Preamble = out; else Sheets[cur_sheet] = out;
+                        out = options.dense ? [] : {};
+                    } break;
+                    case 'BOF': {
+                        if(opts.biff !== 8){}
+                        else if(RecordType  === 0x0009) opts.biff = 2;
+                        else if(RecordType  === 0x0209) opts.biff = 3;
+                        else if(RecordType  === 0x0409) opts.biff = 4;
+                        else if(val.BIFFVer === 0x0500) opts.biff = 5;
+                        else if(val.BIFFVer === 0x0600) opts.biff = 8;
+                        else if(val.BIFFVer === 0x0002) opts.biff = 2;
+                        else if(val.BIFFVer === 0x0007) opts.biff = 2;
+                        if(file_depth++) break;
+                        cell_valid = true;
+                        out = (options.dense ? [] : {});
+
+                        if(opts.biff < 5) {
+                            if(cur_sheet === "") cur_sheet = "Sheet1";
+                            range = {s:{r:0,c:0},e:{r:0,c:0}};
+                            /* fake BoundSheet8 */
+                            var fakebs8 = {pos: blob.l - length, name:cur_sheet};
+                            Directory[fakebs8.pos] = fakebs8;
+                            opts.snames.push(cur_sheet);
+                        }
+                        else cur_sheet = (Directory[s] || {name:""}).name;
+                        if(val.dt == 0x20) out["!type"] = "chart";
+                        mergecells = [];
+                        objects = [];
+                        array_formulae = []; opts.arrayf = array_formulae;
+                        colinfo = []; rowinfo = [];
+                        defwidth = defheight = 0;
+                        seencol = false;
+                        wsprops = {Hidden:(Directory[s]||{hs:0}).hs, name:cur_sheet };
+                    } break;
+
+                    case 'Number': case 'BIFF2NUM': case 'BIFF2INT': {
+                        if(out["!type"] == "chart") if(options.dense ? (out[val.r]||[])[val.c]: out[encode_cell({c:val.c, r:val.r})]) ++val.c;
+                        temp_val = {ixfe: val.ixfe, XF: XFs[val.ixfe], v:val.val, t:'n'};
+                        safe_format_xf(temp_val, options, wb.opts.Date1904);
+                        addcell({c:val.c, r:val.r}, temp_val, options);
+                    } break;
+                    case 'BoolErr': {
+                        temp_val = {ixfe: val.ixfe, XF: XFs[val.ixfe], v:val.val, t:val.t};
+                        safe_format_xf(temp_val, options, wb.opts.Date1904);
+                        addcell({c:val.c, r:val.r}, temp_val, options);
+                    } break;
+                    case 'RK': {
+                        temp_val = {ixfe: val.ixfe, XF: XFs[val.ixfe], v:val.rknum, t:'n'};
+                        safe_format_xf(temp_val, options, wb.opts.Date1904);
+                        addcell({c:val.c, r:val.r}, temp_val, options);
+                    } break;
+                    case 'MulRk': {
+                        for(var j = val.c; j <= val.C; ++j) {
+                            var ixfe = val.rkrec[j-val.c][0];
+                            temp_val= {ixfe:ixfe, XF:XFs[ixfe], v:val.rkrec[j-val.c][1], t:'n'};
+                            safe_format_xf(temp_val, options, wb.opts.Date1904);
+                            addcell({c:j, r:val.r}, temp_val, options);
+                        }
+                    } break;
+                    case 'Formula': {
+                        if(val.val == 'String') { last_formula = val; break; }
+                        temp_val = ({v:val.val, ixfe:val.cell.ixfe, t:val.tt});
+                        temp_val.XF = XFs[temp_val.ixfe];
+                        if(options.cellFormula) {
+                            var _f = val.formula;
+                            if(_f && _f[0] && _f[0][0] && _f[0][0][0] == 'PtgExp') {
+                                var _fr = _f[0][0][1][0], _fc = _f[0][0][1][1];
+                                var _fe = encode_cell({r:_fr, c:_fc});
+                                if(shared_formulae[_fe]) temp_val.f = ""+stringify_formula(val.formula,range,val.cell,supbooks, opts);
+                                else temp_val.F = ((options.dense ? (out[_fr]||[])[_fc]: out[_fe]) || {}).F;
+                            } else temp_val.f = ""+stringify_formula(val.formula,range,val.cell,supbooks, opts);
+                        }
+                        safe_format_xf(temp_val, options, wb.opts.Date1904);
+                        addcell(val.cell, temp_val, options);
+                        last_formula = val;
+                    } break;
+                    case 'String': {
+                        if(last_formula) { /* technically always true */
+                            last_formula.val = val;
+                            temp_val = ({v:val, ixfe:last_formula.cell.ixfe, t:'s'});
+                            temp_val.XF = XFs[temp_val.ixfe];
+                            if(options.cellFormula) {
+                                temp_val.f = ""+stringify_formula(last_formula.formula, range, last_formula.cell, supbooks, opts);
+                            }
+                            safe_format_xf(temp_val, options, wb.opts.Date1904);
+                            addcell(last_formula.cell, temp_val, options);
+                            last_formula = null;
+                        } else throw new Error("String record expects Formula");
+                    } break;
+                    case 'Array': {
+                        array_formulae.push(val);
+                        var _arraystart = encode_cell(val[0].s);
+                        cc = options.dense ? (out[val[0].s.r]||[])[val[0].s.c] : out[_arraystart];
+                        if(options.cellFormula && cc) {
+                            if(!last_formula) break; /* technically unreachable */
+                            if(!_arraystart || !cc) break;
+                            cc.f = ""+stringify_formula(val[1], range, val[0], supbooks, opts);
+                            cc.F = encode_range(val[0]);
+                        }
+                    } break;
+                    case 'ShrFmla': {
+                        if(!cell_valid) break;
+                        if(!options.cellFormula) break;
+                        if(last_cell) {
+                            /* TODO: capture range */
+                            if(!last_formula) break; /* technically unreachable */
+                            shared_formulae[encode_cell(last_formula.cell)]= val[0];
+                            cc = options.dense ? (out[last_formula.cell.r]||[])[last_formula.cell.c] : out[encode_cell(last_formula.cell)];
+                            (cc||{}).f = ""+stringify_formula(val[0], range, lastcell, supbooks, opts);
+                        }
+                    } break;
+                    case 'LabelSst':
+                        temp_val=make_cell(sst[val.isst].t, val.ixfe, 's');
+                        temp_val.XF = XFs[temp_val.ixfe];
+                        safe_format_xf(temp_val, options, wb.opts.Date1904);
+                        addcell({c:val.c, r:val.r}, temp_val, options);
+                        break;
+                    case 'Blank': if(options.sheetStubs) {
+                        temp_val = {ixfe: val.ixfe, XF: XFs[val.ixfe], t:'z'};
+                        safe_format_xf(temp_val, options, wb.opts.Date1904);
+                        addcell({c:val.c, r:val.r}, temp_val, options);
+                    } break;
+                    case 'MulBlank': if(options.sheetStubs) {
+                        for(var _j = val.c; _j <= val.C; ++_j) {
+                            var _ixfe = val.ixfe[_j-val.c];
+                            temp_val= {ixfe:_ixfe, XF:XFs[_ixfe], t:'z'};
+                            safe_format_xf(temp_val, options, wb.opts.Date1904);
+                            addcell({c:_j, r:val.r}, temp_val, options);
+                        }
+                    } break;
+                    case 'RString':
+                    case 'Label': case 'BIFF2STR':
+                        temp_val=make_cell(val.val, val.ixfe, 's');
+                        temp_val.XF = XFs[temp_val.ixfe];
+                        safe_format_xf(temp_val, options, wb.opts.Date1904);
+                        addcell({c:val.c, r:val.r}, temp_val, options);
+                        break;
+
+                    case 'Dimensions': {
+                        if(file_depth === 1) range = val; /* TODO: stack */
+                    } break;
+                    case 'SST': {
+                        sst = val;
+                    } break;
+                    case 'Format': { /* val = [id, fmt] */
+                        SSF.load(val[1], val[0]);
+                    } break;
+                    case 'BIFF2FORMAT': {
+                        SSF.load(val, BIFF2Fmt++);
+                    } break;
+
+                    case 'MergeCells': mergecells = mergecells.concat(val); break;
+
+                    case 'Obj': objects[val.cmo[0]] = opts.lastobj = val; break;
+                    case 'TxO': opts.lastobj.TxO = val; break;
+
+                    case 'HLink': {
+                        for(rngR = val[0].s.r; rngR <= val[0].e.r; ++rngR)
+                            for(rngC = val[0].s.c; rngC <= val[0].e.c; ++rngC) {
+                                cc = options.dense ? (out[rngR]||[])[rngC] : out[encode_cell({c:rngC,r:rngR})];
+                                if(cc) cc.l = val[1];
+                            }
+                    } break;
+                    case 'HLinkTooltip': {
+                        for(rngR = val[0].s.r; rngR <= val[0].e.r; ++rngR)
+                            for(rngC = val[0].s.c; rngC <= val[0].e.c; ++rngC) {
+                                cc = options.dense ? (out[rngR]||[])[rngC] : out[encode_cell({c:rngC,r:rngR})];
+                                if(cc) cc.l.Tooltip = val[1];
+                            }
+                    } break;
+
+                    /* Comments */
+                    case 'Note': {
+                        if(opts.biff <= 5 && opts.biff >= 2) break; /* TODO: BIFF5 */
+                        cc = options.dense ? (out[val[0].r]||[])[val[0].c] : out[encode_cell(val[0])];
+                        var noteobj = objects[val[2]];
+                        if(!cc) break;
+                        if(!cc.c) cc.c = [];
+                        cmnt = {a:val[1],t:noteobj.TxO.t};
+                        cc.c.push(cmnt);
+                    } break;
+
+                    default: switch(R.n) { /* nested */
+                        case 'ClrtClient': break;
+                        case 'XFExt': update_xfext(XFs[val.ixfe], val.ext); break;
+
+                        case 'DefColWidth': defwidth = val; break;
+                        case 'DefaultRowHeight': defheight = val[1]; break; // TODO: flags
+
+                        case 'ColInfo': {
+                            if(!opts.cellStyles) break;
+                            while(val.e >= val.s) {
+                                colinfo[val.e--] = { width: val.w/256 };
+                                if(!seencol) { seencol = true; find_mdw_colw(val.w/256); }
+                                process_col(colinfo[val.e+1]);
+                            }
+                        } break;
+                        case 'Row': {
+                            var rowobj = {};
+                            if(val.hidden) { rowinfo[val.r] = rowobj; rowobj.hidden = true; }
+                            if(val.hpt) {
+                                rowinfo[val.r] = rowobj;
+                                rowobj.hpt = val.hpt; rowobj.hpx = pt2px(val.hpt);
+                            }
+                        } break;
+
+                        case 'LeftMargin':
+                        case 'RightMargin':
+                        case 'TopMargin':
+                        case 'BottomMargin':
+                            if(!out['!margins']) default_margins(out['!margins'] = {});
+                            switch(Rn) {
+                                case 'LeftMargin': out['!margins'].left = val; break;
+                                case 'RightMargin': out['!margins'].right = val; break;
+                                case 'TopMargin': out['!margins'].top = val; break;
+                                case 'BottomMargin': out['!margins'].bottom = val; break;
+                            }
+                            break;
+
+                        case 'Setup': // TODO
+                            if(!out['!margins']) default_margins(out['!margins'] = {});
+                            out['!margins'].header = val.header;
+                            out['!margins'].footer = val.footer;
+                            break;
+
+                        case 'Header': break; // TODO
+                        case 'Footer': break; // TODO
+                        case 'HCenter': break; // TODO
+                        case 'VCenter': break; // TODO
+                        case 'Pls': break; // TODO
+                        case 'GCW': break;
+                        case 'LHRecord': break;
+                        case 'DBCell': break; // TODO
+                        case 'EntExU2': break; // TODO
+                        case 'SxView': break; // TODO
+                        case 'Sxvd': break; // TODO
+                        case 'SXVI': break; // TODO
+                        case 'SXVDEx': break; // TODO
+                        case 'SxIvd': break; // TODO
+                        case 'SXDI': break; // TODO
+                        case 'SXLI': break; // TODO
+                        case 'SXEx': break; // TODO
+                        case 'QsiSXTag': break; // TODO
+                        case 'Selection': break;
+                        case 'Feat': break;
+                        case 'FeatHdr': case 'FeatHdr11': break;
+                        case 'Feature11': case 'Feature12': case 'List12': break;
+                        case 'Country': country = val; break;
+                        case 'RecalcId': break;
+                        case 'DxGCol': break; // TODO: htmlify
+                        case 'Fbi': case 'Fbi2': case 'GelFrame': break;
+                        case 'Font': break; // TODO
+                        case 'XFCRC': break; // TODO
+                        case 'Style': break; // TODO
+                        case 'StyleExt': break; // TODO
+                        case 'Palette': palette = val; break; // TODO
+                        case 'Theme': break; // TODO
+                        /* Protection */
+                        case 'ScenarioProtect': break;
+                        case 'ObjProtect': break;
+
+                        /* Conditional Formatting */
+                        case 'CondFmt12': break;
+
+                        /* Table */
+                        case 'Table': break; // TODO
+                        case 'TableStyles': break; // TODO
+                        case 'TableStyle': break; // TODO
+                        case 'TableStyleElement': break; // TODO
+
+                        /* PivotTable */
+                        case 'SXStreamID': break; // TODO
+                        case 'SXVS': break; // TODO
+                        case 'DConRef': break; // TODO
+                        case 'SXAddl': break; // TODO
+                        case 'DConBin': break; // TODO
+                        case 'DConName': break; // TODO
+                        case 'SXPI': break; // TODO
+                        case 'SxFormat': break; // TODO
+                        case 'SxSelect': break; // TODO
+                        case 'SxRule': break; // TODO
+                        case 'SxFilt': break; // TODO
+                        case 'SxItm': break; // TODO
+                        case 'SxDXF': break; // TODO
+
+                        /* Scenario Manager */
+                        case 'ScenMan': break;
+
+                        /* Data Consolidation */
+                        case 'DCon': break;
+
+                        /* Watched Cell */
+                        case 'CellWatch': break;
+
+                        /* Print Settings */
+                        case 'PrintRowCol': break;
+                        case 'PrintGrid': break;
+                        case 'PrintSize': break;
+
+                        case 'XCT': break;
+                        case 'CRN': break;
+
+                        case 'Scl': {
+                            //console.log("Zoom Level:", val[0]/val[1],val);
+                        } break;
+                        case 'SheetExt': {
+
+                        } break;
+                        case 'SheetExtOptional': {
+
+                        } break;
+
+                        /* VBA */
+                        case 'ObNoMacros': {
+
+                        } break;
+                        case 'ObProj': {
+
+                        } break;
+                        case 'CodeName': {
+
+                        } break;
+                        case 'GUIDTypeLib': {
+
+                        } break;
+
+                        case 'WOpt': break; // TODO: WTF?
+                        case 'PhoneticInfo': break;
+
+                        case 'OleObjectSize': break;
+
+                        /* Differential Formatting */
+                        case 'DXF': case 'DXFN': case 'DXFN12': case 'DXFN12List': case 'DXFN12NoCB': break;
+
+                        /* Data Validation */
+                        case 'Dv': case 'DVal': break;
+
+                        /* Data Series */
+                        case 'BRAI': case 'Series': case 'SeriesText': break;
+
+                        /* Data Connection */
+                        case 'DConn': break;
+                        case 'DbOrParamQry': break;
+                        case 'DBQueryExt': break;
+
+                        /* Formatting */
+                        case 'IFmtRecord': break;
+                        case 'CondFmt': case 'CF': case 'CF12': case 'CFEx': break;
+
+                        /* Explicitly Ignored */
+                        case 'Excel9File': break;
+                        case 'Units': break;
+                        case 'InterfaceHdr': case 'Mms': case 'InterfaceEnd': case 'DSF': case 'BuiltInFnGroupCount':
+                        /* View Stuff */
+                        case 'Window1': case 'Window2': case 'HideObj': case 'GridSet': case 'Guts':
+                        case 'UserBView': case 'UserSViewBegin': case 'UserSViewEnd':
+                        case 'Pane': break;
+                        default: switch(R.n) { /* nested */
+                            /* Chart */
+                            case 'Dat':
+                            case 'Begin': case 'End':
+                            case 'StartBlock': case 'EndBlock':
+                            case 'Frame': case 'Area':
+                            case 'Axis': case 'AxisLine': case 'Tick': break;
+                            case 'AxesUsed':
+                            case 'CrtLayout12': case 'CrtLayout12A': case 'CrtLink': case 'CrtLine': case 'CrtMlFrt': case 'CrtMlFrtContinue': break;
+                            case 'LineFormat': case 'AreaFormat':
+                            case 'Chart': case 'Chart3d': case 'Chart3DBarShape': case 'ChartFormat': case 'ChartFrtInfo': break;
+                            case 'PlotArea': case 'PlotGrowth': break;
+                            case 'SeriesList': case 'SerParent': case 'SerAuxTrend': break;
+                            case 'DataFormat': case 'SerToCrt': case 'FontX': break;
+                            case 'CatSerRange': case 'AxcExt': case 'SerFmt': break;
+                            case 'ShtProps': break;
+                            case 'DefaultText': case 'Text': case 'CatLab': break;
+                            case 'DataLabExtContents': break;
+                            case 'Legend': case 'LegendException': break;
+                            case 'Pie': case 'Scatter': break;
+                            case 'PieFormat': case 'MarkerFormat': break;
+                            case 'StartObject': case 'EndObject': break;
+                            case 'AlRuns': case 'ObjectLink': break;
+                            case 'SIIndex': break;
+                            case 'AttachedLabel': case 'YMult': break;
+
+                            /* Chart Group */
+                            case 'Line': case 'Bar': break;
+                            case 'Surf': break;
+
+                            /* Axis Group */
+                            case 'AxisParent': break;
+                            case 'Pos': break;
+                            case 'ValueRange': break;
+
+                            /* Pivot Chart */
+                            case 'SXViewEx9': break; // TODO
+                            case 'SXViewLink': break;
+                            case 'PivotChartBits': break;
+                            case 'SBaseRef': break;
+                            case 'TextPropsStream': break;
+
+                            /* Chart Misc */
+                            case 'LnExt': break;
+                            case 'MkrExt': break;
+                            case 'CrtCoopt': break;
+
+                            /* Query Table */
+                            case 'Qsi': case 'Qsif': case 'Qsir': case 'QsiSXTag': break;
+                            case 'TxtQry': break;
+
+                            /* Filter */
+                            case 'FilterMode': break;
+                            case 'AutoFilter': case 'AutoFilterInfo': break;
+                            case 'AutoFilter12': break;
+                            case 'DropDownObjIds': break;
+                            case 'Sort': break;
+                            case 'SortData': break;
+
+                            /* Drawing */
+                            case 'ShapePropsStream': break;
+                            case 'MsoDrawing': case 'MsoDrawingGroup': case 'MsoDrawingSelection': break;
+                            case 'ImData': break;
+                            /* Pub Stuff */
+                            case 'WebPub': case 'AutoWebPub':
+
+                            /* Print Stuff */
+                            case 'HeaderFooter': case 'HFPicture': case 'PLV':
+                            case 'HorizontalPageBreaks': case 'VerticalPageBreaks':
+                            /* Behavioral */
+                            case 'Backup': case 'CompressPictures': case 'Compat12': break;
+
+                            /* Should not Happen */
+                            case 'Continue': case 'ContinueFrt12': break;
+
+                            /* Future Records */
+                            case 'FrtFontList': case 'FrtWrapper': break;
+
+                            default: switch(R.n) { /* nested */
+                                /* BIFF5 records */
+                                case 'ExternCount': break;
+                                case 'TabIdConf': case 'Radar': case 'RadarArea': case 'DropBar': case 'Intl': case 'CoordList': case 'SerAuxErrBar': break;
+
+                                /* BIFF2-4 records */
+                                case 'BIFF2FONTCLR': case 'BIFF2FMTCNT': case 'BIFF2FONTXTRA': break;
+                                case 'BIFF2XF': case 'BIFF3XF': case 'BIFF4XF': break;
+                                case 'BIFF4FMTCNT': case 'BIFF2ROW': case 'BIFF2WINDOW2': break;
+
+                                /* Miscellaneous */
+                                case 'SCENARIO': case 'DConBin': case 'PicF': case 'DataLabExt':
+                                case 'Lel': case 'BopPop': case 'BopPopCustom': case 'RealTimeData':
+                                case 'Name': break;
+                                default: if(options.WTF) throw 'Unrecognized Record ' + R.n;
+                            }}}}
+            } else blob.l += length;
+        }
+        var sheetnamesraw = Object.keys(Directory).sort(function(a,b) { return Number(a) - Number(b); }).map(function(x){return Directory[x].name;});
+        var sheetnames = sheetnamesraw.slice();
+        wb.Directory=sheetnamesraw;
+        wb.SheetNames=sheetnamesraw;
+        if(!options.bookSheets) wb.Sheets=Sheets;
+        if(wb.Sheets) FilterDatabases.forEach(function(r,i) { wb.Sheets[wb.SheetNames[i]]['!autofilter'] = r; });
+        wb.Preamble=Preamble;
+        wb.Strings = sst;
+        wb.SSF = SSF.get_table();
+        if(opts.enc) wb.Encryption = opts.enc;
+        wb.Metadata = {};
+        if(country !== undefined) wb.Metadata.Country = country;
+        if(supbooks.names.length > 0) Workbook.Names = supbooks.names;
+        wb.Workbook = Workbook;
+        return wb;
+    }
+
+    /* TODO: WTF */
+    function parse_props(cfb) {
+        /* [MS-OSHARED] 2.3.3.2.2 Document Summary Information Property Set */
+        var DSI = cfb.find('!DocumentSummaryInformation');
+        if(DSI) try { cfb.DocSummary = parse_PropertySetStream(DSI, DocSummaryPIDDSI); } catch(e) {}
+
+        /* [MS-OSHARED] 2.3.3.2.1 Summary Information Property Set*/
+        var SI = cfb.find('!SummaryInformation');
+        if(SI) try { cfb.Summary = parse_PropertySetStream(SI, SummaryPIDSI); } catch(e) {}
+    }
+
+    function parse_xlscfb(cfb, options) {
+        if(!options) options = {};
+        fix_read_opts(options);
+        reset_cp();
+        var CompObj, Summary, Workbook;
+        if(cfb.FullPaths) {
+            CompObj = cfb.find('!CompObj');
+            Summary = cfb.find('!SummaryInformation');
+            Workbook = cfb.find('/Workbook');
+        } else {
+            prep_blob(cfb, 0);
+            Workbook = ({content: cfb});
+        }
+
+        if(!Workbook) Workbook = cfb.find('/Book');
+        var CompObjP, SummaryP, WorkbookP;
+
+        if(CompObj) CompObjP = parse_compobj(CompObj);
+        if(options.bookProps && !options.bookSheets) WorkbookP = ({});
+        else {
+            if(Workbook) WorkbookP = parse_workbook(Workbook.content, options, !!Workbook.find);
+            /* Quattro Pro 7-8 */
+            else if(cfb.find('PerfectOffice_MAIN')) WorkbookP = WK_.to_workbook(cfb.find('PerfectOffice_MAIN').content, options);
+            /* Quattro Pro 9 */
+            else if(cfb.find('NativeContent_MAIN')) WorkbookP = WK_.to_workbook(cfb.find('NativeContent_MAIN').content, options);
+            else throw new Error("Cannot find Workbook stream");
+        }
+
+        if(cfb.FullPaths) parse_props(cfb);
+
+        var props = {};
+        for(var y in cfb.Summary) props[y] = cfb.Summary[y];
+        for(y in cfb.DocSummary) props[y] = cfb.DocSummary[y];
+        WorkbookP.Props = WorkbookP.Custprops = props; /* TODO: split up properties */
+        if(options.bookFiles) WorkbookP.cfb = cfb;
+        /*WorkbookP.CompObjP = CompObjP; // TODO: storage? */
+        return WorkbookP;
+    }
+
+    /* [MS-XLSB] 2.3 Record Enumeration */
+    var XLSBRecordEnum = {
+        0x0000: { n:"BrtRowHdr", f:parse_BrtRowHdr },
+        0x0001: { n:"BrtCellBlank", f:parse_BrtCellBlank },
+        0x0002: { n:"BrtCellRk", f:parse_BrtCellRk },
+        0x0003: { n:"BrtCellError", f:parse_BrtCellError },
+        0x0004: { n:"BrtCellBool", f:parse_BrtCellBool },
+        0x0005: { n:"BrtCellReal", f:parse_BrtCellReal },
+        0x0006: { n:"BrtCellSt", f:parse_BrtCellSt },
+        0x0007: { n:"BrtCellIsst", f:parse_BrtCellIsst },
+        0x0008: { n:"BrtFmlaString", f:parse_BrtFmlaString },
+        0x0009: { n:"BrtFmlaNum", f:parse_BrtFmlaNum },
+        0x000A: { n:"BrtFmlaBool", f:parse_BrtFmlaBool },
+        0x000B: { n:"BrtFmlaError", f:parse_BrtFmlaError },
+        0x0010: { n:"BrtFRTArchID$", f:parse_BrtFRTArchID$ },
+        0x0013: { n:"BrtSSTItem", f:parse_RichStr },
+        0x0014: { n:"BrtPCDIMissing", f:parsenoop },
+        0x0015: { n:"BrtPCDINumber", f:parsenoop },
+        0x0016: { n:"BrtPCDIBoolean", f:parsenoop },
+        0x0017: { n:"BrtPCDIError", f:parsenoop },
+        0x0018: { n:"BrtPCDIString", f:parsenoop },
+        0x0019: { n:"BrtPCDIDatetime", f:parsenoop },
+        0x001A: { n:"BrtPCDIIndex", f:parsenoop },
+        0x001B: { n:"BrtPCDIAMissing", f:parsenoop },
+        0x001C: { n:"BrtPCDIANumber", f:parsenoop },
+        0x001D: { n:"BrtPCDIABoolean", f:parsenoop },
+        0x001E: { n:"BrtPCDIAError", f:parsenoop },
+        0x001F: { n:"BrtPCDIAString", f:parsenoop },
+        0x0020: { n:"BrtPCDIADatetime", f:parsenoop },
+        0x0021: { n:"BrtPCRRecord", f:parsenoop },
+        0x0022: { n:"BrtPCRRecordDt", f:parsenoop },
+        0x0023: { n:"BrtFRTBegin", f:parsenoop },
+        0x0024: { n:"BrtFRTEnd", f:parsenoop },
+        0x0025: { n:"BrtACBegin", f:parsenoop },
+        0x0026: { n:"BrtACEnd", f:parsenoop },
+        0x0027: { n:"BrtName", f:parse_BrtName },
+        0x0028: { n:"BrtIndexRowBlock", f:parsenoop },
+        0x002A: { n:"BrtIndexBlock", f:parsenoop },
+        0x002B: { n:"BrtFont", f:parse_BrtFont },
+        0x002C: { n:"BrtFmt", f:parse_BrtFmt },
+        0x002D: { n:"BrtFill", f:parsenoop },
+        0x002E: { n:"BrtBorder", f:parsenoop },
+        0x002F: { n:"BrtXF", f:parse_BrtXF },
+        0x0030: { n:"BrtStyle", f:parsenoop },
+        0x0031: { n:"BrtCellMeta", f:parsenoop },
+        0x0032: { n:"BrtValueMeta", f:parsenoop },
+        0x0033: { n:"BrtMdb", f:parsenoop },
+        0x0034: { n:"BrtBeginFmd", f:parsenoop },
+        0x0035: { n:"BrtEndFmd", f:parsenoop },
+        0x0036: { n:"BrtBeginMdx", f:parsenoop },
+        0x0037: { n:"BrtEndMdx", f:parsenoop },
+        0x0038: { n:"BrtBeginMdxTuple", f:parsenoop },
+        0x0039: { n:"BrtEndMdxTuple", f:parsenoop },
+        0x003A: { n:"BrtMdxMbrIstr", f:parsenoop },
+        0x003B: { n:"BrtStr", f:parsenoop },
+        0x003C: { n:"BrtColInfo", f:parse_ColInfo },
+        0x003E: { n:"BrtCellRString", f:parsenoop },
+        0x003F: { n:"BrtCalcChainItem$", f:parse_BrtCalcChainItem$ },
+        0x0040: { n:"BrtDVal", f:parsenoop },
+        0x0041: { n:"BrtSxvcellNum", f:parsenoop },
+        0x0042: { n:"BrtSxvcellStr", f:parsenoop },
+        0x0043: { n:"BrtSxvcellBool", f:parsenoop },
+        0x0044: { n:"BrtSxvcellErr", f:parsenoop },
+        0x0045: { n:"BrtSxvcellDate", f:parsenoop },
+        0x0046: { n:"BrtSxvcellNil", f:parsenoop },
+        0x0080: { n:"BrtFileVersion", f:parsenoop },
+        0x0081: { n:"BrtBeginSheet", f:parsenoop },
+        0x0082: { n:"BrtEndSheet", f:parsenoop },
+        0x0083: { n:"BrtBeginBook", f:parsenoop, p:0 },
+        0x0084: { n:"BrtEndBook", f:parsenoop },
+        0x0085: { n:"BrtBeginWsViews", f:parsenoop },
+        0x0086: { n:"BrtEndWsViews", f:parsenoop },
+        0x0087: { n:"BrtBeginBookViews", f:parsenoop },
+        0x0088: { n:"BrtEndBookViews", f:parsenoop },
+        0x0089: { n:"BrtBeginWsView", f:parsenoop },
+        0x008A: { n:"BrtEndWsView", f:parsenoop },
+        0x008B: { n:"BrtBeginCsViews", f:parsenoop },
+        0x008C: { n:"BrtEndCsViews", f:parsenoop },
+        0x008D: { n:"BrtBeginCsView", f:parsenoop },
+        0x008E: { n:"BrtEndCsView", f:parsenoop },
+        0x008F: { n:"BrtBeginBundleShs", f:parsenoop },
+        0x0090: { n:"BrtEndBundleShs", f:parsenoop },
+        0x0091: { n:"BrtBeginSheetData", f:parsenoop },
+        0x0092: { n:"BrtEndSheetData", f:parsenoop },
+        0x0093: { n:"BrtWsProp", f:parse_BrtWsProp },
+        0x0094: { n:"BrtWsDim", f:parse_BrtWsDim, p:16 },
+        0x0097: { n:"BrtPane", f:parsenoop },
+        0x0098: { n:"BrtSel", f:parsenoop },
+        0x0099: { n:"BrtWbProp", f:parse_BrtWbProp },
+        0x009A: { n:"BrtWbFactoid", f:parsenoop },
+        0x009B: { n:"BrtFileRecover", f:parsenoop },
+        0x009C: { n:"BrtBundleSh", f:parse_BrtBundleSh },
+        0x009D: { n:"BrtCalcProp", f:parsenoop },
+        0x009E: { n:"BrtBookView", f:parsenoop },
+        0x009F: { n:"BrtBeginSst", f:parse_BrtBeginSst },
+        0x00A0: { n:"BrtEndSst", f:parsenoop },
+        0x00A1: { n:"BrtBeginAFilter", f:parse_UncheckedRfX },
+        0x00A2: { n:"BrtEndAFilter", f:parsenoop },
+        0x00A3: { n:"BrtBeginFilterColumn", f:parsenoop },
+        0x00A4: { n:"BrtEndFilterColumn", f:parsenoop },
+        0x00A5: { n:"BrtBeginFilters", f:parsenoop },
+        0x00A6: { n:"BrtEndFilters", f:parsenoop },
+        0x00A7: { n:"BrtFilter", f:parsenoop },
+        0x00A8: { n:"BrtColorFilter", f:parsenoop },
+        0x00A9: { n:"BrtIconFilter", f:parsenoop },
+        0x00AA: { n:"BrtTop10Filter", f:parsenoop },
+        0x00AB: { n:"BrtDynamicFilter", f:parsenoop },
+        0x00AC: { n:"BrtBeginCustomFilters", f:parsenoop },
+        0x00AD: { n:"BrtEndCustomFilters", f:parsenoop },
+        0x00AE: { n:"BrtCustomFilter", f:parsenoop },
+        0x00AF: { n:"BrtAFilterDateGroupItem", f:parsenoop },
+        0x00B0: { n:"BrtMergeCell", f:parse_BrtMergeCell },
+        0x00B1: { n:"BrtBeginMergeCells", f:parsenoop },
+        0x00B2: { n:"BrtEndMergeCells", f:parsenoop },
+        0x00B3: { n:"BrtBeginPivotCacheDef", f:parsenoop },
+        0x00B4: { n:"BrtEndPivotCacheDef", f:parsenoop },
+        0x00B5: { n:"BrtBeginPCDFields", f:parsenoop },
+        0x00B6: { n:"BrtEndPCDFields", f:parsenoop },
+        0x00B7: { n:"BrtBeginPCDField", f:parsenoop },
+        0x00B8: { n:"BrtEndPCDField", f:parsenoop },
+        0x00B9: { n:"BrtBeginPCDSource", f:parsenoop },
+        0x00BA: { n:"BrtEndPCDSource", f:parsenoop },
+        0x00BB: { n:"BrtBeginPCDSRange", f:parsenoop },
+        0x00BC: { n:"BrtEndPCDSRange", f:parsenoop },
+        0x00BD: { n:"BrtBeginPCDFAtbl", f:parsenoop },
+        0x00BE: { n:"BrtEndPCDFAtbl", f:parsenoop },
+        0x00BF: { n:"BrtBeginPCDIRun", f:parsenoop },
+        0x00C0: { n:"BrtEndPCDIRun", f:parsenoop },
+        0x00C1: { n:"BrtBeginPivotCacheRecords", f:parsenoop },
+        0x00C2: { n:"BrtEndPivotCacheRecords", f:parsenoop },
+        0x00C3: { n:"BrtBeginPCDHierarchies", f:parsenoop },
+        0x00C4: { n:"BrtEndPCDHierarchies", f:parsenoop },
+        0x00C5: { n:"BrtBeginPCDHierarchy", f:parsenoop },
+        0x00C6: { n:"BrtEndPCDHierarchy", f:parsenoop },
+        0x00C7: { n:"BrtBeginPCDHFieldsUsage", f:parsenoop },
+        0x00C8: { n:"BrtEndPCDHFieldsUsage", f:parsenoop },
+        0x00C9: { n:"BrtBeginExtConnection", f:parsenoop },
+        0x00CA: { n:"BrtEndExtConnection", f:parsenoop },
+        0x00CB: { n:"BrtBeginECDbProps", f:parsenoop },
+        0x00CC: { n:"BrtEndECDbProps", f:parsenoop },
+        0x00CD: { n:"BrtBeginECOlapProps", f:parsenoop },
+        0x00CE: { n:"BrtEndECOlapProps", f:parsenoop },
+        0x00CF: { n:"BrtBeginPCDSConsol", f:parsenoop },
+        0x00D0: { n:"BrtEndPCDSConsol", f:parsenoop },
+        0x00D1: { n:"BrtBeginPCDSCPages", f:parsenoop },
+        0x00D2: { n:"BrtEndPCDSCPages", f:parsenoop },
+        0x00D3: { n:"BrtBeginPCDSCPage", f:parsenoop },
+        0x00D4: { n:"BrtEndPCDSCPage", f:parsenoop },
+        0x00D5: { n:"BrtBeginPCDSCPItem", f:parsenoop },
+        0x00D6: { n:"BrtEndPCDSCPItem", f:parsenoop },
+        0x00D7: { n:"BrtBeginPCDSCSets", f:parsenoop },
+        0x00D8: { n:"BrtEndPCDSCSets", f:parsenoop },
+        0x00D9: { n:"BrtBeginPCDSCSet", f:parsenoop },
+        0x00DA: { n:"BrtEndPCDSCSet", f:parsenoop },
+        0x00DB: { n:"BrtBeginPCDFGroup", f:parsenoop },
+        0x00DC: { n:"BrtEndPCDFGroup", f:parsenoop },
+        0x00DD: { n:"BrtBeginPCDFGItems", f:parsenoop },
+        0x00DE: { n:"BrtEndPCDFGItems", f:parsenoop },
+        0x00DF: { n:"BrtBeginPCDFGRange", f:parsenoop },
+        0x00E0: { n:"BrtEndPCDFGRange", f:parsenoop },
+        0x00E1: { n:"BrtBeginPCDFGDiscrete", f:parsenoop },
+        0x00E2: { n:"BrtEndPCDFGDiscrete", f:parsenoop },
+        0x00E3: { n:"BrtBeginPCDSDTupleCache", f:parsenoop },
+        0x00E4: { n:"BrtEndPCDSDTupleCache", f:parsenoop },
+        0x00E5: { n:"BrtBeginPCDSDTCEntries", f:parsenoop },
+        0x00E6: { n:"BrtEndPCDSDTCEntries", f:parsenoop },
+        0x00E7: { n:"BrtBeginPCDSDTCEMembers", f:parsenoop },
+        0x00E8: { n:"BrtEndPCDSDTCEMembers", f:parsenoop },
+        0x00E9: { n:"BrtBeginPCDSDTCEMember", f:parsenoop },
+        0x00EA: { n:"BrtEndPCDSDTCEMember", f:parsenoop },
+        0x00EB: { n:"BrtBeginPCDSDTCQueries", f:parsenoop },
+        0x00EC: { n:"BrtEndPCDSDTCQueries", f:parsenoop },
+        0x00ED: { n:"BrtBeginPCDSDTCQuery", f:parsenoop },
+        0x00EE: { n:"BrtEndPCDSDTCQuery", f:parsenoop },
+        0x00EF: { n:"BrtBeginPCDSDTCSets", f:parsenoop },
+        0x00F0: { n:"BrtEndPCDSDTCSets", f:parsenoop },
+        0x00F1: { n:"BrtBeginPCDSDTCSet", f:parsenoop },
+        0x00F2: { n:"BrtEndPCDSDTCSet", f:parsenoop },
+        0x00F3: { n:"BrtBeginPCDCalcItems", f:parsenoop },
+        0x00F4: { n:"BrtEndPCDCalcItems", f:parsenoop },
+        0x00F5: { n:"BrtBeginPCDCalcItem", f:parsenoop },
+        0x00F6: { n:"BrtEndPCDCalcItem", f:parsenoop },
+        0x00F7: { n:"BrtBeginPRule", f:parsenoop },
+        0x00F8: { n:"BrtEndPRule", f:parsenoop },
+        0x00F9: { n:"BrtBeginPRFilters", f:parsenoop },
+        0x00FA: { n:"BrtEndPRFilters", f:parsenoop },
+        0x00FB: { n:"BrtBeginPRFilter", f:parsenoop },
+        0x00FC: { n:"BrtEndPRFilter", f:parsenoop },
+        0x00FD: { n:"BrtBeginPNames", f:parsenoop },
+        0x00FE: { n:"BrtEndPNames", f:parsenoop },
+        0x00FF: { n:"BrtBeginPName", f:parsenoop },
+        0x0100: { n:"BrtEndPName", f:parsenoop },
+        0x0101: { n:"BrtBeginPNPairs", f:parsenoop },
+        0x0102: { n:"BrtEndPNPairs", f:parsenoop },
+        0x0103: { n:"BrtBeginPNPair", f:parsenoop },
+        0x0104: { n:"BrtEndPNPair", f:parsenoop },
+        0x0105: { n:"BrtBeginECWebProps", f:parsenoop },
+        0x0106: { n:"BrtEndECWebProps", f:parsenoop },
+        0x0107: { n:"BrtBeginEcWpTables", f:parsenoop },
+        0x0108: { n:"BrtEndECWPTables", f:parsenoop },
+        0x0109: { n:"BrtBeginECParams", f:parsenoop },
+        0x010A: { n:"BrtEndECParams", f:parsenoop },
+        0x010B: { n:"BrtBeginECParam", f:parsenoop },
+        0x010C: { n:"BrtEndECParam", f:parsenoop },
+        0x010D: { n:"BrtBeginPCDKPIs", f:parsenoop },
+        0x010E: { n:"BrtEndPCDKPIs", f:parsenoop },
+        0x010F: { n:"BrtBeginPCDKPI", f:parsenoop },
+        0x0110: { n:"BrtEndPCDKPI", f:parsenoop },
+        0x0111: { n:"BrtBeginDims", f:parsenoop },
+        0x0112: { n:"BrtEndDims", f:parsenoop },
+        0x0113: { n:"BrtBeginDim", f:parsenoop },
+        0x0114: { n:"BrtEndDim", f:parsenoop },
+        0x0115: { n:"BrtIndexPartEnd", f:parsenoop },
+        0x0116: { n:"BrtBeginStyleSheet", f:parsenoop },
+        0x0117: { n:"BrtEndStyleSheet", f:parsenoop },
+        0x0118: { n:"BrtBeginSXView", f:parsenoop },
+        0x0119: { n:"BrtEndSXVI", f:parsenoop },
+        0x011A: { n:"BrtBeginSXVI", f:parsenoop },
+        0x011B: { n:"BrtBeginSXVIs", f:parsenoop },
+        0x011C: { n:"BrtEndSXVIs", f:parsenoop },
+        0x011D: { n:"BrtBeginSXVD", f:parsenoop },
+        0x011E: { n:"BrtEndSXVD", f:parsenoop },
+        0x011F: { n:"BrtBeginSXVDs", f:parsenoop },
+        0x0120: { n:"BrtEndSXVDs", f:parsenoop },
+        0x0121: { n:"BrtBeginSXPI", f:parsenoop },
+        0x0122: { n:"BrtEndSXPI", f:parsenoop },
+        0x0123: { n:"BrtBeginSXPIs", f:parsenoop },
+        0x0124: { n:"BrtEndSXPIs", f:parsenoop },
+        0x0125: { n:"BrtBeginSXDI", f:parsenoop },
+        0x0126: { n:"BrtEndSXDI", f:parsenoop },
+        0x0127: { n:"BrtBeginSXDIs", f:parsenoop },
+        0x0128: { n:"BrtEndSXDIs", f:parsenoop },
+        0x0129: { n:"BrtBeginSXLI", f:parsenoop },
+        0x012A: { n:"BrtEndSXLI", f:parsenoop },
+        0x012B: { n:"BrtBeginSXLIRws", f:parsenoop },
+        0x012C: { n:"BrtEndSXLIRws", f:parsenoop },
+        0x012D: { n:"BrtBeginSXLICols", f:parsenoop },
+        0x012E: { n:"BrtEndSXLICols", f:parsenoop },
+        0x012F: { n:"BrtBeginSXFormat", f:parsenoop },
+        0x0130: { n:"BrtEndSXFormat", f:parsenoop },
+        0x0131: { n:"BrtBeginSXFormats", f:parsenoop },
+        0x0132: { n:"BrtEndSxFormats", f:parsenoop },
+        0x0133: { n:"BrtBeginSxSelect", f:parsenoop },
+        0x0134: { n:"BrtEndSxSelect", f:parsenoop },
+        0x0135: { n:"BrtBeginISXVDRws", f:parsenoop },
+        0x0136: { n:"BrtEndISXVDRws", f:parsenoop },
+        0x0137: { n:"BrtBeginISXVDCols", f:parsenoop },
+        0x0138: { n:"BrtEndISXVDCols", f:parsenoop },
+        0x0139: { n:"BrtEndSXLocation", f:parsenoop },
+        0x013A: { n:"BrtBeginSXLocation", f:parsenoop },
+        0x013B: { n:"BrtEndSXView", f:parsenoop },
+        0x013C: { n:"BrtBeginSXTHs", f:parsenoop },
+        0x013D: { n:"BrtEndSXTHs", f:parsenoop },
+        0x013E: { n:"BrtBeginSXTH", f:parsenoop },
+        0x013F: { n:"BrtEndSXTH", f:parsenoop },
+        0x0140: { n:"BrtBeginISXTHRws", f:parsenoop },
+        0x0141: { n:"BrtEndISXTHRws", f:parsenoop },
+        0x0142: { n:"BrtBeginISXTHCols", f:parsenoop },
+        0x0143: { n:"BrtEndISXTHCols", f:parsenoop },
+        0x0144: { n:"BrtBeginSXTDMPS", f:parsenoop },
+        0x0145: { n:"BrtEndSXTDMPs", f:parsenoop },
+        0x0146: { n:"BrtBeginSXTDMP", f:parsenoop },
+        0x0147: { n:"BrtEndSXTDMP", f:parsenoop },
+        0x0148: { n:"BrtBeginSXTHItems", f:parsenoop },
+        0x0149: { n:"BrtEndSXTHItems", f:parsenoop },
+        0x014A: { n:"BrtBeginSXTHItem", f:parsenoop },
+        0x014B: { n:"BrtEndSXTHItem", f:parsenoop },
+        0x014C: { n:"BrtBeginMetadata", f:parsenoop },
+        0x014D: { n:"BrtEndMetadata", f:parsenoop },
+        0x014E: { n:"BrtBeginEsmdtinfo", f:parsenoop },
+        0x014F: { n:"BrtMdtinfo", f:parsenoop },
+        0x0150: { n:"BrtEndEsmdtinfo", f:parsenoop },
+        0x0151: { n:"BrtBeginEsmdb", f:parsenoop },
+        0x0152: { n:"BrtEndEsmdb", f:parsenoop },
+        0x0153: { n:"BrtBeginEsfmd", f:parsenoop },
+        0x0154: { n:"BrtEndEsfmd", f:parsenoop },
+        0x0155: { n:"BrtBeginSingleCells", f:parsenoop },
+        0x0156: { n:"BrtEndSingleCells", f:parsenoop },
+        0x0157: { n:"BrtBeginList", f:parsenoop },
+        0x0158: { n:"BrtEndList", f:parsenoop },
+        0x0159: { n:"BrtBeginListCols", f:parsenoop },
+        0x015A: { n:"BrtEndListCols", f:parsenoop },
+        0x015B: { n:"BrtBeginListCol", f:parsenoop },
+        0x015C: { n:"BrtEndListCol", f:parsenoop },
+        0x015D: { n:"BrtBeginListXmlCPr", f:parsenoop },
+        0x015E: { n:"BrtEndListXmlCPr", f:parsenoop },
+        0x015F: { n:"BrtListCCFmla", f:parsenoop },
+        0x0160: { n:"BrtListTrFmla", f:parsenoop },
+        0x0161: { n:"BrtBeginExternals", f:parsenoop },
+        0x0162: { n:"BrtEndExternals", f:parsenoop },
+        0x0163: { n:"BrtSupBookSrc", f:parsenoop },
+        0x0165: { n:"BrtSupSelf", f:parsenoop },
+        0x0166: { n:"BrtSupSame", f:parsenoop },
+        0x0167: { n:"BrtSupTabs", f:parsenoop },
+        0x0168: { n:"BrtBeginSupBook", f:parsenoop },
+        0x0169: { n:"BrtPlaceholderName", f:parsenoop },
+        0x016A: { n:"BrtExternSheet", f:parsenoop },
+        0x016B: { n:"BrtExternTableStart", f:parsenoop },
+        0x016C: { n:"BrtExternTableEnd", f:parsenoop },
+        0x016E: { n:"BrtExternRowHdr", f:parsenoop },
+        0x016F: { n:"BrtExternCellBlank", f:parsenoop },
+        0x0170: { n:"BrtExternCellReal", f:parsenoop },
+        0x0171: { n:"BrtExternCellBool", f:parsenoop },
+        0x0172: { n:"BrtExternCellError", f:parsenoop },
+        0x0173: { n:"BrtExternCellString", f:parsenoop },
+        0x0174: { n:"BrtBeginEsmdx", f:parsenoop },
+        0x0175: { n:"BrtEndEsmdx", f:parsenoop },
+        0x0176: { n:"BrtBeginMdxSet", f:parsenoop },
+        0x0177: { n:"BrtEndMdxSet", f:parsenoop },
+        0x0178: { n:"BrtBeginMdxMbrProp", f:parsenoop },
+        0x0179: { n:"BrtEndMdxMbrProp", f:parsenoop },
+        0x017A: { n:"BrtBeginMdxKPI", f:parsenoop },
+        0x017B: { n:"BrtEndMdxKPI", f:parsenoop },
+        0x017C: { n:"BrtBeginEsstr", f:parsenoop },
+        0x017D: { n:"BrtEndEsstr", f:parsenoop },
+        0x017E: { n:"BrtBeginPRFItem", f:parsenoop },
+        0x017F: { n:"BrtEndPRFItem", f:parsenoop },
+        0x0180: { n:"BrtBeginPivotCacheIDs", f:parsenoop },
+        0x0181: { n:"BrtEndPivotCacheIDs", f:parsenoop },
+        0x0182: { n:"BrtBeginPivotCacheID", f:parsenoop },
+        0x0183: { n:"BrtEndPivotCacheID", f:parsenoop },
+        0x0184: { n:"BrtBeginISXVIs", f:parsenoop },
+        0x0185: { n:"BrtEndISXVIs", f:parsenoop },
+        0x0186: { n:"BrtBeginColInfos", f:parsenoop },
+        0x0187: { n:"BrtEndColInfos", f:parsenoop },
+        0x0188: { n:"BrtBeginRwBrk", f:parsenoop },
+        0x0189: { n:"BrtEndRwBrk", f:parsenoop },
+        0x018A: { n:"BrtBeginColBrk", f:parsenoop },
+        0x018B: { n:"BrtEndColBrk", f:parsenoop },
+        0x018C: { n:"BrtBrk", f:parsenoop },
+        0x018D: { n:"BrtUserBookView", f:parsenoop },
+        0x018E: { n:"BrtInfo", f:parsenoop },
+        0x018F: { n:"BrtCUsr", f:parsenoop },
+        0x0190: { n:"BrtUsr", f:parsenoop },
+        0x0191: { n:"BrtBeginUsers", f:parsenoop },
+        0x0193: { n:"BrtEOF", f:parsenoop },
+        0x0194: { n:"BrtUCR", f:parsenoop },
+        0x0195: { n:"BrtRRInsDel", f:parsenoop },
+        0x0196: { n:"BrtRREndInsDel", f:parsenoop },
+        0x0197: { n:"BrtRRMove", f:parsenoop },
+        0x0198: { n:"BrtRREndMove", f:parsenoop },
+        0x0199: { n:"BrtRRChgCell", f:parsenoop },
+        0x019A: { n:"BrtRREndChgCell", f:parsenoop },
+        0x019B: { n:"BrtRRHeader", f:parsenoop },
+        0x019C: { n:"BrtRRUserView", f:parsenoop },
+        0x019D: { n:"BrtRRRenSheet", f:parsenoop },
+        0x019E: { n:"BrtRRInsertSh", f:parsenoop },
+        0x019F: { n:"BrtRRDefName", f:parsenoop },
+        0x01A0: { n:"BrtRRNote", f:parsenoop },
+        0x01A1: { n:"BrtRRConflict", f:parsenoop },
+        0x01A2: { n:"BrtRRTQSIF", f:parsenoop },
+        0x01A3: { n:"BrtRRFormat", f:parsenoop },
+        0x01A4: { n:"BrtRREndFormat", f:parsenoop },
+        0x01A5: { n:"BrtRRAutoFmt", f:parsenoop },
+        0x01A6: { n:"BrtBeginUserShViews", f:parsenoop },
+        0x01A7: { n:"BrtBeginUserShView", f:parsenoop },
+        0x01A8: { n:"BrtEndUserShView", f:parsenoop },
+        0x01A9: { n:"BrtEndUserShViews", f:parsenoop },
+        0x01AA: { n:"BrtArrFmla", f:parse_BrtArrFmla },
+        0x01AB: { n:"BrtShrFmla", f:parse_BrtShrFmla },
+        0x01AC: { n:"BrtTable", f:parsenoop },
+        0x01AD: { n:"BrtBeginExtConnections", f:parsenoop },
+        0x01AE: { n:"BrtEndExtConnections", f:parsenoop },
+        0x01AF: { n:"BrtBeginPCDCalcMems", f:parsenoop },
+        0x01B0: { n:"BrtEndPCDCalcMems", f:parsenoop },
+        0x01B1: { n:"BrtBeginPCDCalcMem", f:parsenoop },
+        0x01B2: { n:"BrtEndPCDCalcMem", f:parsenoop },
+        0x01B3: { n:"BrtBeginPCDHGLevels", f:parsenoop },
+        0x01B4: { n:"BrtEndPCDHGLevels", f:parsenoop },
+        0x01B5: { n:"BrtBeginPCDHGLevel", f:parsenoop },
+        0x01B6: { n:"BrtEndPCDHGLevel", f:parsenoop },
+        0x01B7: { n:"BrtBeginPCDHGLGroups", f:parsenoop },
+        0x01B8: { n:"BrtEndPCDHGLGroups", f:parsenoop },
+        0x01B9: { n:"BrtBeginPCDHGLGroup", f:parsenoop },
+        0x01BA: { n:"BrtEndPCDHGLGroup", f:parsenoop },
+        0x01BB: { n:"BrtBeginPCDHGLGMembers", f:parsenoop },
+        0x01BC: { n:"BrtEndPCDHGLGMembers", f:parsenoop },
+        0x01BD: { n:"BrtBeginPCDHGLGMember", f:parsenoop },
+        0x01BE: { n:"BrtEndPCDHGLGMember", f:parsenoop },
+        0x01BF: { n:"BrtBeginQSI", f:parsenoop },
+        0x01C0: { n:"BrtEndQSI", f:parsenoop },
+        0x01C1: { n:"BrtBeginQSIR", f:parsenoop },
+        0x01C2: { n:"BrtEndQSIR", f:parsenoop },
+        0x01C3: { n:"BrtBeginDeletedNames", f:parsenoop },
+        0x01C4: { n:"BrtEndDeletedNames", f:parsenoop },
+        0x01C5: { n:"BrtBeginDeletedName", f:parsenoop },
+        0x01C6: { n:"BrtEndDeletedName", f:parsenoop },
+        0x01C7: { n:"BrtBeginQSIFs", f:parsenoop },
+        0x01C8: { n:"BrtEndQSIFs", f:parsenoop },
+        0x01C9: { n:"BrtBeginQSIF", f:parsenoop },
+        0x01CA: { n:"BrtEndQSIF", f:parsenoop },
+        0x01CB: { n:"BrtBeginAutoSortScope", f:parsenoop },
+        0x01CC: { n:"BrtEndAutoSortScope", f:parsenoop },
+        0x01CD: { n:"BrtBeginConditionalFormatting", f:parsenoop },
+        0x01CE: { n:"BrtEndConditionalFormatting", f:parsenoop },
+        0x01CF: { n:"BrtBeginCFRule", f:parsenoop },
+        0x01D0: { n:"BrtEndCFRule", f:parsenoop },
+        0x01D1: { n:"BrtBeginIconSet", f:parsenoop },
+        0x01D2: { n:"BrtEndIconSet", f:parsenoop },
+        0x01D3: { n:"BrtBeginDatabar", f:parsenoop },
+        0x01D4: { n:"BrtEndDatabar", f:parsenoop },
+        0x01D5: { n:"BrtBeginColorScale", f:parsenoop },
+        0x01D6: { n:"BrtEndColorScale", f:parsenoop },
+        0x01D7: { n:"BrtCFVO", f:parsenoop },
+        0x01D8: { n:"BrtExternValueMeta", f:parsenoop },
+        0x01D9: { n:"BrtBeginColorPalette", f:parsenoop },
+        0x01DA: { n:"BrtEndColorPalette", f:parsenoop },
+        0x01DB: { n:"BrtIndexedColor", f:parsenoop },
+        0x01DC: { n:"BrtMargins", f:parse_BrtMargins },
+        0x01DD: { n:"BrtPrintOptions", f:parsenoop },
+        0x01DE: { n:"BrtPageSetup", f:parsenoop },
+        0x01DF: { n:"BrtBeginHeaderFooter", f:parsenoop },
+        0x01E0: { n:"BrtEndHeaderFooter", f:parsenoop },
+        0x01E1: { n:"BrtBeginSXCrtFormat", f:parsenoop },
+        0x01E2: { n:"BrtEndSXCrtFormat", f:parsenoop },
+        0x01E3: { n:"BrtBeginSXCrtFormats", f:parsenoop },
+        0x01E4: { n:"BrtEndSXCrtFormats", f:parsenoop },
+        0x01E5: { n:"BrtWsFmtInfo", f:parsenoop },
+        0x01E6: { n:"BrtBeginMgs", f:parsenoop },
+        0x01E7: { n:"BrtEndMGs", f:parsenoop },
+        0x01E8: { n:"BrtBeginMGMaps", f:parsenoop },
+        0x01E9: { n:"BrtEndMGMaps", f:parsenoop },
+        0x01EA: { n:"BrtBeginMG", f:parsenoop },
+        0x01EB: { n:"BrtEndMG", f:parsenoop },
+        0x01EC: { n:"BrtBeginMap", f:parsenoop },
+        0x01ED: { n:"BrtEndMap", f:parsenoop },
+        0x01EE: { n:"BrtHLink", f:parse_BrtHLink },
+        0x01EF: { n:"BrtBeginDCon", f:parsenoop },
+        0x01F0: { n:"BrtEndDCon", f:parsenoop },
+        0x01F1: { n:"BrtBeginDRefs", f:parsenoop },
+        0x01F2: { n:"BrtEndDRefs", f:parsenoop },
+        0x01F3: { n:"BrtDRef", f:parsenoop },
+        0x01F4: { n:"BrtBeginScenMan", f:parsenoop },
+        0x01F5: { n:"BrtEndScenMan", f:parsenoop },
+        0x01F6: { n:"BrtBeginSct", f:parsenoop },
+        0x01F7: { n:"BrtEndSct", f:parsenoop },
+        0x01F8: { n:"BrtSlc", f:parsenoop },
+        0x01F9: { n:"BrtBeginDXFs", f:parsenoop },
+        0x01FA: { n:"BrtEndDXFs", f:parsenoop },
+        0x01FB: { n:"BrtDXF", f:parsenoop },
+        0x01FC: { n:"BrtBeginTableStyles", f:parsenoop },
+        0x01FD: { n:"BrtEndTableStyles", f:parsenoop },
+        0x01FE: { n:"BrtBeginTableStyle", f:parsenoop },
+        0x01FF: { n:"BrtEndTableStyle", f:parsenoop },
+        0x0200: { n:"BrtTableStyleElement", f:parsenoop },
+        0x0201: { n:"BrtTableStyleClient", f:parsenoop },
+        0x0202: { n:"BrtBeginVolDeps", f:parsenoop },
+        0x0203: { n:"BrtEndVolDeps", f:parsenoop },
+        0x0204: { n:"BrtBeginVolType", f:parsenoop },
+        0x0205: { n:"BrtEndVolType", f:parsenoop },
+        0x0206: { n:"BrtBeginVolMain", f:parsenoop },
+        0x0207: { n:"BrtEndVolMain", f:parsenoop },
+        0x0208: { n:"BrtBeginVolTopic", f:parsenoop },
+        0x0209: { n:"BrtEndVolTopic", f:parsenoop },
+        0x020A: { n:"BrtVolSubtopic", f:parsenoop },
+        0x020B: { n:"BrtVolRef", f:parsenoop },
+        0x020C: { n:"BrtVolNum", f:parsenoop },
+        0x020D: { n:"BrtVolErr", f:parsenoop },
+        0x020E: { n:"BrtVolStr", f:parsenoop },
+        0x020F: { n:"BrtVolBool", f:parsenoop },
+        0x0210: { n:"BrtBeginCalcChain$", f:parsenoop },
+        0x0211: { n:"BrtEndCalcChain$", f:parsenoop },
+        0x0212: { n:"BrtBeginSortState", f:parsenoop },
+        0x0213: { n:"BrtEndSortState", f:parsenoop },
+        0x0214: { n:"BrtBeginSortCond", f:parsenoop },
+        0x0215: { n:"BrtEndSortCond", f:parsenoop },
+        0x0216: { n:"BrtBookProtection", f:parsenoop },
+        0x0217: { n:"BrtSheetProtection", f:parsenoop },
+        0x0218: { n:"BrtRangeProtection", f:parsenoop },
+        0x0219: { n:"BrtPhoneticInfo", f:parsenoop },
+        0x021A: { n:"BrtBeginECTxtWiz", f:parsenoop },
+        0x021B: { n:"BrtEndECTxtWiz", f:parsenoop },
+        0x021C: { n:"BrtBeginECTWFldInfoLst", f:parsenoop },
+        0x021D: { n:"BrtEndECTWFldInfoLst", f:parsenoop },
+        0x021E: { n:"BrtBeginECTwFldInfo", f:parsenoop },
+        0x0224: { n:"BrtFileSharing", f:parsenoop },
+        0x0225: { n:"BrtOleSize", f:parsenoop },
+        0x0226: { n:"BrtDrawing", f:parse_RelID },
+        0x0227: { n:"BrtLegacyDrawing", f:parsenoop },
+        0x0228: { n:"BrtLegacyDrawingHF", f:parsenoop },
+        0x0229: { n:"BrtWebOpt", f:parsenoop },
+        0x022A: { n:"BrtBeginWebPubItems", f:parsenoop },
+        0x022B: { n:"BrtEndWebPubItems", f:parsenoop },
+        0x022C: { n:"BrtBeginWebPubItem", f:parsenoop },
+        0x022D: { n:"BrtEndWebPubItem", f:parsenoop },
+        0x022E: { n:"BrtBeginSXCondFmt", f:parsenoop },
+        0x022F: { n:"BrtEndSXCondFmt", f:parsenoop },
+        0x0230: { n:"BrtBeginSXCondFmts", f:parsenoop },
+        0x0231: { n:"BrtEndSXCondFmts", f:parsenoop },
+        0x0232: { n:"BrtBkHim", f:parsenoop },
+        0x0234: { n:"BrtColor", f:parsenoop },
+        0x0235: { n:"BrtBeginIndexedColors", f:parsenoop },
+        0x0236: { n:"BrtEndIndexedColors", f:parsenoop },
+        0x0239: { n:"BrtBeginMRUColors", f:parsenoop },
+        0x023A: { n:"BrtEndMRUColors", f:parsenoop },
+        0x023C: { n:"BrtMRUColor", f:parsenoop },
+        0x023D: { n:"BrtBeginDVals", f:parsenoop },
+        0x023E: { n:"BrtEndDVals", f:parsenoop },
+        0x0241: { n:"BrtSupNameStart", f:parsenoop },
+        0x0242: { n:"BrtSupNameValueStart", f:parsenoop },
+        0x0243: { n:"BrtSupNameValueEnd", f:parsenoop },
+        0x0244: { n:"BrtSupNameNum", f:parsenoop },
+        0x0245: { n:"BrtSupNameErr", f:parsenoop },
+        0x0246: { n:"BrtSupNameSt", f:parsenoop },
+        0x0247: { n:"BrtSupNameNil", f:parsenoop },
+        0x0248: { n:"BrtSupNameBool", f:parsenoop },
+        0x0249: { n:"BrtSupNameFmla", f:parsenoop },
+        0x024A: { n:"BrtSupNameBits", f:parsenoop },
+        0x024B: { n:"BrtSupNameEnd", f:parsenoop },
+        0x024C: { n:"BrtEndSupBook", f:parsenoop },
+        0x024D: { n:"BrtCellSmartTagProperty", f:parsenoop },
+        0x024E: { n:"BrtBeginCellSmartTag", f:parsenoop },
+        0x024F: { n:"BrtEndCellSmartTag", f:parsenoop },
+        0x0250: { n:"BrtBeginCellSmartTags", f:parsenoop },
+        0x0251: { n:"BrtEndCellSmartTags", f:parsenoop },
+        0x0252: { n:"BrtBeginSmartTags", f:parsenoop },
+        0x0253: { n:"BrtEndSmartTags", f:parsenoop },
+        0x0254: { n:"BrtSmartTagType", f:parsenoop },
+        0x0255: { n:"BrtBeginSmartTagTypes", f:parsenoop },
+        0x0256: { n:"BrtEndSmartTagTypes", f:parsenoop },
+        0x0257: { n:"BrtBeginSXFilters", f:parsenoop },
+        0x0258: { n:"BrtEndSXFilters", f:parsenoop },
+        0x0259: { n:"BrtBeginSXFILTER", f:parsenoop },
+        0x025A: { n:"BrtEndSXFilter", f:parsenoop },
+        0x025B: { n:"BrtBeginFills", f:parsenoop },
+        0x025C: { n:"BrtEndFills", f:parsenoop },
+        0x025D: { n:"BrtBeginCellWatches", f:parsenoop },
+        0x025E: { n:"BrtEndCellWatches", f:parsenoop },
+        0x025F: { n:"BrtCellWatch", f:parsenoop },
+        0x0260: { n:"BrtBeginCRErrs", f:parsenoop },
+        0x0261: { n:"BrtEndCRErrs", f:parsenoop },
+        0x0262: { n:"BrtCrashRecErr", f:parsenoop },
+        0x0263: { n:"BrtBeginFonts", f:parsenoop },
+        0x0264: { n:"BrtEndFonts", f:parsenoop },
+        0x0265: { n:"BrtBeginBorders", f:parsenoop },
+        0x0266: { n:"BrtEndBorders", f:parsenoop },
+        0x0267: { n:"BrtBeginFmts", f:parsenoop },
+        0x0268: { n:"BrtEndFmts", f:parsenoop },
+        0x0269: { n:"BrtBeginCellXFs", f:parsenoop },
+        0x026A: { n:"BrtEndCellXFs", f:parsenoop },
+        0x026B: { n:"BrtBeginStyles", f:parsenoop },
+        0x026C: { n:"BrtEndStyles", f:parsenoop },
+        0x0271: { n:"BrtBigName", f:parsenoop },
+        0x0272: { n:"BrtBeginCellStyleXFs", f:parsenoop },
+        0x0273: { n:"BrtEndCellStyleXFs", f:parsenoop },
+        0x0274: { n:"BrtBeginComments", f:parsenoop },
+        0x0275: { n:"BrtEndComments", f:parsenoop },
+        0x0276: { n:"BrtBeginCommentAuthors", f:parsenoop },
+        0x0277: { n:"BrtEndCommentAuthors", f:parsenoop },
+        0x0278: { n:"BrtCommentAuthor", f:parse_BrtCommentAuthor },
+        0x0279: { n:"BrtBeginCommentList", f:parsenoop },
+        0x027A: { n:"BrtEndCommentList", f:parsenoop },
+        0x027B: { n:"BrtBeginComment", f:parse_BrtBeginComment},
+        0x027C: { n:"BrtEndComment", f:parsenoop },
+        0x027D: { n:"BrtCommentText", f:parse_BrtCommentText },
+        0x027E: { n:"BrtBeginOleObjects", f:parsenoop },
+        0x027F: { n:"BrtOleObject", f:parsenoop },
+        0x0280: { n:"BrtEndOleObjects", f:parsenoop },
+        0x0281: { n:"BrtBeginSxrules", f:parsenoop },
+        0x0282: { n:"BrtEndSxRules", f:parsenoop },
+        0x0283: { n:"BrtBeginActiveXControls", f:parsenoop },
+        0x0284: { n:"BrtActiveX", f:parsenoop },
+        0x0285: { n:"BrtEndActiveXControls", f:parsenoop },
+        0x0286: { n:"BrtBeginPCDSDTCEMembersSortBy", f:parsenoop },
+        0x0288: { n:"BrtBeginCellIgnoreECs", f:parsenoop },
+        0x0289: { n:"BrtCellIgnoreEC", f:parsenoop },
+        0x028A: { n:"BrtEndCellIgnoreECs", f:parsenoop },
+        0x028B: { n:"BrtCsProp", f:parsenoop },
+        0x028C: { n:"BrtCsPageSetup", f:parsenoop },
+        0x028D: { n:"BrtBeginUserCsViews", f:parsenoop },
+        0x028E: { n:"BrtEndUserCsViews", f:parsenoop },
+        0x028F: { n:"BrtBeginUserCsView", f:parsenoop },
+        0x0290: { n:"BrtEndUserCsView", f:parsenoop },
+        0x0291: { n:"BrtBeginPcdSFCIEntries", f:parsenoop },
+        0x0292: { n:"BrtEndPCDSFCIEntries", f:parsenoop },
+        0x0293: { n:"BrtPCDSFCIEntry", f:parsenoop },
+        0x0294: { n:"BrtBeginListParts", f:parsenoop },
+        0x0295: { n:"BrtListPart", f:parsenoop },
+        0x0296: { n:"BrtEndListParts", f:parsenoop },
+        0x0297: { n:"BrtSheetCalcProp", f:parsenoop },
+        0x0298: { n:"BrtBeginFnGroup", f:parsenoop },
+        0x0299: { n:"BrtFnGroup", f:parsenoop },
+        0x029A: { n:"BrtEndFnGroup", f:parsenoop },
+        0x029B: { n:"BrtSupAddin", f:parsenoop },
+        0x029C: { n:"BrtSXTDMPOrder", f:parsenoop },
+        0x029D: { n:"BrtCsProtection", f:parsenoop },
+        0x029F: { n:"BrtBeginWsSortMap", f:parsenoop },
+        0x02A0: { n:"BrtEndWsSortMap", f:parsenoop },
+        0x02A1: { n:"BrtBeginRRSort", f:parsenoop },
+        0x02A2: { n:"BrtEndRRSort", f:parsenoop },
+        0x02A3: { n:"BrtRRSortItem", f:parsenoop },
+        0x02A4: { n:"BrtFileSharingIso", f:parsenoop },
+        0x02A5: { n:"BrtBookProtectionIso", f:parsenoop },
+        0x02A6: { n:"BrtSheetProtectionIso", f:parsenoop },
+        0x02A7: { n:"BrtCsProtectionIso", f:parsenoop },
+        0x02A8: { n:"BrtRangeProtectionIso", f:parsenoop },
+        0x0400: { n:"BrtRwDescent", f:parsenoop },
+        0x0401: { n:"BrtKnownFonts", f:parsenoop },
+        0x0402: { n:"BrtBeginSXTupleSet", f:parsenoop },
+        0x0403: { n:"BrtEndSXTupleSet", f:parsenoop },
+        0x0404: { n:"BrtBeginSXTupleSetHeader", f:parsenoop },
+        0x0405: { n:"BrtEndSXTupleSetHeader", f:parsenoop },
+        0x0406: { n:"BrtSXTupleSetHeaderItem", f:parsenoop },
+        0x0407: { n:"BrtBeginSXTupleSetData", f:parsenoop },
+        0x0408: { n:"BrtEndSXTupleSetData", f:parsenoop },
+        0x0409: { n:"BrtBeginSXTupleSetRow", f:parsenoop },
+        0x040A: { n:"BrtEndSXTupleSetRow", f:parsenoop },
+        0x040B: { n:"BrtSXTupleSetRowItem", f:parsenoop },
+        0x040C: { n:"BrtNameExt", f:parsenoop },
+        0x040D: { n:"BrtPCDH14", f:parsenoop },
+        0x040E: { n:"BrtBeginPCDCalcMem14", f:parsenoop },
+        0x040F: { n:"BrtEndPCDCalcMem14", f:parsenoop },
+        0x0410: { n:"BrtSXTH14", f:parsenoop },
+        0x0411: { n:"BrtBeginSparklineGroup", f:parsenoop },
+        0x0412: { n:"BrtEndSparklineGroup", f:parsenoop },
+        0x0413: { n:"BrtSparkline", f:parsenoop },
+        0x0414: { n:"BrtSXDI14", f:parsenoop },
+        0x0415: { n:"BrtWsFmtInfoEx14", f:parsenoop },
+        0x0416: { n:"BrtBeginConditionalFormatting14", f:parsenoop },
+        0x0417: { n:"BrtEndConditionalFormatting14", f:parsenoop },
+        0x0418: { n:"BrtBeginCFRule14", f:parsenoop },
+        0x0419: { n:"BrtEndCFRule14", f:parsenoop },
+        0x041A: { n:"BrtCFVO14", f:parsenoop },
+        0x041B: { n:"BrtBeginDatabar14", f:parsenoop },
+        0x041C: { n:"BrtBeginIconSet14", f:parsenoop },
+        0x041D: { n:"BrtDVal14", f:parsenoop },
+        0x041E: { n:"BrtBeginDVals14", f:parsenoop },
+        0x041F: { n:"BrtColor14", f:parsenoop },
+        0x0420: { n:"BrtBeginSparklines", f:parsenoop },
+        0x0421: { n:"BrtEndSparklines", f:parsenoop },
+        0x0422: { n:"BrtBeginSparklineGroups", f:parsenoop },
+        0x0423: { n:"BrtEndSparklineGroups", f:parsenoop },
+        0x0425: { n:"BrtSXVD14", f:parsenoop },
+        0x0426: { n:"BrtBeginSxview14", f:parsenoop },
+        0x0427: { n:"BrtEndSxview14", f:parsenoop },
+        0x042A: { n:"BrtBeginPCD14", f:parsenoop },
+        0x042B: { n:"BrtEndPCD14", f:parsenoop },
+        0x042C: { n:"BrtBeginExtConn14", f:parsenoop },
+        0x042D: { n:"BrtEndExtConn14", f:parsenoop },
+        0x042E: { n:"BrtBeginSlicerCacheIDs", f:parsenoop },
+        0x042F: { n:"BrtEndSlicerCacheIDs", f:parsenoop },
+        0x0430: { n:"BrtBeginSlicerCacheID", f:parsenoop },
+        0x0431: { n:"BrtEndSlicerCacheID", f:parsenoop },
+        0x0433: { n:"BrtBeginSlicerCache", f:parsenoop },
+        0x0434: { n:"BrtEndSlicerCache", f:parsenoop },
+        0x0435: { n:"BrtBeginSlicerCacheDef", f:parsenoop },
+        0x0436: { n:"BrtEndSlicerCacheDef", f:parsenoop },
+        0x0437: { n:"BrtBeginSlicersEx", f:parsenoop },
+        0x0438: { n:"BrtEndSlicersEx", f:parsenoop },
+        0x0439: { n:"BrtBeginSlicerEx", f:parsenoop },
+        0x043A: { n:"BrtEndSlicerEx", f:parsenoop },
+        0x043B: { n:"BrtBeginSlicer", f:parsenoop },
+        0x043C: { n:"BrtEndSlicer", f:parsenoop },
+        0x043D: { n:"BrtSlicerCachePivotTables", f:parsenoop },
+        0x043E: { n:"BrtBeginSlicerCacheOlapImpl", f:parsenoop },
+        0x043F: { n:"BrtEndSlicerCacheOlapImpl", f:parsenoop },
+        0x0440: { n:"BrtBeginSlicerCacheLevelsData", f:parsenoop },
+        0x0441: { n:"BrtEndSlicerCacheLevelsData", f:parsenoop },
+        0x0442: { n:"BrtBeginSlicerCacheLevelData", f:parsenoop },
+        0x0443: { n:"BrtEndSlicerCacheLevelData", f:parsenoop },
+        0x0444: { n:"BrtBeginSlicerCacheSiRanges", f:parsenoop },
+        0x0445: { n:"BrtEndSlicerCacheSiRanges", f:parsenoop },
+        0x0446: { n:"BrtBeginSlicerCacheSiRange", f:parsenoop },
+        0x0447: { n:"BrtEndSlicerCacheSiRange", f:parsenoop },
+        0x0448: { n:"BrtSlicerCacheOlapItem", f:parsenoop },
+        0x0449: { n:"BrtBeginSlicerCacheSelections", f:parsenoop },
+        0x044A: { n:"BrtSlicerCacheSelection", f:parsenoop },
+        0x044B: { n:"BrtEndSlicerCacheSelections", f:parsenoop },
+        0x044C: { n:"BrtBeginSlicerCacheNative", f:parsenoop },
+        0x044D: { n:"BrtEndSlicerCacheNative", f:parsenoop },
+        0x044E: { n:"BrtSlicerCacheNativeItem", f:parsenoop },
+        0x044F: { n:"BrtRangeProtection14", f:parsenoop },
+        0x0450: { n:"BrtRangeProtectionIso14", f:parsenoop },
+        0x0451: { n:"BrtCellIgnoreEC14", f:parsenoop },
+        0x0457: { n:"BrtList14", f:parsenoop },
+        0x0458: { n:"BrtCFIcon", f:parsenoop },
+        0x0459: { n:"BrtBeginSlicerCachesPivotCacheIDs", f:parsenoop },
+        0x045A: { n:"BrtEndSlicerCachesPivotCacheIDs", f:parsenoop },
+        0x045B: { n:"BrtBeginSlicers", f:parsenoop },
+        0x045C: { n:"BrtEndSlicers", f:parsenoop },
+        0x045D: { n:"BrtWbProp14", f:parsenoop },
+        0x045E: { n:"BrtBeginSXEdit", f:parsenoop },
+        0x045F: { n:"BrtEndSXEdit", f:parsenoop },
+        0x0460: { n:"BrtBeginSXEdits", f:parsenoop },
+        0x0461: { n:"BrtEndSXEdits", f:parsenoop },
+        0x0462: { n:"BrtBeginSXChange", f:parsenoop },
+        0x0463: { n:"BrtEndSXChange", f:parsenoop },
+        0x0464: { n:"BrtBeginSXChanges", f:parsenoop },
+        0x0465: { n:"BrtEndSXChanges", f:parsenoop },
+        0x0466: { n:"BrtSXTupleItems", f:parsenoop },
+        0x0468: { n:"BrtBeginSlicerStyle", f:parsenoop },
+        0x0469: { n:"BrtEndSlicerStyle", f:parsenoop },
+        0x046A: { n:"BrtSlicerStyleElement", f:parsenoop },
+        0x046B: { n:"BrtBeginStyleSheetExt14", f:parsenoop },
+        0x046C: { n:"BrtEndStyleSheetExt14", f:parsenoop },
+        0x046D: { n:"BrtBeginSlicerCachesPivotCacheID", f:parsenoop },
+        0x046E: { n:"BrtEndSlicerCachesPivotCacheID", f:parsenoop },
+        0x046F: { n:"BrtBeginConditionalFormattings", f:parsenoop },
+        0x0470: { n:"BrtEndConditionalFormattings", f:parsenoop },
+        0x0471: { n:"BrtBeginPCDCalcMemExt", f:parsenoop },
+        0x0472: { n:"BrtEndPCDCalcMemExt", f:parsenoop },
+        0x0473: { n:"BrtBeginPCDCalcMemsExt", f:parsenoop },
+        0x0474: { n:"BrtEndPCDCalcMemsExt", f:parsenoop },
+        0x0475: { n:"BrtPCDField14", f:parsenoop },
+        0x0476: { n:"BrtBeginSlicerStyles", f:parsenoop },
+        0x0477: { n:"BrtEndSlicerStyles", f:parsenoop },
+        0x0478: { n:"BrtBeginSlicerStyleElements", f:parsenoop },
+        0x0479: { n:"BrtEndSlicerStyleElements", f:parsenoop },
+        0x047A: { n:"BrtCFRuleExt", f:parsenoop },
+        0x047B: { n:"BrtBeginSXCondFmt14", f:parsenoop },
+        0x047C: { n:"BrtEndSXCondFmt14", f:parsenoop },
+        0x047D: { n:"BrtBeginSXCondFmts14", f:parsenoop },
+        0x047E: { n:"BrtEndSXCondFmts14", f:parsenoop },
+        0x0480: { n:"BrtBeginSortCond14", f:parsenoop },
+        0x0481: { n:"BrtEndSortCond14", f:parsenoop },
+        0x0482: { n:"BrtEndDVals14", f:parsenoop },
+        0x0483: { n:"BrtEndIconSet14", f:parsenoop },
+        0x0484: { n:"BrtEndDatabar14", f:parsenoop },
+        0x0485: { n:"BrtBeginColorScale14", f:parsenoop },
+        0x0486: { n:"BrtEndColorScale14", f:parsenoop },
+        0x0487: { n:"BrtBeginSxrules14", f:parsenoop },
+        0x0488: { n:"BrtEndSxrules14", f:parsenoop },
+        0x0489: { n:"BrtBeginPRule14", f:parsenoop },
+        0x048A: { n:"BrtEndPRule14", f:parsenoop },
+        0x048B: { n:"BrtBeginPRFilters14", f:parsenoop },
+        0x048C: { n:"BrtEndPRFilters14", f:parsenoop },
+        0x048D: { n:"BrtBeginPRFilter14", f:parsenoop },
+        0x048E: { n:"BrtEndPRFilter14", f:parsenoop },
+        0x048F: { n:"BrtBeginPRFItem14", f:parsenoop },
+        0x0490: { n:"BrtEndPRFItem14", f:parsenoop },
+        0x0491: { n:"BrtBeginCellIgnoreECs14", f:parsenoop },
+        0x0492: { n:"BrtEndCellIgnoreECs14", f:parsenoop },
+        0x0493: { n:"BrtDxf14", f:parsenoop },
+        0x0494: { n:"BrtBeginDxF14s", f:parsenoop },
+        0x0495: { n:"BrtEndDxf14s", f:parsenoop },
+        0x0499: { n:"BrtFilter14", f:parsenoop },
+        0x049A: { n:"BrtBeginCustomFilters14", f:parsenoop },
+        0x049C: { n:"BrtCustomFilter14", f:parsenoop },
+        0x049D: { n:"BrtIconFilter14", f:parsenoop },
+        0x049E: { n:"BrtPivotCacheConnectionName", f:parsenoop },
+        0x0800: { n:"BrtBeginDecoupledPivotCacheIDs", f:parsenoop },
+        0x0801: { n:"BrtEndDecoupledPivotCacheIDs", f:parsenoop },
+        0x0802: { n:"BrtDecoupledPivotCacheID", f:parsenoop },
+        0x0803: { n:"BrtBeginPivotTableRefs", f:parsenoop },
+        0x0804: { n:"BrtEndPivotTableRefs", f:parsenoop },
+        0x0805: { n:"BrtPivotTableRef", f:parsenoop },
+        0x0806: { n:"BrtSlicerCacheBookPivotTables", f:parsenoop },
+        0x0807: { n:"BrtBeginSxvcells", f:parsenoop },
+        0x0808: { n:"BrtEndSxvcells", f:parsenoop },
+        0x0809: { n:"BrtBeginSxRow", f:parsenoop },
+        0x080A: { n:"BrtEndSxRow", f:parsenoop },
+        0x080C: { n:"BrtPcdCalcMem15", f:parsenoop },
+        0x0813: { n:"BrtQsi15", f:parsenoop },
+        0x0814: { n:"BrtBeginWebExtensions", f:parsenoop },
+        0x0815: { n:"BrtEndWebExtensions", f:parsenoop },
+        0x0816: { n:"BrtWebExtension", f:parsenoop },
+        0x0817: { n:"BrtAbsPath15", f:parsenoop },
+        0x0818: { n:"BrtBeginPivotTableUISettings", f:parsenoop },
+        0x0819: { n:"BrtEndPivotTableUISettings", f:parsenoop },
+        0x081B: { n:"BrtTableSlicerCacheIDs", f:parsenoop },
+        0x081C: { n:"BrtTableSlicerCacheID", f:parsenoop },
+        0x081D: { n:"BrtBeginTableSlicerCache", f:parsenoop },
+        0x081E: { n:"BrtEndTableSlicerCache", f:parsenoop },
+        0x081F: { n:"BrtSxFilter15", f:parsenoop },
+        0x0820: { n:"BrtBeginTimelineCachePivotCacheIDs", f:parsenoop },
+        0x0821: { n:"BrtEndTimelineCachePivotCacheIDs", f:parsenoop },
+        0x0822: { n:"BrtTimelineCachePivotCacheID", f:parsenoop },
+        0x0823: { n:"BrtBeginTimelineCacheIDs", f:parsenoop },
+        0x0824: { n:"BrtEndTimelineCacheIDs", f:parsenoop },
+        0x0825: { n:"BrtBeginTimelineCacheID", f:parsenoop },
+        0x0826: { n:"BrtEndTimelineCacheID", f:parsenoop },
+        0x0827: { n:"BrtBeginTimelinesEx", f:parsenoop },
+        0x0828: { n:"BrtEndTimelinesEx", f:parsenoop },
+        0x0829: { n:"BrtBeginTimelineEx", f:parsenoop },
+        0x082A: { n:"BrtEndTimelineEx", f:parsenoop },
+        0x082B: { n:"BrtWorkBookPr15", f:parsenoop },
+        0x082C: { n:"BrtPCDH15", f:parsenoop },
+        0x082D: { n:"BrtBeginTimelineStyle", f:parsenoop },
+        0x082E: { n:"BrtEndTimelineStyle", f:parsenoop },
+        0x082F: { n:"BrtTimelineStyleElement", f:parsenoop },
+        0x0830: { n:"BrtBeginTimelineStylesheetExt15", f:parsenoop },
+        0x0831: { n:"BrtEndTimelineStylesheetExt15", f:parsenoop },
+        0x0832: { n:"BrtBeginTimelineStyles", f:parsenoop },
+        0x0833: { n:"BrtEndTimelineStyles", f:parsenoop },
+        0x0834: { n:"BrtBeginTimelineStyleElements", f:parsenoop },
+        0x0835: { n:"BrtEndTimelineStyleElements", f:parsenoop },
+        0x0836: { n:"BrtDxf15", f:parsenoop },
+        0x0837: { n:"BrtBeginDxfs15", f:parsenoop },
+        0x0838: { n:"brtEndDxfs15", f:parsenoop },
+        0x0839: { n:"BrtSlicerCacheHideItemsWithNoData", f:parsenoop },
+        0x083A: { n:"BrtBeginItemUniqueNames", f:parsenoop },
+        0x083B: { n:"BrtEndItemUniqueNames", f:parsenoop },
+        0x083C: { n:"BrtItemUniqueName", f:parsenoop },
+        0x083D: { n:"BrtBeginExtConn15", f:parsenoop },
+        0x083E: { n:"BrtEndExtConn15", f:parsenoop },
+        0x083F: { n:"BrtBeginOledbPr15", f:parsenoop },
+        0x0840: { n:"BrtEndOledbPr15", f:parsenoop },
+        0x0841: { n:"BrtBeginDataFeedPr15", f:parsenoop },
+        0x0842: { n:"BrtEndDataFeedPr15", f:parsenoop },
+        0x0843: { n:"BrtTextPr15", f:parsenoop },
+        0x0844: { n:"BrtRangePr15", f:parsenoop },
+        0x0845: { n:"BrtDbCommand15", f:parsenoop },
+        0x0846: { n:"BrtBeginDbTables15", f:parsenoop },
+        0x0847: { n:"BrtEndDbTables15", f:parsenoop },
+        0x0848: { n:"BrtDbTable15", f:parsenoop },
+        0x0849: { n:"BrtBeginDataModel", f:parsenoop },
+        0x084A: { n:"BrtEndDataModel", f:parsenoop },
+        0x084B: { n:"BrtBeginModelTables", f:parsenoop },
+        0x084C: { n:"BrtEndModelTables", f:parsenoop },
+        0x084D: { n:"BrtModelTable", f:parsenoop },
+        0x084E: { n:"BrtBeginModelRelationships", f:parsenoop },
+        0x084F: { n:"BrtEndModelRelationships", f:parsenoop },
+        0x0850: { n:"BrtModelRelationship", f:parsenoop },
+        0x0851: { n:"BrtBeginECTxtWiz15", f:parsenoop },
+        0x0852: { n:"BrtEndECTxtWiz15", f:parsenoop },
+        0x0853: { n:"BrtBeginECTWFldInfoLst15", f:parsenoop },
+        0x0854: { n:"BrtEndECTWFldInfoLst15", f:parsenoop },
+        0x0855: { n:"BrtBeginECTWFldInfo15", f:parsenoop },
+        0x0856: { n:"BrtFieldListActiveItem", f:parsenoop },
+        0x0857: { n:"BrtPivotCacheIdVersion", f:parsenoop },
+        0x0858: { n:"BrtSXDI15", f:parsenoop },
+        0xFFFF: { n:"", f:parsenoop }
+    };
+
+    var evert_RE = evert_key(XLSBRecordEnum, 'n');
+
+    /* [MS-XLS] 2.3 Record Enumeration */
+    var XLSRecordEnum = {
+        0x0003: { n:"BIFF2NUM", f:parse_BIFF2NUM },
+        0x0004: { n:"BIFF2STR", f:parse_BIFF2STR },
+        0x0006: { n:"Formula", f:parse_Formula },
+        0x0009: { n:'BOF', f:parse_BOF },
+        0x000a: { n:'EOF', f:parse_EOF },
+        0x000c: { n:"CalcCount", f:parse_CalcCount },
+        0x000d: { n:"CalcMode", f:parse_CalcMode },
+        0x000e: { n:"CalcPrecision", f:parse_CalcPrecision },
+        0x000f: { n:"CalcRefMode", f:parse_CalcRefMode },
+        0x0010: { n:"CalcDelta", f:parse_CalcDelta },
+        0x0011: { n:"CalcIter", f:parse_CalcIter },
+        0x0012: { n:"Protect", f:parse_Protect },
+        0x0013: { n:"Password", f:parse_Password },
+        0x0014: { n:"Header", f:parse_Header },
+        0x0015: { n:"Footer", f:parse_Footer },
+        0x0017: { n:"ExternSheet", f:parse_ExternSheet },
+        0x0018: { n:"Lbl", f:parse_Lbl },
+        0x0019: { n:"WinProtect", f:parse_WinProtect },
+        0x001a: { n:"VerticalPageBreaks", f:parse_VerticalPageBreaks },
+        0x001b: { n:"HorizontalPageBreaks", f:parse_HorizontalPageBreaks },
+        0x001c: { n:"Note", f:parse_Note },
+        0x001d: { n:"Selection", f:parse_Selection },
+        0x0022: { n:"Date1904", f:parse_Date1904 },
+        0x0023: { n:"ExternName", f:parse_ExternName },
+        0x0026: { n:"LeftMargin", f:parse_LeftMargin },
+        0x0027: { n:"RightMargin", f:parse_RightMargin },
+        0x0028: { n:"TopMargin", f:parse_TopMargin },
+        0x0029: { n:"BottomMargin", f:parse_BottomMargin },
+        0x002a: { n:"PrintRowCol", f:parse_PrintRowCol },
+        0x002b: { n:"PrintGrid", f:parse_PrintGrid },
+        0x002f: { n:"FilePass", f:parse_FilePass },
+        0x0031: { n:"Font", f:parse_Font },
+        0x0033: { n:"PrintSize", f:parse_PrintSize },
+        0x003c: { n:"Continue", f:parse_Continue },
+        0x003d: { n:"Window1", f:parse_Window1 },
+        0x0040: { n:"Backup", f:parse_Backup },
+        0x0041: { n:"Pane", f:parse_Pane },
+        0x0042: { n:'CodePage', f:parse_CodePage },
+        0x004d: { n:"Pls", f:parse_Pls },
+        0x0050: { n:"DCon", f:parse_DCon },
+        0x0051: { n:"DConRef", f:parse_DConRef },
+        0x0052: { n:"DConName", f:parse_DConName },
+        0x0055: { n:"DefColWidth", f:parse_DefColWidth },
+        0x0059: { n:"XCT", f:parse_XCT },
+        0x005a: { n:"CRN", f:parse_CRN },
+        0x005b: { n:"FileSharing", f:parse_FileSharing },
+        0x005c: { n:'WriteAccess', f:parse_WriteAccess },
+        0x005d: { n:"Obj", f:parse_Obj },
+        0x005e: { n:"Uncalced", f:parse_Uncalced },
+        0x005f: { n:"CalcSaveRecalc", f:parse_CalcSaveRecalc },
+        0x0060: { n:"Template", f:parse_Template },
+        0x0061: { n:"Intl", f:parse_Intl },
+        0x0063: { n:"ObjProtect", f:parse_ObjProtect },
+        0x007d: { n:"ColInfo", f:parse_ColInfo },
+        0x0080: { n:"Guts", f:parse_Guts },
+        0x0081: { n:"WsBool", f:parse_WsBool },
+        0x0082: { n:"GridSet", f:parse_GridSet },
+        0x0083: { n:"HCenter", f:parse_HCenter },
+        0x0084: { n:"VCenter", f:parse_VCenter },
+        0x0085: { n:'BoundSheet8', f:parse_BoundSheet8 },
+        0x0086: { n:"WriteProtect", f:parse_WriteProtect },
+        0x008c: { n:"Country", f:parse_Country },
+        0x008d: { n:"HideObj", f:parse_HideObj },
+        0x0090: { n:"Sort", f:parse_Sort },
+        0x0092: { n:"Palette", f:parse_Palette },
+        0x0097: { n:"Sync", f:parse_Sync },
+        0x0098: { n:"LPr", f:parse_LPr },
+        0x0099: { n:"DxGCol", f:parse_DxGCol },
+        0x009a: { n:"FnGroupName", f:parse_FnGroupName },
+        0x009b: { n:"FilterMode", f:parse_FilterMode },
+        0x009c: { n:"BuiltInFnGroupCount", f:parse_BuiltInFnGroupCount },
+        0x009d: { n:"AutoFilterInfo", f:parse_AutoFilterInfo },
+        0x009e: { n:"AutoFilter", f:parse_AutoFilter },
+        0x00a0: { n:"Scl", f:parse_Scl },
+        0x00a1: { n:"Setup", f:parse_Setup },
+        0x00ae: { n:"ScenMan", f:parse_ScenMan },
+        0x00af: { n:"SCENARIO", f:parse_SCENARIO },
+        0x00b0: { n:"SxView", f:parse_SxView },
+        0x00b1: { n:"Sxvd", f:parse_Sxvd },
+        0x00b2: { n:"SXVI", f:parse_SXVI },
+        0x00b4: { n:"SxIvd", f:parse_SxIvd },
+        0x00b5: { n:"SXLI", f:parse_SXLI },
+        0x00b6: { n:"SXPI", f:parse_SXPI },
+        0x00b8: { n:"DocRoute", f:parse_DocRoute },
+        0x00b9: { n:"RecipName", f:parse_RecipName },
+        0x00bd: { n:"MulRk", f:parse_MulRk },
+        0x00be: { n:"MulBlank", f:parse_MulBlank },
+        0x00c1: { n:'Mms', f:parse_Mms },
+        0x00c5: { n:"SXDI", f:parse_SXDI },
+        0x00c6: { n:"SXDB", f:parse_SXDB },
+        0x00c7: { n:"SXFDB", f:parse_SXFDB },
+        0x00c8: { n:"SXDBB", f:parse_SXDBB },
+        0x00c9: { n:"SXNum", f:parse_SXNum },
+        0x00ca: { n:"SxBool", f:parse_SxBool },
+        0x00cb: { n:"SxErr", f:parse_SxErr },
+        0x00cc: { n:"SXInt", f:parse_SXInt },
+        0x00cd: { n:"SXString", f:parse_SXString },
+        0x00ce: { n:"SXDtr", f:parse_SXDtr },
+        0x00cf: { n:"SxNil", f:parse_SxNil },
+        0x00d0: { n:"SXTbl", f:parse_SXTbl },
+        0x00d1: { n:"SXTBRGIITM", f:parse_SXTBRGIITM },
+        0x00d2: { n:"SxTbpg", f:parse_SxTbpg },
+        0x00d3: { n:"ObProj", f:parse_ObProj },
+        0x00d5: { n:"SXStreamID", f:parse_SXStreamID },
+        0x00d7: { n:"DBCell", f:parse_DBCell },
+        0x00d8: { n:"SXRng", f:parse_SXRng },
+        0x00d9: { n:"SxIsxoper", f:parse_SxIsxoper },
+        0x00da: { n:"BookBool", f:parse_BookBool },
+        0x00dc: { n:"DbOrParamQry", f:parse_DbOrParamQry },
+        0x00dd: { n:"ScenarioProtect", f:parse_ScenarioProtect },
+        0x00de: { n:"OleObjectSize", f:parse_OleObjectSize },
+        0x00e0: { n:"XF", f:parse_XF },
+        0x00e1: { n:'InterfaceHdr', f:parse_InterfaceHdr },
+        0x00e2: { n:'InterfaceEnd', f:parse_InterfaceEnd },
+        0x00e3: { n:"SXVS", f:parse_SXVS },
+        0x00e5: { n:"MergeCells", f:parse_MergeCells },
+        0x00e9: { n:"BkHim", f:parse_BkHim },
+        0x00eb: { n:"MsoDrawingGroup", f:parse_MsoDrawingGroup },
+        0x00ec: { n:"MsoDrawing", f:parse_MsoDrawing },
+        0x00ed: { n:"MsoDrawingSelection", f:parse_MsoDrawingSelection },
+        0x00ef: { n:"PhoneticInfo", f:parse_PhoneticInfo },
+        0x00f0: { n:"SxRule", f:parse_SxRule },
+        0x00f1: { n:"SXEx", f:parse_SXEx },
+        0x00f2: { n:"SxFilt", f:parse_SxFilt },
+        0x00f4: { n:"SxDXF", f:parse_SxDXF },
+        0x00f5: { n:"SxItm", f:parse_SxItm },
+        0x00f6: { n:"SxName", f:parse_SxName },
+        0x00f7: { n:"SxSelect", f:parse_SxSelect },
+        0x00f8: { n:"SXPair", f:parse_SXPair },
+        0x00f9: { n:"SxFmla", f:parse_SxFmla },
+        0x00fb: { n:"SxFormat", f:parse_SxFormat },
+        0x00fc: { n:"SST", f:parse_SST },
+        0x00fd: { n:"LabelSst", f:parse_LabelSst },
+        0x00ff: { n:"ExtSST", f:parse_ExtSST },
+        0x0100: { n:"SXVDEx", f:parse_SXVDEx },
+        0x0103: { n:"SXFormula", f:parse_SXFormula },
+        0x0122: { n:"SXDBEx", f:parse_SXDBEx },
+        0x0137: { n:"RRDInsDel", f:parse_RRDInsDel },
+        0x0138: { n:"RRDHead", f:parse_RRDHead },
+        0x013b: { n:"RRDChgCell", f:parse_RRDChgCell },
+        0x013d: { n:"RRTabId", f:parse_RRTabId },
+        0x013e: { n:"RRDRenSheet", f:parse_RRDRenSheet },
+        0x013f: { n:"RRSort", f:parse_RRSort },
+        0x0140: { n:"RRDMove", f:parse_RRDMove },
+        0x014a: { n:"RRFormat", f:parse_RRFormat },
+        0x014b: { n:"RRAutoFmt", f:parse_RRAutoFmt },
+        0x014d: { n:"RRInsertSh", f:parse_RRInsertSh },
+        0x014e: { n:"RRDMoveBegin", f:parse_RRDMoveBegin },
+        0x014f: { n:"RRDMoveEnd", f:parse_RRDMoveEnd },
+        0x0150: { n:"RRDInsDelBegin", f:parse_RRDInsDelBegin },
+        0x0151: { n:"RRDInsDelEnd", f:parse_RRDInsDelEnd },
+        0x0152: { n:"RRDConflict", f:parse_RRDConflict },
+        0x0153: { n:"RRDDefName", f:parse_RRDDefName },
+        0x0154: { n:"RRDRstEtxp", f:parse_RRDRstEtxp },
+        0x015f: { n:"LRng", f:parse_LRng },
+        0x0160: { n:"UsesELFs", f:parse_UsesELFs },
+        0x0161: { n:"DSF", f:parse_DSF },
+        0x0191: { n:"CUsr", f:parse_CUsr },
+        0x0192: { n:"CbUsr", f:parse_CbUsr },
+        0x0193: { n:"UsrInfo", f:parse_UsrInfo },
+        0x0194: { n:"UsrExcl", f:parse_UsrExcl },
+        0x0195: { n:"FileLock", f:parse_FileLock },
+        0x0196: { n:"RRDInfo", f:parse_RRDInfo },
+        0x0197: { n:"BCUsrs", f:parse_BCUsrs },
+        0x0198: { n:"UsrChk", f:parse_UsrChk },
+        0x01a9: { n:"UserBView", f:parse_UserBView },
+        0x01aa: { n:"UserSViewBegin", f:parse_UserSViewBegin },
+        0x01ab: { n:"UserSViewEnd", f:parse_UserSViewEnd },
+        0x01ac: { n:"RRDUserView", f:parse_RRDUserView },
+        0x01ad: { n:"Qsi", f:parse_Qsi },
+        0x01ae: { n:"SupBook", f:parse_SupBook },
+        0x01af: { n:"Prot4Rev", f:parse_Prot4Rev },
+        0x01b0: { n:"CondFmt", f:parse_CondFmt },
+        0x01b1: { n:"CF", f:parse_CF },
+        0x01b2: { n:"DVal", f:parse_DVal },
+        0x01b5: { n:"DConBin", f:parse_DConBin },
+        0x01b6: { n:"TxO", f:parse_TxO },
+        0x01b7: { n:"RefreshAll", f:parse_RefreshAll },
+        0x01b8: { n:"HLink", f:parse_HLink },
+        0x01b9: { n:"Lel", f:parse_Lel },
+        0x01ba: { n:"CodeName", f:parse_XLSCodeName },
+        0x01bb: { n:"SXFDBType", f:parse_SXFDBType },
+        0x01bc: { n:"Prot4RevPass", f:parse_Prot4RevPass },
+        0x01bd: { n:"ObNoMacros", f:parse_ObNoMacros },
+        0x01be: { n:"Dv", f:parse_Dv },
+        0x01c0: { n:"Excel9File", f:parse_Excel9File },
+        0x01c1: { n:"RecalcId", f:parse_RecalcId, r:2},
+        0x01c2: { n:"EntExU2", f:parse_EntExU2 },
+        0x0200: { n:"Dimensions", f:parse_Dimensions },
+        0x0201: { n:"Blank", f:parse_Blank },
+        0x0203: { n:"Number", f:parse_Number },
+        0x0204: { n:"Label", f:parse_Label },
+        0x0205: { n:"BoolErr", f:parse_BoolErr },
+        0x0206: { n:"Formula", f:parse_Formula },
+        0x0207: { n:"String", f:parse_String },
+        0x0208: { n:'Row', f:parse_Row },
+        0x020b: { n:"Index", f:parse_Index },
+        0x0221: { n:"Array", f:parse_Array },
+        0x0225: { n:"DefaultRowHeight", f:parse_DefaultRowHeight },
+        0x0236: { n:"Table", f:parse_Table },
+        0x023e: { n:"Window2", f:parse_Window2 },
+        0x027e: { n:"RK", f:parse_RK },
+        0x0293: { n:"Style", f:parse_Style },
+        0x0406: { n:"Formula", f:parse_Formula },
+        0x0418: { n:"BigName", f:parse_BigName },
+        0x041e: { n:"Format", f:parse_Format },
+        0x043c: { n:"ContinueBigName", f:parse_ContinueBigName },
+        0x04bc: { n:"ShrFmla", f:parse_ShrFmla },
+        0x0800: { n:"HLinkTooltip", f:parse_HLinkTooltip },
+        0x0801: { n:"WebPub", f:parse_WebPub },
+        0x0802: { n:"QsiSXTag", f:parse_QsiSXTag },
+        0x0803: { n:"DBQueryExt", f:parse_DBQueryExt },
+        0x0804: { n:"ExtString", f:parse_ExtString },
+        0x0805: { n:"TxtQry", f:parse_TxtQry },
+        0x0806: { n:"Qsir", f:parse_Qsir },
+        0x0807: { n:"Qsif", f:parse_Qsif },
+        0x0808: { n:"RRDTQSIF", f:parse_RRDTQSIF },
+        0x0809: { n:'BOF', f:parse_BOF },
+        0x080a: { n:"OleDbConn", f:parse_OleDbConn },
+        0x080b: { n:"WOpt", f:parse_WOpt },
+        0x080c: { n:"SXViewEx", f:parse_SXViewEx },
+        0x080d: { n:"SXTH", f:parse_SXTH },
+        0x080e: { n:"SXPIEx", f:parse_SXPIEx },
+        0x080f: { n:"SXVDTEx", f:parse_SXVDTEx },
+        0x0810: { n:"SXViewEx9", f:parse_SXViewEx9 },
+        0x0812: { n:"ContinueFrt", f:parse_ContinueFrt },
+        0x0813: { n:"RealTimeData", f:parse_RealTimeData },
+        0x0850: { n:"ChartFrtInfo", f:parse_ChartFrtInfo },
+        0x0851: { n:"FrtWrapper", f:parse_FrtWrapper },
+        0x0852: { n:"StartBlock", f:parse_StartBlock },
+        0x0853: { n:"EndBlock", f:parse_EndBlock },
+        0x0854: { n:"StartObject", f:parse_StartObject },
+        0x0855: { n:"EndObject", f:parse_EndObject },
+        0x0856: { n:"CatLab", f:parse_CatLab },
+        0x0857: { n:"YMult", f:parse_YMult },
+        0x0858: { n:"SXViewLink", f:parse_SXViewLink },
+        0x0859: { n:"PivotChartBits", f:parse_PivotChartBits },
+        0x085a: { n:"FrtFontList", f:parse_FrtFontList },
+        0x0862: { n:"SheetExt", f:parse_SheetExt },
+        0x0863: { n:"BookExt", f:parse_BookExt, r:12},
+        0x0864: { n:"SXAddl", f:parse_SXAddl },
+        0x0865: { n:"CrErr", f:parse_CrErr },
+        0x0866: { n:"HFPicture", f:parse_HFPicture },
+        0x0867: { n:'FeatHdr', f:parse_FeatHdr },
+        0x0868: { n:"Feat", f:parse_Feat },
+        0x086a: { n:"DataLabExt", f:parse_DataLabExt },
+        0x086b: { n:"DataLabExtContents", f:parse_DataLabExtContents },
+        0x086c: { n:"CellWatch", f:parse_CellWatch },
+        0x0871: { n:"FeatHdr11", f:parse_FeatHdr11 },
+        0x0872: { n:"Feature11", f:parse_Feature11 },
+        0x0874: { n:"DropDownObjIds", f:parse_DropDownObjIds },
+        0x0875: { n:"ContinueFrt11", f:parse_ContinueFrt11 },
+        0x0876: { n:"DConn", f:parse_DConn },
+        0x0877: { n:"List12", f:parse_List12 },
+        0x0878: { n:"Feature12", f:parse_Feature12 },
+        0x0879: { n:"CondFmt12", f:parse_CondFmt12 },
+        0x087a: { n:"CF12", f:parse_CF12 },
+        0x087b: { n:"CFEx", f:parse_CFEx },
+        0x087c: { n:"XFCRC", f:parse_XFCRC, r:12 },
+        0x087d: { n:"XFExt", f:parse_XFExt, r:12 },
+        0x087e: { n:"AutoFilter12", f:parse_AutoFilter12 },
+        0x087f: { n:"ContinueFrt12", f:parse_ContinueFrt12 },
+        0x0884: { n:"MDTInfo", f:parse_MDTInfo },
+        0x0885: { n:"MDXStr", f:parse_MDXStr },
+        0x0886: { n:"MDXTuple", f:parse_MDXTuple },
+        0x0887: { n:"MDXSet", f:parse_MDXSet },
+        0x0888: { n:"MDXProp", f:parse_MDXProp },
+        0x0889: { n:"MDXKPI", f:parse_MDXKPI },
+        0x088a: { n:"MDB", f:parse_MDB },
+        0x088b: { n:"PLV", f:parse_PLV },
+        0x088c: { n:"Compat12", f:parse_Compat12, r:12 },
+        0x088d: { n:"DXF", f:parse_DXF },
+        0x088e: { n:"TableStyles", f:parse_TableStyles, r:12 },
+        0x088f: { n:"TableStyle", f:parse_TableStyle },
+        0x0890: { n:"TableStyleElement", f:parse_TableStyleElement },
+        0x0892: { n:"StyleExt", f:parse_StyleExt },
+        0x0893: { n:"NamePublish", f:parse_NamePublish },
+        0x0894: { n:"NameCmt", f:parse_NameCmt, r:12 },
+        0x0895: { n:"SortData", f:parse_SortData },
+        0x0896: { n:"Theme", f:parse_Theme, r:12 },
+        0x0897: { n:"GUIDTypeLib", f:parse_GUIDTypeLib },
+        0x0898: { n:"FnGrp12", f:parse_FnGrp12 },
+        0x0899: { n:"NameFnGrp12", f:parse_NameFnGrp12 },
+        0x089a: { n:"MTRSettings", f:parse_MTRSettings, r:12 },
+        0x089b: { n:"CompressPictures", f:parse_CompressPictures },
+        0x089c: { n:"HeaderFooter", f:parse_HeaderFooter },
+        0x089d: { n:"CrtLayout12", f:parse_CrtLayout12 },
+        0x089e: { n:"CrtMlFrt", f:parse_CrtMlFrt },
+        0x089f: { n:"CrtMlFrtContinue", f:parse_CrtMlFrtContinue },
+        0x08a3: { n:"ForceFullCalculation", f:parse_ForceFullCalculation },
+        0x08a4: { n:"ShapePropsStream", f:parse_ShapePropsStream },
+        0x08a5: { n:"TextPropsStream", f:parse_TextPropsStream },
+        0x08a6: { n:"RichTextStream", f:parse_RichTextStream },
+        0x08a7: { n:"CrtLayout12A", f:parse_CrtLayout12A },
+        0x1001: { n:"Units", f:parse_Units },
+        0x1002: { n:"Chart", f:parse_Chart },
+        0x1003: { n:"Series", f:parse_Series },
+        0x1006: { n:"DataFormat", f:parse_DataFormat },
+        0x1007: { n:"LineFormat", f:parse_LineFormat },
+        0x1009: { n:"MarkerFormat", f:parse_MarkerFormat },
+        0x100a: { n:"AreaFormat", f:parse_AreaFormat },
+        0x100b: { n:"PieFormat", f:parse_PieFormat },
+        0x100c: { n:"AttachedLabel", f:parse_AttachedLabel },
+        0x100d: { n:"SeriesText", f:parse_SeriesText },
+        0x1014: { n:"ChartFormat", f:parse_ChartFormat },
+        0x1015: { n:"Legend", f:parse_Legend },
+        0x1016: { n:"SeriesList", f:parse_SeriesList },
+        0x1017: { n:"Bar", f:parse_Bar },
+        0x1018: { n:"Line", f:parse_Line },
+        0x1019: { n:"Pie", f:parse_Pie },
+        0x101a: { n:"Area", f:parse_Area },
+        0x101b: { n:"Scatter", f:parse_Scatter },
+        0x101c: { n:"CrtLine", f:parse_CrtLine },
+        0x101d: { n:"Axis", f:parse_Axis },
+        0x101e: { n:"Tick", f:parse_Tick },
+        0x101f: { n:"ValueRange", f:parse_ValueRange },
+        0x1020: { n:"CatSerRange", f:parse_CatSerRange },
+        0x1021: { n:"AxisLine", f:parse_AxisLine },
+        0x1022: { n:"CrtLink", f:parse_CrtLink },
+        0x1024: { n:"DefaultText", f:parse_DefaultText },
+        0x1025: { n:"Text", f:parse_Text },
+        0x1026: { n:"FontX", f:parse_FontX },
+        0x1027: { n:"ObjectLink", f:parse_ObjectLink },
+        0x1032: { n:"Frame", f:parse_Frame },
+        0x1033: { n:"Begin", f:parse_Begin },
+        0x1034: { n:"End", f:parse_End },
+        0x1035: { n:"PlotArea", f:parse_PlotArea },
+        0x103a: { n:"Chart3d", f:parse_Chart3d },
+        0x103c: { n:"PicF", f:parse_PicF },
+        0x103d: { n:"DropBar", f:parse_DropBar },
+        0x103e: { n:"Radar", f:parse_Radar },
+        0x103f: { n:"Surf", f:parse_Surf },
+        0x1040: { n:"RadarArea", f:parse_RadarArea },
+        0x1041: { n:"AxisParent", f:parse_AxisParent },
+        0x1043: { n:"LegendException", f:parse_LegendException },
+        0x1044: { n:"ShtProps", f:parse_ShtProps },
+        0x1045: { n:"SerToCrt", f:parse_SerToCrt },
+        0x1046: { n:"AxesUsed", f:parse_AxesUsed },
+        0x1048: { n:"SBaseRef", f:parse_SBaseRef },
+        0x104a: { n:"SerParent", f:parse_SerParent },
+        0x104b: { n:"SerAuxTrend", f:parse_SerAuxTrend },
+        0x104e: { n:"IFmtRecord", f:parse_IFmtRecord },
+        0x104f: { n:"Pos", f:parse_Pos },
+        0x1050: { n:"AlRuns", f:parse_AlRuns },
+        0x1051: { n:"BRAI", f:parse_BRAI },
+        0x105b: { n:"SerAuxErrBar", f:parse_SerAuxErrBar },
+        0x105c: { n:"ClrtClient", f:parse_ClrtClient },
+        0x105d: { n:"SerFmt", f:parse_SerFmt },
+        0x105f: { n:"Chart3DBarShape", f:parse_Chart3DBarShape },
+        0x1060: { n:"Fbi", f:parse_Fbi },
+        0x1061: { n:"BopPop", f:parse_BopPop },
+        0x1062: { n:"AxcExt", f:parse_AxcExt },
+        0x1063: { n:"Dat", f:parse_Dat },
+        0x1064: { n:"PlotGrowth", f:parse_PlotGrowth },
+        0x1065: { n:"SIIndex", f:parse_SIIndex },
+        0x1066: { n:"GelFrame", f:parse_GelFrame },
+        0x1067: { n:"BopPopCustom", f:parse_BopPopCustom },
+        0x1068: { n:"Fbi2", f:parse_Fbi2 },
+
+        /* These are specified in an older version of the spec */
+        0x0000: { n:"Dimensions", f:parse_Dimensions },
+        0x0002: { n:"BIFF2INT", f:parse_BIFF2INT },
+        0x0005: { n:"BoolErr", f:parse_BoolErr },
+        0x0007: { n:"String", f:parse_BIFF2STRING },
+        0x0008: { n:"BIFF2ROW", f:parsenoop },
+        0x000b: { n:"Index", f:parse_Index },
+        0x001e: { n:"BIFF2FORMAT", f:parse_BIFF2Format },
+        0x001f: { n:"BIFF2FMTCNT", f:parsenoop }, /* 16-bit cnt of BIFF2FORMAT records */
+        0x0016: { n:"ExternCount", f:parsenoop },
+        0x0021: { n:"Array", f:parse_Array },
+        0x0025: { n:"DefaultRowHeight", f:parse_DefaultRowHeight },
+        0x0032: { n:"BIFF2FONTXTRA", f:parse_BIFF2FONTXTRA },
+        0x003e: { n:"BIFF2WINDOW2", f:parsenoop },
+        0x0045: { n:"BIFF2FONTCLR", f:parsenoop },
+        0x0056: { n:"BIFF4FMTCNT", f:parsenoop }, /* 16-bit cnt, similar to BIFF2 */
+        0x007e: { n:"RK", f:parsenoop }, /* Not necessarily same as 0x027e */
+        0x007f: { n:"ImData", f:parsenoop },
+        0x0087: { n:"Addin", f:parsenoop },
+        0x0088: { n:"Edg", f:parsenoop },
+        0x0089: { n:"Pub", f:parsenoop },
+        0x0091: { n:"Sub", f:parsenoop },
+        0x0094: { n:"LHRecord", f:parsenoop },
+        0x0095: { n:"LHNGraph", f:parsenoop },
+        0x0096: { n:"Sound", f:parsenoop },
+        0x00a9: { n:"CoordList", f:parsenoop },
+        0x00ab: { n:"GCW", f:parsenoop },
+        0x00bc: { n:"ShrFmla", f:parsenoop }, /* Not necessarily same as 0x04bc */
+        0x00c2: { n:"AddMenu", f:parsenoop },
+        0x00c3: { n:"DelMenu", f:parsenoop },
+        0x00d6: { n:"RString", f:parse_RString },
+        0x00df: { n:"UDDesc", f:parsenoop },
+        0x00ea: { n:"TabIdConf", f:parsenoop },
+        0x0162: { n:"XL5Modify", f:parsenoop },
+        0x01a5: { n:"FileSharing2", f:parsenoop },
+        0x0209: { n:'BOF', f:parse_BOF },
+        0x0218: { n:"Lbl", f:parse_Lbl },
+        0x0223: { n:"ExternName", f:parse_ExternName },
+        0x0231: { n:"Font", f:parsenoop },
+        0x0409: { n:'BOF', f:parse_BOF },
+        0x086d: { n:"FeatInfo", f:parsenoop },
+        0x0873: { n:"FeatInfo11", f:parsenoop },
+        0x0881: { n:"SXAddl12", f:parsenoop },
+        0x08c0: { n:"AutoWebPub", f:parsenoop },
+        0x08c1: { n:"ListObj", f:parsenoop },
+        0x08c2: { n:"ListField", f:parsenoop },
+        0x08c3: { n:"ListDV", f:parsenoop },
+        0x08c4: { n:"ListCondFmt", f:parsenoop },
+        0x08c5: { n:"ListCF", f:parsenoop },
+        0x08c6: { n:"FMQry", f:parsenoop },
+        0x08c7: { n:"FMSQry", f:parsenoop },
+        0x08c8: { n:"PLV", f:parsenoop },
+        0x08c9: { n:"LnExt", f:parsenoop },
+        0x08ca: { n:"MkrExt", f:parsenoop },
+        0x08cb: { n:"CrtCoopt", f:parsenoop },
+
+        0x0043: { n:"BIFF2XF", f:parsenoop },
+        0x0243: { n:"BIFF3XF", f:parsenoop },
+        0x0443: { n:"BIFF4XF", f:parsenoop },
+
+        0x7262: {}
+    };
+
+
+    /* BIFF2-4 single-sheet workbooks */
+    function write_biff_rec(ba, t, payload, length) {
+        var len = (length || (payload||[]).length);
+        var o = ba.next(4 + len);
+        o.write_shift(2, t);
+        o.write_shift(2, len);
+        if(len > 0 && is_buf(payload)) ba.push(payload);
+    }
+
+    function write_BOF(wb, o) {
+        if(o.bookType != 'biff2') throw "unsupported BIFF version";
+        var out = new_buf(4);
+        out.write_shift(2, 0x0002); // "unused"
+        out.write_shift(2, 0x0010); // Sheet
+        return out;
+    }
+
+    function write_BIFF2Cell(out, r, c) {
+        if(!out) out = new_buf(7);
+        out.write_shift(2, r);
+        out.write_shift(2, c);
+        out.write_shift(1, 0);
+        out.write_shift(1, 0);
+        out.write_shift(1, 0);
+        return out;
+    }
+
+    function write_BIFF2INT(r, c, val) {
+        var out = new_buf(9);
+        write_BIFF2Cell(out, r, c);
+        out.write_shift(2, val);
+        return out;
+    }
+
+    function write_BIFF2NUMBER(r, c, val) {
+        var out = new_buf(15);
+        write_BIFF2Cell(out, r, c);
+        out.write_shift(8, val, 'f');
+        return out;
+    }
+
+    function write_BIFF2BERR(r, c, val, t) {
+        var out = new_buf(9);
+        write_BIFF2Cell(out, r, c);
+        if(t == 'e') { out.write_shift(1, val); out.write_shift(1, 1); }
+        else { out.write_shift(1, val?1:0); out.write_shift(1, 0); }
+        return out;
+    }
+
+    /* TODO: codepage, large strings */
+    function write_BIFF2LABEL(r, c, val) {
+        var out = new_buf(8 + 2*val.length);
+        write_BIFF2Cell(out, r, c);
+        out.write_shift(1, val.length);
+        out.write_shift(val.length, val, 'sbcs');
+        return out.l < out.length ? out.slice(0, out.l) : out;
+    }
+
+    function write_ws_biff_cell(ba, cell, R, C, opts) {
+        if(cell.v != null) switch(cell.t) {
+            case 'd': case 'n':
+                var v = cell.t == 'd' ? datenum(cell.v) : cell.v;
+                if((v == (v|0)) && (v >= 0) && (v < 65536))
+                    write_biff_rec(ba, 0x0002, write_BIFF2INT(R, C, v));
+                else
+                    write_biff_rec(ba, 0x0003, write_BIFF2NUMBER(R,C, v));
+                return;
+            case 'b': case 'e': write_biff_rec(ba, 0x0005, write_BIFF2BERR(R, C, cell.v, cell.t)); return;
+            /* TODO: codepage, sst */
+            case 's': case 'str':
+                write_biff_rec(ba, 0x0004, write_BIFF2LABEL(R, C, cell.v));
+                return;
+        }
+        write_biff_rec(ba, 0x0001, write_BIFF2Cell(null, R, C));
+    }
+
+    function write_biff_ws(ba, ws, idx, opts, wb) {
+        var dense = Array.isArray(ws);
+        var range = safe_decode_range(ws['!ref'] || "A1"), ref, rr = "", cols = [];
+        for(var R = range.s.r; R <= range.e.r; ++R) {
+            rr = encode_row(R);
+            for(var C = range.s.c; C <= range.e.c; ++C) {
+                if(R === range.s.r) cols[C] = encode_col(C);
+                ref = cols[C] + rr;
+                var cell = dense ? ws[R][C] : ws[ref];
+                if(!cell) continue;
+                /* write cell */
+                write_ws_biff_cell(ba, cell, R, C, opts);
+            }
+        }
+    }
+
+    /* Based on test files */
+    function write_biff_buf(wb, opts) {
+        var o = opts || {};
+        if(DENSE != null && o.dense == null) o.dense = DENSE;
+        var ba = buf_array();
+        var idx = 0;
+        for(var i=0;i<wb.SheetNames.length;++i) if(wb.SheetNames[i] == o.sheet) idx=i;
+        if(idx == 0 && !!o.sheet && wb.SheetNames[0] != o.sheet) throw new Error("Sheet not found: " + o.sheet);
+        write_biff_rec(ba, 0x0009, write_BOF(wb, o));
+        /* ... */
+        write_biff_ws(ba, wb.Sheets[wb.SheetNames[idx]], idx, o, wb);
+        /* ... */
+        write_biff_rec(ba, 0x000a);
+        // TODO
+        return ba.end();
+    }
+    /* TODO: in browser attach to DOM; in node use an html parser */
+    var HTML_ = (function() {
+        function html_to_sheet(str, _opts) {
+            var opts = _opts || {};
+            if(DENSE != null && opts.dense == null) opts.dense = DENSE;
+            var ws = opts.dense ? ([]) : ({});
+            var i = str.indexOf("<table"), j = str.indexOf("</table");
+            if(i == -1 || j == -1) throw new Error("Invalid HTML: missing <table> / </table> pair");
+            var rows = str.slice(i, j).split(/(:?<tr[^>]*>)/);
+            var R = -1, C = 0, RS = 0, CS = 0;
+            var range = {s:{r:10000000, c:10000000},e:{r:0,c:0}};
+            var merges = [], midx = 0;
+            for(i = 0; i < rows.length; ++i) {
+                var row = rows[i].trim();
+                if(row.substr(0,3) == "<tr") { ++R; C = 0; continue; }
+                if(row.substr(0,3) != "<td") continue;
+                var cells = row.split("</td>");
+                for(j = 0; j < cells.length; ++j) {
+                    var cell = cells[j].trim();
+                    if(cell.substr(0,3) != "<td") continue;
+                    var m = cell, cc = 0;
+                    /* TODO: parse styles etc */
+                    while(m.charAt(0) == "<" && (cc = m.indexOf(">")) > -1) m = m.slice(cc+1);
+                    while(m.indexOf(">") > -1) m = m.slice(0, m.lastIndexOf("<"));
+                    var tag = parsexmltag(cell.slice(0, cell.indexOf(">")));
+                    CS = tag.colspan ? +tag.colspan : 1;
+                    if((RS = +tag.rowspan)>0 || CS>1) merges.push({s:{r:R,c:C},e:{r:R + (RS||1) - 1, c:C + CS - 1}});
+                    /* TODO: generate stub cells */
+                    if(!m.length) { C += CS; continue; }
+                    m = unescapexml(m).replace(/[\r\n]/g,"");
+                    if(range.s.r > R) range.s.r = R;
+                    if(range.e.r < R) range.e.r = R;
+                    if(range.s.c > C) range.s.c = C;
+                    if(range.e.c < C) range.e.c = C;
+                    if(opts.dense) {
+                        if(!ws[R]) ws[R] = [];
+                        if(Number(m) == Number(m)) ws[R][C] = {t:'n', v:+m};
+                        else ws[R][C] = {t:'s', v:m};
+                    } else {
+                        var coord = encode_cell({r:R, c:C});
+                        /* TODO: value parsing */
+                        if(Number(m) == Number(m)) ws[coord] = {t:'n', v:+m};
+                        else ws[coord] = {t:'s', v:m};
+                    }
+                    C += CS;
+                }
+            }
+            ws['!ref'] = encode_range(range);
+            return ws;
+        }
+        function html_to_book(str, opts) {
+            return sheet_to_workbook(html_to_sheet(str, opts), opts);
+        }
+        function make_html_row(ws, r, R, o) {
+            var M = (ws['!merges'] ||[]);
+            var oo = [];
+            for(var C = r.s.c; C <= r.e.c; ++C) {
+                var RS = 0, CS = 0;
+                for(var j = 0; j < M.length; ++j) {
+                    if(M[j].s.r > R || M[j].s.c > C) continue;
+                    if(M[j].e.r < R || M[j].e.c < C) continue;
+                    if(M[j].s.r < R || M[j].s.c < C) { RS = -1; break; }
+                    RS = M[j].e.r - M[j].s.r + 1; CS = M[j].e.c - M[j].s.c + 1; break;
+                }
+                if(RS < 0) continue;
+                var coord = encode_cell({r:R,c:C});
+                var cell = o.dense ? (ws[R]||[])[C] : ws[coord];
+                if(!cell || cell.v == null) { oo.push("<td></td>"); continue; }
+                /* TODO: html entities */
+                var w = cell.h || escapexml(cell.w || (format_cell(cell), cell.w) || "");
+                var sp = {};
+                if(RS > 1) sp.rowspan = RS;
+                if(CS > 1) sp.colspan = CS;
+                oo.push(writextag('td', w, sp));
+            }
+            return "<tr>" + oo.join("") + "</tr>";
+        }
+        function sheet_to_html(ws, opts) {
+            var o = [];
+            var r = decode_range(ws['!ref']);
+            o.dense = Array.isArray(ws);
+            for(var R = r.s.r; R <= r.e.r; ++R) o.push(make_html_row(ws, r, R, o));
+            return "<html><body><table>" + o.join("") + "</table></body></html>";
+        }
+
+        return {
+            to_workbook: html_to_book,
+            to_sheet: html_to_sheet,
+            _row: make_html_row,
+            from_sheet: sheet_to_html
+        };
+    })();
+
+    function parse_dom_table(table, _opts) {
+        var opts = _opts || {};
+        if(DENSE != null) opts.dense = DENSE;
+        var ws = opts.dense ? ([]) : ({});
+        var rows = table.getElementsByTagName('tr');
+        var range = {s:{r:0,c:0},e:{r:rows.length - 1,c:0}};
+        var merges = [], midx = 0;
+        var R = 0, _C = 0, C = 0, RS = 0, CS = 0;
+        for(; R < rows.length; ++R) {
+            var row = rows[R];
+            var elts = row.children;
+            for(_C = C = 0; _C < elts.length; ++_C) {
+                var elt = elts[_C], v = elts[_C].innerText;
+                for(midx = 0; midx < merges.length; ++midx) {
+                    var m = merges[midx];
+                    if(m.s.c == C && m.s.r <= R && R <= m.e.r) { C = m.e.c+1; midx = -1; }
+                }
+                /* TODO: figure out how to extract nonstandard mso- style */
+                CS = +elt.getAttribute("colspan") || 1;
+                if((RS = +elt.getAttribute("rowspan"))>0 || CS>1) merges.push({s:{r:R,c:C},e:{r:R + (RS||1) - 1, c:C + CS - 1}});
+                var o = {t:'s', v:v};
+                if(v != null && v.length && !isNaN(Number(v))) o = {t:'n', v:Number(v)};
+                if(opts.dense) { if(!ws[R]) ws[R] = []; ws[R][C] = o; }
+                else ws[encode_cell({c:C, r:R})] = o;
+                if(range.e.c < C) range.e.c = C;
+                C += CS;
+            }
+        }
+        ws['!merges'] = merges;
+        ws['!ref'] = encode_range(range);
+        return ws;
+    }
+
+    function table_to_book(table, opts) {
+        return sheet_to_workbook(parse_dom_table(table, opts), opts);
+    }
+    var parse_content_xml = (function() {
+
+        var parse_text_p = function(text, tag) {
+            return unescapexml(text.replace(/<text:s\/>/g," ").replace(/<[^>]*>/g,""));
+        };
+
+        var number_formats = {
+            /* ods name: [short ssf fmt, long ssf fmt] */
+            day: ["d", "dd"],
+            month: ["m", "mm"],
+            year: ["y", "yy"],
+            hours: ["h", "hh"],
+            minutes: ["m", "mm"],
+            seconds: ["s", "ss"],
+            "am-pm": ["A/P", "AM/PM"],
+            "day-of-week": ["ddd", "dddd"]
+        };
+
+        return function pcx(d, _opts) {
+            var opts = _opts || {};
+            if(DENSE != null && opts.dense == null) opts.dense = DENSE;
+            var str = xlml_normalize(d);
+            var state = [], tmp;
+            var tag;
+            var NFtag = {name:""}, NF = "", pidx = 0;
+            var sheetag;
+            var rowtag;
+            var Sheets = {}, SheetNames = [];
+            var ws = opts.dense ? ([]) : ({});
+            var Rn, q;
+            var ctag = {value:""};
+            var textp = "", textpidx = 0, textptag;
+            var R = -1, C = -1, range = {s: {r:1000000,c:10000000}, e: {r:0, c:0}};
+            var number_format_map = {};
+            var merges = [], mrange = {}, mR = 0, mC = 0;
+            var arrayf = [];
+            var comments = [], comment = {};
+            var creator = "", creatoridx = 0;
+            var rept = 1, isstub = false;
+            var i = 0;
+            xlmlregex.lastIndex = 0;
+            str = str.replace(/<!--([^\u2603]*?)-->/mg,"").replace(/<!DOCTYPE[^\[]*\[[^\]]*\]>/gm,"");
+            while((Rn = xlmlregex.exec(str))) switch((Rn[3]=Rn[3].replace(/_.*$/,""))) {
+
+                case 'table': case 'å·¥ä½œè¡¨': // 9.1.2 <table:table>
+                    if(Rn[1]==='/') {
+                        if(range.e.c >= range.s.c && range.e.r >= range.s.r) ws['!ref'] = encode_range(range);
+                        if(merges.length) ws['!merges'] = merges;
+                        sheetag.name = utf8read(sheetag['åç§°'] || sheetag.name);
+                        SheetNames.push(sheetag.name);
+                        Sheets[sheetag.name] = ws;
+                    }
+                    else if(Rn[0].charAt(Rn[0].length-2) !== '/') {
+                        sheetag = parsexmltag(Rn[0], false);
+                        R = C = -1;
+                        range.s.r = range.s.c = 10000000; range.e.r = range.e.c = 0;
+                        ws = opts.dense ? ([]) : ({}); merges = [];
+                    }
+                    break;
+
+                case 'table-row': case 'è¡Œ': // 9.1.3 <table:table-row>
+                    if(Rn[1] === '/') break;
+                    rowtag = parsexmltag(Rn[0], false);
+                    if(rowtag['è¡Œå·']) R = rowtag['è¡Œå·'] - 1; else ++R;
+                    C = -1; break;
+                case 'covered-table-cell': // 9.1.5 <table:covered-table-cell>
+                    ++C;
+                    if(opts.sheetStubs) {
+                        if(opts.dense) { if(!ws[R]) ws[R] = []; ws[R][C] = {t:'z'}; }
+                        else ws[encode_cell({r:R,c:C})] = {t:'z'};
+                    }
+                    break; /* stub */
+                case 'table-cell': case 'æ•°æ®':
+                    if(Rn[0].charAt(Rn[0].length-2) === '/') {
+                        ctag = parsexmltag(Rn[0], false);
+                        if(ctag['number-columns-repeated']) C+= parseInt(ctag['number-columns-repeated'], 10);
+                        else ++C;
+                    }
+                    else if(Rn[1]!=='/') {
+                        ++C;
+                        rept = 1;
+                        if(C > range.e.c) range.e.c = C;
+                        if(R > range.e.r) range.e.r = R;
+                        if(C < range.s.c) range.s.c = C;
+                        if(R < range.s.r) range.s.r = R;
+                        ctag = parsexmltag(Rn[0], false);
+                        comments = []; comment = {};
+                        q = ({t:ctag['æ•°æ®ç±»åž‹'] || ctag['value-type'], v:null});
+                        if(opts.cellFormula) {
+                            if(ctag.formula) ctag.formula = unescapexml(ctag.formula);
+                            if(ctag['number-matrix-columns-spanned'] && ctag['number-matrix-rows-spanned']) {
+                                mR = parseInt(ctag['number-matrix-rows-spanned'],10) || 0;
+                                mC = parseInt(ctag['number-matrix-columns-spanned'],10) || 0;
+                                mrange = {s: {r:R,c:C}, e:{r:R + mR-1,c:C + mC-1}};
+                                q.F = encode_range(mrange);
+                                arrayf.push([mrange, q.F]);
+                            }
+                            if(ctag.formula) q.f = ods_to_csf_formula(ctag.formula);
+                            else for(i = 0; i < arrayf.length; ++i)
+                                if(R >= arrayf[i][0].s.r && R <= arrayf[i][0].e.r)
+                                    if(C >= arrayf[i][0].s.c && C <= arrayf[i][0].e.c)
+                                        q.F = arrayf[i][1];
+                        }
+                        if(ctag['number-columns-spanned'] || ctag['number-rows-spanned']) {
+                            mR = parseInt(ctag['number-rows-spanned'],10) || 0;
+                            mC = parseInt(ctag['number-columns-spanned'],10) || 0;
+                            mrange = {s: {r:R,c:C}, e:{r:R + mR-1,c:C + mC-1}};
+                            merges.push(mrange);
+                        }
+
+                        /* 19.675.2 table:number-columns-repeated */
+                        if(ctag['number-columns-repeated']) rept = parseInt(ctag['number-columns-repeated'], 10);
+
+                        /* 19.385 office:value-type */
+                        switch(q.t) {
+                            case 'boolean': q.t = 'b'; q.v = parsexmlbool(ctag['boolean-value']); break;
+                            case 'float': q.t = 'n'; q.v = parseFloat(ctag.value); break;
+                            case 'percentage': q.t = 'n'; q.v = parseFloat(ctag.value); break;
+                            case 'currency': q.t = 'n'; q.v = parseFloat(ctag.value); break;
+                            case 'date': q.t = 'd'; q.v = parseDate(ctag['date-value']);
+                                if(!opts.cellDates) { q.t = 'n'; q.v = datenum(q.v); }
+                                q.z = 'm/d/yy'; break;
+                            case 'time': q.t = 'n'; q.v = parse_isodur(ctag['time-value'])/86400; break;
+                            case 'number': q.t = 'n'; q.v = parseFloat(ctag['æ•°æ®æ•°å€¼']); break;
+                            default:
+                                if(q.t === 'string' || q.t === 'text' || !q.t) {
+                                    q.t = 's';
+                                    if(ctag['string-value'] != null) textp = unescapexml(ctag['string-value']);
+                                } else throw new Error('Unsupported value type ' + q.t);
+                        }
+                    } else {
+                        isstub = false;
+                        if(q.t === 's') {
+                            q.v = textp || '';
+                            isstub = textpidx == 0;
+                        }
+                        if(comments.length > 0) { q.c = comments; comments = []; }
+                        if(textp && opts.cellText !== false) q.w = textp;
+                        if(!isstub || opts.sheetStubs) {
+                            if(!(opts.sheetRows && opts.sheetRows < R)) {
+                                if(opts.dense) {
+                                    if(!ws[R]) ws[R] = [];
+                                    ws[R][C] = q;
+                                    while(--rept > 0) ws[R][++C] = dup(q);
+                                } else {
+                                    ws[encode_cell({r:R,c:C})] = q;
+                                    while(--rept > 0) ws[encode_cell({r:R,c:++C})] = dup(q);
+                                }
+                                if(range.e.c <= C) range.e.c = C;
+                            }
+                        } else { C += rept; rept = 0; }
+                        q = {};
+                        textp = "";
+                    }
+                    break; // 9.1.4 <table:table-cell>
+
+                /* pure state */
+                case 'document': // TODO: <office:document> is the root for FODS
+                case 'document-content': case 'ç”µå­è¡¨æ ¼æ–‡æ¡£': // 3.1.3.2 <office:document-content>
+                case 'spreadsheet': case 'ä¸»ä½“': // 3.7 <office:spreadsheet>
+                case 'scripts': // 3.12 <office:scripts>
+                case 'styles': // TODO <office:styles>
+                case 'font-face-decls': // 3.14 <office:font-face-decls>
+                    if(Rn[1]==='/'){if((tmp=state.pop())[0]!==Rn[3]) throw "Bad state: "+tmp;}
+                    else if(Rn[0].charAt(Rn[0].length-2) !== '/') state.push([Rn[3], true]);
+                    break;
+
+                case 'annotation': // 14.1 <office:annotation>
+                    if(Rn[1]==='/'){
+                        if((tmp=state.pop())[0]!==Rn[3]) throw "Bad state: "+tmp;
+                        comment.t = textp;
+                        comment.a = creator
