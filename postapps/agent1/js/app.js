@@ -379,7 +379,7 @@ var url = "/postapps/agent1/assets/rent.csv";
 
 
 var codes = {
-    "Status":["VA","VL","NA","NL","OC"],
+    "Status":["VA","VL","NA","NL","OC","Down"],
     "Renewal Status": ["Inactive","NTV","Undecided","New"],
     "Size":d3.range(0,4),
     "All":[1]
@@ -619,7 +619,7 @@ console.log(d3.select("svg").size())
                 createCenters(visualSimulation,key);
 
                 timer = d3.interval(function(tim) {
-                    if (obj.currentDate>new Date(2030,0,1)) {
+                    if (obj.currentDate>new Date(2023,0,1)) {
                         timer.stop();
                         visualSimulation.stop();
                     }
