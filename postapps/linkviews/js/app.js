@@ -736,7 +736,7 @@ setTimeout(function() {
 
 setTimeout(function() {
     d3.select("#d3_app").style("height",d3.select("#svgDiv").style("height"))
-    d3.select("*").property("cursor","pointer")
+    d3.selectAll(".link, .arc, circle,svg").property("cursor","pointer")
 },1200)
 
 d3.select("body").node().onresize = function() {
