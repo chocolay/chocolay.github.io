@@ -1,0 +1,22 @@
+CMTE_ID,Amount,CMTE_NM,CONNECTED_ORG_NM,CMTE_TP
+AGXFN01,13409,Finance,Agax Finance,Q
+AGXBD01,11219,Business Development,Agax Business Development,Q
+AGXAR01,9222,Accounts Receivable,Agax Accounts Receivable,Q
+AGXAP01,8826,Accounts Payable,Agax Accounts Payable,O
+AGXPR01,8648,Payroll,Agax Payroll,H
+AGXIT01,6945,Information Technology,Agax Information Technology,Q
+AGXFR01,6384,Field Representatives,Agax Field Representatives,Q
+AGXHR01,6197,Human Resources,Agax Human Resources,Q
+AGXRD01,5993,Research,Agax Research and Development,Q
+AGXCS01,4671,Client Services,Agax Client Services,N
+AGXMK01,2621,Marketing,Agax Marketing,Q
+AGXLG01,2563,Legal,Agax Legal,N
+AGXEN01,2342,Engineering,Agax Engineering,O
+AGXIF01,1875,Infrastructure,Agax Infrastructure,Q
+AGXIA01,1731,Internal Audit,Agax Internal Audit,Q
+AGXIS01,1510,Information Security,Agax Information Security,Q
+AGXQC01,1405,Quality Control,Agax Quality Control,Q
+AGXSP01,1336,Support Services,Agax Support Services,Q
+AGXRM01,1087,Risk Management,Agax Risk Management,Q
+AGXEX01,547,Executive Management,Agax Executive Management,Q
+AGXFC01,338,Facilities,Agax Facilities,Q
