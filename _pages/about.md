@@ -7,7 +7,7 @@ image: Kavieng.jpg
 imageText: near Kavieng, New Ireland, Papua New Guinea
 ---
 
-
+And I'm far more open & good-natured than my avatar appears.
 
 I'm a former academic who fell in love with deep learning and data visualization. Since leaving my academic life behind, I have created data models and visualizations for bankers, mining companies, geoscientists, life hackers, sound engineers, geneticists, election followers, department stores, historians, financial managers, network engineers, musicians, policy makers, STEM education, and baseball enthusiasts.
 
