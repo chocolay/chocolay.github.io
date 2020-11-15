@@ -17029,7 +17029,6 @@ var colors = ["#8dd3c7","#a6cee3","#ffffb3","#bebada","#fb8072","#80b1d3","#fdb4
 
 setTimeout(function() {
 
-geomSetup();
 //sunbust modified from: https://bl.ocks.org/kerryrodden/766f8f6d31f645c39f488a0befa1e3c8
 d3.request(fname)
     .responseType("arraybuffer")
