@@ -6,7 +6,7 @@ image:  KDV_IST.png
 tags:   STEM, Nonlinear-PDE, Matrix-Math, Soliton, Wave
 app:    kdv
 script: kdv
-d3version: http://d3js.org/d3.v3.min.js
+d3version: https://d3js.org/d3.v3.min.js
 crossfilter: False
 numeric: True
 ---
