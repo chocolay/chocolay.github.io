@@ -743,7 +743,7 @@ console.log(d3.select("svg").size())
                     .style("margin-left","20px")
                     .on("input", change);
 
-                val = d3.select(this.parentElement).select("input").property("value")
+                val = sel2.select("input").property("value")
                 console.log(val)
                 sel2.append("div")
                     .text(humanName + ": "+val)
