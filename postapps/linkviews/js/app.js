@@ -676,7 +676,7 @@ function endAll (transition, callback) {
 
 var meta = {
     mainView: {
-        dirname: "data/", filesnames: ["Systems", "UserAccess", "Groups"],
+        dirname: "/postapps/linkviews/data", filesnames: ["Systems", "UserAccess", "Groups"],
         linkWords: ["CAND_ID", "CMTE_ID"],
         nodeInfo: {idTag: "CAND_ID", header: "CAND_NAME", header1Tag: "System"},
         chordInfo: {idTag: "CMTE_NM", pluck: "label", header: "CMTE_NM"},
@@ -689,7 +689,7 @@ var meta = {
         headerText : "Groups (outer ring) to Systems (circles)"
     },
     circleClickView: {
-        dirname: "drilldown data/application/", filesnames: ["Systems", "UserAccess", "Groups"],
+        dirname: "/postapps/linkviews/drilldown data/application/", filesnames: ["Systems", "UserAccess", "Groups"],
         linkWords: ["CAND_ID", "CMTE_ID"],
         nodeInfo: {idTag: "CAND_ID", header: "CAND_NAME", header1Tag: "Application"},
         chordInfo: {idTag: "CMTE_NM", pluck: "label", header: "CMTE_NM"},
@@ -703,7 +703,7 @@ var meta = {
 
     },
     arcClickView: {
-        dirname: "drilldown data/group/", filesnames: ["Systems", "UserAccess", "Groups"],
+        dirname: "/postapps/linkviews/drilldown data/group/", filesnames: ["Systems", "UserAccess", "Groups"],
         linkWords: ["CAND_ID", "CMTE_ID"],
         nodeInfo: {idTag: "CAND_ID", header: "CAND_NAME", header1Tag: "System"},
         chordInfo: {idTag: "CMTE_NM", pluck: "label", header: "CMTE_NM"},
@@ -716,7 +716,7 @@ var meta = {
         headerText : "Users (outer ring) to Systems (circles)"
     },
     newView: {
-        dirname: "newData/", filesnames: ["S", "U", "G"],
+        dirname: "/postapps/linkviews/newData/", filesnames: ["S", "U", "G"],
         linkWords: ["systemID", "ID"],
         nodeInfo: {idTag: "systemID", header: "system", header1Tag: "System"},
         chordInfo: {idTag: "user", pluck: "label", header: "user"},
@@ -732,7 +732,7 @@ var meta = {
 
 
 //initial setup
-d3.timeout(function() {
+setTimeout(function() {
     main({view:"mainView",angles:{startAngle:0,endAngle:0}});
 },500)
 
