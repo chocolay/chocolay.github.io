@@ -617,7 +617,7 @@ console.log(d3.select("svg").size())
                 createCenters(visualSimulation,key);
 
                 timer = d3.interval(function(tim) {
-                    if (obj.currentDate>new Date(2023,0,1)) {
+                    if (obj.currentDate>new Date(2030,0,1)) {
                         timer.stop();
                         visualSimulation.stop();
                     }
