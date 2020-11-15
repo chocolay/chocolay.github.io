@@ -192,20 +192,18 @@ function mkslider(amp) {
         }).style("fill", "grey")
 
     slider.append("rect")
-        .attr({
-            "id": "wslider",
-            "x": xscale(32) + w - 5,
-            "y": yscale(0) - 5,
-            "width": 5,
-            "height": 15
-        })
+        .attr("id", "wslider")
+         .attr("x", xscale(32) + w - 5)
+         .attr("y", yscale(0) - 5)
+         .attr("width", 5)
+         .attr("height", 15)
         .style("fill", "orangered").call(dragw)
 }
 
 d3.select("#amplitude")
-    .style(position, "relative")
-    .style(top, "175px")
-    .style(left, "162px");
+    .style("position", "relative")
+    .style("top", "175px")
+    .style("left", "162px");
 
 var kind = "nsech2",
     i = new numeric.T(0, 1),
