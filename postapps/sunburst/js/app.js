@@ -17028,7 +17028,6 @@ var colors = ["#8dd3c7","#a6cee3","#ffffb3","#bebada","#fb8072","#80b1d3","#fdb4
 
 
 setTimeout(function() {
-
 //sunbust modified from: https://bl.ocks.org/kerryrodden/766f8f6d31f645c39f488a0befa1e3c8
 d3.request(fname)
     .responseType("arraybuffer")
@@ -17124,6 +17123,7 @@ d3.request(fname)
         });
 
         function initialize(obj) {
+            console.log(obj)
             svg = d3.select(obj.selector).append("svg")
                 .attr("viewBox","0 0 "+obj.geom.width+" "+obj.geom.height)
                 .append("g")
@@ -17135,7 +17135,6 @@ d3.request(fname)
             if (obj.y) svg.append("g")
                 .classed("y",1)
                 .classed("axis",1);
-
             if (obj.tooltip) {
                 var tooltip = d3.select(obj.selector).append("div")
                     .attr("id", "tooltip");
@@ -17543,4 +17542,4 @@ d3.request(fname)
     })
     .get();
 
-},3000);
+},1100);
