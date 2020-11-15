@@ -7,8 +7,8 @@ function animate() {
         return Math.sin(e * e * e * t)
     }))
     patchbd.attr({
-            'd': line((expfn.mul(Uhat)).ifft().x)
-        }) //+" Z"
+        'd': line((expfn.mul(Uhat)).ifft().x)
+    }) //+" Z"
     d3.select("#timeDisplay").html("T = " + d3.round(t * 1000) / 1000)
     return (t > 0.1) || stopit
 }
@@ -152,8 +152,8 @@ function mkslider(amp) {
             return a * Math.exp(-alpha * (e - τ / 4) * (e - τ / 4))
         })
         d3.select("#ampDisplay").html("u(0) = " + a + "exp(-" + alpha + "x&sup2)")
-            //   u0 = soliton(τ/4,a/2,x);
-            //d3.select("#ampDisplay").html("u(0) = "+a+"sech&sup2(x)")
+        //   u0 = soliton(τ/4,a/2,x);
+        //d3.select("#ampDisplay").html("u(0) = "+a+"sech&sup2(x)")
 
         patchbd.attr({
             'd': line(u0)
@@ -202,11 +202,11 @@ function mkslider(amp) {
         .style("fill", "orangered").call(dragw)
 }
 
-d3.select("#amplitude").style({
-    position: "relative",
-    top: "175px",
-    left: "162px"
-})
+d3.select("#amplitude")
+    .style(position, "relative")
+    .style(top, "175px")
+    .style(left, "162px");
+
 var kind = "nsech2",
     i = new numeric.T(0, 1),
     τ = Math.PI * 2,
@@ -224,18 +224,19 @@ var kind = "nsech2",
         return a * Math.exp(-alpha * (e - τ / 4) * (e - τ / 4))
     });
 
-d3.select("#ampDisplay").html(kind == "sech2" ? +a + "sech&sup2(x)" : "u(0) = " + a + "exp(-" + alpha + "x&sup2)")
-d3.select("#doEig").append("svg").append("rect").attr({
-    "width": 20,
-    "height": 20
-}).on("click", dotheeig)
+d3.select("#ampDisplay")
+    .html(kind == "sech2" ? +a + "sech&sup2(x)" : "u(0) = " + a + "exp(-" + alpha + "x&sup2)");
+
+setTimeout(dotheeig,1000);
 
 
-s = 960, paper = d3.select('#landing').append('svg:svg').attr({
-    "width": s,
-    "height": s
-}); //height is s/2 for straight line
-xscale = d3.scale.linear().domain([0, N]).range([0, s]),
+var s = 960,
+    paper = d3.select('#d3_app')
+        .append("svg")
+        .attr("width", s)
+        .attr("height",s); //height is s/2 for straight line
+
+var xscale = d3.scale.linear().domain([0, N]).range([0, s]),
     yscale = d3.scale.linear().domain([0, 175]).range([s / 4, 0]),
     line = d3.svg.line().x(function(d, i) {
         return xscale(i)
@@ -251,9 +252,11 @@ xscale = d3.scale.linear().domain([0, N]).range([0, s]),
         'stroke-width': 2.5
     }),
 
-    mkslider([a])
+    mkslider([a]);
+
 t = 0;
 Uhat = (new numeric.T(u0, u0.map(function() {
     return 0
 }))).fft();
+
 d3.timer(animate)
