@@ -3,9 +3,7 @@ layout: post
 title:  "Business Forecasting"
 date:   2020-11-13 18:05:55 +0300
 image:  portfolio_predictions.png
-tags:   model agent-based visualization
-d3version: 6
-crossfilter: True
+tags:   model, agent-based, visualization
 ---  
 
 
