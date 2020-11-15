@@ -8,7 +8,7 @@ d3version: https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js
 style:  homemadeGraph.css
 ---
 
-This tool was built for a client whose business revolved around AI-classification of "big data" where the goal is to assign "things" to categories. 
+<a href = "http://eliseralph.com/tasks_/ADV_/" target="_blank>This tool</a> was built for a client whose business revolved around AI-classification of "big data" where the goal is to assign "things" to categories. 
 
 They wanted to illustrate how the categories themselves were related to each other --- because of similarities within them. 
 For instances, canoes and kayaks are "closer together" than either one is to sailboats.
