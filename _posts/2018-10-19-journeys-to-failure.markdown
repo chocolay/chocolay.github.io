@@ -3,7 +3,7 @@ layout: post
 title:  Journeys to Failure
 date:   2018-10-19 15:01:35 +0300
 image:  journey-failure.png
-tags:   Sankey Table Visualization Practical
+tags:   Sankey, Table, Visualization, Practical
 ---
 
 Large military organizations track everything! Records are kept regarding deficiencies in operation at all levels. Given the shear amount of information across a branch of the military, there needs to be a visual summary of where, who, what, why, etc to look for patterns and places to improve.
