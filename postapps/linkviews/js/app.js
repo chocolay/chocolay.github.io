@@ -86,8 +86,8 @@ function initialize(C,L,R,linkWords) {
 //events
 
 
-d3.select("#mainDiv").on("click", function() {
-    var currentView = d3.select("#mainDiv").datum();
+d3.select("#d3_app").on("click", function() {
+    var currentView = d3.select("#d3_app").datum();
     main({view:"mainView",angles:{startAngle: 0, endAngle: 0}});
 });
 
@@ -743,7 +743,7 @@ function main(obj) {
 
     var view = obj.view;
 
-    if (view!=d3.select("#mainDiv").datum()) {
+    if (view!=d3.select("#d3_app").datum()) {
         meta.completeStatus = false;
         //hide the old tooltip... because the content has been changed.
         d3.select("#toolTip").transition().duration(250)
@@ -752,7 +752,7 @@ function main(obj) {
         d3.select("input#newData").property("checked", view == "newView");
 
         //keep track of the view; may want to know it for toggling purposes.
-        d3.select("#mainDiv").datum(view);
+        d3.select("#d3_app").datum(view);
 
 
         //we're removing these links because we're switching amongst unlike datasets
