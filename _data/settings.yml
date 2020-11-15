@@ -1,6 +1,6 @@
 #-------------------------------
 # General Site Settings
-title: Elise A. Ralph
+title: Elise A Ralph
 logo: emmy_head.jpg
 description: Beautiful Tools
 
@@ -8,7 +8,7 @@ description: Beautiful Tools
 #-------------------------------
 # Author Settings
 author:
-  name: Elise A. Ralph
+  name: Elise A Ralph
   image: emmy_2.jpg
   say-hello: <strong>Elise A. Ralph, PhD</strong>
   bio: collecting, mining, analyzing, modeling, visualizing, and machine-learning data for over 35 years. 
