@@ -498,6 +498,7 @@ console.log(d3.select("svg").size())
 
     d3.select("#controls").append("input")
         .attr("id","durationSlider")
+        .classed("slider",1)
         .property("type", "range")
         .property("min", 5)
         .property("max", 1000)
@@ -510,6 +511,15 @@ console.log(d3.select("svg").size())
 
     var t
     var increment = 0;
+
+    d3.selectAll("div").style("margin-left","20px")
+    d3.selectAll(".slider").style("margin-left","20px")
+    d3.selectAll(".label").style("margin-left","20px")
+    d3.selectAll("#durationSlider")
+        .style("position","relative")
+        .style("left","40px")
+    d3.selectAll("#menu").selectAll("button").style("margin-left","20px")
+
 
     /*                                  functions                       */
 
@@ -724,7 +734,7 @@ console.log(d3.select("svg").size())
                     .text(humanName + ":")
                     .classed("label", 1)
                     .style("margin-left","20px")
-                    .style("color","darkgrey");
+                    .style("color","#3e3e45");
 
                 sel2.append("input")
                     .property("type", "range")
@@ -741,6 +751,7 @@ console.log(d3.select("svg").size())
                     .classed("text", 1)
                     .classed("slider", 1)
                     .style("margin-left","20px")
+                    .style("width","30px")
                     .on("input", change);
 
                 function change() {
@@ -749,7 +760,7 @@ console.log(d3.select("svg").size())
                         .property("value", this.value);
                     obj.value = this.value;
                 }
-            } //makeSlider
+     } //makeSlider
         });
 
         d3.timeout(function() {
