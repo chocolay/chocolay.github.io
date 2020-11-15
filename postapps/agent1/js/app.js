@@ -641,9 +641,8 @@ d3.csv(url).then(function(data) {
             d3.select("#timestamp").text(ttime);
             runSimulation(obj.data,obj);
             createCenters(visualSimulation,key);
-
-            var H = (d3.select("svg").style("height")+200)+"px";
-             W = (d3.select("svg").style("width"))+"px";
+            
+             W = (d3.select("svg").attr("width"))+"px";
             if (d3.select(".post-image").style("height")!=H) {
                 d3.select(".post-image")
                     .style("height",(height+200)+"px")
@@ -781,3 +780,4 @@ d3.timeout(function() {
     var increment = 0;
     start(key);
 },500);
+
