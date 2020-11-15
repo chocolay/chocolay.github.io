@@ -15,17 +15,17 @@ author:
 
 #-------------------------------
 # Contact links
-twitter: https://twitter.com/ # Add your Twitter handle
-facebook: https://facebook.com/ # Add your Facebook handle
-dribbble: https://dribbble.com/ # Add your Dribbble handle
-instagram: https://instagram.com/ # Add your Instagram handle
-pinterest: https://pinterest.com/ # Add your Pinterest handle
+twitter:  # Add your Twitter handle
+facebook: # Add your Facebook handle
+dribbble: # Add your Dribbble handle
+instagram: # Add your Instagram handle
+pinterest:  # Add your Pinterest handle
 
 
 #-------------------------------
 # Instagram Feed
 instafeed: # To enable the instafeed, use the value true. To turn off use the value false.
-instagram-profile: artemsheludko_ # Add instagram username
+instagram-profile:  # Add instagram username
 
 
 #-------------------------------
