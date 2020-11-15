@@ -17025,6 +17025,91 @@ var selector = "#d3_app";
 var dateFormat = "%Y-%m-%d";
 var colors = ["#8dd3c7","#a6cee3","#ffffb3","#bebada","#fb8072","#80b1d3","#fdb462","#b3de69","#d9ffd9","#fccd35"];
 
+
+
+
+function geomSetup () {
+    //some geometry
+    var width = 800;
+    var height = 600;
+    //create Initial DOM
+    var margin = {top: 10, right: 30, bottom: 10, left: 100};
+    margin.width = width - margin.left - margin.right;
+    margin.height = height - margin.top - margin.bottom;
+
+    var svg = initialize({selector: selector, x: 0, y: 0, tooltip: 1, geom: margin});
+
+    // Breadcrumbs
+    var b = {
+        w: 82, h: 30, s: 3, t: 10
+    };
+
+    //this is all toggle stuff to change the view
+    //when we eliminate the toggle at the end, then just leave the
+    //group that we need.
+    svg.append("g")
+        .attr("id", "sunburst")
+        .classed("view", 1)
+        .attr("transform", "translate(-90,0)")
+
+    //every view uses the cScale
+    window.cScale = d3.scaleOrdinal()
+        .domain(events)
+        .range(colors);
+
+    //sunburst
+    var vis = d3.select("g#sunburst")
+        .append("g")
+        .attr("id", "container")
+        .attr("transform", "translate(" + (margin.width / 2) + "," + (margin.height / 2) + ")");
+
+    var radius = Math.min(margin.width / 2, margin.height / 2);
+    vis.append("circle")
+        .attr("r", radius)
+        .style("opacity", 0);
+
+    var partition = d3.partition()
+        .size([2 * Math.PI, radius * radius]);
+
+    var arc = d3.arc()
+        .startAngle(function (d) {
+            return d.x0;
+        })
+        .endAngle(function (d) {
+            return d.x1;
+        })
+        .innerRadius(function (d) {
+            return Math.sqrt(d.y0);
+        })
+        .outerRadius(function (d) {
+            return Math.sqrt(d.y1);
+        });
+
+    vis.append("text")
+        .attr("id", "expl")
+        .attr("text-anchor", "middle")
+        .style("visibility", "hidden")
+        .append("tspan")
+        .html("<tspan id=percentage></tspan> <tspan id=plural>families</tspan> on this journey</tspan>")
+        .style("font-size", "75%");
+
+    vis.append("text")
+        .attr("id", "intro")
+        .attr("text-anchor", "middle")
+        .html("<tspan id=num></tspan> families")
+        .style("fill", "grey");
+
+    vis.append("text")
+        .attr("id", "location")
+        .attr("y", 20)
+        .style("font-size", "75%")
+        .attr("text-anchor", "middle")
+        .text("")
+        .style("fill", "grey");
+}
+setTimeout(function() {
+    
+geomSetup();
 //sunbust modified from: https://bl.ocks.org/kerryrodden/766f8f6d31f645c39f488a0befa1e3c8
 d3.request(fname)
     .responseType("arraybuffer")
@@ -17119,90 +17204,10 @@ d3.request(fname)
             });
         });
 
-        //some geometry
-        var width = 800;
-        var height = 600;
-        //create Initial DOM
-        var margin = {top: 10, right: 30, bottom: 10, left: 100};
-        margin.width = width - margin.left - margin.right;
-        margin.height = height - margin.top - margin.bottom;
-
-        setTimeout(function() { 
-        var svg = initialize({selector: selector, x: 0, y: 0, tooltip: 1, geom: margin});
-
-        // Breadcrumbs
-        var b = {
-            w: 82, h: 30, s: 3, t: 10
-        };
-
-        //this is all toggle stuff to change the view
-        //when we eliminate the toggle at the end, then just leave the
-        //group that we need.
-        svg.append("g")
-            .attr("id", "sunburst")
-            .classed("view", 1)
-            .attr("transform","translate(-90,0)")
-
-        //every view uses the cScale
-        window.cScale = d3.scaleOrdinal()
-            .domain(events)
-            .range(colors);
-
-        //sunburst
-        var vis = d3.select("g#sunburst")
-            .append("g")
-            .attr("id","container")
-            .attr("transform", "translate(" + (margin.width/2) + "," + (margin.height/2) + ")");
-
-        var radius = Math.min(margin.width/2,margin.height/2);
-        vis.append("circle")
-            .attr("r", radius)
-            .style("opacity", 0);
-
-        var partition = d3.partition()
-            .size([2 * Math.PI, radius * radius]);
-
-        var arc = d3.arc()
-            .startAngle(function (d) {
-                return d.x0;
-            })
-            .endAngle(function (d) {
-                return d.x1;
-            })
-            .innerRadius(function (d) {
-                return Math.sqrt(d.y0);
-            })
-            .outerRadius(function (d) {
-                return Math.sqrt(d.y1);
-            });
-
-        vis.append("text")
-            .attr("id","expl")
-            .attr("text-anchor","middle")
-            .style("visibility","hidden")
-            .append("tspan")
-            .html("<tspan id=percentage></tspan> <tspan id=plural>families</tspan> on this journey</tspan>")
-            .style("font-size","75%");
-
-        vis.append("text")
-            .attr("id","intro")
-            .attr("text-anchor","middle")
-            .html("<tspan id=num></tspan> families")
-            .style("fill","grey");
-
-        vis.append("text")
-            .attr("id","location")
-            .attr("y",20)
-            .style("font-size","75%")
-            .attr("text-anchor","middle")
-            .text("")
-            .style("fill","grey");
-
         initializeBreadcrumbTrail();
         drawLegend();
         createSun(Z);
-        },3000)
-    
+
         //functions
         // Generate a string that describes the points of a breadcrumb polygon.
         function breadcrumbPoints(d, i) {
@@ -17296,7 +17301,7 @@ d3.request(fname)
                     return (d.x1 - d.x0 > 0.005); // 0.005 radians = 0.29 degrees
                 });
 
-            var path = vis.data([json]).selectAll("path")
+            var path = d3.select("#container").data([json]).selectAll("path")
                 .data(nodes,function(d) {return d.ancestors().map(d=>d.data.name).join("_")});
 
             path.enter().append("path")
@@ -17536,6 +17541,8 @@ d3.request(fname)
         }
     })
     .get();
+
+},1100);
 
 
 
