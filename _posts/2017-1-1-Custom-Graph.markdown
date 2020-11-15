@@ -4,7 +4,9 @@ title:  Connecting the Dots
 date:   2017-01-1 15:01:35 +0300
 image:  custom_graph.png
 tags:   tool graph network table bespoke connections no-data illustration
-
+d3version: https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js
+app:    homemadeGraph
+style:  homemadeGraph
 ---
 
 This tool was built for a client who wanted to illustrate the interconnectivity of their data.
