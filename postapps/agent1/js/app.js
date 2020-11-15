@@ -504,7 +504,7 @@ console.log(d3.select("svg").size())
         .property("max", 1000)
         .property("step", 5)
         .property("value",900)
-        .style("width","30%")
+        .style("width","25%")
         .on("change",function(d) {
             stopForecast();
             start(d3.select("#toggle").datum());
