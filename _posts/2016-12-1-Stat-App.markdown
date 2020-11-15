@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Stats App
+title:  Stat App
 date:   2016-11-1 15:01:35 +0300
 image:  statApp.png
 tags:   STEM Statistics PDF Histogram
@@ -11,5 +11,7 @@ crossfilter: False
 numeric: False
 ---
 
-Solitary and wavess.... need MathJax here
-Stat stuff I need to write
+I've developed a variety of animated, interactive, and accurate tools for use in STEM education and research. Through Carnegie Institute funding, I developed a statistics package for use in undergraduate courses. I've also developed tools for solving partial differential equations, and for use in physics and geoscience classrooms.
+
+I've also supported start up companies developing: earthquake prediction tools through "shake data" collected by cell phones throughout a region and a company developing long-term weather forecasts used in the oil futures market.
+          
