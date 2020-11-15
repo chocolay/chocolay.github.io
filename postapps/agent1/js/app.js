@@ -398,6 +398,7 @@ d3.csv(url).then(function(data) {
     d3.select(id).append("svg")
         .attr("width",width)
         .attr("height",height);
+console.log(d3.select("svg").size())
 
     obj = { "params": {"currentDate":"14/09/2020"},
         "adjustableParams":[
@@ -438,7 +439,7 @@ d3.csv(url).then(function(data) {
     var radiusScale = d3.scaleLinear()
         .domain(d3.extent(obj.data,d=>+d["Square Feet"])) //range of square ft
         .range([4,10]); //range of circle sizes
-
+/*
     initVis(id,obj.data,obj);
 
     obj.adjustableParams.forEach(function (param,i) {
@@ -447,7 +448,7 @@ d3.csv(url).then(function(data) {
     });
     d3.selectAll(".inputBox").filter((d,i)=>i<8)
         .style("display","none")
-
+*/
     /*                                  button behaviors                */
 
     goButton = d3.select("#menu")
@@ -536,9 +537,9 @@ d3.csv(url).then(function(data) {
             stopForecast();
             let d = d3.select(this).datum()
             start(d);
-        });
+        });//sortButton click
 
-
+        console.log(d3.select("svg").node())
 
                 var svg = d3.select("svg")
                     .attr("width",width)
@@ -618,7 +619,7 @@ d3.csv(url).then(function(data) {
                 createCenters(visualSimulation,key);
 
                 timer = d3.interval(function(tim) {
-                    if (obj.currentDate>new Date(2023,0,1)) {
+                    if (obj.currentDate>new Date(2030,0,1)) {
                         timer.stop();
                         visualSimulation.stop();
                     }
