@@ -1,0 +1,29 @@
+d3_app {
+    font-family: 'Roboto', sans-serif;
+}
+
+.page-header {
+    margin-left:10px;
+}
+.check {
+    float:right;
+    display:inline;
+    padding-right:50px;
+}
+#d3_app #chart::-moz-selection, #d3_app #chart::selection {
+    background:none;
+}
+
+.arc {
+    stroke:white;
+    stroke-width:2;
+}
+
+#expl {
+    font-size:12px;
+    fill:grey;
+}
+
+#legend text {
+    font-size:8px;
+}
