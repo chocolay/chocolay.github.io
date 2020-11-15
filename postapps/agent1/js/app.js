@@ -743,12 +743,14 @@ console.log(d3.select("svg").size())
                     .style("margin-left","20px")
                     .on("input", change);
 
+                val = d3.select(this.parentElement).select("input").property("value")
+                console.log(val)
                 sel2.append("div")
-                    .text(humanName + ":"+d3.select(this.parentElement).select("input").property("value"))
+                    .text(humanName + ": "+val)
                     .classed("label", 1)
                     .style("margin-left","20px")
                     .style("color","#3e3e45");
-                
+
 
                 function change() {
                     //update everything about the slider
