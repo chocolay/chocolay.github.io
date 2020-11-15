@@ -7,7 +7,6 @@ tags:   tool graph network table bespoke connections no-data illustration
 d3version: https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js
 style:  homemadeGraph.css
 ---
-[Duck Duck Go](https://duckduckgo.com).
 
 [This tool](http://eliseralph.com/tasks_/ADV_/) was built for a client whose business revolved around AI-classification of "big data" where the goal is to assign "things" to categories. 
 
