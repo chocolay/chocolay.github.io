@@ -10,7 +10,7 @@ style:  homemadeGraph.css
 
 This tool was built for a client whose business revolved around AI-classification of "big data" where the goal is to assign "things" to categories. 
 
-They wanted to illustrate how the categories themselves were related to each other &mdash because of similarities within them. 
+They wanted to illustrate how the categories themselves were related to each other --- because of similarities within them. 
 For instances, canoes and kayaks are "closer together" than either one is to sailboats.
     
 
@@ -23,7 +23,7 @@ To use:
              
 - Repositioning a circle changes the correlation between its group and its neighbors. In the fullter version, you can edit this number in the table, in which case it becomes fixed.
 
-While this only presents data in a 2-dimensional space &mdash; and data relationships are typically much more complicated &mdash; the client wanted to rapdily assemble networks manually for illustrative purposes. The full tool has been used in presentations to investors to illustrate goals in an AI-based business.
+While this only presents data in a 2-dimensional space --- and data relationships are typically much more complicated --- the client wanted to rapdily assemble networks manually for illustrative purposes. The full tool has been used in presentations to investors to illustrate goals in an AI-based business.
 
 And, ultimately, was used programmatically with the results of their classification models.
     
