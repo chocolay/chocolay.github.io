@@ -627,6 +627,11 @@ d3.csv(url).then(function(data) {
             .on("tick", visTick);
         createCenters(visualSimulation,key);
 
+        d3.select(".post-image")
+            .style("height",(height+200)+"px")
+            .style("width",width+"px")
+
+        
         timer = d3.interval(function(tim) {
             if (obj.currentDate>new Date(2030,0,1)) {
                 timer.stop();
