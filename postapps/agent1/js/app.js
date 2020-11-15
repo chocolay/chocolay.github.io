@@ -504,7 +504,7 @@ d3.csv(url).then(function(data) {
         .property("max", 1000)
         .property("step", 5)
         .property("value",900)
-        .style("width","25%")
+        .style("width","26%")
         .on("change",function(d) {
             stopForecast();
             start(d3.select("#toggle").datum());
@@ -731,8 +731,6 @@ d3.csv(url).then(function(data) {
             .classed("inputBox", 1)
             .attr("id", variable);
 
-
-
         sel2.append("input")
             .property("type", "range")
             .property("min", domain[0])
@@ -752,7 +750,8 @@ d3.csv(url).then(function(data) {
             .style("color","#3e3e45");
 
 
-        function change() {
+        function change(d) {
+            console.log(d,this)
             //update everything about the slider
             sel2.selectAll("input.slider")
                 .property("value", this.value);
