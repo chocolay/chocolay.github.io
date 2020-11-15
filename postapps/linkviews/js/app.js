@@ -732,8 +732,9 @@ var meta = {
 
 
 //initial setup
-
-main({view:"mainView",angles:{startAngle:0,endAngle:0}});
+d3.timeout(function() {
+    main({view:"mainView",angles:{startAngle:0,endAngle:0}});
+},500)
 
 
 
