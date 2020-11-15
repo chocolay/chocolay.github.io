@@ -5,7 +5,6 @@ date:   2020-11-13 18:05:55 +0300
 image:  portfolio_predictions.png
 tags:   model agent-based visualization
 app:    agent1
-styles:  agent1.css
 d3version: 6
 crossfilter: True
 ---  
