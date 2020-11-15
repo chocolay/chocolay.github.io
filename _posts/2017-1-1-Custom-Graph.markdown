@@ -9,9 +9,13 @@ app:    homemadeGraph
 style:  homemadeGraph
 ---
 
-This tool was built for a client who wanted to illustrate the interconnectivity of their data.
+This tool was built for a client whose business revolved around AI-classification of "big data" where the goal is to assign "things" to categories. 
 
-To use it:
+They wanted to illustrate how the categories themselves were related to each other &mdash because of similarities within them. 
+For instances, canoes and kayaks are "closer together" than either one is to sailboats.
+    
+
+To use this tool:
 - Click in the open area to create a circle that represents a cluster of data. The default is that the colors are determined by the position where you clicked.  To start with, it is assumed that all members within a single group are 100% alike (with actual data, this might be a correlation)
 
 - Double-clicking on a group allows you to edit its name, color, and the "similarity" number 
@@ -20,5 +24,7 @@ To use it:
              
 - Repositioning a circle changes the correlation between its group and its neighbors. You can edit this number in the table, in which case it becomes fixed.
 
-While this tool only presents data in a 2-dimensional space &mdash; and data relationships are typically much more complicated &mdash; the client requested this tool so they could rapdily assemble networks manually for illustrative purposes. The full tool has been used in presentations to investors to illustrate goals in an AI-based business.
+While this tool only presents data in a 2-dimensional space &mdash; and data relationships are typically much more complicated &mdash; the client wanted to rapdily assemble networks manually for illustrative purposes. The full tool has been used in presentations to investors to illustrate goals in an AI-based business.
+
+And, ulimately, was used programmatically with the results of their classification models.
     
