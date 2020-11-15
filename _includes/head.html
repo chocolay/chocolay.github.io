@@ -20,8 +20,8 @@
         {% include main.scss %}
         {% endcapture %}
         {{ include_to_scssify | scssify }
-
-            {% if page.style %} {% include {{ page.style }} %} {% endif %}
+        {% if page.style %} {% 
+            {{ page.style }} %} {% endif %}
 
     </style>
 </head>
