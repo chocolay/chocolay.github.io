@@ -1,4 +1,8 @@
-<script src="{{ site.baseurl }}/js/vendors/d3.v6.min.js"></script>
+{% if page.d3version == 6 %}
+  <script src="{{ site.baseurl }}/js/vendors/d3.v6.min.js"></script>
+{% else %}
+  <script src={{page.d3version}}></script>
+{% endif %}
 <script src="{{ site.baseurl }}/js/vendors/jquery-3.3.1.min.js"></script>
 <script src="{{ site.baseurl }}/js/vendors/simple-jekyll-search.min.js"></script>
 <script>
