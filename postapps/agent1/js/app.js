@@ -750,6 +750,7 @@ console.log(d3.select("svg").size())
                     .property("value", defaultValue)
                     .classed("text", 1)
                     .classed("slider", 1)
+                    .classed("boxSlider",1)
                     .style("margin-left","20px")
                     .style("width","30px")
                     .on("input", change);
