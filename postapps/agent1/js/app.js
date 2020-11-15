@@ -744,8 +744,8 @@ console.log(d3.select("svg").size())
                     .on("input", change);
 
                 val = sel2.select("input").property("value")
-                console.log(val)
                 sel2.append("div")
+                    .datum(humanName)
                     .text(humanName + ": "+val)
                     .classed("label", 1)
                     .style("margin-left","20px")
@@ -754,8 +754,10 @@ console.log(d3.select("svg").size())
 
                 function change() {
                     //update everything about the slider
-                    sel2.selectAll("input.slider, input.text")
+                    sel2.selectAll("input.slider)
                         .property("value", this.value);
+                    sel2.select(".label")
+                        .text(d=>d + ": "+val)
                     obj.value = this.value;
                 }
      } //makeSlider
