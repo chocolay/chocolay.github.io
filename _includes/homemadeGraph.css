@@ -1,0 +1,103 @@
+svg {
+    background-color: #FFF;
+    cursor: default;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+svg {
+    cursor: crosshair;
+}
+
+svg text {
+    font-size:60%
+}
+
+.draggable {
+    cursor: move;
+}
+
+circle.selected {
+    stroke: #000;
+    stroke-width: 2px;
+    stroke-dasharray: 5,2;
+}
+
+.node {
+    cursor: move;
+    stroke: #000;
+    stroke-width: 1.5px;
+}
+
+.link {
+    stroke: #333;
+    stroke-width: 1px;
+    stroke-dasharray:3 1;
+}
+
+.node.fixed {
+    fill: #f00;
+}
+
+
+th.label, td.grid {
+    color:black;
+}
+
+::-moz-selection,
+::selection {
+    background:none;
+}
+
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+    font-size:8px;
+    font-family: serif;
+}
+
+
+table {
+    display:block;
+    height:300px;
+    overflow-x:scroll;
+    -ms-overflow-x: scroll;
+    overflow-y:scroll;
+    -ms-overflow-y:scroll;
+}
+
+table tbody tr:nth-of-type(even) {
+    background-color:#fff;
+}
+
+td, th {
+    text-align:center;
+    font-size:100%;
+    font-weight:normal;
+}
+
+thead {
+    display:table-header-group;
+}
+
+a#saver {
+    float:right;
+    margin-bottom:10px;
+}
+
+input.tableInput {
+    border:none;
+    width:5em;
+}
+
+td.dragged {
+font-size: 125%";
+font-weight:"bold";
+background-color:"#eee";
+}
