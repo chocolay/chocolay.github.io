@@ -643,7 +643,7 @@ d3.csv(url).then(function(data) {
             createCenters(visualSimulation,key);
 
             var H = (d3.select("svg").style("height")+200)+"px";
-            var W = (d3.select("svg").style("width"))+"px";
+             W = (d3.select("svg").style("width"))+"px";
             if (d3.select(".post-image").style("height")!=H) {
                 d3.select(".post-image")
                     .style("height",(height+200)+"px")
