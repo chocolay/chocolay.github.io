@@ -25,6 +25,9 @@
 
     {% if page.style %} {% include {{ page.style }} %} {% endif %}
 
+ {% if site.tags != "" %}
+  {% include collecttags.html %}
+{% endif %}
 
 </style>
 </head>
