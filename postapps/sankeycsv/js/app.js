@@ -213,529 +213,609 @@ var margin = {top: 10, right: 10, bottom: 10, left: 10};
 margin.width = 1000 - margin.left - margin.right;
 margin.height = 300 - margin.top - margin.bottom;
 
-var svg = initialize({selector:"#d3_app", x:0, y:0, tooltip:1,geom:margin});
-
+setTimeout(function() {
+    var svg = initialize({selector:"#d3_app", x:0, y:0, tooltip:1,geom:margin});
 //capture data
-d3.csv(fname, function(err,data) {
-    if (err) throw "Error reading "+fname +": "+err;
+    d3.csv(fname, function(err,data) {
+        if (err) throw "Error reading "+fname +": "+err;
 
 
-    console.time('all'); console.time('rename keys');
+        console.time('all'); console.time('rename keys');
 
-    data.forEach(function(d) {
-        renameKeys.forEach(function(pair) {switchKeyNames(d, pair)})
-    });
-
-    console.timeEnd('renameKeys'); console.time('data');
-
-    data = keepKeys(data,nodeKeys) //eliminate the keys that are not used in the chart or table
-        //aggregrate the data based on the requirements.docx dated 12-5-15
-        .map(mapMGA)
-        .map(mapRC);
-
-    console.timeEnd('data');   console.time('sankey')
-    plotSankey({svg:svg,background:1},mkSankeyData(data,margin));
-    console.timeEnd('sankey');   console.time('table');
-    mkTable(".d3_app.table",tableColumns,data);
-
-    toggleBehavior({svg:svg,background:1,margin:margin},data);
-
-    console.timeEnd('all');
-
-    //functions
-    function keepKeys(arr,keepers) {
-        var keySet = d3.keys(arr[0]);
-        keySet.forEach(function(key) {
-            if (keepers.indexOf(key) == -1) {
-                arr.forEach(function (d) {
-                    delete d[key]
-                });
-            }
+        data.forEach(function(d) {
+            renameKeys.forEach(function(pair) {switchKeyNames(d, pair)})
         });
-        return arr;
-    }
-    function mapMGA(d) {
-        var catNames = {
-            "1.1":"Managing Resources",
-            "1.2":"Leadership and Supervision",
-            "1.3":"Improving the Unit",
-            "1.4":"Executing the Mission"
-        };
 
-        //check that this is adequate for all cases
-        //avoids the "Casue"/"Cause" confusion
-        d["MGA Item"] = catNames[d["MGA Item"].slice(0,3)];
-        return d
-    }
-    function mapRC(d) {
-        var catNames = {
-            "EQ":"Equipment/Tools",
-            "GD":"Guidance",
-            "LS":"Leadership/Supervision",
-            "RS":"Resource Shortfall",
-            "SE":"Safety",
-            "TR":"Training",
-            "HF":"Human Factors",
-            "OT":"Other"
-        };
-        d["Root Cause"] = catNames[d["Root Cause"].slice(0,2)];
-        return d
-    }
-    function mkTable(selector,keys,data) {
-        console.time('filltable');
-        d3.select(selector).select("thead").append("tr")
-            .selectAll("th").data(keys)
-            .enter().append("th")
-            .text(function(d) {return d});
+        console.timeEnd('renameKeys'); console.time('data');
 
-        d3.select(selector).select("tbody").selectAll("tr")
-            .data(data).enter()
-            .append("tr")
-            .selectAll("td").data(function(d) {
-            return keys.map(function(key) {return d[key]})
-        })
-            .enter().append("td")
-            .text(function(d) {return d});
-        console.timeEnd('filltable'); console.time('datatable');
-        $(selector).DataTable();
-        console.timeEnd('datatable');
-        d3.selectAll("td").style("padding","2px 4px");
-        D = data;
-    }
+        data = keepKeys(data,nodeKeys) //eliminate the keys that are not used in the chart or table
+            //aggregrate the data based on the requirements.docx dated 12-5-15
+            .map(mapMGA)
+            .map(mapRC);
 
-    function mkSankeyData(data,geom) {
-        d3.sankey = function() {
-            var sankey = {},
-                nodeWidth = 12,
-                nodePadding = 10,
-                nodes = [],
-                links = [];
+        console.timeEnd('data');   console.time('sankey')
+        plotSankey({svg:svg,background:1},mkSankeyData(data,margin));
+        console.timeEnd('sankey');   console.time('table');
+        mkTable(".d3_app.table",tableColumns,data);
 
-            sankey.nodeWidth = function(_) {
-                if (!arguments.length) return nodeWidth;
-                nodeWidth = +_;
-                return sankey;
-            };
+        toggleBehavior({svg:svg,background:1,margin:margin},data);
 
-            sankey.nodePadding = function(_) {
-                if (!arguments.length) return nodePadding;
-                nodePadding = +_;
-                return sankey;
-            };
+        console.timeEnd('all');
 
-            sankey.nodes = function(_) {
-                if (!arguments.length) return nodes;
-                nodes = _;
-                return sankey;
-            };
-
-            sankey.links = function(_) {
-                if (!arguments.length) return links;
-                links = _;
-                return sankey;
-            };
-
-            sankey.size = function(_) {
-                if (!arguments.length) return size;
-                size = _;
-                return sankey;
-            };
-
-            sankey.layout = function(iterations) {
-                computeNodeLinks();
-                computeNodeValues();
-                computeNodeBreadths();
-                computeNodeDepths(iterations);
-                computeLinkDepths();
-                return sankey;
-            };
-
-            sankey.relayout = function() {
-                computeLinkDepths();
-                return sankey;
-            };
-
-            sankey.link = function() {
-                var curvature = .5;
-
-                function link(d) {
-                    var x0 = d.source.x + d.source.dx,
-                        x1 = d.target.x,
-                        xi = d3.interpolateNumber(x0, x1),
-                        x2 = xi(curvature),
-                        x3 = xi(1 - curvature),
-                        y0 = d.source.y + d.sy + d.dy / 2,
-                        y1 = d.target.y + d.ty + d.dy / 2;
-                    return "M" + x0 + "," + y0
-                        + "C" + x2 + "," + y0
-                        + " " + x3 + "," + y1
-                        + " " + x1 + "," + y1;
+        //functions
+        function keepKeys(arr,keepers) {
+            var keySet = d3.keys(arr[0]);
+            keySet.forEach(function(key) {
+                if (keepers.indexOf(key) == -1) {
+                    arr.forEach(function (d) {
+                        delete d[key]
+                    });
                 }
+            });
+            return arr;
+        }
+        function mapMGA(d) {
+            var catNames = {
+                "1.1":"Managing Resources",
+                "1.2":"Leadership and Supervision",
+                "1.3":"Improving the Unit",
+                "1.4":"Executing the Mission"
+            };
 
-                link.curvature = function(_) {
-                    if (!arguments.length) return curvature;
-                    curvature = +_;
+            //check that this is adequate for all cases
+            //avoids the "Casue"/"Cause" confusion
+            d["MGA Item"] = catNames[d["MGA Item"].slice(0,3)];
+            return d
+        }
+        function mapRC(d) {
+            var catNames = {
+                "EQ":"Equipment/Tools",
+                "GD":"Guidance",
+                "LS":"Leadership/Supervision",
+                "RS":"Resource Shortfall",
+                "SE":"Safety",
+                "TR":"Training",
+                "HF":"Human Factors",
+                "OT":"Other"
+            };
+            d["Root Cause"] = catNames[d["Root Cause"].slice(0,2)];
+            return d
+        }
+        function mkTable(selector,keys,data) {
+            console.time('filltable');
+            d3.select(selector).select("thead").append("tr")
+                .selectAll("th").data(keys)
+                .enter().append("th")
+                .text(function(d) {return d});
+
+            d3.select(selector).select("tbody").selectAll("tr")
+                .data(data).enter()
+                .append("tr")
+                .selectAll("td").data(function(d) {
+                return keys.map(function(key) {return d[key]})
+            })
+                .enter().append("td")
+                .text(function(d) {return d});
+            console.timeEnd('filltable'); console.time('datatable');
+            $(selector).DataTable();
+            console.timeEnd('datatable');
+            d3.selectAll("td").style("padding","2px 4px");
+            D = data;
+        }
+
+        function mkSankeyData(data,geom) {
+            d3.sankey = function() {
+                var sankey = {},
+                    nodeWidth = 12,
+                    nodePadding = 10,
+                    nodes = [],
+                    links = [];
+
+                sankey.nodeWidth = function(_) {
+                    if (!arguments.length) return nodeWidth;
+                    nodeWidth = +_;
+                    return sankey;
+                };
+
+                sankey.nodePadding = function(_) {
+                    if (!arguments.length) return nodePadding;
+                    nodePadding = +_;
+                    return sankey;
+                };
+
+                sankey.nodes = function(_) {
+                    if (!arguments.length) return nodes;
+                    nodes = _;
+                    return sankey;
+                };
+
+                sankey.links = function(_) {
+                    if (!arguments.length) return links;
+                    links = _;
+                    return sankey;
+                };
+
+                sankey.size = function(_) {
+                    if (!arguments.length) return size;
+                    size = _;
+                    return sankey;
+                };
+
+                sankey.layout = function(iterations) {
+                    computeNodeLinks();
+                    computeNodeValues();
+                    computeNodeBreadths();
+                    computeNodeDepths(iterations);
+                    computeLinkDepths();
+                    return sankey;
+                };
+
+                sankey.relayout = function() {
+                    computeLinkDepths();
+                    return sankey;
+                };
+
+                sankey.link = function() {
+                    var curvature = .5;
+
+                    function link(d) {
+                        var x0 = d.source.x + d.source.dx,
+                            x1 = d.target.x,
+                            xi = d3.interpolateNumber(x0, x1),
+                            x2 = xi(curvature),
+                            x3 = xi(1 - curvature),
+                            y0 = d.source.y + d.sy + d.dy / 2,
+                            y1 = d.target.y + d.ty + d.dy / 2;
+                        return "M" + x0 + "," + y0
+                            + "C" + x2 + "," + y0
+                            + " " + x3 + "," + y1
+                            + " " + x1 + "," + y1;
+                    }
+
+                    link.curvature = function(_) {
+                        if (!arguments.length) return curvature;
+                        curvature = +_;
+                        return link;
+                    };
+
                     return link;
                 };
 
-                return link;
+                // Populate the sourceLinks and targetLinks for each node.
+                // Also, if the source and target are not objects, assume they are indices.
+                function computeNodeLinks() {
+                    nodes.forEach(function(node) {
+                        node.sourceLinks = [];
+                        node.targetLinks = [];
+                    });
+
+                    links.forEach(function(link,i) {
+                        var source = link.source,
+                            target = link.target;
+                        if (typeof source === "number") source = link.source = nodes[link.source];
+                        if (typeof target === "number") target = link.target = nodes[link.target];
+                        source.sourceLinks.push(link);
+                        target.targetLinks.push(link);
+                    });
+                }
+
+                // Compute the value (size) of each node by summing the associated links.
+                function computeNodeValues() {
+                    nodes.forEach(function(node) {
+                        node.value = Math.max(
+                            d3.sum(node.sourceLinks, value),
+                            d3.sum(node.targetLinks, value)
+                        );
+                    });
+                }
+
+                // Iteratively assign the breadth (x-position) for each node.
+                // Nodes are assigned the maximum breadth of incoming neighbors plus one;
+                // nodes with no incoming links are assigned breadth zero, while
+                // nodes with no outgoing links are assigned the maximum breadth.
+                function computeNodeBreadths() {
+                    var remainingNodes = nodes,
+                        nextNodes,
+                        x = 0;
+
+                    while (remainingNodes.length) {
+                        nextNodes = [];
+                        remainingNodes.forEach(function(node) {
+                            node.x = x;
+                            node.dx = nodeWidth;
+                            node.sourceLinks.forEach(function(link) {
+                                nextNodes.push(link.target);
+                            });
+                        });
+                        remainingNodes = nextNodes;
+                        ++x;
+                    }
+
+                    //
+                    moveSinksRight(x);
+
+                    //TODO
+                    scaleNodeBreadths((960 - nodeWidth) / (x - 1));
+                }
+
+                function moveSourcesRight() {
+                    nodes.forEach(function(node) {
+                        if (!node.targetLinks.length) {
+                            node.x = d3.min(node.sourceLinks, function(d) { return d.target.x; }) - 1;
+                        }
+                    });
+                }
+
+                function moveSinksRight(x) {
+                    nodes.forEach(function(node) {
+                        if (!node.sourceLinks.length) {
+                            node.x = x - 1;
+                        }
+                    });
+                }
+
+                function scaleNodeBreadths(kx) {
+                    nodes.forEach(function(node) {
+                        node.x *= kx;
+                    });
+                }
+
+                function computeNodeDepths(iterations) {
+                    nodesByBreadth = d3.nest()
+                        .key(function(d) { return d.x; })
+                        .sortKeys(d3.ascending)
+                        .entries(nodes)
+                        .map(function(d) { return d.values; });
+
+                    //
+                    initializeNodeDepth();
+                    resolveCollisions();
+                    for (var alpha = 1; iterations > 0; --iterations) {
+                        relaxRightToLeft(alpha *= .99);
+                        resolveCollisions();
+                        relaxLeftToRight(alpha);
+                        resolveCollisions();
+                    }
+
+                    function initializeNodeDepth() {
+                        var ky = d3.min(nodesByBreadth, function(nodes) {
+                            return (size[1] - (nodes.length - 1) * nodePadding) / d3.sum(nodes, value);
+                        });
+
+                        nodesByBreadth.forEach(function(nodes) {
+                            nodes.forEach(function(node, i) {
+                                node.y = i;
+                                node.dy = node.value * ky;
+                            });
+                        });
+
+                        links.forEach(function(link) {
+                            link.dy = link.value * ky;
+                        });
+                    }
+
+                    function relaxLeftToRight(alpha) {
+                        nodesByBreadth.forEach(function(nodes, breadth) {
+                            nodes.forEach(function(node) {
+                                if (node.targetLinks.length) {
+                                    var y = d3.sum(node.targetLinks, weightedSource) / d3.sum(node.targetLinks, value);
+                                    node.y += (y - center(node)) * alpha;
+                                }
+                            });
+                        });
+
+                        function weightedSource(link) {
+                            return center(link.source) * link.value;
+                        }
+                    }
+
+                    function relaxRightToLeft(alpha) {
+                        nodesByBreadth.slice().reverse().forEach(function(nodes) {
+                            nodes.forEach(function(node) {
+                                if (node.sourceLinks.length) {
+                                    var y = d3.sum(node.sourceLinks, weightedTarget) / d3.sum(node.sourceLinks, value);
+                                    node.y += (y - center(node)) * alpha;
+                                }
+                            });
+                        });
+
+                        function weightedTarget(link) {
+                            return center(link.target) * link.value;
+                        }
+                    }
+
+                    function resolveCollisions() {
+                        nodesByBreadth.forEach(function(nodes) {
+                            var node,
+                                dy,
+                                y0 = 0,
+                                n = nodes.length,
+                                i;
+
+                            // Push any overlapping nodes down.
+                            nodes.sort(ascendingDepth);
+                            for (i = 0; i < n; ++i) {
+                                node = nodes[i];
+                                dy = y0 - node.y;
+                                if (dy > 0) node.y += dy;
+                                y0 = node.y + node.dy + nodePadding;
+                            }
+
+                            // If the bottommost node goes outside the bounds, push it back up.
+                            dy = y0 - nodePadding - size[1];
+                            if (dy > 0) {
+                                y0 = node.y -= dy;
+
+                                // Push any overlapping nodes back up.
+                                for (i = n - 2; i >= 0; --i) {
+                                    node = nodes[i];
+                                    dy = node.y + node.dy + nodePadding - y0;
+                                    if (dy > 0) node.y -= dy;
+                                    y0 = node.y;
+                                }
+                            }
+                        });
+                    }
+
+                    function ascendingDepth(a, b) {
+                        return a.y - b.y;
+                    }
+                }
+
+                function computeLinkDepths() {
+                    nodes.forEach(function(node) {
+                        node.sourceLinks.sort(ascendingTargetDepth);
+                        node.targetLinks.sort(ascendingSourceDepth);
+                    });
+                    nodes.forEach(function(node) {
+                        var sy = 0, ty = 0;
+                        node.sourceLinks.forEach(function(link) {
+                            link.sy = sy;
+                            sy += link.dy;
+                        });
+                        node.targetLinks.forEach(function(link) {
+                            link.ty = ty;
+                            ty += link.dy;
+                        });
+                    });
+
+                    function ascendingSourceDepth(a, b) {
+                        return a.source.y - b.source.y;
+                    }
+
+                    function ascendingTargetDepth(a, b) {
+                        return a.target.y - b.target.y;
+                    }
+                }
+
+                function center(node) {
+                    return node.y + node.dy / 2;
+                }
+
+                function value(link) {
+                    return link.value;
+                }
+
+                return sankey;
             };
 
-            // Populate the sourceLinks and targetLinks for each node.
-            // Also, if the source and target are not objects, assume they are indices.
-            function computeNodeLinks() {
-                nodes.forEach(function(node) {
-                    node.sourceLinks = [];
-                    node.targetLinks = [];
-                });
-
-                links.forEach(function(link,i) {
-                    var source = link.source,
-                        target = link.target;
-                    if (typeof source === "number") source = link.source = nodes[link.source];
-                    if (typeof target === "number") target = link.target = nodes[link.target];
-                    source.sourceLinks.push(link);
-                    target.targetLinks.push(link);
-                });
-            }
-
-            // Compute the value (size) of each node by summing the associated links.
-            function computeNodeValues() {
-                nodes.forEach(function(node) {
-                    node.value = Math.max(
-                        d3.sum(node.sourceLinks, value),
-                        d3.sum(node.targetLinks, value)
-                    );
-                });
-            }
-
-            // Iteratively assign the breadth (x-position) for each node.
-            // Nodes are assigned the maximum breadth of incoming neighbors plus one;
-            // nodes with no incoming links are assigned breadth zero, while
-            // nodes with no outgoing links are assigned the maximum breadth.
-            function computeNodeBreadths() {
-                var remainingNodes = nodes,
-                    nextNodes,
-                    x = 0;
-
-                while (remainingNodes.length) {
-                    nextNodes = [];
-                    remainingNodes.forEach(function(node) {
-                        node.x = x;
-                        node.dx = nodeWidth;
-                        node.sourceLinks.forEach(function(link) {
-                            nextNodes.push(link.target);
-                        });
-                    });
-                    remainingNodes = nextNodes;
-                    ++x;
-                }
-
-                //
-                moveSinksRight(x);
-
-                //TODO
-                scaleNodeBreadths((960 - nodeWidth) / (x - 1));
-            }
-
-            function moveSourcesRight() {
-                nodes.forEach(function(node) {
-                    if (!node.targetLinks.length) {
-                        node.x = d3.min(node.sourceLinks, function(d) { return d.target.x; }) - 1;
-                    }
-                });
-            }
-
-            function moveSinksRight(x) {
-                nodes.forEach(function(node) {
-                    if (!node.sourceLinks.length) {
-                        node.x = x - 1;
-                    }
-                });
-            }
-
-            function scaleNodeBreadths(kx) {
-                nodes.forEach(function(node) {
-                    node.x *= kx;
-                });
-            }
-
-            function computeNodeDepths(iterations) {
-                nodesByBreadth = d3.nest()
-                    .key(function(d) { return d.x; })
-                    .sortKeys(d3.ascending)
-                    .entries(nodes)
-                    .map(function(d) { return d.values; });
-
-                //
-                initializeNodeDepth();
-                resolveCollisions();
-                for (var alpha = 1; iterations > 0; --iterations) {
-                    relaxRightToLeft(alpha *= .99);
-                    resolveCollisions();
-                    relaxLeftToRight(alpha);
-                    resolveCollisions();
-                }
-
-                function initializeNodeDepth() {
-                    var ky = d3.min(nodesByBreadth, function(nodes) {
-                        return (size[1] - (nodes.length - 1) * nodePadding) / d3.sum(nodes, value);
-                    });
-
-                    nodesByBreadth.forEach(function(nodes) {
-                        nodes.forEach(function(node, i) {
-                            node.y = i;
-                            node.dy = node.value * ky;
-                        });
-                    });
-
-                    links.forEach(function(link) {
-                        link.dy = link.value * ky;
-                    });
-                }
-
-                function relaxLeftToRight(alpha) {
-                    nodesByBreadth.forEach(function(nodes, breadth) {
-                        nodes.forEach(function(node) {
-                            if (node.targetLinks.length) {
-                                var y = d3.sum(node.targetLinks, weightedSource) / d3.sum(node.targetLinks, value);
-                                node.y += (y - center(node)) * alpha;
-                            }
-                        });
-                    });
-
-                    function weightedSource(link) {
-                        return center(link.source) * link.value;
-                    }
-                }
-
-                function relaxRightToLeft(alpha) {
-                    nodesByBreadth.slice().reverse().forEach(function(nodes) {
-                        nodes.forEach(function(node) {
-                            if (node.sourceLinks.length) {
-                                var y = d3.sum(node.sourceLinks, weightedTarget) / d3.sum(node.sourceLinks, value);
-                                node.y += (y - center(node)) * alpha;
-                            }
-                        });
-                    });
-
-                    function weightedTarget(link) {
-                        return center(link.target) * link.value;
-                    }
-                }
-
-                function resolveCollisions() {
-                    nodesByBreadth.forEach(function(nodes) {
-                        var node,
-                            dy,
-                            y0 = 0,
-                            n = nodes.length,
-                            i;
-
-                        // Push any overlapping nodes down.
-                        nodes.sort(ascendingDepth);
-                        for (i = 0; i < n; ++i) {
-                            node = nodes[i];
-                            dy = y0 - node.y;
-                            if (dy > 0) node.y += dy;
-                            y0 = node.y + node.dy + nodePadding;
-                        }
-
-                        // If the bottommost node goes outside the bounds, push it back up.
-                        dy = y0 - nodePadding - size[1];
-                        if (dy > 0) {
-                            y0 = node.y -= dy;
-
-                            // Push any overlapping nodes back up.
-                            for (i = n - 2; i >= 0; --i) {
-                                node = nodes[i];
-                                dy = node.y + node.dy + nodePadding - y0;
-                                if (dy > 0) node.y -= dy;
-                                y0 = node.y;
-                            }
-                        }
-                    });
-                }
-
-                function ascendingDepth(a, b) {
-                    return a.y - b.y;
-                }
-            }
-
-            function computeLinkDepths() {
-                nodes.forEach(function(node) {
-                    node.sourceLinks.sort(ascendingTargetDepth);
-                    node.targetLinks.sort(ascendingSourceDepth);
-                });
-                nodes.forEach(function(node) {
-                    var sy = 0, ty = 0;
-                    node.sourceLinks.forEach(function(link) {
-                        link.sy = sy;
-                        sy += link.dy;
-                    });
-                    node.targetLinks.forEach(function(link) {
-                        link.ty = ty;
-                        ty += link.dy;
-                    });
-                });
-
-                function ascendingSourceDepth(a, b) {
-                    return a.source.y - b.source.y;
-                }
-
-                function ascendingTargetDepth(a, b) {
-                    return a.target.y - b.target.y;
-                }
-            }
-
-            function center(node) {
-                return node.y + node.dy / 2;
-            }
-
-            function value(link) {
-                return link.value;
-            }
-
-            return sankey;
-        };
-
-        var sank = {nodes: [], links: []};
-        for (var i = 1; i < labels.length; i++) {
-            var links = mkLink(labels[i - 1], labels[i], data);
-            sank.nodes.push(links.map(function (l) {
-                return {name: l.key, stype: labels[i - 1]}
-            }));
-            links.forEach(function (link) {
-                sank.links.push(link.values.map(function (leaf) {
-                    return {
-                        source: link.key,
-                        stype: labels[i - 1],
-                        target: leaf.key,
-                        ttype: labels[i],
-                        value: leaf.values
-                    }
+            var sank = {nodes: [], links: []};
+            for (var i = 1; i < labels.length; i++) {
+                var links = mkLink(labels[i - 1], labels[i], data);
+                sank.nodes.push(links.map(function (l) {
+                    return {name: l.key, stype: labels[i - 1]}
                 }));
+                links.forEach(function (link) {
+                    sank.links.push(link.values.map(function (leaf) {
+                        return {
+                            source: link.key,
+                            stype: labels[i - 1],
+                            target: leaf.key,
+                            ttype: labels[i],
+                            value: leaf.values
+                        }
+                    }));
+                });
+            }
+
+            //create the last set of nodes
+            links = mkLink(labels[labels.length - 1], labels[0], data);
+            sank.nodes.push(links.map(function (l) {
+                return {name: l.key, stype: labels[labels.length - 1]}
+            }));
+
+            sank.nodes = d3.merge(sank.nodes);
+            sank.links = d3.merge(sank.links);
+            var nodehash = sank.nodes.map(function (d) {
+                return d.name + "_" + d.stype
             });
+
+            sank.links.forEach(function (link) {
+                link.source = nodehash.indexOf(link.source + "_" + link.stype);
+                link.target = nodehash.indexOf(link.target + "_" + link.ttype);
+            });
+            sank.nWidth = 10;
+
+            sank.path = d3.sankey()
+                .nodeWidth(sank.nWidth)
+                .nodePadding(10)
+                .size([geom.width, geom.height - 20])
+                .nodes(sank.nodes)
+                .links(sank.links)
+                .layout(1) //don't worry about reiterating on optimal solution; choose faster
+                .link();
+
+            return sank
+
+            function mkLink(key1, key2, data) {
+                return d3.nest()
+                    .key(function(d) {return d[key1]})
+                    .sortKeys(d3.ascending)
+                    .key(function(d) {return d[key2]})
+                    .sortKeys(d3.ascending)
+                    .rollup(function(leaves) {
+                        return leaves.length || 1e-6
+                    })
+                    .entries(data);
+            }
+
+
         }
-
-        //create the last set of nodes
-        links = mkLink(labels[labels.length - 1], labels[0], data);
-        sank.nodes.push(links.map(function (l) {
-            return {name: l.key, stype: labels[labels.length - 1]}
-        }));
-
-        sank.nodes = d3.merge(sank.nodes);
-        sank.links = d3.merge(sank.links);
-        var nodehash = sank.nodes.map(function (d) {
-            return d.name + "_" + d.stype
-        });
-
-        sank.links.forEach(function (link) {
-            link.source = nodehash.indexOf(link.source + "_" + link.stype);
-            link.target = nodehash.indexOf(link.target + "_" + link.ttype);
-        });
-        sank.nWidth = 10;
-
-        sank.path = d3.sankey()
-            .nodeWidth(sank.nWidth)
-            .nodePadding(10)
-            .size([geom.width, geom.height - 20])
-            .nodes(sank.nodes)
-            .links(sank.links)
-            .layout(1) //don't worry about reiterating on optimal solution; choose faster
-            .link();
-
-        return sank
-
-        function mkLink(key1, key2, data) {
-            return d3.nest()
-                .key(function(d) {return d[key1]})
-                .sortKeys(d3.ascending)
-                .key(function(d) {return d[key2]})
-                .sortKeys(d3.ascending)
-                .rollup(function(leaves) {
-                    return leaves.length || 1e-6
+        function plotSankey(obj,sankey) {
+            //define the svg paths that link the nodes
+            var link = obj.svg.append("g").selectAll(".link")
+                .data(sankey.links,function(d) {return d.source.name+"-"+ d.target.name})
+                .enter().append("path")
+                .classed("link", 1)
+                .attr("d", sankey.path)
+                .style("stroke-width", function (d) {
+                    return Math.max(1, d.dy);
                 })
-                .entries(data);
+                .sort(function (a, b) {
+                    return b.dy - a.dy;
+                });
+
+            //using browser's preference for displaying title as tooltip
+            //TODO check if this is sufficient for client's use case
+            link.append("title")
+                .text(function (d) {
+                    return d.source.name + "â†’" + d.target.name + ": " + format(d.value);
+                });
+
+            //define the nodes
+            var node = svg.append("g").selectAll(".node")
+                .data(sankey.nodes,function(d) {return d.name})
+                .enter().append("g")
+                .classed("node", 1)
+                .attr("transform", function (d) {
+                    return "translate(" + d.x + "," + d.y + ")"
+                });
+
+            node.append("rect")
+                .classed("nodebox",1)
+                .attr({
+                    "height": function (d) {
+                        return d.dy;
+                    },
+                    "width": sankey.nWidth
+                })
+                .style({
+                    "fill": function (d) {
+                        return d.color = color(d.name.replace(/ .*/, ""));
+                    },
+                    "stroke": function (d) {
+                        return d3.rgb(d.color).darker(2)
+                    }
+                })
+                .append("title")
+                .text(function (d) {
+                    return d.name + ": " + format(d.value);
+                });
+
+            node.append("text")
+                .attr({
+                    "x": -6,
+                    "y": function (d) {
+                        return d.dy / 2
+                    },
+                    "dy": ".35em",
+                    "text-anchor": "end",
+                    "transform": null
+                })
+                .text(function (d) {
+                    return d.name;
+                })
+                .filter(function (d) {
+                    return d.x < 820 / 2;
+                })
+                .attr({
+                    "x": 6 + sankey.nWidth,
+                    "text-anchor": "start"
+                });
+
+            if (obj.background)
+                node.insert("rect", "text")
+                    .classed("background", 1)
+                    .attr({
+                        "x": function (d, i) {
+                            return d3.select(this.parentElement).select("text").node().getBBox().x - 2
+                        },
+                        "y": function (d, i) {
+                            return d3.select(this.parentElement).select("text").node().getBBox().y - 2
+                        },
+                        "width": function (d) {
+                            return d3.select(this.parentElement).select("text").node().getBBox().width + 4
+                        },
+                        "height": function (d) {
+                            return d3.select(this.parentElement).select("text").node().getBBox().height + 4
+                        },
+                    })
+                    .style("fill", "white");
         }
 
+        function updateSankey(obj,sankey) {
+            var link = obj.svg.selectAll(".link")
+                .data(sankey.links,function(d) {return d.source.name+"-"+ d.target.name});
 
-    }
-    function plotSankey(obj,sankey) {
-        //define the svg paths that link the nodes
-        var link = obj.svg.append("g").selectAll(".link")
-            .data(sankey.links,function(d) {return d.source.name+"-"+ d.target.name})
-            .enter().append("path")
-            .classed("link", 1)
-            .attr("d", sankey.path)
-            .style("stroke-width", function (d) {
-                return Math.max(1, d.dy);
-            })
-            .sort(function (a, b) {
-                return b.dy - a.dy;
-            });
 
-        //using browser's preference for displaying title as tooltip
-        //TODO check if this is sufficient for client's use case
-        link.append("title")
-            .text(function (d) {
-                return d.source.name + "â†’" + d.target.name + ": " + format(d.value);
-            });
+            d3.selectAll(".link")
+                .transition().duration(500)
+                .attr("d", sankey.path)
+                .style("stroke-width", function (d) {
+                    return Math.max(1, d.dy);
+                });
 
-        //define the nodes
-        var node = svg.append("g").selectAll(".node")
-            .data(sankey.nodes,function(d) {return d.name})
-            .enter().append("g")
-            .classed("node", 1)
-            .attr("transform", function (d) {
-                return "translate(" + d.x + "," + d.y + ")"
-            });
+            d3.selectAll(".link")
+                .transition().delay(500)
+                .sort(function (a, b) {
+                    return b.dy - a.dy;
+                });
 
-        node.append("rect")
-            .classed("nodebox",1)
-            .attr({
-                "height": function (d) {
-                    return d.dy;
-                },
-                "width": sankey.nWidth
-            })
-            .style({
-                "fill": function (d) {
-                    return d.color = color(d.name.replace(/ .*/, ""));
-                },
-                "stroke": function (d) {
-                    return d3.rgb(d.color).darker(2)
-                }
-            })
-            .append("title")
-            .text(function (d) {
-                return d.name + ": " + format(d.value);
-            });
 
-        node.append("text")
-            .attr({
-                "x": -6,
-                "y": function (d) {
-                    return d.dy / 2
-                },
-                "dy": ".35em",
-                "text-anchor": "end",
-                "transform": null
-            })
-            .text(function (d) {
-                return d.name;
-            })
-            .filter(function (d) {
-                return d.x < 820 / 2;
-            })
-            .attr({
-                "x": 6 + sankey.nWidth,
-                "text-anchor": "start"
-            });
+            link.select("title")
+                .text(function (d) {console.log(d.value)
+                    return d.source.name + "â†’" + d.target.name + ": " + format(d.value);
+                });
 
-        if (obj.background)
-            node.insert("rect", "text")
-                .classed("background", 1)
+
+            var node = obj.svg.selectAll(".node")
+                .data(sankey.nodes,function(d) {return d.name})
+                .transition().duration(500)
+                .attr("transform", function (d) {
+                    return "translate(" + d.x + "," + d.y + ")"
+                });
+
+            node.selectAll("rect.nodeBox")
+                .transition().duration(500)
+                .attr({
+                    "height": function (d) {
+                        return d.dy;
+                    }
+                });
+
+            node.selectAll("text")
+                .transition().duration(500)
+                .attr({
+                    "x": -6,
+                    "y": function (d) {
+                        return d.dy / 2
+                    },
+                    "dy": ".35em",
+                    "text-anchor": "end",
+                    "transform": null
+                })
+                .text(function (d) {
+                    return d.name;
+                })
+                .filter(function (d) {
+                    return d.x < 820 / 2;
+                })
+                .attr({
+                    "x": 6 + sankey.nWidth,
+                    "text-anchor": "start"
+                });
+
+            node.selectAll("rect.background")
                 .attr({
                     "x": function (d, i) {
                         return d3.select(this.parentElement).select("text").node().getBBox().x - 2
@@ -748,125 +828,48 @@ d3.csv(fname, function(err,data) {
                     },
                     "height": function (d) {
                         return d3.select(this.parentElement).select("text").node().getBBox().height + 4
-                    },
-                })
-                .style("fill", "white");
-    }
+                    }
+                });
 
-    function updateSankey(obj,sankey) {
-        var link = obj.svg.selectAll(".link")
-            .data(sankey.links,function(d) {return d.source.name+"-"+ d.target.name});
+        }
+        function switchKeyNames(d, keys) {
+            if (keys.new!=keys.orig)
+                d[keys.new] = d[keys.orig];
+        }
 
+        function toggleBehavior(obj,data) {
+            d3.selectAll("input[type=checkbox").on("change",function() {
+                var newdata = data;
+                if (!d3.select("input[value='UEI']").property("checked"))
+                    newdata = newdata.filter(function (d) {
+                        return d["Inspection Type"] != "UEI"
+                    });
+                if (!d3.select("input[value='CCIP']").property("checked"))
+                    newdata = newdata.filter(function (d) {
+                        return d["Inspection Type"] != "CCIP"
+                    });
+                if (!d3.select("input[value='Primary']").property("checked"))
+                    newdata = newdata.filter(function (d) {
+                        return d["Root Cause Type"] != "Primary"
+                    });
+                if (!d3.select("input[value='Contributing']").property("checked"))
+                    newdata = newdata.filter(function (d) {
+                        return d["Root Cause Type"] != "Contributing"
+                    });
 
-        d3.selectAll(".link")
-            .transition().duration(500)
-            .attr("d", sankey.path)
-            .style("stroke-width", function (d) {
-                return Math.max(1, d.dy);
-            });
-
-        d3.selectAll(".link")
-            .transition().delay(500)
-            .sort(function (a, b) {
-                return b.dy - a.dy;
-            });
-
-
-        link.select("title")
-            .text(function (d) {console.log(d.value)
-                return d.source.name + "â†’" + d.target.name + ": " + format(d.value);
-            });
-
-
-        var node = obj.svg.selectAll(".node")
-            .data(sankey.nodes,function(d) {return d.name})
-            .transition().duration(500)
-            .attr("transform", function (d) {
-                return "translate(" + d.x + "," + d.y + ")"
-            });
-
-        node.selectAll("rect.nodeBox")
-            .transition().duration(500)
-            .attr({
-                "height": function (d) {
-                    return d.dy;
+                if (newdata.length==0) {
+                    d3.selectAll(".link,.node").style("display","none");
                 }
-            });
-
-        node.selectAll("text")
-            .transition().duration(500)
-            .attr({
-                "x": -6,
-                "y": function (d) {
-                    return d.dy / 2
-                },
-                "dy": ".35em",
-                "text-anchor": "end",
-                "transform": null
-            })
-            .text(function (d) {
-                return d.name;
-            })
-            .filter(function (d) {
-                return d.x < 820 / 2;
-            })
-            .attr({
-                "x": 6 + sankey.nWidth,
-                "text-anchor": "start"
-            });
-
-        node.selectAll("rect.background")
-            .attr({
-                "x": function (d, i) {
-                    return d3.select(this.parentElement).select("text").node().getBBox().x - 2
-                },
-                "y": function (d, i) {
-                    return d3.select(this.parentElement).select("text").node().getBBox().y - 2
-                },
-                "width": function (d) {
-                    return d3.select(this.parentElement).select("text").node().getBBox().width + 4
-                },
-                "height": function (d) {
-                    return d3.select(this.parentElement).select("text").node().getBBox().height + 4
+                else {
+                    d3.selectAll(".link,.node").style("display","block");
+                    updateSankey(obj, mkSankeyData(newdata, obj.margin));
                 }
-            });
+            })
+        }
+    });//d3.csv callback
 
-    }
-    function switchKeyNames(d, keys) {
-        if (keys.new!=keys.orig)
-            d[keys.new] = d[keys.orig];
-    }
+},500)
 
-    function toggleBehavior(obj,data) {
-        d3.selectAll("input[type=checkbox").on("change",function() {
-            var newdata = data;
-            if (!d3.select("input[value='UEI']").property("checked"))
-                newdata = newdata.filter(function (d) {
-                    return d["Inspection Type"] != "UEI"
-                });
-            if (!d3.select("input[value='CCIP']").property("checked"))
-                newdata = newdata.filter(function (d) {
-                    return d["Inspection Type"] != "CCIP"
-                });
-            if (!d3.select("input[value='Primary']").property("checked"))
-                newdata = newdata.filter(function (d) {
-                    return d["Root Cause Type"] != "Primary"
-                });
-            if (!d3.select("input[value='Contributing']").property("checked"))
-                newdata = newdata.filter(function (d) {
-                    return d["Root Cause Type"] != "Contributing"
-                });
-
-            if (newdata.length==0) {
-                d3.selectAll(".link,.node").style("display","none");
-            }
-            else {
-                d3.selectAll(".link,.node").style("display","block");
-                updateSankey(obj, mkSankeyData(newdata, obj.margin));
-            }
-        })
-    }
-});//d3.csv callback
 
 function pluck(arr,key) {
     return arr.map(function(d) {return d[key]});
