@@ -6,7 +6,7 @@ image:  linkviews.png
 tags:   Resources, Tools, Beautiful
 app:    linkviews
 d3version:  https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js
-crossfilter:  True
+crossfilter:  False
 style:  linkviews.css
 ---
 
