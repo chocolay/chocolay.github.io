@@ -2,7 +2,7 @@
 layout: post
 title:  Connecting the Dots
 date:   2017-01-1 15:01:35 +0300
-image:  custom_graph.png
+image:  homemadeGraph.png
 tags:   tool graph network table bespoke connections no-data illustration
 d3version: https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js
 app:    homemadeGraph
