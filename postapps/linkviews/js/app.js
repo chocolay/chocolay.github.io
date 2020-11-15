@@ -676,7 +676,7 @@ function endAll (transition, callback) {
 
 var meta = {
     mainView: {
-        dirname: "/postapps/linkviews/data", filesnames: ["Systems", "UserAccess", "Groups"],
+        dirname: "/postapps/linkviews/data/", filesnames: ["Systems", "UserAccess", "Groups"],
         linkWords: ["CAND_ID", "CMTE_ID"],
         nodeInfo: {idTag: "CAND_ID", header: "CAND_NAME", header1Tag: "System"},
         chordInfo: {idTag: "CMTE_NM", pluck: "label", header: "CMTE_NM"},
