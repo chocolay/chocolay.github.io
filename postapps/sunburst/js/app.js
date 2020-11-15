@@ -17046,6 +17046,7 @@ d3.request(fname)
         for (var i = 0; i != data.length; ++i) arr[i] = String.fromCharCode(data[i]);
         console.log(arr.length)
         var wb = XLSX.read(arr.join(""), {type: "binary"});
+        console.log(wb)
         var lastModified = req.getResponseHeader("Last-Modified")
             .split(" ").splice(1, 3).join(" ");
         var workbook = {};
