@@ -187,9 +187,9 @@ function mkslider(amp) {
 }
 
 d3.select("#amplitude")
-    .style(position, "relative")
-    .style(top, "175px")
-    .style(left, "162px");
+    .style("position", "relative")
+    .style("top", "175px")
+    .style("left", "162px");
 
 var kind = "nsech2",
     i = new numeric.T(0, 1),
