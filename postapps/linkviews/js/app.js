@@ -18,7 +18,7 @@ var arc = d3.svg.arc().innerRadius(455).outerRadius(475);
 
 
 console.log(d3.select("#d3_app").node())
-    
+
     var svg = d3.select("#d3_app").append("div")
         .attr("id","svgDiv")
         .append("svg")
@@ -688,7 +688,7 @@ var meta = {
         headerText : "Groups (outer ring) to Systems (circles)"
     },
     circleClickView: {
-        dirname: "/postapps/linkviews/drilldown data/application/", filesnames: ["Systems", "UserAccess", "Groups"],
+        dirname: "/postapps/linkviews/drilldowndata/application/", filesnames: ["Systems", "UserAccess", "Groups"],
         linkWords: ["CAND_ID", "CMTE_ID"],
         nodeInfo: {idTag: "CAND_ID", header: "CAND_NAME", header1Tag: "Application"},
         chordInfo: {idTag: "CMTE_NM", pluck: "label", header: "CMTE_NM"},
@@ -702,7 +702,7 @@ var meta = {
 
     },
     arcClickView: {
-        dirname: "/postapps/linkviews/drilldown data/group/", filesnames: ["Systems", "UserAccess", "Groups"],
+        dirname: "/postapps/linkviews/drilldowndata/group/", filesnames: ["Systems", "UserAccess", "Groups"],
         linkWords: ["CAND_ID", "CMTE_ID"],
         nodeInfo: {idTag: "CAND_ID", header: "CAND_NAME", header1Tag: "System"},
         chordInfo: {idTag: "CMTE_NM", pluck: "label", header: "CMTE_NM"},
@@ -817,3 +817,6 @@ function main(obj) {
         }
     }
 }
+
+
+
