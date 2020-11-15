@@ -411,8 +411,8 @@ console.log(d3.select("svg").size())
             {"name":"lease per week","variable":"lease-per-week","value":1,"domain":[0,10,1]},
             {"name":"renew 12 month chance","variable":"re-12-month-chance","value":0.9,"domain":[0,1,0.01]},
 
-            {"name":"probability of renewal","variable":"renew-probability","value":0.7,"domain":[0,1,0.01]},
-            {"name":"probability of longterm customer","variable":"longterm-probability","value":0.55,"domain":[0,1,0.01]},
+            {"name":"tune A","variable":"renew-probability","value":0.7,"domain":[0,1,0.01]},
+            {"name":"tune B","variable":"longterm-probability","value":0.55,"domain":[0,1,0.01]},
         ],
         "variables":[]
     };
