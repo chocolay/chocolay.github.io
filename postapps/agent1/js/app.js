@@ -641,12 +641,12 @@ d3.csv(url).then(function(data) {
             d3.select("#timestamp").text(ttime);
             runSimulation(obj.data,obj);
             createCenters(visualSimulation,key);
-            
-             W = (d3.select("svg").attr("width"))+"px";
+
+             W = (d3.select("svg").style("width");
             if (d3.select(".post-image").style("height")!=H) {
                 d3.select(".post-image")
                     .style("height",(height+200)+"px")
-                    .style("width",width+"px");
+                    .style("width",W);
                 d3.select("article.post")
                     .style("background-color","ivory")
                     .style("width",W)
