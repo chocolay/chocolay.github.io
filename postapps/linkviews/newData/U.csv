@@ -1,0 +1,36 @@
+ID,TRANSACTION_AMT,systemID,system,class
+AGXPR01A,456,AGXAD01,Active Directory Domain System,colorA
+AGXPR01A,705,AGXPS01,PeopleSoft,colorB
+AGXPR01A,109,AGXOF01,Oracle Financial System,colorC
+AGXPR01A,119,AGXFB01,Facebook,colorD
+AGXPR01B,312,AGXAD01,Active Directory Domain System,colorA
+AGXPR01B,45,AGXOF01,Oracle Financial System,colorC
+AGXPR01B,2,AGXFB01,Facebook,colorD
+AGXPR01C,289,AGXAD01,Active Directory Domain System,colorA
+AGXPR01C,167,AGXOF01,Oracle Financial System,colorC
+AGXPR01C,81,AGXUP01,Ultipro,colorE
+AGXPR01C,3,AGXFB01,Facebook,colorD
+AGXPR01D,410,AGXAD01,Active Directory Domain System,colorA
+AGXPR01D,710,AGXPS01,PeopleSoft,colorB
+AGXPR01D,65,AGXUP01,Ultipro,colorE
+AGXPR01D,1,AGXFB01,Facebook,colorD
+AGXPR01E,369,AGXAD01,Active Directory Domain System,colorA
+AGXPR01E,698,AGXPS01,PeopleSoft,colorB
+AGXPR01E,87,AGXOF01,Oracle Financial System,colorC
+AGXPR01E,3,AGXUP01,Ultipro,colorE
+AGXPR01E,12,AGXFB01,Facebook,colorD
+AGXPR01F,380,AGXAD01,Active Directory Domain System,colorA
+AGXPR01F,693,AGXPS01,PeopleSoft,colorB
+AGXPR01F,109,AGXOF01,Oracle Financial System,colorC
+AGXPR01F,2,AGXFB01,Facebook,colorD
+AGXPR01G,405,AGXAD01,Active Directory Domain System,colorA
+AGXPR01G,721,AGXPS01,PeopleSoft,colorB
+AGXPR01G,288,AGXOF01,Oracle Financial System,colorC
+AGXPR01G,13,AGXFB01,Facebook,colorD
+AGXPR01H,293,AGXAD01,Active Directory Domain System,colorA
+AGXPR01H,201,AGXOF01,Oracle Financial System,colorC
+AGXPR01I,124,AGXAD01,Active Directory Domain System,colorA
+AGXPR01I,16,AGXOF01,Oracle Financial System,colorC
+AGXPR01J,581,AGXAD01,Active Directory Domain System,colorA
+AGXPR01J,5,AGXPS01,PeopleSoft,colorB
+AGXPR01J,174,AGXOF01,Oracle Financial System,colorC
