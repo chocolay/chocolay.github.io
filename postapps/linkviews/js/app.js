@@ -1,3 +1,4 @@
+
 //queue
 (function(){function n(n){function t(){for(;f=a<c.length&&n>p;){var u=a++,t=c[u],r=l.call(t,1);r.push(e(u)),++p,t[0].apply(null,r)}}function e(n){return function(u,l){--p,null==d&&(null!=u?(d=u,a=s=0/0,r()):(c[n]=l,--s?f||t():r()))}}function r(){null!=d?v(d):i?v(d,c):v.apply(null,[d].concat(c))}var o,f,i,c=[],a=0,p=0,s=0,d=null,v=u;return n||(n=1/0),o={defer:function(){return d||(c.push(arguments),++s,t()),o},await:function(n){return v=n,i=!1,s||r(),o},awaitAll:function(n){return v=n,i=!0,s||r(),o}}}function u(){}"undefined"==typeof module?self.queue=n:module.exports=n,n.version="1.0.4";var l=[].slice})();
 
@@ -21,7 +22,8 @@ var arc = d3.svg.arc().innerRadius(455).outerRadius(475);
 //it's best to just standard notation
 
 
-    var svg = d3.select("#svgDiv")
+    var svg = d3.select("#d3_app").append("div")
+        .attr("id","svgDiv")
         .append("svg")
         .attr({
             "viewBox": "0 0 " + (outerRadius*2.3) +" "+(outerRadius*2.3),
@@ -733,6 +735,7 @@ var meta = {
 
 //initial setup
 setTimeout(function() {
+
     main({view:"mainView",angles:{startAngle:0,endAngle:0}});
 },500)
 
@@ -754,7 +757,6 @@ function main(obj) {
 
         //keep track of the view; may want to know it for toggling purposes.
         d3.select("#d3_app").datum(view);
-
 
         //we're removing these links because we're switching amongst unlike datasets
         //and so the object constancy isn't logical
@@ -799,8 +801,6 @@ function main(obj) {
                 updateArcs(meta[view].elements, meta[view].rings, dataset.chordInfo, dataset.linkWords, obj.angles); //text
                 updateLinks(meta[view].elements, meta[view].rings, meta[view].links, dataset.linkInfo, dataset.linkWords); //links
                 updateNodes(meta[view].elements, meta[view].rings, meta[view].links, dataset.nodeInfo, dataset.linkWords);  //circles
-
-
             }); //end await callback
         }
         else { //the dataset is already present
