@@ -8,7 +8,7 @@ app: statsApp
 style: statsApp
 d3version:  https://d3js.org/d3.v3.js
 crossfilter: False
-numerical: False
+numeric: False
 ---
 
-Stat stuff
+Stat stuff I need to write
