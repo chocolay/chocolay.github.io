@@ -4,8 +4,7 @@ var dateFormat = "%Y-%m-%d";
 var colors = ["#8dd3c7","#a6cee3","#ffffb3","#bebada","#fb8072","#80b1d3","#fdb462","#b3de69","#d9ffd9","#fccd35"];
 
 //sunbust modified from: https://bl.ocks.org/kerryrodden/766f8f6d31f645c39f488a0befa1e3c8
-d3.json(fname,function(Z) {
-
+d3.json(fname,function(err,Z) {
         //toggle views
         d3.selectAll("input").on("change", function () {
             var id = d3.select(this).property("value");
