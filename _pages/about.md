@@ -1,7 +1,7 @@
 ---
 layout: page
 title: About Elise
-header: Hi, my name is Elise (but, if you met me before 1984, you can call me Ann)
+header: Hi, I'm Elise
 permalink: /about/
 image: Kavieng.jpg
 ---
