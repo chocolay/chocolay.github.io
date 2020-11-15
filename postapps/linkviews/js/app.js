@@ -16,7 +16,6 @@ var arc = d3.svg.arc().innerRadius(455).outerRadius(475);
         nodesTranslate = outerRadius*0.47,
         chordsTranslate = outerRadius*1.17;
 
-
     var svg = d3.select("#d3_app").append("div")
         .attr("id","svgDiv")
         .append("svg")
@@ -81,7 +80,6 @@ function initialize(C,L,R,linkWords) {
 }
 
 //events
-
 
 d3.select("#d3_app").on("click", function() {
     var currentView = d3.select("#d3_app").datum();
@@ -740,6 +738,9 @@ setTimeout(function() {
     d3.select("#d3_app").style("height",d3.select("#svgDiv").style("height"))
 },1200)
 
+d3.select("body").node().onresize = function() {
+    d3.select("#d3_app").style("height",d3.select("#svgDiv").style("height"))
+};
 
 
 //once a view is selected, create the chart
@@ -821,3 +822,6 @@ function main(obj) {
         }
     }
 }
+
+
+
