@@ -416,6 +416,7 @@ d3.csv(url).then(function(data) {
 
     var obj = setup(obj, data);
 
+    oo = obj;
     obj.currentDate = data[0]["Report Date"];
 
     var origData = deepClone(data); //so we can reset the model
@@ -531,7 +532,9 @@ d3.csv(url).then(function(data) {
             let d = d3.select(this).datum()
             start(d);
         });
+
         console.log(d3.select("svg").size())
+
                 var svg = d3.select("svg")
                     .attr("width",width)
                     .attr("height",height)
