@@ -532,7 +532,7 @@ d3.csv(url).then(function(data) {
             start(d);
         });
 
-                var svg = d3.select("#svg")
+                var svg = d3.select("svg")
                     .attr("width",width)
                     .attr("height",height)
                     .attr("id", "mainSVG")
