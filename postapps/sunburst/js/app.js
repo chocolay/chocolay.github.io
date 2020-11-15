@@ -17201,7 +17201,7 @@ d3.request(fname)
         initializeBreadcrumbTrail();
         drawLegend();
         createSun(Z);
-        },1000)
+        },3000)
     
         //functions
         // Generate a string that describes the points of a breadcrumb polygon.
