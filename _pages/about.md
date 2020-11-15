@@ -4,6 +4,7 @@ title: About Elise
 header: Hi, I'm Elise
 permalink: /about/
 image: Kavieng.jpg
+imageText: near Kavieng, New Ireland, Papua New Guinea
 ---
 
 
