@@ -1,4 +1,8 @@
-
+{% if page.d3version == 6 %}
+    <script src="{{ site.baseurl }}/js/vendors/d3.v6.min.js"></script>
+{% else %}
+    <script src={{page.d3version}}></script>
+{% endif %}
 <script src="{{ site.baseurl }}/js/vendors/jquery-3.3.1.min.js"></script>
 <script src="{{ site.baseurl }}/js/vendors/simple-jekyll-search.min.js"></script>
 <script>
@@ -15,6 +19,16 @@
 <script src="{{ site.baseurl }}/js/vendors/instafeed.min.js"></script>
 <script src="{{ site.baseurl }}/js/vendors/jquery.fitvids.js"></script>
 <script src="{{ site.baseurl }}/js/common.js"></script>
+
+{% if page.crossfilter %}
+  <script src= "{{ site.baseurl }}/js/vendors/crossfilter.min.js" ></script>
+{% endif %}
+
+{% for file in site.static_files %}
+  {% if file.path contains page.app and file.extname == ".js" %}
+    <script src={{ file.path }} charset="utf-8"></script>
+  {% endif %}
+{% endfor %}
 
 
     
