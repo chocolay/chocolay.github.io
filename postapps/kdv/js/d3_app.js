@@ -218,7 +218,7 @@ var s = 960,
     paper = d3.select('#d3_app')
         .append("svg")
         .attr("width", s)
-        .attr("height",s); //height is s/2 for straight line
+        .attr("height",s/2); //height is s/2 for straight line
 
 var xscale = d3.scale.linear().domain([0, N]).range([0, s]),
     yscale = d3.scale.linear().domain([0, 175]).range([s / 4, 0]),
