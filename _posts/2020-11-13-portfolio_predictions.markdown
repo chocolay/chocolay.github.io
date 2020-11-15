@@ -8,7 +8,8 @@ app:    agent1
 styles:  agent1.css
 d3version: 6
 crossfilter: True
----
+---  
+
 
 A client's subscription-based business grew up from a shoestring operation to a complex set of services, discounts, and enticements for renewals.
 His whole business operation was dependant on an enormous spreadsheet filled with individual customers and their interactions.
