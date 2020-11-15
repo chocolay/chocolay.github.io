@@ -379,7 +379,7 @@ var url = "/postapps/agent1/assets/rent.csv";
 
 
 var codes = {
-    "Status":["VA","VL","NA","NL","OC","Down"],
+    "Status":["VA","VL","NA","NL","OC"],
     "Renewal Status": ["Inactive","NTV","Undecided","New"],
     "Size":d3.range(0,4),
     "All":[1]
@@ -724,7 +724,7 @@ console.log(d3.select("svg").size())
                 sel2.append("div")
                     .text(humanName + ":")
                     .classed("label", 1)
-                    .style("color","ivory");
+                    .style("color","darkgrey");
 
                 sel2.append("input")
                     .property("type", "range")
