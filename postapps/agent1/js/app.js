@@ -379,7 +379,7 @@ var url = "/postapps/agent1/assets/rent.csv";
 
 
 var codes = {
-    "Status":["VA","VL","NA","NL","OC","Down"],
+    "Status":["VA","VL","NA","NL","OC"],
     "Renewal Status": ["Inactive","NTV","Undecided","New"],
     "Size":d3.range(0,4),
     "All":[1]
@@ -439,7 +439,7 @@ console.log(d3.select("svg").size())
     var radiusScale = d3.scaleLinear()
         .domain(d3.extent(obj.data,d=>+d["Square Feet"])) //range of square ft
         .range([4,10]); //range of circle sizes
-/*
+
     initVis(id,obj.data,obj);
 
     obj.adjustableParams.forEach(function (param,i) {
@@ -448,7 +448,7 @@ console.log(d3.select("svg").size())
     });
     d3.selectAll(".inputBox").filter((d,i)=>i<8)
         .style("display","none")
-*/
+
     /*                                  button behaviors                */
 
     goButton = d3.select("#menu")
