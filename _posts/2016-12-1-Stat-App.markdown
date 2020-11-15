@@ -6,6 +6,7 @@ image:  statApp.png
 tags:   STEM Statistics PDF Histogram
 app:    statApp
 script: statApp
+style:  statApp.css
 d3version: https://d3js.org/d3.v3.min.js
 crossfilter: False
 numeric: False
