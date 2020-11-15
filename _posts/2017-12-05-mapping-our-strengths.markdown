@@ -13,6 +13,8 @@ It turns out many customers need a custom map and so I've built them in a variet
                 <a href = "http://eliseralph.com/Chippewa/Mscroll_LVD.shtml">as illustrated in Schoolcraft, 1851</a> </span></span> to the <span class = bold>widely used 270 to Win app</span><span class='tooltip'>*<span class="tooltiptext">
                 as seen in the Washington Post and 538.com.</span></span>
                     
-                This particular map was built to display the multi-year global "Policy Coherence Index for Development." The illustrated policy can be changed by the colored index in the upper right corner and the year is controlled by the slider on the bottom.
+This particular map was built to display the multi-year global "Policy Coherence Index for Development." The illustrated policy can be changed by the colored index in the upper right corner and the year is controlled by the slider on the bottom.
+
+http://eliseralph.com/tasks_/EUwaste_2_/
            
            
