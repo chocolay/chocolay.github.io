@@ -4,6 +4,11 @@ title:  Korteweg deVries equation (Inverse Scattering Transform)
 date:   2016-11-1 15:01:35 +0300
 image:  KDV_IST.png
 tags:   STEM, Nonlinear-PDE, Matrix-Math, Soliton, Wave
+app:    kdv
+script: kdv
+d3version: http://d3js.org/d3.v3.min.js
+crossfilter: False
+numeric: True
 ---
 Yeah, and if you were the pope they'd be all, "Straighten your pope hat." And "Put on your good vestments." Noooooo! Perhaps, but perhaps your civilization is merely the sewer of an even greater society above you!
 
