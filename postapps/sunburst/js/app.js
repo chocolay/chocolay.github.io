@@ -17044,6 +17044,7 @@ d3.request(fname)
         var data = new Uint8Array(req.response);
         var arr = new Array();
         for (var i = 0; i != data.length; ++i) arr[i] = String.fromCharCode(data[i]);
+        console.log(arr.length)
         var wb = XLSX.read(arr.join(""), {type: "binary"});
         var lastModified = req.getResponseHeader("Last-Modified")
             .split(" ").splice(1, 3).join(" ");
@@ -17055,7 +17056,7 @@ d3.request(fname)
             }
         });
 
-        console.log(wb)
+
         var locations = findLocationInfo(workbook[wb.SheetNames[1]]);
 
         var locationSet = d3.set(d3.values(locations)).values();
