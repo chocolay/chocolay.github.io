@@ -246,11 +246,10 @@ var xscale = d3.scale.linear().domain([0, N]).range([0, s]),
 
     //line = d3.svg.line().x(function(d,i) {return 340+(yscale(100-d))*Math.cos(x[i])}).y(function(d,i) {return 340+(yscale(100-d))*Math.sin(x[i])}).interpolate("basis")
 
-    patchbd = paper.append('svg:path').style({
-        'fill': 'none',
-        'stroke': '#ee3322',
-        'stroke-width': 2.5
-    }),
+    patchbd = paper.append('svg:path')
+        .style('fill', 'none')
+        .style('stroke', '#ee3322')
+        .style('stroke-width', 2.5);
 
     mkslider([a]);
 
