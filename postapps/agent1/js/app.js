@@ -3,8 +3,6 @@
  * All rights reserved
  */
 
-
-
 //this is the model
 function runSimulation(nodes,obj) {
     updateMarketRents();
@@ -297,6 +295,7 @@ function runSimulation(nodes,obj) {
 
 }//runSimulation
 
+//utiliity functions
 function deepClone (obj) {
     var _out = new obj.constructor;
 
@@ -376,6 +375,9 @@ function boundRandom(min, mean, max, std) {
 
 var url = "/postapps/agent1/assets/rent.csv";
 
+//running the model
+
+
 var codes = {
     "Status":["VA","VL","NA","NL","OC","Down"],
     "Renewal Status": ["Inactive","NTV","Undecided","New"],
@@ -392,8 +394,11 @@ var width = 770;
 var height = 600;
 var id = "#d3_app";
 
-
 d3.csv(url).then(function(data) {
+    d3.select(id).append("svg")
+        .attr("width",width)
+        .attr("height",height);
+
     obj = { "params": {"currentDate":"14/09/2020"},
         "adjustableParams":[
             {"name":"make ready schedule days","variable":"make-ready-schedule-days","value":10,"domain":[0,14,1]},
@@ -533,7 +538,7 @@ d3.csv(url).then(function(data) {
             start(d);
         });
 
-        console.log(d3.select("svg").size())
+
 
                 var svg = d3.select("svg")
                     .attr("width",width)
@@ -745,9 +750,6 @@ d3.csv(url).then(function(data) {
         });
 
         d3.timeout(function() {
-            d3.select("#d3_app").append("svg")
-                .attr("width",width)
-                .attr("height",height)
             var key = "Status";
             var increment = 0;
             start(key);
