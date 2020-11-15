@@ -3,7 +3,7 @@ layout: post
 title:  Stats App
 date:   2016-11-1 15:01:35 +0300
 image:  statApp.png
-tags:   STEM PDF Histogram
+tags:   STEM Statistics PDF Histogram
 app:    statApp
 script: statApp
 d3version: https://d3js.org/d3.v3.min.js
