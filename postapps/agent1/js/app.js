@@ -504,6 +504,7 @@ console.log(d3.select("svg").size())
         .property("max", 1000)
         .property("step", 5)
         .property("value",900)
+        .style("width","30%")
         .on("change",function(d) {
             stopForecast();
             start(d3.select("#toggle").datum());
@@ -753,6 +754,8 @@ console.log(d3.select("svg").size())
                     .classed("boxSlider",1)
                     .style("margin-left","20px")
                     .style("width","30px")
+                    .style("position","relative")
+                    .style("top","-20px")
                     .on("input", change);
 
                 function change() {
