@@ -876,6 +876,7 @@ function pluck(arr,key) {
 }
 
 function initialize(obj) {
+    console.log(d3.select(obj.selector).node())
     svg = d3.select(obj.selector).append("svg")
         .attr({"viewBox":"0 0 "+obj.geom.width+" "+obj.geom.height})
         .append("g")
