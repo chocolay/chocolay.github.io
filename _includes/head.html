@@ -22,9 +22,9 @@
     {% endcapture %}
     {{ include_to_scssify | scssify }}
     
-    {% if page.style %}
-    {% include /postapps/{{ page.app }}/assets/style.css %}
-    {% endif %}
+
+    {% if page.style %} {% include {{ page.style }} %} {% endif %}
+
 
 </style>
 </head>
