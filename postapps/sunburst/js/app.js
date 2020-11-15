@@ -17027,110 +17027,6 @@ var colors = ["#8dd3c7","#a6cee3","#ffffb3","#bebada","#fb8072","#80b1d3","#fdb4
 
 
 
-function initialize(obj) {
-    svg = d3.select(obj.selector).append("svg")
-        .attr("viewBox","0 0 "+obj.geom.width+" "+obj.geom.height)
-        .append("g")
-        .attr("id","chart")
-        .attr("transform","translate("+obj.geom.left+","+obj.geom.top+")");
-    if (obj.x) svg.append("g")
-        .classed("x",1)
-        .classed("axis",1)
-    if (obj.y) svg.append("g")
-        .classed("y",1)
-        .classed("axis",1);
-
-    if (obj.tooltip) {
-        var tooltip = d3.select(obj.selector).append("div")
-            .attr("id", "tooltip");
-
-        ["header1", "header-rule", "header2"]
-            .forEach(function (c) {
-                tooltip.append("div")
-                    .classed(c, 1);
-            });
-    }
-    return svg
-}
-function geomSetup () {
-    //some geometry
-    var width = 800;
-    var height = 600;
-    //create Initial DOM
-    var margin = {top: 10, right: 30, bottom: 10, left: 100};
-    margin.width = width - margin.left - margin.right;
-    margin.height = height - margin.top - margin.bottom;
-
-    var svg = initialize({selector: selector, x: 0, y: 0, tooltip: 1, geom: margin});
-
-    // Breadcrumbs
-    var b = {
-        w: 82, h: 30, s: 3, t: 10
-    };
-
-    //this is all toggle stuff to change the view
-    //when we eliminate the toggle at the end, then just leave the
-    //group that we need.
-    svg.append("g")
-        .attr("id", "sunburst")
-        .classed("view", 1)
-        .attr("transform", "translate(-90,0)")
-
-    //every view uses the cScale
-    window.cScale = d3.scaleOrdinal()
-        .domain(events)
-        .range(colors);
-
-    //sunburst
-    var vis = d3.select("g#sunburst")
-        .append("g")
-        .attr("id", "container")
-        .attr("transform", "translate(" + (margin.width / 2) + "," + (margin.height / 2) + ")");
-
-    var radius = Math.min(margin.width / 2, margin.height / 2);
-    vis.append("circle")
-        .attr("r", radius)
-        .style("opacity", 0);
-
-    var partition = d3.partition()
-        .size([2 * Math.PI, radius * radius]);
-
-    var arc = d3.arc()
-        .startAngle(function (d) {
-            return d.x0;
-        })
-        .endAngle(function (d) {
-            return d.x1;
-        })
-        .innerRadius(function (d) {
-            return Math.sqrt(d.y0);
-        })
-        .outerRadius(function (d) {
-            return Math.sqrt(d.y1);
-        });
-
-    vis.append("text")
-        .attr("id", "expl")
-        .attr("text-anchor", "middle")
-        .style("visibility", "hidden")
-        .append("tspan")
-        .html("<tspan id=percentage></tspan> <tspan id=plural>families</tspan> on this journey</tspan>")
-        .style("font-size", "75%");
-
-    vis.append("text")
-        .attr("id", "intro")
-        .attr("text-anchor", "middle")
-        .html("<tspan id=num></tspan> families")
-        .style("fill", "grey");
-
-    vis.append("text")
-        .attr("id", "location")
-        .attr("y", 20)
-        .style("font-size", "75%")
-        .attr("text-anchor", "middle")
-        .text("")
-        .style("fill", "grey");
-}
 setTimeout(function() {
 
 geomSetup();
@@ -17227,6 +17123,113 @@ d3.request(fname)
                 v.event = key[1]
             });
         });
+
+        function initialize(obj) {
+            svg = d3.select(obj.selector).append("svg")
+                .attr("viewBox","0 0 "+obj.geom.width+" "+obj.geom.height)
+                .append("g")
+                .attr("id","chart")
+                .attr("transform","translate("+obj.geom.left+","+obj.geom.top+")");
+            if (obj.x) svg.append("g")
+                .classed("x",1)
+                .classed("axis",1)
+            if (obj.y) svg.append("g")
+                .classed("y",1)
+                .classed("axis",1);
+
+            if (obj.tooltip) {
+                var tooltip = d3.select(obj.selector).append("div")
+                    .attr("id", "tooltip");
+
+                ["header1", "header-rule", "header2"]
+                    .forEach(function (c) {
+                        tooltip.append("div")
+                            .classed(c, 1);
+                    });
+            }
+            return svg
+        }
+        function geomSetup () {
+            //some geometry
+            var width = 800;
+            var height = 600;
+            //create Initial DOM
+            var margin = {top: 10, right: 30, bottom: 10, left: 100};
+            margin.width = width - margin.left - margin.right;
+            margin.height = height - margin.top - margin.bottom;
+
+            var svg = initialize({selector: selector, x: 0, y: 0, tooltip: 1, geom: margin});
+
+            // Breadcrumbs
+            var b = {
+                w: 82, h: 30, s: 3, t: 10
+            };
+
+            //this is all toggle stuff to change the view
+            //when we eliminate the toggle at the end, then just leave the
+            //group that we need.
+            svg.append("g")
+                .attr("id", "sunburst")
+                .classed("view", 1)
+                .attr("transform", "translate(-90,0)")
+
+            //every view uses the cScale
+            window.cScale = d3.scaleOrdinal()
+                .domain(events)
+                .range(colors);
+
+            //sunburst
+            var vis = d3.select("g#sunburst")
+                .append("g")
+                .attr("id", "container")
+                .attr("transform", "translate(" + (margin.width / 2) + "," + (margin.height / 2) + ")");
+
+            var radius = Math.min(margin.width / 2, margin.height / 2);
+            vis.append("circle")
+                .attr("r", radius)
+                .style("opacity", 0);
+
+            var partition = d3.partition()
+                .size([2 * Math.PI, radius * radius]);
+
+            var arc = d3.arc()
+                .startAngle(function (d) {
+                    return d.x0;
+                })
+                .endAngle(function (d) {
+                    return d.x1;
+                })
+                .innerRadius(function (d) {
+                    return Math.sqrt(d.y0);
+                })
+                .outerRadius(function (d) {
+                    return Math.sqrt(d.y1);
+                });
+
+            vis.append("text")
+                .attr("id", "expl")
+                .attr("text-anchor", "middle")
+                .style("visibility", "hidden")
+                .append("tspan")
+                .html("<tspan id=percentage></tspan> <tspan id=plural>families</tspan> on this journey</tspan>")
+                .style("font-size", "75%");
+
+            vis.append("text")
+                .attr("id", "intro")
+                .attr("text-anchor", "middle")
+                .html("<tspan id=num></tspan> families")
+                .style("fill", "grey");
+
+            vis.append("text")
+                .attr("id", "location")
+                .attr("y", 20)
+                .style("font-size", "75%")
+                .attr("text-anchor", "middle")
+                .text("")
+                .style("fill", "grey");
+        }
+
+        geomSetup();
 
         initializeBreadcrumbTrail();
         drawLegend();
