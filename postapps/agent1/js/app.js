@@ -398,7 +398,6 @@ d3.csv(url).then(function(data) {
     d3.select(id).append("svg")
         .attr("width",width)
         .attr("height",height);
-    console.log(d3.select("svg").size())
 
     obj = { "params": {"currentDate":"14/09/2020"},
         "adjustableParams":[
