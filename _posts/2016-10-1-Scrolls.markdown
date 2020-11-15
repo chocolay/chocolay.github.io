@@ -3,7 +3,7 @@ layout: post
 title:  Martell's Maps
 date:   2016-10-1 15:01:35 +0300
 image:  LVD.png
-tags:   Style, History, Map, Chippewa
+tags:   Style History Map Chippewa
 ---
 Yeah, and if you were the pope they'd be all, "Straighten your pope hat." And "Put on your good vestments." Noooooo! Perhaps, but perhaps your civilization is merely the sewer of an even greater society above you!
 
