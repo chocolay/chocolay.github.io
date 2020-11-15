@@ -17,7 +17,7 @@ var arc = d3.svg.arc().innerRadius(455).outerRadius(475);
         chordsTranslate = outerRadius*1.17;
 
 
-console.log(d3.select("#d3_app").node())
+    console.log(d3.select("#d3_app").node())
 
     var svg = d3.select("#d3_app").append("div")
         .attr("id","svgDiv")
@@ -729,24 +729,17 @@ var meta = {
     }
 };
 
+d3.select(".post-image")
+    .style("background-color","white");
 
 //initial setup
 setTimeout(function() {
     main({view:"mainView",angles:{startAngle:0,endAngle:0}});
-   
+
 },500)
 
 setTimeout(function() {
-                var H = (d3.select("svg").attr("height")+200)+"px";
-
-            if (d3.select(".post-image").style("height")!=H) {
-                d3.select(".post-image")
-                    .style("height",(height+200)+"px")
-                    .style("width",width+"px");
-                d3.select("article.post")
-                    .style("width",width+"px")
-                d3.selectAll("p").style("width",(width-75)+"px")
-            }
+    d3.select("#d3_app").style("height",d3.select("#svgDiv").style("height"))
 },1200)
 
 
@@ -830,6 +823,3 @@ function main(obj) {
         }
     }
 }
-
-
-
