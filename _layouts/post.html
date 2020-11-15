@@ -34,7 +34,7 @@ layout: default
 {% else %}
   {% if page.image %}
     <div class="post__head">
-      <div class="post-image" style="background-image: url({{site.baseurl}}/images/{{page.image}})"></div>
+      <div class="post-image" width = "100%" height = auto style="background-image: url({{site.baseurl}}/images/{{page.image}})"></div>
     </div>
   {% else %}
     {% assign no-image = 'post-no-image' %}
