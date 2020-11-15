@@ -9,7 +9,7 @@ style:  homemadeGraph.css
 ---
 [Duck Duck Go](https://duckduckgo.com).
 
-[This tool](http://eliseralph.com/tasks_/ADV_/){:target="_blank"} was built for a client whose business revolved around AI-classification of "big data" where the goal is to assign "things" to categories. 
+[This tool](http://eliseralph.com/tasks_/ADV_/) was built for a client whose business revolved around AI-classification of "big data" where the goal is to assign "things" to categories. 
 
 They wanted to illustrate how the categories themselves were related to each other --- because of similarities within them. 
 For instances, canoes and kayaks are "closer together" than either one is to sailboats.
