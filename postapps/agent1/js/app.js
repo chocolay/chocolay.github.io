@@ -648,7 +648,6 @@ d3.csv(url).then(function(data) {
                 d3.select(".post-image")
                     .style("height",(height+200)+"px")
                     .style("width",width+"px");
-                console.log(d3.select("article.post").size())
                 d3.select("article.post")
                     .style("background-color","ivory")
                     .style("width",W)
