@@ -1,0 +1,7 @@
+CMTE_ID,Amount,CMTE_NM,CONNECTED_ORG_NM,CMTE_TP
+AGXFN01,8972,Finance,Agax Finance,Q
+AGXAR01,4121,Accounts Receivable,Agax Accounts Receivable,Q
+AGXAP01,3987,Accounts Payable,Agax Accounts Payable,O
+AGXPR01,1196,Payroll,Agax Payroll,H
+AGXHR01,186,Human Resources,Agax Human Resources,Q
+AGXIA01,89,Internal Audit,Agax Internal Audit,Q
