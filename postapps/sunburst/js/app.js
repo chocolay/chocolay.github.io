@@ -17042,7 +17042,6 @@ d3.request(fname)
 
         //convert the .xls data into json
         var data = new Uint8Array(req.response);
-        console.log(data.length)
         var arr = new Array();
         for (var i = 0; i != data.length; ++i) arr[i] = String.fromCharCode(data[i]);
         var wb = XLSX.read(arr.join(""), {type: "binary"});
@@ -17056,6 +17055,7 @@ d3.request(fname)
             }
         });
 
+        console.log(wb)
         var locations = findLocationInfo(workbook[wb.SheetNames[1]]);
 
         var locationSet = d3.set(d3.values(locations)).values();
