@@ -524,6 +524,7 @@ console.log(d3.select("svg").size())
         mainVis
             .append("div")
             .attr("id","toggle")
+            .style("margin-left","20px")
             .selectAll("button").data(buttonTypes).enter()
             .append("button")
             .classed("sortButton",1)
@@ -722,6 +723,7 @@ console.log(d3.select("svg").size())
                 sel2.append("div")
                     .text(humanName + ":")
                     .classed("label", 1)
+                    .style("margin-left","20px")
                     .style("color","darkgrey");
 
                 sel2.append("input")
@@ -731,12 +733,14 @@ console.log(d3.select("svg").size())
                     .property("step", domain[2])
                     .property("value", defaultValue)
                     .classed("slider", 1)
+                    .style("margin-left","20px")
                     .on("input", change);
 
                 sel2.append("input")
                     .property("value", defaultValue)
                     .classed("text", 1)
                     .classed("slider", 1)
+                    .style("margin-left","20px")
                     .on("input", change);
 
                 function change() {
