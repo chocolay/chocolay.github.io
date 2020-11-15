@@ -17127,6 +17127,7 @@ d3.request(fname)
         margin.width = width - margin.left - margin.right;
         margin.height = height - margin.top - margin.bottom;
 
+        setTimeout(function() { 
         var svg = initialize({selector: selector, x: 0, y: 0, tooltip: 1, geom: margin});
 
         // Breadcrumbs
@@ -17200,7 +17201,8 @@ d3.request(fname)
         initializeBreadcrumbTrail();
         drawLegend();
         createSun(Z);
-
+        },1000)
+    
         //functions
         // Generate a string that describes the points of a breadcrumb polygon.
         function breadcrumbPoints(d, i) {
