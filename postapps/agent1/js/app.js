@@ -751,12 +751,10 @@ d3.csv(url).then(function(data) {
 
 
         function change(d) {
-            console.log(d,this)
+            var v = d3.select(this).property("value")
             //update everything about the slider
-            sel2.selectAll("input.slider")
-                .property("value", this.value);
             sel2.select(".label")
-                .text(d=>d + ": "+val)
+                .text(d=>(d + ": "+v))
             obj.value = this.value;
         }
     } //makeSlider
