@@ -7,7 +7,7 @@ tags:   Sankey Table Visualization Practical
 d3version: https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js
 crossfilter: True
 app:    sankeycsv
-style:    True
+style:  sankeycsv.css
 ---
 
 Large military organizations track everything! Records are kept regarding deficiencies in operation at all levels. Given the shear amount of information across a branch of the military, there needs to be a visual summary of where, who, what, why, etc to look for patterns and places to improve.
