@@ -211,7 +211,7 @@ var kind = "nsech2",
 d3.select("#ampDisplay")
     .html(kind == "sech2" ? +a + "sech&sup2(x)" : "u(0) = " + a + "exp(-" + alpha + "x&sup2)");
 
-setTimeout(dotheeig,1000);
+//setTimeout(dotheeig,1000);
 
 
 var s = 960,
