@@ -139,7 +139,7 @@
     &:last-child {
       padding-right: 0;
     }
-
+   
     .post__nav__image {
       display: block;
       margin-bottom: 10px;
@@ -148,6 +148,8 @@
       background-repeat: no-repeat;
       background-color: $light-gray;
       transition: .35s ease-in-out;
+      height:50px;
+      width:100%;
       &:hover {
         opacity: 0.9;
       }
