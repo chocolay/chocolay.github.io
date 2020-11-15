@@ -649,9 +649,8 @@ d3.csv(url).then(function(data) {
                     .style("height",(height+200)+"px")
                     .style("width",width+"px");
                 d3.select("article.post")
-                    .style("background-color","ivory")
                     .style("width",width+"px")
-
+                d3.selectAll("p").style("width",(width-75)+"px")
             }
         },duration);
 
