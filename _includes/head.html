@@ -20,7 +20,7 @@
         {% include main.scss %}
         {% endcapture %}
         {{ include_to_scssify | scssify }}
-        
+
 
         input.slider[type="range"] {
             -webkit-appearance: none;
@@ -54,7 +54,7 @@
         }
 
 
-    {% if page.app=="linkviews" %}
+        {% if page.app=="linkviews" %}
 
         #headerLeft {
             text-align:left;
@@ -208,9 +208,9 @@
             fill: #849870;
             stroke: #849870;
         }
-    {% endif %}
+        {% endif %}
 
-    {% if page.app == "sankeycsv"  %}
+        {% if page.app == "sankeycsv"  %}
         body {
             font-family: 'Poiret One', cursive;
         }
@@ -253,6 +253,6 @@
             stroke-opacity: .5;
         }
 
-    {% endf %}
+        {% endf %}
     </style>
 </head>
