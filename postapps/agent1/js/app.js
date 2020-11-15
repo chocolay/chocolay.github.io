@@ -731,11 +731,7 @@ console.log(d3.select("svg").size())
                     .classed("inputBox", 1)
                     .attr("id", variable);
 
-                sel2.append("div")
-                    .text(humanName + ":")
-                    .classed("label", 1)
-                    .style("margin-left","20px")
-                    .style("color","#3e3e45");
+
 
                 sel2.append("input")
                     .property("type", "range")
@@ -747,16 +743,12 @@ console.log(d3.select("svg").size())
                     .style("margin-left","20px")
                     .on("input", change);
 
-                sel2.append("input")
-                    .property("value", defaultValue)
-                    .classed("text", 1)
-                    .classed("slider", 1)
-                    .classed("boxSlider",1)
+                sel2.append("div")
+                    .text(humanName + ":"+d3.select(this.parentElement).select("input").property("value"))
+                    .classed("label", 1)
                     .style("margin-left","20px")
-                    .style("width","30px")
-                    .style("position","relative")
-                    .style("top","-20px")
-                    .on("input", change);
+                    .style("color","#3e3e45");
+                
 
                 function change() {
                     //update everything about the slider
