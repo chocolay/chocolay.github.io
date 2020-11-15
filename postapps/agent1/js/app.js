@@ -781,4 +781,3 @@ d3.timeout(function() {
     var increment = 0;
     start(key);
 },500);
-
