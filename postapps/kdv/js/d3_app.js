@@ -6,9 +6,8 @@ function animate() {
     }), params.k.map(function(e) {
         return Math.sin(e * e * e * t)
     }))
-    patchbd.attr({
-        'd': line((expfn.mul(Uhat)).ifft().x)
-    }) //+" Z"
+    patchbd
+        .attr('d', line((expfn.mul(Uhat)).ifft().x))//+" Z"
     d3.select("#timeDisplay").html("T = " + d3.round(t * 1000) / 1000)
     return (t > 0.1) || stopit
 }
@@ -92,22 +91,17 @@ function dotheeig() {
     if (typeof D2 == "undefined") D2 = calcD2x(u0.length);
     lambda = calcEig(D2, u0);
     D = paper.selectAll("#eiglines").data(lambda).enter()
-    D.append("line").attr({
-        "x1": 0,
-        "x2": 960,
-        "y1": function(d) {
-            return yscale(2 * d)
-        },
-        "y2": function(d) {
-            return yscale(2 * d)
-        },
-        "id": "eiglines"
-    }).style("stroke", "darkgrey")
+    D.append("line")
+        .attr("x1", 0)
+        .attr("x2", 960)
+        .attr("y1", function(d) {return yscale(2 * d)})
+        .attr("y2", function(d) {return yscale(2 * d)})
+        .attr("id", "eiglines")
+        .style("stroke", "darkgrey")
+
     junk = d3.select("#doEig").selectAll("#eigtext").data(lambda)
     junk.enter().append("span")
-        .attr({
-            "id": "eigtext"
-        })
+        .attr("id", "eigtext")
         .text(function(d) {
             return 2 * d + "    "
         })
@@ -135,17 +129,14 @@ function mkslider(amp) {
             return a * Math.exp(-alpha * (e - τ / 4) * (e - τ / 4))
         })
         d3.select("#ampDisplay").html(kind == "sech2" ? +a + "sech&sup2(x)" : "u(0) = " + a + "exp(-" + alpha + "x&sup2)")
-        patchbd.attr({
-            'd': line(u0)
-        })
+        patchbd.attr('d', line(u0))
     }).on("dragend", reset)
 
     dragw = d3.behavior.drag().on("drag", function(d) {
         stopit = true;
         w = d3.min([d3.max([18, d3.event.x - xscale(32)]), 90]);
-        d3.select(this).attr({
-            "x": xscale(32) + w
-        })
+        d3.select(this)
+            .attr("x", xscale(32))
         alpha = d3.round(16181 / (w * w))
         d3.select("#graywslider").attr("width", w + 5)
         u0 = x.map(function(e) {
@@ -155,55 +146,50 @@ function mkslider(amp) {
         //   u0 = soliton(τ/4,a/2,x);
         //d3.select("#ampDisplay").html("u(0) = "+a+"sech&sup2(x)")
 
-        patchbd.attr({
-            'd': line(u0)
-        })
+        patchbd.attr('d', line(u0))
     }).on("dragend", reset)
 
 
 
     slider = paper.append("g")
-    slider.append("rect").attr({
-        "x": xscale(32) - 5,
-        "y": yscale(100),
-        "width": 10,
-        height: s / 4 - yscale(100)
-    }).style("fill", "grey")
+    slider.append("rect")
+        .attr("x", xscale(32) - 5)
+        .attr("y", yscale(100))
+        .attr("width", 10)
+        .attr("height", s / 4 - yscale(100))
+        .style("fill", "grey")
 
     slider.selectAll("#slidr").data(amp).enter().append("rect")
-        .attr({
-            "x": xscale(32) - 15 - 5,
-            "y": function(d) {
-                return yscale(d) - 2.5
-            },
-            "height": 5,
-            "width": 40,
-            "id": "slidr"
-        })
-        .style("fill", "orangered").call(dragster)
+        .attr("x", xscale(32) - 15 - 5)
+        .attr("y", function(d) {return yscale(d) - 2.5})
+        .attr("height", 5)
+        .attr("width", 40)
+        .attr("id", "slidr")
+        .style("fill", "orangered")
+        .call(dragster)
 
     slider.append("rect")
-        .attr({
-            "id": "graywslider",
-            "x": xscale(32) - 5,
-            "y": yscale(0),
-            "width": w + 5,
-            "height": 5
-        }).style("fill", "grey")
+        .attr("id", "graywslider")
+        .attr("x", xscale(32) - 5)
+        .attr("y", yscale(0))
+        .attr("width", w + 5)
+        .attr("height", 5)
+        .style("fill", "grey")
 
     slider.append("rect")
         .attr("id", "wslider")
-         .attr("x", xscale(32) + w - 5)
-         .attr("y", yscale(0) - 5)
-         .attr("width", 5)
-         .attr("height", 15)
-        .style("fill", "orangered").call(dragw)
+        .attr("x", xscale(32) + w - 5)
+        .attr("y", yscale(0) - 5)
+        .attr("width", 5)
+        .attr("height", 15)
+        .style("fill", "orangered")
+        .call(dragw)
 }
 
 d3.select("#amplitude")
-    .style("position", "relative")
-    .style("top", "175px")
-    .style("left", "162px");
+    .style(position, "relative")
+    .style(top, "175px")
+    .style(left, "162px");
 
 var kind = "nsech2",
     i = new numeric.T(0, 1),
@@ -245,7 +231,7 @@ var xscale = d3.scale.linear().domain([0, N]).range([0, s]),
     //line = d3.svg.line().x(function(d,i) {return 340+(yscale(100-d))*Math.cos(x[i])}).y(function(d,i) {return 340+(yscale(100-d))*Math.sin(x[i])}).interpolate("basis")
 
     patchbd = paper.append('svg:path')
-        .style('fill', 'none')
+        .style('fill','none')
         .style('stroke', '#ee3322')
         .style('stroke-width', 2.5);
 
