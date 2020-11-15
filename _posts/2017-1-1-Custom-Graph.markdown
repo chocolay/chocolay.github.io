@@ -6,7 +6,7 @@ image:  homemadeGraph.png
 tags:   tool graph network table bespoke connections no-data illustration
 d3version: https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js
 app:    homemadeGraph
-style:  homemadeGraph
+style:  homemadeGraph.css
 ---
 
 This tool was built for a client whose business revolved around AI-classification of "big data" where the goal is to assign "things" to categories. 
