@@ -732,9 +732,22 @@ var meta = {
 
 //initial setup
 setTimeout(function() {
-
     main({view:"mainView",angles:{startAngle:0,endAngle:0}});
+   
 },500)
+
+setTimeout(function() {
+                var H = (d3.select("svg").attr("height")+200)+"px";
+
+            if (d3.select(".post-image").style("height")!=H) {
+                d3.select(".post-image")
+                    .style("height",(height+200)+"px")
+                    .style("width",width+"px");
+                d3.select("article.post")
+                    .style("width",width+"px")
+                d3.selectAll("p").style("width",(width-75)+"px")
+            }
+},1200)
 
 
 
