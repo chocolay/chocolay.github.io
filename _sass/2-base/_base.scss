@@ -106,7 +106,8 @@ img,
   }
 }
 img#halfHero {
-border: 4px red;
+    border: 4px solid red;
+    max-height:150px;	
 }
 
 a {
