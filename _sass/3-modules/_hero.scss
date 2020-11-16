@@ -1,5 +1,5 @@
 .hero {
-  padding: 10px 0;
+  padding: 5px 0;
   margin-bottom: 10px;
   background: #f5e7c2;
 
@@ -12,7 +12,7 @@
     flex-direction: column;
     justify-content: center;
     width: 100%;
-    padding: 0 20px 0 0;
+    padding: 0 10px 0 0;
     
     .hero__title {
       font-size: 38px;
@@ -36,7 +36,7 @@
   }
 
   .hero__image {
-    float:right;
+    float:left;
     img {
       box-shadow: 0 2px 8px rgba(0,0,0,0.15);
     }
@@ -62,13 +62,13 @@
 
     .hero__content {
       .hero__title {
-        margin-bottom: 20px;
+        margin-bottom: 5px;
         font-size: 27px;
       }
     }
 
     .hero__image {
-      margin-bottom: 20px;
+      margin-bottom: 5px;
       
       img {
         box-shadow: none;
@@ -77,6 +77,6 @@
   }
 
   @media only screen and (max-width: $mobile) {
-    padding: 40px 0;
+    padding: 10px 0;
   }
 }
