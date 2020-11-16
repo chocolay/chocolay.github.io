@@ -3,6 +3,9 @@
     margin-left: 120px;
 }
 
+svg {
+    border: @redTree solid 1px;
+}
 
 .check {
     float:right;
@@ -43,8 +46,3 @@ td {
     margin-bottom:20px;
     margin-left:20px;
 }
-
-.dataTables_wrapper {
-    background: lightgrey;
-}
-
