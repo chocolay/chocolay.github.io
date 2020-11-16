@@ -25,7 +25,7 @@ layout: default
   </div>
 </div>
 {% assign no-image = nil %}
-{% if page.app == "sankeycsv" %}{% include sankeycsv.html %}
+{% if page.html %}{% include {{page.app}}+".html" %}
 {% else %}
   {% if page.app  %}
     <div class="post__head">
