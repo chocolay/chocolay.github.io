@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Topics
-permalink: /about/
+permalink: /topics/
 ---
 {% include archive.html %}
 
