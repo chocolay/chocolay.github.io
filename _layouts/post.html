@@ -24,27 +24,21 @@ layout: default
     </div>
   </div>
 </div>
-
-{% if page.app == "sankeycsv" %}
-
-{% include sankeycsv.html %}
-
+{% assign no-image = nil %}
+{% if page.app == "sankeycsv" %}{% include sankeycsv.html %}
 {% else %}
-
-  {% assign no-image = nil %}
-
-{% if page.app %}
-  <div class="post__head">
-    <div class="post-image" id="d3_app"></div>
-  </div>
-{% else %}
-  {% if page.image %}
+  {% if page.app  %}
     <div class="post__head">
-      <div class="post-image" width = "100%" height = auto style="background-image: url({{site.baseurl}}/images/{{page.image}})"></div>
+      <div class="post-image" id="d3_app"></div>
     </div>
   {% else %}
-    {% assign no-image = 'post-no-image' %}
-  {% endif %}
+    {% if page.image %}
+      <div class="post__head">
+        <div class="post-image" width = "100%" height = auto style="background-image: url({{site.baseurl}}/images/{{page.image}})"></div>
+      </div>
+    {% else %}
+      {% assign no-image = 'post-no-image' %}
+    {% endif %}
   {% endif %}
 {% endif %}
 
@@ -95,8 +89,7 @@ layout: default
 
  <div class="container">
   <div class="post__navigation">
-    
-    
+       
     {% if page.next.url %}
     <div class="prev">
       <a class="post__nav__image" href="{{ site.baseurl }}{{page.next.url}}" style="background-image: url({{site.baseurl}}/images/{{page.next.image}})"></a>
