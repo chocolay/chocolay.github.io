@@ -868,7 +868,7 @@ setTimeout(function() {
         }
     });//d3.csv callback
 
-},1000)
+},2000)
 
 
 function pluck(arr,key) {
