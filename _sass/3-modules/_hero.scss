@@ -9,9 +9,9 @@
 
   .hero__content {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 100%;
+    flex-direction: row;
+    justify-content: right;
+    width: 10 65%;
     padding: 0 10px 0 0;
     
     .hero__title {
