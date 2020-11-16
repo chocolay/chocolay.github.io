@@ -1,7 +1,7 @@
 .tooltip {
     position: relative;
     display: inline-block;
-    color:#D95D2A;
+    color:$redTree;
     font-weight:700;
     font-size:1.75rem;
 }
@@ -10,7 +10,7 @@
     font-size: .95rem;
     visibility: hidden;
     width: 14rem;
-    background-color: black;
+    background-color: #333333;
     color: #fff;
     text-align: center;
     padding: 15px;
