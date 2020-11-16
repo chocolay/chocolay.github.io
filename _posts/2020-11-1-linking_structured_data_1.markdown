@@ -3,7 +3,7 @@ layout: post
 title:  Linking Structured Data I
 date:   2020-11-1 15:01:35 +0300
 image:  linkviews.png
-tags:   tool bespoke whimsy
+tags:   tool, bespoke, whimsy
 app:    linkviews
 d3version:  https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js
 crossfilter:  False
