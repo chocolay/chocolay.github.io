@@ -309,6 +309,8 @@ setTimeout(function() {
             console.timeEnd('datatable');
             d3.selectAll("td").style("padding","2px 4px");
             D = data;
+         d3.select(".dataTables_paginate").remove()
+         
         }
 
         function mkSankeyData(data,geom) {
