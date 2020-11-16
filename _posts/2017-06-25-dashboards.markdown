@@ -3,7 +3,7 @@ layout: post
 title:  Dashboards
 date:   2017-06-25 15:01:35 +0300
 image:  bank.png
-tags:   dashboard finance
+tags:   dashboard, finance
 ---
 
 Data dashboards are convenient, powerful ways to explore real-time business data. I've made them for a gold mining company in Australia, a department store chain, several banks, and a hospital system.
