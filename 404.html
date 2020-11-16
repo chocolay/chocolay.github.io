@@ -5,10 +5,8 @@ image: just_emmy.svg
 permalink: /404.html
 ---
 	{% if page.image %}
-	<div class="page__head">
 		<img src= "{{ site.baseurl }}/images/{{ page.image }}" alt="avatar" width="500px" height="600px">
 		<em style="float:right">{{page.imageText}}</em>
-	</div>
 	{% endif %}
 <div class="page-box">
   <h2>404</h2>
