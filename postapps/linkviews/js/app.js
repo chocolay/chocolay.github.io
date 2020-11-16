@@ -41,7 +41,6 @@ function log(message) {
     //  console.log(message);
 }
 
-
 //convenience function to find objects in an array of objects, by their key-value pair
 function filterByKey(arr, key, value) {
     return arr.filter(function (el) {
@@ -50,7 +49,6 @@ function filterByKey(arr, key, value) {
 }
 
 //initialize
-
 function initialize(C,L,R,linkWords) {
     //this is the circular pack layout
     var nodes = d3.layout.pack()
@@ -78,7 +76,6 @@ function initialize(C,L,R,linkWords) {
 }
 
 //events
-
 d3.select("#d3_app").on("click", function() {
     var currentView = d3.select("#d3_app").datum();
     main({view:"mainView",angles:{startAngle: 0, endAngle: 0}});
@@ -88,7 +85,6 @@ d3.select("input#newData").on("change",function() {
     var view = d3.select("input#newData").property("checked")?"newView":"mainView";
     main({view:view,angles:{startAngle: 0, endAngle: 0}});
 });
-
 
 var duration = 500;
 
@@ -266,7 +262,6 @@ function buildLinks(R,L,tag) {
         d.source           = d.source;
         d.relatedLinks     = L.filter(function(el) {return el[tag] ==d.label})
     });
-
     return chords;
 }
 
@@ -623,9 +618,7 @@ function updateArcs(renderElements,Rings,info,linkWord,angles) {
             return arc(data);
         }
     }
-
 }
-
 
 function color(d) {
     return (typeof d.COLOR !="undefined" && d.COLOR.charAt(0)=="#")? d.COLOR:"undefined"
@@ -820,6 +813,3 @@ function main(obj) {
         }
     }
 }
-
-
-
