@@ -1,3 +1,7 @@
+body {
+    display: none
+}
+
 #d3_app {
     font-family: 'Poiret One', cursive;
 }
