@@ -17,7 +17,11 @@ layout: default
 	<div class="row">
 	{% if site.posts.size > 0 %}
 		{% for post in paginator.posts  %}
+		  {% if post.orient == right %}
+		    {% include article-content-right.html %}
+		{% else %}
 			{% include article-content.html %}
+		{% endif %}
 		{% endfor %}
 	{% endif %}
 	</div>
