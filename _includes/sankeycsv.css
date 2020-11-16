@@ -37,6 +37,4 @@ td {
     stroke-opacity: .5;
 }
 
-li::marker {
-    content:none
-}
+
