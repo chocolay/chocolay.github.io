@@ -33,15 +33,4 @@ sass:
   sass_dir: _sass
   style: compressed
   
-collections:
-  order:
-    - portfolio/-predictions.md
-    - linking_structured_data_1.md
-    - journeys-to-failure.md
-    - journeys-to-success.md
-    - mapping-our-strengths.md
-    - custom-graph.md
-    - dashboards.md
-    - stat-App.md
-    - KDV.md
-    - scrolls.md
+
