@@ -12,6 +12,8 @@ layout: default
             <a href="{{ site.baseurl }}/about/" class="author-name">{{site.data.settings.author.name}}</a>
           </div>
 
+          {{ page }}
+          
           {% if page.tags.size >= 1 %}
           <div class="post__tags">
             {% for tag in page.tags %}
@@ -26,7 +28,7 @@ layout: default
 </div>
 {% assign no-image = nil %}
 {% if page.html %}
-  {% include {{page.app}}.html %}
+  {% include {{ page.app }}.html %}
 {% else %}
   {% if page.app  %}
     <div class="post__head">
