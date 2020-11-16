@@ -8,6 +8,7 @@ app:    linkviews
 d3version:  https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js
 crossfilter:  False
 style:  linkviews.css
+orient: left
 ---
 
 Being able to connect multiple complicated datasets across different systems and departments within an organization is a perennial problem.
