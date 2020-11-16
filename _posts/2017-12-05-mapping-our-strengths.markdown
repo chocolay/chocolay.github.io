@@ -3,7 +3,7 @@ layout: post
 title:  Mapping our Strengths
 date:   2017-12-05 15:01:35 +0300
 image:  World-Map.png
-tags:   map policy
+tags:   map, policy
 app:    map1
 d3version: https://cdnjs.cloudflare.com/ajax/libs/d3/4.7.1/d3.min.js
 crossfilter: False
