@@ -909,6 +909,7 @@ function initialize(obj) {
                     .classed(c, 1);
             });
     }
+ d3.select("svg").style("width",d3.select(".row").style("width"))
     return svg
 }
 
