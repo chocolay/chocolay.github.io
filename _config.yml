@@ -34,7 +34,6 @@ sass:
   style: compressed
   
 collections:
- case_studies:
   order:
     - portfolio/-predictions.md
     - linking_structured_data_1.md
