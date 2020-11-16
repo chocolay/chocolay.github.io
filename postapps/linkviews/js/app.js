@@ -267,7 +267,6 @@ function buildLinks(R,L,tag) {
 
 //update
 function updateLinks(renderElements, Rings, links, info,linkWord) {
-
     var diagonal  = d3.svg.diagonal.radial(),
         chordName = linkWord[1],
         nodeName  = linkWord[0],
@@ -286,7 +285,6 @@ function updateLinks(renderElements, Rings, links, info,linkWord) {
         .style("opacity",1)
         .call(endAll,function() {
             meta.completeStatus = true;
-//            console.log('completed all')
         });
     //  ARC SEGMENTS
     enter
