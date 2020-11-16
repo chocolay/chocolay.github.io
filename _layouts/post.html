@@ -27,7 +27,7 @@ layout: default
 {% assign no-image = nil %}
 {% if page.html %}
   {% include {{page.app}}+".html" %}
-  {{ page.app}}+".html"
+<script>console.log({{ page.app}}+".html")</script>
 {% else %}
   {% if page.app  %}
     <div class="post__head">
