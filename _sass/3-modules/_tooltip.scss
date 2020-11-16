@@ -4,7 +4,7 @@
     color:$redTree;
     font-weight:700;
     font-size:1.75rem;
-    cursor:default;
+    cursor:pointer;
 }
 
 .tooltiptext {
@@ -20,7 +20,7 @@
     position: absolute;
     font-family: "Reenie+Beanie";
     font-weight:500;
-    cursor:default;
+    cursor:pointer;
 }
 
 .tooltip:hover .tooltiptext {
