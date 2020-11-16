@@ -2,7 +2,7 @@
 layout: post
 title:  "Business Forecasting"
 image:  portfolio_predictions.png
-tags:   model agent based
+tags:   model agent-based
 app:    agent1
 d3version:  6
 crossfilter:  True
