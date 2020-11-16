@@ -3,7 +3,7 @@ layout: post
 title:  Korteweg deVries equation (Inverse Scattering Transform)
 date:   2016-11-1 15:01:35 +0300
 image:  KDV_IST.png
-tags:   stem nonlinear-PDEs matrices waves spectral fft inverse-methods eigenvalues
+tags:   stem nonlinear-PDEs matrices waves spectral fft inverse-methods eigenvalues mathematics
 app:    kdv
 script: kdv
 d3version: https://d3js.org/d3.v3.min.js
