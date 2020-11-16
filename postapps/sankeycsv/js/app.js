@@ -910,7 +910,7 @@ function initialize(obj) {
             });
     }
  d3.select("svg").style("width",d3.select(".row").style("width"))
- d3.select("body").node().onresize=function() {d3.select("svg, .dataTables_wrapper").style("width",d3.select(".row").style("width")) }
+ d3.select("body").node().onresize=function() {d3.select("svg, table").style("width",d3.select(".row").style("width")) }
     return svg
 }
 
