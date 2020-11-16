@@ -1,7 +1,7 @@
 .tooltip {
     position: relative;
     display: inline-block;
-    color:red;
+    color:#D95D2A;
 }
 
 .tooltip .tooltiptext {
@@ -15,8 +15,8 @@
     border-radius: 6px;
     bottom: 30%;
     position: absolute;
-    z-index: 1;
-    font-family:"Hi Melody";
+    font-family: "Reenie+Beanie";
+    font-weight:500;
 }
 
 .tooltip:hover .tooltiptext {
