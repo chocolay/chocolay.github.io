@@ -3,7 +3,7 @@ layout: post
 title:  Stat App
 date:   2016-11-1 15:01:35 +0300
 image:  statApp.png
-tags:   stem statistics pdf histogram mathematics
+tags:   stem, statistics, pdf, histogram, mathematics
 app:    statApp
 script: statApp
 style:  statApp.css
