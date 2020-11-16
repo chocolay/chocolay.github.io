@@ -3,7 +3,7 @@ layout: post
 title:  Journeys to Success
 date:   2018-07-17 15:01:35 +0300
 image:  Happy-Families.png
-tags:   Family Policy Sunburst Whimsy 
+tags:   policy sunburst whimsy 
 app:    sunburst
 style:  sunburst.css
 d3version:  https://cdnjs.cloudflare.com/ajax/libs/d3/4.10.0/d3.js
