@@ -44,4 +44,7 @@ td {
     margin-left:20px;
 }
 
+.dataTables_wrapper {
+    background: lightgrey;
+}
 
