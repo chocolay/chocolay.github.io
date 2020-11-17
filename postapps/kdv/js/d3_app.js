@@ -141,50 +141,6 @@ function mkslider(amp) {
         .call(dragster)
 }
 
-function closestPoint(pathNode, point) {
-    var pathLength = pathNode.getTotalLength(),
-        precision = 8,
-        best,
-        bestLength,
-        bestDistance = Infinity;
-
-    // linear scan for coarse approximation
-    for (var scan, scanLength = 0, scanDistance; scanLength <= pathLength; scanLength += precision) {
-        if ((scanDistance = distance2(scan = pathNode.getPointAtLength(scanLength))) < bestDistance) {
-            best = scan, bestLength = scanLength, bestDistance = scanDistance;
-        }
-    }
-
-    // binary search for precise estimate
-    precision /= 2;
-    while (precision > 0.5) {
-        var before,
-            after,
-            beforeLength,
-            afterLength,
-            beforeDistance,
-            afterDistance;
-        if ((beforeLength = bestLength - precision) >= 0 && (beforeDistance = distance2(before = pathNode.getPointAtLength(beforeLength))) < bestDistance) {
-            best = before, bestLength = beforeLength, bestDistance = beforeDistance;
-        } else if ((afterLength = bestLength + precision) <= pathLength && (afterDistance = distance2(after = pathNode.getPointAtLength(afterLength))) < bestDistance) {
-            best = after, bestLength = afterLength, bestDistance = afterDistance;
-        } else {
-            precision /= 2;
-        }
-    }
-
-    best = [best.x, best.y];
-    best.distance = Math.sqrt(bestDistance);
-    return best;
-
-    function distance2(p) {
-        var dx = p.x - point[0],
-            dy = p.y - point[1];
-        return dx * dx + dy * dy;
-    }
-}
-
-
 
 d3.select("#starter")
     .style("background","rgba(247, 177, 64,128)")
@@ -217,8 +173,6 @@ var s = 960,
         .attr("height",s/2); //height is s/2 for straight line
 d3.select("#d3_app").style("height","250px");
 
-var theline = paper.append("line")
-    .style("stroke-width",0.5);
 
 var xscale = d3.scale.linear().domain([0, N]).range([0, s]),
     yscale = d3.scale.linear().domain([0, 175]).range([s / 4, 0]),
@@ -234,28 +188,6 @@ var xscale = d3.scale.linear().domain([0, N]).range([0, s]),
         .style('fill','none')
         .style('stroke', '#D95D2A')
         .style('stroke-width', 2.5);
-
-
-paper
-        .on("mouseover",function() {
-            thepath = patchbd.node();
-            xc = d3.select("circle").attr("cx");
-            yc = d3.select("circle").attr("cy");
-            p = closestPoint(thepath,[xc,yc]);
-
-            p[0] = d3.min([p[0],80])
-            p[1] = d3.min([p[1],100])
-            theline.attr("x1", p[0])
-                .attr("y1", p[1])
-                .attr("x2", xc)
-                .attr("y2", yc);
-
-            theline.style("display","inline-block")
-            d3.select("circle").style("opacity",1)
-        }).on("mouseout",function() {
-                theline.style("display","none");
-                d3.select("circle").style("opacity",0.2);
-            });
 
 mkslider([a]);
 
