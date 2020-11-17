@@ -3,6 +3,7 @@ d3.select("span#miracle").on("mouseenter",function() {
 })
 d3.select("div#miracle img").on("click",function() {
     d3.select("div#miracle").style("display","none");
+    d3.select("span#miracle").classed("miracle",0);
 })
 
 function animate() {
