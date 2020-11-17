@@ -1875,14 +1875,13 @@ eqn.append("text")
 	.attr("transform","translate(202,-30)")
 	.text('x')	
 
-d3.select("#numerator").append("tspan").attr("baseline-shift","super").text('Î±-1')
+d3.select("#numerator").append("tspan").attr("baseline-shift","super").text('α-1')
 d3.select("#numerator").append("tspan").text('(1-x)')
-d3.select("#numerator").append("tspan").attr("baseline-shift","super").text('Î²-1')     
+d3.select("#numerator").append("tspan").attr("baseline-shift","super").text('β-1')     
 
  eqn.append("text")
 	.attr("transform","translate(140,30)")
-	.text( '(Î±-1)! (Î²-1)! / (Î±+Î²-1)!');
-
+	.text( '(α-1)! (β-1)! / (α+β-1)!');
 
 eqn.append("line")
     .attr("class","eqn")
