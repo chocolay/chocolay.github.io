@@ -1038,3 +1038,6 @@ input2name = "/postapps/link2trees/data/input3.json",
  }; //end VM_save
 
 }();
+
+d3.select("#VMdisplay").on("click",function() {console.log(this)})
+
