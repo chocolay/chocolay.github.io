@@ -1,11 +1,11 @@
-var div_id = "#graphic"; //the id of the div to be filled 
-var fname = "24007.json"; //given file
+var div_id = "#d3_app"; //the id of the div to be filled 
+var fname = "/postapps/baseball/data/24007.json"; //given file
 var ballradius = 8; 
 var balledge = "red";
 var ballcolor = "white"; 
 var delayVariable = 500 //so the balls don't appear before the field does
 var svg = d3.select(div_id).append('svg').attr({"width": 950,"height": 950,"id": "base"}),
-    img = svg.append("svg:image").attr({"xlink:href":"genericpark.jpg", "width": 950, "height": 950}),
+    img = svg.append("svg:image").attr({"xlink:href":"/postapps/baseball/genericpark.jpg", "width": 950, "height": 950}),
     ang45 = Math.PI/4;
 var hitter = [474, 820], pitcher = [475, 730];
 {
