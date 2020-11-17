@@ -114,14 +114,13 @@ function mkslider(amp) {
 
     dragster = d3.behavior.drag().on("drag", function(d) {
         stopit = true;
-
         a = d3.round(d3.max([d3.min([yscale.invert(d3.event.y), 120]), 0]));
-
+        w = d3.min([d3.max([18, d3.event.x - xscale(32)]), 100]);
         d3.select(this).datum(a)
         d3.select(this).attr("cy", function(d) {
             return yscale(a)
-        });
-
+        }).attr("cx", w+xscale(32));
+        alpha = d3.round(16181 / (w * w));
         u0 = kind == "sech2" ? soliton(τ / 4, a / 2, x) : x.map(function(e) {
             return a * Math.exp(-alpha * (e - τ / 4) * (e - τ / 4))
         })
@@ -131,12 +130,10 @@ function mkslider(amp) {
 
     dragw = d3.behavior.drag().on("drag", function(d) {
         stopit = true;
-
         w = d3.min([d3.max([18, d3.event.x - xscale(32)]), 100]);
-
         d3.select(this)
             .attr("cx", w+xscale(32));
-        d3.select("#graywslider").attr("width", w + 5);
+
 
         alpha = d3.round(16181 / (w * w));
         u0 = x.map(function(e) {
