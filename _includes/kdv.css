@@ -8,3 +8,12 @@ div#miracle img {
   position: relative;
   top: -300px;
 }
+
+span#miracle {
+    position: relative;
+    display: inline-block;
+    color:$redTree;
+    font-weight:700;
+    font-size:1.75rem;
+    cursor:pointer;
+}
