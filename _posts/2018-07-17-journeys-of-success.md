@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Journeys to Success
+title:  Journeys of Success
 date:   2018-07-17 15:01:35 +0300
 image:  Happy-Families.png
 tags:   policy sunburst whimsy 
