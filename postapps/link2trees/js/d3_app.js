@@ -5,9 +5,8 @@
      //the name used to specify children in a tree                    
 	 childname = "properties", 	
 
-
-	 input1name = "/postapps/link2trees/data/input1.json",
-     input2name = "/postapps/link2trees/data/input3.json",
+input1name = "/postapps/link2trees/data/input2.json",
+input2name = "/postapps/link2trees/data/input3.json",
 
 
 	//the namespace that'll contain the two object trees and some convenience variables
