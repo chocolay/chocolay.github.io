@@ -127,6 +127,7 @@ function mkslider(amp) {
     }).on("dragend", reset)
 
     dragw = d3.behavior.drag().on("drag", function(d) {
+        console.log(this)
         stopit = true;
         w = d3.min([d3.max([18, d3.event.x - xscale(32)]), 150]);
         d3.select(this)
