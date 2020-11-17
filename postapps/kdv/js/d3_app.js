@@ -128,8 +128,12 @@ function mkslider(amp) {
 
         thepath = u0.map((d,i)=> [xscale(i),yscale(d)]);
 
-        p = closestPoint(thepath, [d3.event.x,d3.event,y]);
-        line.attr("x1", p[0]).attr("y1", p[1]).attr("x2", m[0]).attr("y2", m[1]);
+        p = closestPoint(thepath, [d3.event.x,d3.event.y]);
+        line.attr("x1", p[0])
+            .attr("y1", p[1])
+            .attr("x2", d3.event.x)
+            .attr("y2", d3.event.y;
+
         patchbd.attr('d', line(u0))
 
 
