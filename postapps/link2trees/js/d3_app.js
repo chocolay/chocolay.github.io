@@ -98,8 +98,9 @@ input2name = "/postapps/link2trees/data/input3.json",
 
 //create the table
  d3.select(div_id)
-     .append("div")
-     .attr("id", "VMtableDiv");
+   .append("div")
+   .attr("id", "VMtableDiv")
+    .style("display","none"); //hide it from the display
 
 //create a convenience checkbox so that all fields in the table can be highlighted
  d3.select("#VMtableDiv") 
