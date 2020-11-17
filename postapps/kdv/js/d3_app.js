@@ -191,7 +191,7 @@ function closestPoint(pathNode, point) {
     }
 }
 
-var line = svg.append("line");
+var line = paper.append("line");
 
 d3.select("#starter")
     .style("background","rgb(247, 177, 64,128)")
