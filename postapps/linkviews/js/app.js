@@ -268,7 +268,6 @@ function buildLinks(R,L,tag) {
 
 //update
 function updateLinks(renderElements, Rings, links, info, linkWord) {
-    console.log(renderElements, Rings, links, info, linkWord)
     var diagonal  = d3.svg.diagonal.radial(),
         chordName = linkWord[1],
         nodeName  = linkWord[0],
@@ -738,7 +737,6 @@ d3.select("body").node().onresize = function() {
 //once a view is selected, create the chart
 function main(obj) {
     //this will keep other transitions from firing while the DOM are being created
-console.log(obj)
     var view = obj.view;
 
     if (view!=d3.select("#d3_app").datum()) {
