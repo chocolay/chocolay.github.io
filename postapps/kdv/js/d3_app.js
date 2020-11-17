@@ -172,10 +172,12 @@ var s = 960
     var  paper = d3.select('#d3_app')
         .append("svg")
         .attr("width", s)
-        .attr("height",480)
+        .attr("height",250)
         .style("background","#E5EEF0")
         .style("display","block")
         .style("margin","0 auto");
+
+d3.select("#d3_app").style("background","white")
 
     paper.on("mouseover",function() {
         d3.select("circle").style("opacity",1)
