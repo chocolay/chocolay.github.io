@@ -737,7 +737,7 @@ d3.select("body").node().onresize = function() {
 //once a view is selected, create the chart
 function main(obj) {
     //this will keep other transitions from firing while the DOM are being created
-
+console.log(obj)
     var view = obj.view;
 
     if (view!=d3.select("#d3_app").datum()) {
