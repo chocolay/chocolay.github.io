@@ -137,6 +137,7 @@ function mkslider(amp) {
         .attr("cy", yscale(a))
         .attr("r",10)
         .style("fill", "#F7B140")
+        .style("opacity",1e-6)
         .datum(a)
         .call(dragster)
 }
@@ -171,6 +172,12 @@ var s = 960,
         .append("svg")
         .attr("width", s)
         .attr("height",s/2); //height is s/2 for straight line
+    paper.on("mouseover",function() {
+        d3.select("circle").style("opacity",1)
+            .attr("r",10)
+    }).on("mouseleave",function() {
+        d3.select("circle").style("opacity",1e-6);
+    })
 d3.select("#d3_app").style("height","250px");
 
 
