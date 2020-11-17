@@ -198,7 +198,6 @@ d3.select("#starter")
     .style("font-size","115%")
     .style("padding","5px")
     .style("border-radius","20px")
-    .style("")
     .on("click",dotheeig);
 
 var kind = "nsech2",
