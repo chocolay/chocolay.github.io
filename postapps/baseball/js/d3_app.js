@@ -123,11 +123,11 @@ d3.json(fname, function(err, data) {if (err) console.log(err)
 	}
     var P = svg.selectAll(".pts").data(pts);
     P.enter().append("circle")
+	.style({"fill": ballcolor,"stroke": balledge,"opacity":1e-6})
+        .style("opacity",1)
 	.transition().delay(function(d) {return 500 + Math.random()*delayVariable})
         .attr({"cx": function(d) {return d.x},"cy": function(d) {return d.y},"r": ballradius,"class": "pts","id":function(d) {return d.key}})
-        .style({"fill": ballcolor,"stroke": balledge,"opacity":1e-6})
-        .style("opacity",1)
-
+   
 
 keyarray = [];
 keyarray[0] = ['ifpica'];
