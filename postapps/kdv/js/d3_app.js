@@ -126,9 +126,7 @@ function mkslider(amp) {
             return a * Math.exp(-alpha * (e - τ / 4) * (e - τ / 4))
         });
 
-        thepath = u0.map((d,i)=>{
-            [xscale(i),yscale(d)]
-        });
+        thepath = u0.map((d,i)=> [xscale(i),yscale(d)]);
 
         p = closestPoint(thepath, [d3.event.x,d3.event,y]);
         line.attr("x1", p[0]).attr("y1", p[1]).attr("x2", m[0]).attr("y2", m[1]);
