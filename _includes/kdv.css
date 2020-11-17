@@ -5,8 +5,7 @@ div#miracle {
 div#miracle img {
   display: block;
   margin: 0 auto;
-  position: relative;
-  top: -300px;
+  position: absolute;
 }
 
 span#miracle {
