@@ -1,0 +1,3194 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://jsonschema.net#",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "order": {
+      "id": "http://jsonschema.net/order#",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "@order-no": {
+          "id": "http://jsonschema.net/order/@order-no#",
+          "type": "string",
+          "default": "01045068_dev",
+          "additionalProperties": false
+        },
+        "order-date": {
+          "id": "http://jsonschema.net/order/order-date#",
+          "type": "string",
+          "default": "2014-11-04T13:22:46.000Z",
+          "additionalProperties": false
+        },
+        "created-by": {
+          "id": "http://jsonschema.net/order/created-by#",
+          "type": "string",
+          "default": "storefront",
+          "additionalProperties": false
+        },
+        "original-order-no": {
+          "id": "http://jsonschema.net/order/original-order-no#",
+          "type": "string",
+          "default": "01045068_dev",
+          "additionalProperties": false
+        },
+        "currency": {
+          "id": "http://jsonschema.net/order/currency#",
+          "type": "string",
+          "default": "GBP",
+          "additionalProperties": false
+        },
+        "customer-locale": {
+          "id": "http://jsonschema.net/order/customer-locale#",
+          "type": "string",
+          "default": "default",
+          "additionalProperties": false
+        },
+        "invoice-no": {
+          "id": "http://jsonschema.net/order/invoice-no#",
+          "type": "string",
+          "default": "04802326",
+          "additionalProperties": false
+        },
+        "customer": {
+          "id": "http://jsonschema.net/order/customer#",
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "customer-no": {
+              "id": "http://jsonschema.net/order/customer/customer-no#",
+              "type": "string",
+              "default": "03900446_dev",
+              "additionalProperties": false
+            },
+            "customer-name": {
+              "id": "http://jsonschema.net/order/customer/customer-name#",
+              "type": "string",
+              "default": "Asda Automation",
+              "additionalProperties": false
+            },
+            "customer-email": {
+              "id": "http://jsonschema.net/order/customer/customer-email#",
+              "type": "string",
+              "default": "colleague.auto1415107166250@devmail.ecommera.net",
+              "additionalProperties": false
+            },
+            "billing-address": {
+              "id": "http://jsonschema.net/order/customer/billing-address#",
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "address1": {
+                  "id": "http://jsonschema.net/order/customer/billing-address/address1#",
+                  "type": "string",
+                  "default": "1-45 the Willows",
+                  "additionalProperties": false
+                },
+                "address2": {
+                  "id": "http://jsonschema.net/order/customer/billing-address/address2#",
+                  "type": "string",
+                  "default": "Boreham",
+                  "additionalProperties": false
+                },
+                "city": {
+                  "id": "http://jsonschema.net/order/customer/billing-address/city#",
+                  "type": "string",
+                  "default": "Chelmsford",
+                  "additionalProperties": false
+                },
+                "postal-code": {
+                  "id": "http://jsonschema.net/order/customer/billing-address/postal-code#",
+                  "type": "string",
+                  "default": "CM3 3DJ",
+                  "additionalProperties": false
+                },
+                "country-code": {
+                  "id": "http://jsonschema.net/order/customer/billing-address/country-code#",
+                  "type": "string",
+                  "default": "UK",
+                  "additionalProperties": false
+                },
+                "custom-attributes": {
+                  "id": "http://jsonschema.net/order/customer/billing-address/custom-attributes#",
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "custom-attribute": {
+                      "id": "http://jsonschema.net/order/customer/billing-address/custom-attributes/custom-attribute#",
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "@attribute-id": {
+                          "id": "http://jsonschema.net/order/customer/billing-address/custom-attributes/custom-attribute/@attribute-id#",
+                          "type": "string",
+                          "default": "addressID",
+                          "additionalProperties": false
+                        },
+                        "#text": {
+                          "id": "http://jsonschema.net/order/customer/billing-address/custom-attributes/custom-attribute/#text#",
+                          "type": "string",
+                          "default": "e96ddbd8d84466afdef8e6a0a0c3e62a",
+                          "additionalProperties": false
+                        }
+                      },
+                      "required": [
+                        "@attribute-id",
+                        "#text"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "custom-attribute"
+                  ]
+                }
+              },
+              "required": [
+                "address1",
+                "address2",
+                "city",
+                "postal-code",
+                "country-code",
+                "custom-attributes"
+              ]
+            }
+          },
+          "required": [
+            "customer-no",
+            "customer-name",
+            "customer-email",
+            "billing-address"
+          ]
+        },
+        "status": {
+          "id": "http://jsonschema.net/order/status#",
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "order-status": {
+              "id": "http://jsonschema.net/order/status/order-status#",
+              "type": "string",
+              "default": "NEW",
+              "additionalProperties": false
+            },
+            "shipping-status": {
+              "id": "http://jsonschema.net/order/status/shipping-status#",
+              "type": "string",
+              "default": "NOT_SHIPPED",
+              "additionalProperties": false
+            },
+            "confirmation-status": {
+              "id": "http://jsonschema.net/order/status/confirmation-status#",
+              "type": "string",
+              "default": "CONFIRMED",
+              "additionalProperties": false
+            },
+            "payment-status": {
+              "id": "http://jsonschema.net/order/status/payment-status#",
+              "type": "string",
+              "default": "NOT_PAID",
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "order-status",
+            "shipping-status",
+            "confirmation-status",
+            "payment-status"
+          ]
+        },
+        "current-order-no": {
+          "id": "http://jsonschema.net/order/current-order-no#",
+          "type": "string",
+          "default": "01045068_dev",
+          "additionalProperties": false
+        },
+        "product-lineitems": {
+          "id": "http://jsonschema.net/order/product-lineitems#",
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "product-lineitem": {
+              "id": "http://jsonschema.net/order/product-lineitems/product-lineitem#",
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "net-price": {
+                  "id": "http://jsonschema.net/order/product-lineitems/product-lineitem/net-price#",
+                  "type": "string",
+                  "default": "241.63",
+                  "additionalProperties": false
+                },
+                "tax": {
+                  "id": "http://jsonschema.net/order/product-lineitems/product-lineitem/tax#",
+                  "type": "string",
+                  "default": "48.32",
+                  "additionalProperties": false
+                },
+                "gross-price": {
+                  "id": "http://jsonschema.net/order/product-lineitems/product-lineitem/gross-price#",
+                  "type": "string",
+                  "default": "289.95",
+                  "additionalProperties": false
+                },
+                "base-price": {
+                  "id": "http://jsonschema.net/order/product-lineitems/product-lineitem/base-price#",
+                  "type": "string",
+                  "default": "289.95",
+                  "additionalProperties": false
+                },
+                "lineitem-text": {
+                  "id": "http://jsonschema.net/order/product-lineitems/product-lineitem/lineitem-text#",
+                  "type": "string",
+                  "default": "AUTOMATION REGULAR ID PRODUCT #1",
+                  "additionalProperties": false
+                },
+                "tax-basis": {
+                  "id": "http://jsonschema.net/order/product-lineitems/product-lineitem/tax-basis#",
+                  "type": "string",
+                  "default": "289.95",
+                  "additionalProperties": false
+                },
+                "position": {
+                  "id": "http://jsonschema.net/order/product-lineitems/product-lineitem/position#",
+                  "type": "string",
+                  "default": "1",
+                  "additionalProperties": false
+                },
+                "product-id": {
+                  "id": "http://jsonschema.net/order/product-lineitems/product-lineitem/product-id#",
+                  "type": "string",
+                  "default": "001122333",
+                  "additionalProperties": false
+                },
+                "product-name": {
+                  "id": "http://jsonschema.net/order/product-lineitems/product-lineitem/product-name#",
+                  "type": "string",
+                  "default": "AUTOMATION REGULAR ID PRODUCT #1",
+                  "additionalProperties": false
+                },
+                "quantity": {
+                  "id": "http://jsonschema.net/order/product-lineitems/product-lineitem/quantity#",
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "@unit": {
+                      "id": "http://jsonschema.net/order/product-lineitems/product-lineitem/quantity/@unit#",
+                      "type": "string",
+                      "default": "",
+                      "additionalProperties": false
+                    },
+                    "#text": {
+                      "id": "http://jsonschema.net/order/product-lineitems/product-lineitem/quantity/#text#",
+                      "type": "string",
+                      "default": "1.0",
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "@unit",
+                    "#text"
+                  ]
+                },
+                "tax-rate": {
+                  "id": "http://jsonschema.net/order/product-lineitems/product-lineitem/tax-rate#",
+                  "type": "string",
+                  "default": "0.2",
+                  "additionalProperties": false
+                },
+                "shipment-id": {
+                  "id": "http://jsonschema.net/order/product-lineitems/product-lineitem/shipment-id#",
+                  "type": "string",
+                  "default": "04214477",
+                  "additionalProperties": false
+                },
+                "gift": {
+                  "id": "http://jsonschema.net/order/product-lineitems/product-lineitem/gift#",
+                  "type": "string",
+                  "default": "false",
+                  "additionalProperties": false
+                },
+                "custom-attributes": {
+                  "id": "http://jsonschema.net/order/product-lineitems/product-lineitem/custom-attributes#",
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "custom-attribute": {
+                      "id": "http://jsonschema.net/order/product-lineitems/product-lineitem/custom-attributes/custom-attribute#",
+                      "type": "array",
+                      "additionalProperties": false,
+                      "items": [
+                        {
+                          "id": "http://jsonschema.net/order/product-lineitems/product-lineitem/custom-attributes/custom-attribute/0#",
+                          "type": "object",
+                          "additionalProperties": false,
+                          "properties": {
+                            "@attribute-id": {
+                              "id": "http://jsonschema.net/order/product-lineitems/product-lineitem/custom-attributes/custom-attribute/0/@attribute-id#",
+                              "type": "string",
+                              "default": "basketCategoryID",
+                              "additionalProperties": false
+                            },
+                            "#text": {
+                              "id": "http://jsonschema.net/order/product-lineitems/product-lineitem/custom-attributes/custom-attribute/0/#text#",
+                              "type": "string",
+                              "default": "AD060119",
+                              "additionalProperties": false
+                            }
+                          },
+                          "required": [
+                            "@attribute-id",
+                            "#text"
+                          ]
+                        },
+                        {
+                          "id": "http://jsonschema.net/order/product-lineitems/product-lineitem/custom-attributes/custom-attribute/1#",
+                          "type": "object",
+                          "additionalProperties": false,
+                          "properties": {
+                            "@attribute-id": {
+                              "id": "http://jsonschema.net/order/product-lineitems/product-lineitem/custom-attributes/custom-attribute/1/@attribute-id#",
+                              "type": "string",
+                              "default": "category-id",
+                              "additionalProperties": false
+                            },
+                            "#text": {
+                              "id": "http://jsonschema.net/order/product-lineitems/product-lineitem/custom-attributes/custom-attribute/1/#text#",
+                              "type": "string",
+                              "default": "4770",
+                              "additionalProperties": false
+                            }
+                          },
+                          "required": [
+                            "@attribute-id",
+                            "#text"
+                          ]
+                        },
+                        {
+                          "id": "http://jsonschema.net/order/product-lineitems/product-lineitem/custom-attributes/custom-attribute/2#",
+                          "type": "object",
+                          "additionalProperties": false,
+                          "properties": {
+                            "@attribute-id": {
+                              "id": "http://jsonschema.net/order/product-lineitems/product-lineitem/custom-attributes/custom-attribute/2/@attribute-id#",
+                              "type": "string",
+                              "default": "departmentNumber",
+                              "additionalProperties": false
+                            },
+                            "#text": {
+                              "id": "http://jsonschema.net/order/product-lineitems/product-lineitem/custom-attributes/custom-attribute/2/#text#",
+                              "type": "string",
+                              "default": "5",
+                              "additionalProperties": false
+                            }
+                          },
+                          "required": [
+                            "@attribute-id",
+                            "#text"
+                          ]
+                        },
+                        {
+                          "id": "http://jsonschema.net/order/product-lineitems/product-lineitem/custom-attributes/custom-attribute/3#",
+                          "type": "object",
+                          "additionalProperties": false,
+                          "properties": {
+                            "@attribute-id": {
+                              "id": "http://jsonschema.net/order/product-lineitems/product-lineitem/custom-attributes/custom-attribute/3/@attribute-id#",
+                              "type": "string",
+                              "default": "lineId",
+                              "additionalProperties": false
+                            },
+                            "#text": {
+                              "id": "http://jsonschema.net/order/product-lineitems/product-lineitem/custom-attributes/custom-attribute/3/#text#",
+                              "type": "string",
+                              "default": "1",
+                              "additionalProperties": false
+                            }
+                          },
+                          "required": [
+                            "@attribute-id",
+                            "#text"
+                          ]
+                        },
+                        {
+                          "id": "http://jsonschema.net/order/product-lineitems/product-lineitem/custom-attributes/custom-attribute/4#",
+                          "type": "object",
+                          "additionalProperties": false,
+                          "properties": {
+                            "@attribute-id": {
+                              "id": "http://jsonschema.net/order/product-lineitems/product-lineitem/custom-attributes/custom-attribute/4/@attribute-id#",
+                              "type": "string",
+                              "default": "lineStatus",
+                              "additionalProperties": false
+                            },
+                            "#text": {
+                              "id": "http://jsonschema.net/order/product-lineitems/product-lineitem/custom-attributes/custom-attribute/4/#text#",
+                              "type": "string",
+                              "default": "Placed",
+                              "additionalProperties": false
+                            }
+                          },
+                          "required": [
+                            "@attribute-id",
+                            "#text"
+                          ]
+                        },
+                        {
+                          "id": "http://jsonschema.net/order/product-lineitems/product-lineitem/custom-attributes/custom-attribute/5#",
+                          "type": "object",
+                          "additionalProperties": false,
+                          "properties": {
+                            "@attribute-id": {
+                              "id": "http://jsonschema.net/order/product-lineitems/product-lineitem/custom-attributes/custom-attribute/5/@attribute-id#",
+                              "type": "string",
+                              "default": "over18AgeRestriction",
+                              "additionalProperties": false
+                            },
+                            "#text": {
+                              "id": "http://jsonschema.net/order/product-lineitems/product-lineitem/custom-attributes/custom-attribute/5/#text#",
+                              "type": "string",
+                              "default": "false",
+                              "additionalProperties": false
+                            }
+                          },
+                          "required": [
+                            "@attribute-id",
+                            "#text"
+                          ]
+                        },
+                        {
+                          "id": "http://jsonschema.net/order/product-lineitems/product-lineitem/custom-attributes/custom-attribute/6#",
+                          "type": "object",
+                          "additionalProperties": false,
+                          "properties": {
+                            "@attribute-id": {
+                              "id": "http://jsonschema.net/order/product-lineitems/product-lineitem/custom-attributes/custom-attribute/6/@attribute-id#",
+                              "type": "string",
+                              "default": "podRequired",
+                              "additionalProperties": false
+                            },
+                            "#text": {
+                              "id": "http://jsonschema.net/order/product-lineitems/product-lineitem/custom-attributes/custom-attribute/6/#text#",
+                              "type": "string",
+                              "default": "false",
+                              "additionalProperties": false
+                            }
+                          },
+                          "required": [
+                            "@attribute-id",
+                            "#text"
+                          ]
+                        },
+                        {
+                          "id": "http://jsonschema.net/order/product-lineitems/product-lineitem/custom-attributes/custom-attribute/7#",
+                          "type": "object",
+                          "additionalProperties": false,
+                          "properties": {
+                            "@attribute-id": {
+                              "id": "http://jsonschema.net/order/product-lineitems/product-lineitem/custom-attributes/custom-attribute/7/@attribute-id#",
+                              "type": "string",
+                              "default": "primaryImage",
+                              "additionalProperties": false
+                            },
+                            "#text": {
+                              "id": "http://jsonschema.net/order/product-lineitems/product-lineitem/custom-attributes/custom-attribute/7/#text#",
+                              "type": "string",
+                              "default": "508847",
+                              "additionalProperties": false
+                            }
+                          },
+                          "required": [
+                            "@attribute-id",
+                            "#text"
+                          ]
+                        },
+                        {
+                          "id": "http://jsonschema.net/order/product-lineitems/product-lineitem/custom-attributes/custom-attribute/8#",
+                          "type": "object",
+                          "additionalProperties": false,
+                          "properties": {
+                            "@attribute-id": {
+                              "id": "http://jsonschema.net/order/product-lineitems/product-lineitem/custom-attributes/custom-attribute/8/@attribute-id#",
+                              "type": "string",
+                              "default": "qosListID",
+                              "additionalProperties": false
+                            },
+                            "#text": {
+                              "id": "http://jsonschema.net/order/product-lineitems/product-lineitem/custom-attributes/custom-attribute/8/#text#",
+                              "type": "string",
+                              "default": "QOS6ALIKE",
+                              "additionalProperties": false
+                            }
+                          },
+                          "required": [
+                            "@attribute-id",
+                            "#text"
+                          ]
+                        },
+                        {
+                          "id": "http://jsonschema.net/order/product-lineitems/product-lineitem/custom-attributes/custom-attribute/9#",
+                          "type": "object",
+                          "additionalProperties": false,
+                          "properties": {
+                            "@attribute-id": {
+                              "id": "http://jsonschema.net/order/product-lineitems/product-lineitem/custom-attributes/custom-attribute/9/@attribute-id#",
+                              "type": "string",
+                              "default": "selectedForIsc",
+                              "additionalProperties": false
+                            },
+                            "#text": {
+                              "id": "http://jsonschema.net/order/product-lineitems/product-lineitem/custom-attributes/custom-attribute/9/#text#",
+                              "type": "string",
+                              "default": "true",
+                              "additionalProperties": false
+                            }
+                          },
+                          "required": [
+                            "@attribute-id",
+                            "#text"
+                          ]
+                        },
+                        {
+                          "id": "http://jsonschema.net/order/product-lineitems/product-lineitem/custom-attributes/custom-attribute/10#",
+                          "type": "object",
+                          "additionalProperties": false,
+                          "properties": {
+                            "@attribute-id": {
+                              "id": "http://jsonschema.net/order/product-lineitems/product-lineitem/custom-attributes/custom-attribute/10/@attribute-id#",
+                              "type": "string",
+                              "default": "upc",
+                              "additionalProperties": false
+                            },
+                            "#text": {
+                              "id": "http://jsonschema.net/order/product-lineitems/product-lineitem/custom-attributes/custom-attribute/10/#text#",
+                              "type": "string",
+                              "default": "0005069234041474",
+                              "additionalProperties": false
+                            }
+                          },
+                          "required": [
+                            "@attribute-id",
+                            "#text"
+                          ]
+                        }
+                      ],
+                      "required": [
+                        "0",
+                        "1",
+                        "2",
+                        "3",
+                        "4",
+                        "5",
+                        "6",
+                        "7",
+                        "8",
+                        "9",
+                        "10"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "custom-attribute"
+                  ]
+                }
+              },
+              "required": [
+                "net-price",
+                "tax",
+                "gross-price",
+                "base-price",
+                "lineitem-text",
+                "tax-basis",
+                "position",
+                "product-id",
+                "product-name",
+                "quantity",
+                "tax-rate",
+                "shipment-id",
+                "gift",
+                "custom-attributes"
+              ]
+            }
+          },
+          "required": [
+            "product-lineitem"
+          ]
+        },
+        "shipping-lineitems": {
+          "id": "http://jsonschema.net/order/shipping-lineitems#",
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "shipping-lineitem": {
+              "id": "http://jsonschema.net/order/shipping-lineitems/shipping-lineitem#",
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "net-price": {
+                  "id": "http://jsonschema.net/order/shipping-lineitems/shipping-lineitem/net-price#",
+                  "type": "string",
+                  "default": "0.00",
+                  "additionalProperties": false
+                },
+                "tax": {
+                  "id": "http://jsonschema.net/order/shipping-lineitems/shipping-lineitem/tax#",
+                  "type": "string",
+                  "default": "0.00",
+                  "additionalProperties": false
+                },
+                "gross-price": {
+                  "id": "http://jsonschema.net/order/shipping-lineitems/shipping-lineitem/gross-price#",
+                  "type": "string",
+                  "default": "0.00",
+                  "additionalProperties": false
+                },
+                "base-price": {
+                  "id": "http://jsonschema.net/order/shipping-lineitems/shipping-lineitem/base-price#",
+                  "type": "string",
+                  "default": "0.00",
+                  "additionalProperties": false
+                },
+                "lineitem-text": {
+                  "id": "http://jsonschema.net/order/shipping-lineitems/shipping-lineitem/lineitem-text#",
+                  "type": "string",
+                  "default": "Shipping",
+                  "additionalProperties": false
+                },
+                "tax-basis": {
+                  "id": "http://jsonschema.net/order/shipping-lineitems/shipping-lineitem/tax-basis#",
+                  "type": "string",
+                  "default": "0.00",
+                  "additionalProperties": false
+                },
+                "item-id": {
+                  "id": "http://jsonschema.net/order/shipping-lineitems/shipping-lineitem/item-id#",
+                  "type": "string",
+                  "default": "STANDARD_SHIPPING",
+                  "additionalProperties": false
+                },
+                "shipment-id": {
+                  "id": "http://jsonschema.net/order/shipping-lineitems/shipping-lineitem/shipment-id#",
+                  "type": "string",
+                  "default": "04214477",
+                  "additionalProperties": false
+                },
+                "tax-rate": {
+                  "id": "http://jsonschema.net/order/shipping-lineitems/shipping-lineitem/tax-rate#",
+                  "type": "string",
+                  "default": "0.2",
+                  "additionalProperties": false
+                },
+                "custom-attributes": {
+                  "id": "http://jsonschema.net/order/shipping-lineitems/shipping-lineitem/custom-attributes#",
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "custom-attribute": {
+                      "id": "http://jsonschema.net/order/shipping-lineitems/shipping-lineitem/custom-attributes/custom-attribute#",
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "@attribute-id": {
+                          "id": "http://jsonschema.net/order/shipping-lineitems/shipping-lineitem/custom-attributes/custom-attribute/@attribute-id#",
+                          "type": "string",
+                          "default": "originalLineCost",
+                          "additionalProperties": false
+                        },
+                        "#text": {
+                          "id": "http://jsonschema.net/order/shipping-lineitems/shipping-lineitem/custom-attributes/custom-attribute/#text#",
+                          "type": "string",
+                          "default": "0.0",
+                          "additionalProperties": false
+                        }
+                      },
+                      "required": [
+                        "@attribute-id",
+                        "#text"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "custom-attribute"
+                  ]
+                }
+              },
+              "required": [
+                "net-price",
+                "tax",
+                "gross-price",
+                "base-price",
+                "lineitem-text",
+                "tax-basis",
+                "item-id",
+                "shipment-id",
+                "tax-rate",
+                "custom-attributes"
+              ]
+            }
+          },
+          "required": [
+            "shipping-lineitem"
+          ]
+        },
+        "shipments": {
+          "id": "http://jsonschema.net/order/shipments#",
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "shipment": {
+              "id": "http://jsonschema.net/order/shipments/shipment#",
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "@shipment-id": {
+                  "id": "http://jsonschema.net/order/shipments/shipment/@shipment-id#",
+                  "type": "string",
+                  "default": "04214477",
+                  "additionalProperties": false
+                },
+                "status": {
+                  "id": "http://jsonschema.net/order/shipments/shipment/status#",
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "shipping-status": {
+                      "id": "http://jsonschema.net/order/shipments/shipment/status/shipping-status#",
+                      "type": "string",
+                      "default": "NOT_SHIPPED",
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "shipping-status"
+                  ]
+                },
+                "shipping-method": {
+                  "id": "http://jsonschema.net/order/shipments/shipment/shipping-method#",
+                  "type": "string",
+                  "default": "AUTO_ISC",
+                  "additionalProperties": false
+                },
+                "shipping-address": {
+                  "id": "http://jsonschema.net/order/shipments/shipment/shipping-address#",
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "first-name": {
+                      "id": "http://jsonschema.net/order/shipments/shipment/shipping-address/first-name#",
+                      "type": "string",
+                      "default": "Hessle",
+                      "additionalProperties": false
+                    },
+                    "last-name": {
+                      "id": "http://jsonschema.net/order/shipments/shipment/shipping-address/last-name#",
+                      "type": "string",
+                      "default": "Store",
+                      "additionalProperties": false
+                    },
+                    "address1": {
+                      "id": "http://jsonschema.net/order/shipments/shipment/shipping-address/address1#",
+                      "type": "string",
+                      "default": "Hessle Road",
+                      "additionalProperties": false
+                    },
+                    "suite": {
+                      "id": "http://jsonschema.net/order/shipments/shipment/shipping-address/suite#",
+                      "type": "string",
+                      "default": "20",
+                      "additionalProperties": false
+                    },
+                    "city": {
+                      "id": "http://jsonschema.net/order/shipments/shipment/shipping-address/city#",
+                      "type": "string",
+                      "default": "Hull",
+                      "additionalProperties": false
+                    },
+                    "postal-code": {
+                      "id": "http://jsonschema.net/order/shipments/shipment/shipping-address/postal-code#",
+                      "type": "string",
+                      "default": "HU3 4PE",
+                      "additionalProperties": false
+                    },
+                    "state-code": {
+                      "id": "http://jsonschema.net/order/shipments/shipment/shipping-address/state-code#",
+                      "type": "string",
+                      "default": "East Riding of Yorkshire",
+                      "additionalProperties": false
+                    },
+                    "country-code": {
+                      "id": "http://jsonschema.net/order/shipments/shipment/shipping-address/country-code#",
+                      "type": "string",
+                      "default": "UK",
+                      "additionalProperties": false
+                    },
+                    "phone": {
+                      "id": "http://jsonschema.net/order/shipments/shipment/shipping-address/phone#",
+                      "type": "string",
+                      "default": "01482 596600",
+                      "additionalProperties": false
+                    },
+                    "custom-attributes": {
+                      "id": "http://jsonschema.net/order/shipments/shipment/shipping-address/custom-attributes#",
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "custom-attribute": {
+                          "id": "http://jsonschema.net/order/shipments/shipment/shipping-address/custom-attributes/custom-attribute#",
+                          "type": "array",
+                          "additionalProperties": false,
+                          "items": [
+                            {
+                              "id": "http://jsonschema.net/order/shipments/shipment/shipping-address/custom-attributes/custom-attribute/0#",
+                              "type": "object",
+                              "additionalProperties": false,
+                              "properties": {
+                                "@attribute-id": {
+                                  "id": "http://jsonschema.net/order/shipments/shipment/shipping-address/custom-attributes/custom-attribute/0/@attribute-id#",
+                                  "type": "string",
+                                  "default": "addressID",
+                                  "additionalProperties": false
+                                },
+                                "#text": {
+                                  "id": "http://jsonschema.net/order/shipments/shipment/shipping-address/custom-attributes/custom-attribute/0/#text#",
+                                  "type": "string",
+                                  "default": "4126",
+                                  "additionalProperties": false
+                                }
+                              },
+                              "required": [
+                                "@attribute-id",
+                                "#text"
+                              ]
+                            },
+                            {
+                              "id": "http://jsonschema.net/order/shipments/shipment/shipping-address/custom-attributes/custom-attribute/1#",
+                              "type": "object",
+                              "additionalProperties": false,
+                              "properties": {
+                                "@attribute-id": {
+                                  "id": "http://jsonschema.net/order/shipments/shipment/shipping-address/custom-attributes/custom-attribute/1/@attribute-id#",
+                                  "type": "string",
+                                  "default": "iscLane",
+                                  "additionalProperties": false
+                                },
+                                "#text": {
+                                  "id": "http://jsonschema.net/order/shipments/shipment/shipping-address/custom-attributes/custom-attribute/1/#text#",
+                                  "type": "string",
+                                  "default": "20",
+                                  "additionalProperties": false
+                                }
+                              },
+                              "required": [
+                                "@attribute-id",
+                                "#text"
+                              ]
+                            },
+                            {
+                              "id": "http://jsonschema.net/order/shipments/shipment/shipping-address/custom-attributes/custom-attribute/2#",
+                              "type": "object",
+                              "additionalProperties": false,
+                              "properties": {
+                                "@attribute-id": {
+                                  "id": "http://jsonschema.net/order/shipments/shipment/shipping-address/custom-attributes/custom-attribute/2/@attribute-id#",
+                                  "type": "string",
+                                  "default": "iscLastName",
+                                  "additionalProperties": false
+                                },
+                                "#text": {
+                                  "id": "http://jsonschema.net/order/shipments/shipment/shipping-address/custom-attributes/custom-attribute/2/#text#",
+                                  "type": "string",
+                                  "default": "Automation",
+                                  "additionalProperties": false
+                                }
+                              },
+                              "required": [
+                                "@attribute-id",
+                                "#text"
+                              ]
+                            },
+                            {
+                              "id": "http://jsonschema.net/order/shipments/shipment/shipping-address/custom-attributes/custom-attribute/3#",
+                              "type": "object",
+                              "additionalProperties": false,
+                              "properties": {
+                                "@attribute-id": {
+                                  "id": "http://jsonschema.net/order/shipments/shipment/shipping-address/custom-attributes/custom-attribute/3/@attribute-id#",
+                                  "type": "string",
+                                  "default": "iscStoreNo",
+                                  "additionalProperties": false
+                                },
+                                "#text": {
+                                  "id": "http://jsonschema.net/order/shipments/shipment/shipping-address/custom-attributes/custom-attribute/3/#text#",
+                                  "type": "string",
+                                  "default": "4126",
+                                  "additionalProperties": false
+                                }
+                              },
+                              "required": [
+                                "@attribute-id",
+                                "#text"
+                              ]
+                            },
+                            {
+                              "id": "http://jsonschema.net/order/shipments/shipment/shipping-address/custom-attributes/custom-attribute/4#",
+                              "type": "object",
+                              "additionalProperties": false,
+                              "properties": {
+                                "@attribute-id": {
+                                  "id": "http://jsonschema.net/order/shipments/shipment/shipping-address/custom-attributes/custom-attribute/4/@attribute-id#",
+                                  "type": "string",
+                                  "default": "smsPhone",
+                                  "additionalProperties": false
+                                },
+                                "#text": {
+                                  "id": "http://jsonschema.net/order/shipments/shipment/shipping-address/custom-attributes/custom-attribute/4/#text#",
+                                  "type": "string",
+                                  "default": "07111111111",
+                                  "additionalProperties": false
+                                }
+                              },
+                              "required": [
+                                "@attribute-id",
+                                "#text"
+                              ]
+                            }
+                          ],
+                          "required": [
+                            "0",
+                            "1",
+                            "2",
+                            "3",
+                            "4"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "custom-attribute"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "first-name",
+                    "last-name",
+                    "address1",
+                    "suite",
+                    "city",
+                    "postal-code",
+                    "state-code",
+                    "country-code",
+                    "phone",
+                    "custom-attributes"
+                  ]
+                },
+                "gift": {
+                  "id": "http://jsonschema.net/order/shipments/shipment/gift#",
+                  "type": "string",
+                  "default": "false",
+                  "additionalProperties": false
+                },
+                "totals": {
+                  "id": "http://jsonschema.net/order/shipments/shipment/totals#",
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "merchandize-total": {
+                      "id": "http://jsonschema.net/order/shipments/shipment/totals/merchandize-total#",
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "net-price": {
+                          "id": "http://jsonschema.net/order/shipments/shipment/totals/merchandize-total/net-price#",
+                          "type": "string",
+                          "default": "241.63",
+                          "additionalProperties": false
+                        },
+                        "tax": {
+                          "id": "http://jsonschema.net/order/shipments/shipment/totals/merchandize-total/tax#",
+                          "type": "string",
+                          "default": "48.32",
+                          "additionalProperties": false
+                        },
+                        "gross-price": {
+                          "id": "http://jsonschema.net/order/shipments/shipment/totals/merchandize-total/gross-price#",
+                          "type": "string",
+                          "default": "289.95",
+                          "additionalProperties": false
+                        }
+                      },
+                      "required": [
+                        "net-price",
+                        "tax",
+                        "gross-price"
+                      ]
+                    },
+                    "adjusted-merchandize-total": {
+                      "id": "http://jsonschema.net/order/shipments/shipment/totals/adjusted-merchandize-total#",
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "net-price": {
+                          "id": "http://jsonschema.net/order/shipments/shipment/totals/adjusted-merchandize-total/net-price#",
+                          "type": "string",
+                          "default": "241.63",
+                          "additionalProperties": false
+                        },
+                        "tax": {
+                          "id": "http://jsonschema.net/order/shipments/shipment/totals/adjusted-merchandize-total/tax#",
+                          "type": "string",
+                          "default": "48.32",
+                          "additionalProperties": false
+                        },
+                        "gross-price": {
+                          "id": "http://jsonschema.net/order/shipments/shipment/totals/adjusted-merchandize-total/gross-price#",
+                          "type": "string",
+                          "default": "289.95",
+                          "additionalProperties": false
+                        }
+                      },
+                      "required": [
+                        "net-price",
+                        "tax",
+                        "gross-price"
+                      ]
+                    },
+                    "shipping-total": {
+                      "id": "http://jsonschema.net/order/shipments/shipment/totals/shipping-total#",
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "net-price": {
+                          "id": "http://jsonschema.net/order/shipments/shipment/totals/shipping-total/net-price#",
+                          "type": "string",
+                          "default": "0.00",
+                          "additionalProperties": false
+                        },
+                        "tax": {
+                          "id": "http://jsonschema.net/order/shipments/shipment/totals/shipping-total/tax#",
+                          "type": "string",
+                          "default": "0.00",
+                          "additionalProperties": false
+                        },
+                        "gross-price": {
+                          "id": "http://jsonschema.net/order/shipments/shipment/totals/shipping-total/gross-price#",
+                          "type": "string",
+                          "default": "0.00",
+                          "additionalProperties": false
+                        }
+                      },
+                      "required": [
+                        "net-price",
+                        "tax",
+                        "gross-price"
+                      ]
+                    },
+                    "adjusted-shipping-total": {
+                      "id": "http://jsonschema.net/order/shipments/shipment/totals/adjusted-shipping-total#",
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "net-price": {
+                          "id": "http://jsonschema.net/order/shipments/shipment/totals/adjusted-shipping-total/net-price#",
+                          "type": "string",
+                          "default": "0.00",
+                          "additionalProperties": false
+                        },
+                        "tax": {
+                          "id": "http://jsonschema.net/order/shipments/shipment/totals/adjusted-shipping-total/tax#",
+                          "type": "string",
+                          "default": "0.00",
+                          "additionalProperties": false
+                        },
+                        "gross-price": {
+                          "id": "http://jsonschema.net/order/shipments/shipment/totals/adjusted-shipping-total/gross-price#",
+                          "type": "string",
+                          "default": "0.00",
+                          "additionalProperties": false
+                        }
+                      },
+                      "required": [
+                        "net-price",
+                        "tax",
+                        "gross-price"
+                      ]
+                    },
+                    "shipment-total": {
+                      "id": "http://jsonschema.net/order/shipments/shipment/totals/shipment-total#",
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "net-price": {
+                          "id": "http://jsonschema.net/order/shipments/shipment/totals/shipment-total/net-price#",
+                          "type": "string",
+                          "default": "241.63",
+                          "additionalProperties": false
+                        },
+                        "tax": {
+                          "id": "http://jsonschema.net/order/shipments/shipment/totals/shipment-total/tax#",
+                          "type": "string",
+                          "default": "48.32",
+                          "additionalProperties": false
+                        },
+                        "gross-price": {
+                          "id": "http://jsonschema.net/order/shipments/shipment/totals/shipment-total/gross-price#",
+                          "type": "string",
+                          "default": "289.95",
+                          "additionalProperties": false
+                        }
+                      },
+                      "required": [
+                        "net-price",
+                        "tax",
+                        "gross-price"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "merchandize-total",
+                    "adjusted-merchandize-total",
+                    "shipping-total",
+                    "adjusted-shipping-total",
+                    "shipment-total"
+                  ]
+                },
+                "custom-attributes": {
+                  "id": "http://jsonschema.net/order/shipments/shipment/custom-attributes#",
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "custom-attribute": {
+                      "id": "http://jsonschema.net/order/shipments/shipment/custom-attributes/custom-attribute#",
+                      "type": "array",
+                      "additionalProperties": false,
+                      "items": [
+                        {
+                          "id": "http://jsonschema.net/order/shipments/shipment/custom-attributes/custom-attribute/0#",
+                          "type": "object",
+                          "additionalProperties": false,
+                          "properties": {
+                            "@attribute-id": {
+                              "id": "http://jsonschema.net/order/shipments/shipment/custom-attributes/custom-attribute/0/@attribute-id#",
+                              "type": "string",
+                              "default": "deliveryDate",
+                              "additionalProperties": false
+                            },
+                            "#text": {
+                              "id": "http://jsonschema.net/order/shipments/shipment/custom-attributes/custom-attribute/0/#text#",
+                              "type": "string",
+                              "default": "2014-11-07",
+                              "additionalProperties": false
+                            }
+                          },
+                          "required": [
+                            "@attribute-id",
+                            "#text"
+                          ]
+                        },
+                        {
+                          "id": "http://jsonschema.net/order/shipments/shipment/custom-attributes/custom-attribute/1#",
+                          "type": "object",
+                          "additionalProperties": false,
+                          "properties": {
+                            "@attribute-id": {
+                              "id": "http://jsonschema.net/order/shipments/shipment/custom-attributes/custom-attribute/1/@attribute-id#",
+                              "type": "string",
+                              "default": "deliveryPassUsed",
+                              "additionalProperties": false
+                            },
+                            "#text": {
+                              "id": "http://jsonschema.net/order/shipments/shipment/custom-attributes/custom-attribute/1/#text#",
+                              "type": "string",
+                              "default": "false",
+                              "additionalProperties": false
+                            }
+                          },
+                          "required": [
+                            "@attribute-id",
+                            "#text"
+                          ]
+                        },
+                        {
+                          "id": "http://jsonschema.net/order/shipments/shipment/custom-attributes/custom-attribute/2#",
+                          "type": "object",
+                          "additionalProperties": false,
+                          "properties": {
+                            "@attribute-id": {
+                              "id": "http://jsonschema.net/order/shipments/shipment/custom-attributes/custom-attribute/2/@attribute-id#",
+                              "type": "string",
+                              "default": "extendedShippingStatus",
+                              "additionalProperties": false
+                            },
+                            "#text": {
+                              "id": "http://jsonschema.net/order/shipments/shipment/custom-attributes/custom-attribute/2/#text#",
+                              "type": "string",
+                              "default": "1",
+                              "additionalProperties": false
+                            }
+                          },
+                          "required": [
+                            "@attribute-id",
+                            "#text"
+                          ]
+                        },
+                        {
+                          "id": "http://jsonschema.net/order/shipments/shipment/custom-attributes/custom-attribute/3#",
+                          "type": "object",
+                          "additionalProperties": false,
+                          "properties": {
+                            "@attribute-id": {
+                              "id": "http://jsonschema.net/order/shipments/shipment/custom-attributes/custom-attribute/3/@attribute-id#",
+                              "type": "string",
+                              "default": "iscEstimatedDeliveryDate",
+                              "additionalProperties": false
+                            },
+                            "#text": {
+                              "id": "http://jsonschema.net/order/shipments/shipment/custom-attributes/custom-attribute/3/#text#",
+                              "type": "string",
+                              "default": "2014-11-07T00:00:00.000+0000",
+                              "additionalProperties": false
+                            }
+                          },
+                          "required": [
+                            "@attribute-id",
+                            "#text"
+                          ]
+                        },
+                        {
+                          "id": "http://jsonschema.net/order/shipments/shipment/custom-attributes/custom-attribute/4#",
+                          "type": "object",
+                          "additionalProperties": false,
+                          "properties": {
+                            "@attribute-id": {
+                              "id": "http://jsonschema.net/order/shipments/shipment/custom-attributes/custom-attribute/4/@attribute-id#",
+                              "type": "string",
+                              "default": "iscShipment",
+                              "additionalProperties": false
+                            },
+                            "#text": {
+                              "id": "http://jsonschema.net/order/shipments/shipment/custom-attributes/custom-attribute/4/#text#",
+                              "type": "string",
+                              "default": "true",
+                              "additionalProperties": false
+                            }
+                          },
+                          "required": [
+                            "@attribute-id",
+                            "#text"
+                          ]
+                        },
+                        {
+                          "id": "http://jsonschema.net/order/shipments/shipment/custom-attributes/custom-attribute/5#",
+                          "type": "object",
+                          "additionalProperties": false,
+                          "properties": {
+                            "@attribute-id": {
+                              "id": "http://jsonschema.net/order/shipments/shipment/custom-attributes/custom-attribute/5/@attribute-id#",
+                              "type": "string",
+                              "default": "levelOfService",
+                              "additionalProperties": false
+                            },
+                            "#text": {
+                              "id": "http://jsonschema.net/order/shipments/shipment/custom-attributes/custom-attribute/5/#text#",
+                              "type": "string",
+                              "default": "2",
+                              "additionalProperties": false
+                            }
+                          },
+                          "required": [
+                            "@attribute-id",
+                            "#text"
+                          ]
+                        },
+                        {
+                          "id": "http://jsonschema.net/order/shipments/shipment/custom-attributes/custom-attribute/6#",
+                          "type": "object",
+                          "additionalProperties": false,
+                          "properties": {
+                            "@attribute-id": {
+                              "id": "http://jsonschema.net/order/shipments/shipment/custom-attributes/custom-attribute/6/@attribute-id#",
+                              "type": "string",
+                              "default": "parsedContentAsset",
+                              "additionalProperties": false
+                            },
+                            "#text": {
+                              "id": "http://jsonschema.net/order/shipments/shipment/custom-attributes/custom-attribute/6/#text#",
+                              "type": "string",
+                              "default": "Your order will be available to collect on<br>Friday 7th November after 5pm",
+                              "additionalProperties": false
+                            }
+                          },
+                          "required": [
+                            "@attribute-id",
+                            "#text"
+                          ]
+                        },
+                        {
+                          "id": "http://jsonschema.net/order/shipments/shipment/custom-attributes/custom-attribute/7#",
+                          "type": "object",
+                          "additionalProperties": false,
+                          "properties": {
+                            "@attribute-id": {
+                              "id": "http://jsonschema.net/order/shipments/shipment/custom-attributes/custom-attribute/7/@attribute-id#",
+                              "type": "string",
+                              "default": "parsedShippingMethodDescription",
+                              "additionalProperties": false
+                            },
+                            "#text": {
+                              "id": "http://jsonschema.net/order/shipments/shipment/custom-attributes/custom-attribute/7/#text#",
+                              "type": "string",
+                              "default": "Delivered to the store of your choice if you have ordered before 5 pm your order will be in store after 5 pm the follwing day, FREE delivery",
+                              "additionalProperties": false
+                            }
+                          },
+                          "required": [
+                            "@attribute-id",
+                            "#text"
+                          ]
+                        },
+                        {
+                          "id": "http://jsonschema.net/order/shipments/shipment/custom-attributes/custom-attribute/8#",
+                          "type": "object",
+                          "additionalProperties": false,
+                          "properties": {
+                            "@attribute-id": {
+                              "id": "http://jsonschema.net/order/shipments/shipment/custom-attributes/custom-attribute/8/@attribute-id#",
+                              "type": "string",
+                              "default": "parsedShippingMethodName",
+                              "additionalProperties": false
+                            },
+                            "#text": {
+                              "id": "http://jsonschema.net/order/shipments/shipment/custom-attributes/custom-attribute/8/#text#",
+                              "type": "string",
+                              "default": "In Store Collection",
+                              "additionalProperties": false
+                            }
+                          },
+                          "required": [
+                            "@attribute-id",
+                            "#text"
+                          ]
+                        },
+                        {
+                          "id": "http://jsonschema.net/order/shipments/shipment/custom-attributes/custom-attribute/9#",
+                          "type": "object",
+                          "additionalProperties": false,
+                          "properties": {
+                            "@attribute-id": {
+                              "id": "http://jsonschema.net/order/shipments/shipment/custom-attributes/custom-attribute/9/@attribute-id#",
+                              "type": "string",
+                              "default": "preOrder",
+                              "additionalProperties": false
+                            },
+                            "#text": {
+                              "id": "http://jsonschema.net/order/shipments/shipment/custom-attributes/custom-attribute/9/#text#",
+                              "type": "string",
+                              "default": "false",
+                              "additionalProperties": false
+                            }
+                          },
+                          "required": [
+                            "@attribute-id",
+                            "#text"
+                          ]
+                        },
+                        {
+                          "id": "http://jsonschema.net/order/shipments/shipment/custom-attributes/custom-attribute/10#",
+                          "type": "object",
+                          "additionalProperties": false,
+                          "properties": {
+                            "@attribute-id": {
+                              "id": "http://jsonschema.net/order/shipments/shipment/custom-attributes/custom-attribute/10/@attribute-id#",
+                              "type": "string",
+                              "default": "shippingMethodName",
+                              "additionalProperties": false
+                            },
+                            "#text": {
+                              "id": "http://jsonschema.net/order/shipments/shipment/custom-attributes/custom-attribute/10/#text#",
+                              "type": "string",
+                              "default": "Click and Collect",
+                              "additionalProperties": false
+                            }
+                          },
+                          "required": [
+                            "@attribute-id",
+                            "#text"
+                          ]
+                        }
+                      ],
+                      "required": [
+                        "0",
+                        "1",
+                        "2",
+                        "3",
+                        "4",
+                        "5",
+                        "6",
+                        "7",
+                        "8",
+                        "9",
+                        "10"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "custom-attribute"
+                  ]
+                }
+              },
+              "required": [
+                "@shipment-id",
+                "status",
+                "shipping-method",
+                "shipping-address",
+                "gift",
+                "totals",
+                "custom-attributes"
+              ]
+            }
+          },
+          "required": [
+            "shipment"
+          ]
+        },
+        "totals": {
+          "id": "http://jsonschema.net/order/totals#",
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "merchandize-total": {
+              "id": "http://jsonschema.net/order/totals/merchandize-total#",
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "net-price": {
+                  "id": "http://jsonschema.net/order/totals/merchandize-total/net-price#",
+                  "type": "string",
+                  "default": "241.63",
+                  "additionalProperties": false
+                },
+                "tax": {
+                  "id": "http://jsonschema.net/order/totals/merchandize-total/tax#",
+                  "type": "string",
+                  "default": "48.32",
+                  "additionalProperties": false
+                },
+                "gross-price": {
+                  "id": "http://jsonschema.net/order/totals/merchandize-total/gross-price#",
+                  "type": "string",
+                  "default": "289.95",
+                  "additionalProperties": false
+                },
+                "price-adjustments": {
+                  "id": "http://jsonschema.net/order/totals/merchandize-total/price-adjustments#",
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "price-adjustment": {
+                      "id": "http://jsonschema.net/order/totals/merchandize-total/price-adjustments/price-adjustment#",
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "net-price": {
+                          "id": "http://jsonschema.net/order/totals/merchandize-total/price-adjustments/price-adjustment/net-price#",
+                          "type": "string",
+                          "default": "-24.17",
+                          "additionalProperties": false
+                        },
+                        "tax": {
+                          "id": "http://jsonschema.net/order/totals/merchandize-total/price-adjustments/price-adjustment/tax#",
+                          "type": "string",
+                          "default": "-4.83",
+                          "additionalProperties": false
+                        },
+                        "gross-price": {
+                          "id": "http://jsonschema.net/order/totals/merchandize-total/price-adjustments/price-adjustment/gross-price#",
+                          "type": "string",
+                          "default": "-29.00",
+                          "additionalProperties": false
+                        },
+                        "base-price": {
+                          "id": "http://jsonschema.net/order/totals/merchandize-total/price-adjustments/price-adjustment/base-price#",
+                          "type": "string",
+                          "default": "-29.00",
+                          "additionalProperties": false
+                        },
+                        "lineitem-text": {
+                          "id": "http://jsonschema.net/order/totals/merchandize-total/price-adjustments/price-adjustment/lineitem-text#",
+                          "type": "string",
+                          "default": "10% ASDA Colleague Discount Promotion",
+                          "additionalProperties": false
+                        },
+                        "tax-basis": {
+                          "id": "http://jsonschema.net/order/totals/merchandize-total/price-adjustments/price-adjustment/tax-basis#",
+                          "type": "string",
+                          "default": "-29.00",
+                          "additionalProperties": false
+                        },
+                        "promotion-id": {
+                          "id": "http://jsonschema.net/order/totals/merchandize-total/price-adjustments/price-adjustment/promotion-id#",
+                          "type": "string",
+                          "default": "ASDAColleagueDiscount",
+                          "additionalProperties": false
+                        },
+                        "campaign-id": {
+                          "id": "http://jsonschema.net/order/totals/merchandize-total/price-adjustments/price-adjustment/campaign-id#",
+                          "type": "string",
+                          "default": "ASDAColleagueDiscount",
+                          "additionalProperties": false
+                        }
+                      },
+                      "required": [
+                        "net-price",
+                        "tax",
+                        "gross-price",
+                        "base-price",
+                        "lineitem-text",
+                        "tax-basis",
+                        "promotion-id",
+                        "campaign-id"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "price-adjustment"
+                  ]
+                }
+              },
+              "required": [
+                "net-price",
+                "tax",
+                "gross-price",
+                "price-adjustments"
+              ]
+            },
+            "adjusted-merchandize-total": {
+              "id": "http://jsonschema.net/order/totals/adjusted-merchandize-total#",
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "net-price": {
+                  "id": "http://jsonschema.net/order/totals/adjusted-merchandize-total/net-price#",
+                  "type": "string",
+                  "default": "217.46",
+                  "additionalProperties": false
+                },
+                "tax": {
+                  "id": "http://jsonschema.net/order/totals/adjusted-merchandize-total/tax#",
+                  "type": "string",
+                  "default": "43.49",
+                  "additionalProperties": false
+                },
+                "gross-price": {
+                  "id": "http://jsonschema.net/order/totals/adjusted-merchandize-total/gross-price#",
+                  "type": "string",
+                  "default": "260.95",
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "net-price",
+                "tax",
+                "gross-price"
+              ]
+            },
+            "shipping-total": {
+              "id": "http://jsonschema.net/order/totals/shipping-total#",
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "net-price": {
+                  "id": "http://jsonschema.net/order/totals/shipping-total/net-price#",
+                  "type": "string",
+                  "default": "0.00",
+                  "additionalProperties": false
+                },
+                "tax": {
+                  "id": "http://jsonschema.net/order/totals/shipping-total/tax#",
+                  "type": "string",
+                  "default": "0.00",
+                  "additionalProperties": false
+                },
+                "gross-price": {
+                  "id": "http://jsonschema.net/order/totals/shipping-total/gross-price#",
+                  "type": "string",
+                  "default": "0.00",
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "net-price",
+                "tax",
+                "gross-price"
+              ]
+            },
+            "adjusted-shipping-total": {
+              "id": "http://jsonschema.net/order/totals/adjusted-shipping-total#",
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "net-price": {
+                  "id": "http://jsonschema.net/order/totals/adjusted-shipping-total/net-price#",
+                  "type": "string",
+                  "default": "0.00",
+                  "additionalProperties": false
+                },
+                "tax": {
+                  "id": "http://jsonschema.net/order/totals/adjusted-shipping-total/tax#",
+                  "type": "string",
+                  "default": "0.00",
+                  "additionalProperties": false
+                },
+                "gross-price": {
+                  "id": "http://jsonschema.net/order/totals/adjusted-shipping-total/gross-price#",
+                  "type": "string",
+                  "default": "0.00",
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "net-price",
+                "tax",
+                "gross-price"
+              ]
+            },
+            "order-total": {
+              "id": "http://jsonschema.net/order/totals/order-total#",
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "net-price": {
+                  "id": "http://jsonschema.net/order/totals/order-total/net-price#",
+                  "type": "string",
+                  "default": "217.46",
+                  "additionalProperties": false
+                },
+                "tax": {
+                  "id": "http://jsonschema.net/order/totals/order-total/tax#",
+                  "type": "string",
+                  "default": "43.49",
+                  "additionalProperties": false
+                },
+                "gross-price": {
+                  "id": "http://jsonschema.net/order/totals/order-total/gross-price#",
+                  "type": "string",
+                  "default": "260.95",
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "net-price",
+                "tax",
+                "gross-price"
+              ]
+            }
+          },
+          "required": [
+            "merchandize-total",
+            "adjusted-merchandize-total",
+            "shipping-total",
+            "adjusted-shipping-total",
+            "order-total"
+          ]
+        },
+        "payments": {
+          "id": "http://jsonschema.net/order/payments#",
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "payment": {
+              "id": "http://jsonschema.net/order/payments/payment#",
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "credit-card": {
+                  "id": "http://jsonschema.net/order/payments/payment/credit-card#",
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "card-type": {
+                      "id": "http://jsonschema.net/order/payments/payment/credit-card/card-type#",
+                      "type": "string",
+                      "default": "VISA",
+                      "additionalProperties": false
+                    },
+                    "card-number": {
+                      "id": "http://jsonschema.net/order/payments/payment/credit-card/card-number#",
+                      "type": "string",
+                      "default": "XXXX-XXXX-XXXX-1244",
+                      "additionalProperties": false
+                    },
+                    "card-holder": {
+                      "id": "http://jsonschema.net/order/payments/payment/credit-card/card-holder#",
+                      "type": "string",
+                      "default": "Automation",
+                      "additionalProperties": false
+                    },
+                    "from-month": {
+                      "id": "http://jsonschema.net/order/payments/payment/credit-card/from-month#",
+                      "type": "string",
+                      "default": "-1",
+                      "additionalProperties": false
+                    },
+                    "from-year": {
+                      "id": "http://jsonschema.net/order/payments/payment/credit-card/from-year#",
+                      "type": "string",
+                      "default": "-1",
+                      "additionalProperties": false
+                    },
+                    "expiration-month": {
+                      "id": "http://jsonschema.net/order/payments/payment/credit-card/expiration-month#",
+                      "type": "string",
+                      "default": "2",
+                      "additionalProperties": false
+                    },
+                    "expiration-year": {
+                      "id": "http://jsonschema.net/order/payments/payment/credit-card/expiration-year#",
+                      "type": "string",
+                      "default": "2017",
+                      "additionalProperties": false
+                    },
+                    "custom-attributes": {
+                      "id": "http://jsonschema.net/order/payments/payment/credit-card/custom-attributes#",
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "custom-attribute": {
+                          "id": "http://jsonschema.net/order/payments/payment/credit-card/custom-attributes/custom-attribute#",
+                          "type": "array",
+                          "additionalProperties": false,
+                          "items": [
+                            {
+                              "id": "http://jsonschema.net/order/payments/payment/credit-card/custom-attributes/custom-attribute/0#",
+                              "type": "object",
+                              "additionalProperties": false,
+                              "properties": {
+                                "@attribute-id": {
+                                  "id": "http://jsonschema.net/order/payments/payment/credit-card/custom-attributes/custom-attribute/0/@attribute-id#",
+                                  "type": "string",
+                                  "default": "creditCardStartMonth",
+                                  "additionalProperties": false
+                                },
+                                "#text": {
+                                  "id": "http://jsonschema.net/order/payments/payment/credit-card/custom-attributes/custom-attribute/0/#text#",
+                                  "type": "string",
+                                  "default": "-1",
+                                  "additionalProperties": false
+                                }
+                              },
+                              "required": [
+                                "@attribute-id",
+                                "#text"
+                              ]
+                            },
+                            {
+                              "id": "http://jsonschema.net/order/payments/payment/credit-card/custom-attributes/custom-attribute/1#",
+                              "type": "object",
+                              "additionalProperties": false,
+                              "properties": {
+                                "@attribute-id": {
+                                  "id": "http://jsonschema.net/order/payments/payment/credit-card/custom-attributes/custom-attribute/1/@attribute-id#",
+                                  "type": "string",
+                                  "default": "creditCardStartYear",
+                                  "additionalProperties": false
+                                },
+                                "#text": {
+                                  "id": "http://jsonschema.net/order/payments/payment/credit-card/custom-attributes/custom-attribute/1/#text#",
+                                  "type": "string",
+                                  "default": "-1",
+                                  "additionalProperties": false
+                                }
+                              },
+                              "required": [
+                                "@attribute-id",
+                                "#text"
+                              ]
+                            },
+                            {
+                              "id": "http://jsonschema.net/order/payments/payment/credit-card/custom-attributes/custom-attribute/2#",
+                              "type": "object",
+                              "additionalProperties": false,
+                              "properties": {
+                                "@attribute-id": {
+                                  "id": "http://jsonschema.net/order/payments/payment/credit-card/custom-attributes/custom-attribute/2/@attribute-id#",
+                                  "type": "string",
+                                  "default": "idcredentialcheck",
+                                  "additionalProperties": false
+                                },
+                                "#text": {
+                                  "id": "http://jsonschema.net/order/payments/payment/credit-card/custom-attributes/custom-attribute/2/#text#",
+                                  "type": "string",
+                                  "default": "CRU",
+                                  "additionalProperties": false
+                                }
+                              },
+                              "required": [
+                                "@attribute-id",
+                                "#text"
+                              ]
+                            },
+                            {
+                              "id": "http://jsonschema.net/order/payments/payment/credit-card/custom-attributes/custom-attribute/3#",
+                              "type": "object",
+                              "additionalProperties": false,
+                              "properties": {
+                                "@attribute-id": {
+                                  "id": "http://jsonschema.net/order/payments/payment/credit-card/custom-attributes/custom-attribute/3/@attribute-id#",
+                                  "type": "string",
+                                  "default": "pihash",
+                                  "additionalProperties": false
+                                },
+                                "#text": {
+                                  "id": "http://jsonschema.net/order/payments/payment/credit-card/custom-attributes/custom-attribute/3/#text#",
+                                  "type": "string",
+                                  "default": "PIH.volt.VISA.CREDITCARD.4444335484881244.1244",
+                                  "additionalProperties": false
+                                }
+                              },
+                              "required": [
+                                "@attribute-id",
+                                "#text"
+                              ]
+                            },
+                            {
+                              "id": "http://jsonschema.net/order/payments/payment/credit-card/custom-attributes/custom-attribute/4#",
+                              "type": "object",
+                              "additionalProperties": false,
+                              "properties": {
+                                "@attribute-id": {
+                                  "id": "http://jsonschema.net/order/payments/payment/credit-card/custom-attributes/custom-attribute/4/@attribute-id#",
+                                  "type": "string",
+                                  "default": "pmid",
+                                  "additionalProperties": false
+                                },
+                                "#text": {
+                                  "id": "http://jsonschema.net/order/payments/payment/credit-card/custom-attributes/custom-attribute/4/#text#",
+                                  "type": "string",
+                                  "default": "VISA",
+                                  "additionalProperties": false
+                                }
+                              },
+                              "required": [
+                                "@attribute-id",
+                                "#text"
+                              ]
+                            },
+                            {
+                              "id": "http://jsonschema.net/order/payments/payment/credit-card/custom-attributes/custom-attribute/5#",
+                              "type": "object",
+                              "additionalProperties": false,
+                              "properties": {
+                                "@attribute-id": {
+                                  "id": "http://jsonschema.net/order/payments/payment/credit-card/custom-attributes/custom-attribute/5/@attribute-id#",
+                                  "type": "string",
+                                  "default": "usePangaeaPaymentGateway",
+                                  "additionalProperties": false
+                                },
+                                "#text": {
+                                  "id": "http://jsonschema.net/order/payments/payment/credit-card/custom-attributes/custom-attribute/5/#text#",
+                                  "type": "string",
+                                  "default": "false",
+                                  "additionalProperties": false
+                                }
+                              },
+                              "required": [
+                                "@attribute-id",
+                                "#text"
+                              ]
+                            }
+                          ],
+                          "required": [
+                            "0",
+                            "1",
+                            "2",
+                            "3",
+                            "4",
+                            "5"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "custom-attribute"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "card-type",
+                    "card-number",
+                    "card-holder",
+                    "from-month",
+                    "from-year",
+                    "expiration-month",
+                    "expiration-year",
+                    "custom-attributes"
+                  ]
+                },
+                "amount": {
+                  "id": "http://jsonschema.net/order/payments/payment/amount#",
+                  "type": "string",
+                  "default": "260.95",
+                  "additionalProperties": false
+                },
+                "processor-id": {
+                  "id": "http://jsonschema.net/order/payments/payment/processor-id#",
+                  "type": "string",
+                  "default": "DATACASH",
+                  "additionalProperties": false
+                },
+                "transaction-id": {
+                  "id": "http://jsonschema.net/order/payments/payment/transaction-id#",
+                  "type": "string",
+                  "default": "3000900038893960",
+                  "additionalProperties": false
+                },
+                "custom-attributes": {
+                  "id": "http://jsonschema.net/order/payments/payment/custom-attributes#",
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "custom-attribute": {
+                      "id": "http://jsonschema.net/order/payments/payment/custom-attributes/custom-attribute#",
+                      "type": "array",
+                      "additionalProperties": false,
+                      "items": [
+                        {
+                          "id": "http://jsonschema.net/order/payments/payment/custom-attributes/custom-attribute/0#",
+                          "type": "object",
+                          "additionalProperties": false,
+                          "properties": {
+                            "@attribute-id": {
+                              "id": "http://jsonschema.net/order/payments/payment/custom-attributes/custom-attribute/0/@attribute-id#",
+                              "type": "string",
+                              "default": "authCode",
+                              "additionalProperties": false
+                            },
+                            "#text": {
+                              "id": "http://jsonschema.net/order/payments/payment/custom-attributes/custom-attribute/0/#text#",
+                              "type": "string",
+                              "default": "287633",
+                              "additionalProperties": false
+                            }
+                          },
+                          "required": [
+                            "@attribute-id",
+                            "#text"
+                          ]
+                        },
+                        {
+                          "id": "http://jsonschema.net/order/payments/payment/custom-attributes/custom-attribute/1#",
+                          "type": "object",
+                          "additionalProperties": false,
+                          "properties": {
+                            "@attribute-id": {
+                              "id": "http://jsonschema.net/order/payments/payment/custom-attributes/custom-attribute/1/@attribute-id#",
+                              "type": "string",
+                              "default": "creditCardType",
+                              "additionalProperties": false
+                            },
+                            "#text": {
+                              "id": "http://jsonschema.net/order/payments/payment/custom-attributes/custom-attribute/1/#text#",
+                              "type": "string",
+                              "default": "VISA",
+                              "additionalProperties": false
+                            }
+                          },
+                          "required": [
+                            "@attribute-id",
+                            "#text"
+                          ]
+                        },
+                        {
+                          "id": "http://jsonschema.net/order/payments/payment/custom-attributes/custom-attribute/2#",
+                          "type": "object",
+                          "additionalProperties": false,
+                          "properties": {
+                            "@attribute-id": {
+                              "id": "http://jsonschema.net/order/payments/payment/custom-attributes/custom-attribute/2/@attribute-id#",
+                              "type": "string",
+                              "default": "cv2avs",
+                              "additionalProperties": false
+                            },
+                            "#text": {
+                              "id": "http://jsonschema.net/order/payments/payment/custom-attributes/custom-attribute/2/#text#",
+                              "type": "string",
+                              "default": "No CV2AVS Response.",
+                              "additionalProperties": false
+                            }
+                          },
+                          "required": [
+                            "@attribute-id",
+                            "#text"
+                          ]
+                        },
+                        {
+                          "id": "http://jsonschema.net/order/payments/payment/custom-attributes/custom-attribute/3#",
+                          "type": "object",
+                          "additionalProperties": false,
+                          "properties": {
+                            "@attribute-id": {
+                              "id": "http://jsonschema.net/order/payments/payment/custom-attributes/custom-attribute/3/@attribute-id#",
+                              "type": "string",
+                              "default": "fromMonth",
+                              "additionalProperties": false
+                            },
+                            "#text": {
+                              "id": "http://jsonschema.net/order/payments/payment/custom-attributes/custom-attribute/3/#text#",
+                              "type": "string",
+                              "default": "-1",
+                              "additionalProperties": false
+                            }
+                          },
+                          "required": [
+                            "@attribute-id",
+                            "#text"
+                          ]
+                        },
+                        {
+                          "id": "http://jsonschema.net/order/payments/payment/custom-attributes/custom-attribute/4#",
+                          "type": "object",
+                          "additionalProperties": false,
+                          "properties": {
+                            "@attribute-id": {
+                              "id": "http://jsonschema.net/order/payments/payment/custom-attributes/custom-attribute/4/@attribute-id#",
+                              "type": "string",
+                              "default": "fromYear",
+                              "additionalProperties": false
+                            },
+                            "#text": {
+                              "id": "http://jsonschema.net/order/payments/payment/custom-attributes/custom-attribute/4/#text#",
+                              "type": "string",
+                              "default": "-1",
+                              "additionalProperties": false
+                            }
+                          },
+                          "required": [
+                            "@attribute-id",
+                            "#text"
+                          ]
+                        },
+                        {
+                          "id": "http://jsonschema.net/order/payments/payment/custom-attributes/custom-attribute/5#",
+                          "type": "object",
+                          "additionalProperties": false,
+                          "properties": {
+                            "@attribute-id": {
+                              "id": "http://jsonschema.net/order/payments/payment/custom-attributes/custom-attribute/5/@attribute-id#",
+                              "type": "string",
+                              "default": "initialReturnCode",
+                              "additionalProperties": false
+                            },
+                            "#text": {
+                              "id": "http://jsonschema.net/order/payments/payment/custom-attributes/custom-attribute/5/#text#",
+                              "type": "string",
+                              "default": "162",
+                              "additionalProperties": false
+                            }
+                          },
+                          "required": [
+                            "@attribute-id",
+                            "#text"
+                          ]
+                        },
+                        {
+                          "id": "http://jsonschema.net/order/payments/payment/custom-attributes/custom-attribute/6#",
+                          "type": "object",
+                          "additionalProperties": false,
+                          "properties": {
+                            "@attribute-id": {
+                              "id": "http://jsonschema.net/order/payments/payment/custom-attributes/custom-attribute/6/@attribute-id#",
+                              "type": "string",
+                              "default": "reason",
+                              "additionalProperties": false
+                            },
+                            "#text": {
+                              "id": "http://jsonschema.net/order/payments/payment/custom-attributes/custom-attribute/6/#text#",
+                              "type": "string",
+                              "default": "ACCEPTED",
+                              "additionalProperties": false
+                            }
+                          },
+                          "required": [
+                            "@attribute-id",
+                            "#text"
+                          ]
+                        },
+                        {
+                          "id": "http://jsonschema.net/order/payments/payment/custom-attributes/custom-attribute/7#",
+                          "type": "object",
+                          "additionalProperties": false,
+                          "properties": {
+                            "@attribute-id": {
+                              "id": "http://jsonschema.net/order/payments/payment/custom-attributes/custom-attribute/7/@attribute-id#",
+                              "type": "string",
+                              "default": "returnCode",
+                              "additionalProperties": false
+                            },
+                            "#text": {
+                              "id": "http://jsonschema.net/order/payments/payment/custom-attributes/custom-attribute/7/#text#",
+                              "type": "string",
+                              "default": "1",
+                              "additionalProperties": false
+                            }
+                          },
+                          "required": [
+                            "@attribute-id",
+                            "#text"
+                          ]
+                        },
+                        {
+                          "id": "http://jsonschema.net/order/payments/payment/custom-attributes/custom-attribute/8#",
+                          "type": "object",
+                          "additionalProperties": false,
+                          "properties": {
+                            "@attribute-id": {
+                              "id": "http://jsonschema.net/order/payments/payment/custom-attributes/custom-attribute/8/@attribute-id#",
+                              "type": "string",
+                              "default": "threeDSChecked",
+                              "additionalProperties": false
+                            },
+                            "#text": {
+                              "id": "http://jsonschema.net/order/payments/payment/custom-attributes/custom-attribute/8/#text#",
+                              "type": "string",
+                              "default": "true",
+                              "additionalProperties": false
+                            }
+                          },
+                          "required": [
+                            "@attribute-id",
+                            "#text"
+                          ]
+                        }
+                      ],
+                      "required": [
+                        "0",
+                        "1",
+                        "2",
+                        "3",
+                        "4",
+                        "5",
+                        "6",
+                        "7",
+                        "8"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "custom-attribute"
+                  ]
+                }
+              },
+              "required": [
+                "credit-card",
+                "amount",
+                "processor-id",
+                "transaction-id",
+                "custom-attributes"
+              ]
+            }
+          },
+          "required": [
+            "payment"
+          ]
+        },
+        "custom-attributes": {
+          "id": "http://jsonschema.net/order/custom-attributes#",
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "custom-attribute": {
+              "id": "http://jsonschema.net/order/custom-attributes/custom-attribute#",
+              "type": "array",
+              "additionalProperties": false,
+              "items": [
+                {
+                  "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/0#",
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "@attribute-id": {
+                      "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/0/@attribute-id#",
+                      "type": "string",
+                      "default": "ColleagueWalMartID",
+                      "additionalProperties": false
+                    },
+                    "#text": {
+                      "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/0/#text#",
+                      "type": "string",
+                      "default": "1400065686",
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "@attribute-id",
+                    "#text"
+                  ]
+                },
+                {
+                  "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/1#",
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "@attribute-id": {
+                      "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/1/@attribute-id#",
+                      "type": "string",
+                      "default": "DisableExtensionOfCollectionDate",
+                      "additionalProperties": false
+                    },
+                    "#text": {
+                      "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/1/#text#",
+                      "type": "string",
+                      "default": "false",
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "@attribute-id",
+                    "#text"
+                  ]
+                },
+                {
+                  "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/2#",
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "@attribute-id": {
+                      "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/2/@attribute-id#",
+                      "type": "string",
+                      "default": "channel",
+                      "additionalProperties": false
+                    },
+                    "#text": {
+                      "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/2/#text#",
+                      "type": "string",
+                      "default": "WEB",
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "@attribute-id",
+                    "#text"
+                  ]
+                },
+                {
+                  "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/3#",
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "@attribute-id": {
+                      "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/3/@attribute-id#",
+                      "type": "string",
+                      "default": "customerFirstName",
+                      "additionalProperties": false
+                    },
+                    "#text": {
+                      "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/3/#text#",
+                      "type": "string",
+                      "default": "Asda",
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "@attribute-id",
+                    "#text"
+                  ]
+                },
+                {
+                  "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/4#",
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "@attribute-id": {
+                      "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/4/@attribute-id#",
+                      "type": "string",
+                      "default": "customerLastName",
+                      "additionalProperties": false
+                    },
+                    "#text": {
+                      "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/4/#text#",
+                      "type": "string",
+                      "default": "Automation",
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "@attribute-id",
+                    "#text"
+                  ]
+                },
+                {
+                  "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/5#",
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "@attribute-id": {
+                      "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/5/@attribute-id#",
+                      "type": "string",
+                      "default": "customerLastNameUpper",
+                      "additionalProperties": false
+                    },
+                    "#text": {
+                      "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/5/#text#",
+                      "type": "string",
+                      "default": "AUTOMATION",
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "@attribute-id",
+                    "#text"
+                  ]
+                },
+                {
+                  "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/6#",
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "@attribute-id": {
+                      "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/6/@attribute-id#",
+                      "type": "string",
+                      "default": "customerPhone",
+                      "additionalProperties": false
+                    },
+                    "#text": {
+                      "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/6/#text#",
+                      "type": "string",
+                      "default": "07612345678",
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "@attribute-id",
+                    "#text"
+                  ]
+                },
+                {
+                  "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/7#",
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "@attribute-id": {
+                      "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/7/@attribute-id#",
+                      "type": "string",
+                      "default": "customerTitle",
+                      "additionalProperties": false
+                    },
+                    "#text": {
+                      "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/7/#text#",
+                      "type": "string",
+                      "default": "Mr.",
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "@attribute-id",
+                    "#text"
+                  ]
+                },
+                {
+                  "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/8#",
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "@attribute-id": {
+                      "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/8/@attribute-id#",
+                      "type": "string",
+                      "default": "earliestDeliveryDate",
+                      "additionalProperties": false
+                    },
+                    "#text": {
+                      "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/8/#text#",
+                      "type": "string",
+                      "default": "2014-11-05",
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "@attribute-id",
+                    "#text"
+                  ]
+                },
+                {
+                  "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/9#",
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "@attribute-id": {
+                      "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/9/@attribute-id#",
+                      "type": "string",
+                      "default": "enablePangaeaFraudAttributes",
+                      "additionalProperties": false
+                    },
+                    "#text": {
+                      "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/9/#text#",
+                      "type": "string",
+                      "default": "true",
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "@attribute-id",
+                    "#text"
+                  ]
+                },
+                {
+                  "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/10#",
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "@attribute-id": {
+                      "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/10/@attribute-id#",
+                      "type": "string",
+                      "default": "fraudResult",
+                      "additionalProperties": false
+                    },
+                    "#text": {
+                      "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/10/#text#",
+                      "type": "string",
+                      "default": "PENDING",
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "@attribute-id",
+                    "#text"
+                  ]
+                },
+                {
+                  "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/11#",
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "@attribute-id": {
+                      "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/11/@attribute-id#",
+                      "type": "string",
+                      "default": "fraudResultExportStatus",
+                      "additionalProperties": false
+                    },
+                    "#text": {
+                      "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/11/#text#",
+                      "type": "string",
+                      "default": "NOTEXPORTED",
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "@attribute-id",
+                    "#text"
+                  ]
+                },
+                {
+                  "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/12#",
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "@attribute-id": {
+                      "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/12/@attribute-id#",
+                      "type": "string",
+                      "default": "hostName",
+                      "additionalProperties": false
+                    },
+                    "#text": {
+                      "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/12/#text#",
+                      "type": "string",
+                      "default": "development.asda.ecommera.demandware.net",
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "@attribute-id",
+                    "#text"
+                  ]
+                },
+                {
+                  "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/13#",
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "@attribute-id": {
+                      "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/13/@attribute-id#",
+                      "type": "string",
+                      "default": "ipAddress",
+                      "additionalProperties": false
+                    },
+                    "#text": {
+                      "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/13/#text#",
+                      "type": "string",
+                      "default": "82.112.169.25",
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "@attribute-id",
+                    "#text"
+                  ]
+                },
+                {
+                  "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/14#",
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "@attribute-id": {
+                      "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/14/@attribute-id#",
+                      "type": "string",
+                      "default": "iscAllParcelsArrived",
+                      "additionalProperties": false
+                    },
+                    "#text": {
+                      "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/14/#text#",
+                      "type": "string",
+                      "default": "NOT_ARRIVED",
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "@attribute-id",
+                    "#text"
+                  ]
+                },
+                {
+                  "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/15#",
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "@attribute-id": {
+                      "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/15/@attribute-id#",
+                      "type": "string",
+                      "default": "iscAllParcelsProcessed",
+                      "additionalProperties": false
+                    },
+                    "#text": {
+                      "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/15/#text#",
+                      "type": "string",
+                      "default": "false",
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "@attribute-id",
+                    "#text"
+                  ]
+                },
+                {
+                  "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/16#",
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "@attribute-id": {
+                      "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/16/@attribute-id#",
+                      "type": "string",
+                      "default": "iscCollectionTimeExtended",
+                      "additionalProperties": false
+                    },
+                    "#text": {
+                      "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/16/#text#",
+                      "type": "string",
+                      "default": "false",
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "@attribute-id",
+                    "#text"
+                  ]
+                },
+                {
+                  "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/17#",
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "@attribute-id": {
+                      "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/17/@attribute-id#",
+                      "type": "string",
+                      "default": "iscEstimatedDeliveryDate",
+                      "additionalProperties": false
+                    },
+                    "#text": {
+                      "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/17/#text#",
+                      "type": "string",
+                      "default": "2014-11-07T13:22:48.000+0000",
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "@attribute-id",
+                    "#text"
+                  ]
+                },
+                {
+                  "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/18#",
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "@attribute-id": {
+                      "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/18/@attribute-id#",
+                      "type": "string",
+                      "default": "iscItemsRequireInStorePutaway",
+                      "additionalProperties": false
+                    },
+                    "#text": {
+                      "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/18/#text#",
+                      "type": "string",
+                      "default": "false",
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "@attribute-id",
+                    "#text"
+                  ]
+                },
+                {
+                  "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/19#",
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "@attribute-id": {
+                      "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/19/@attribute-id#",
+                      "type": "string",
+                      "default": "iscItemsRequireReturnDispatch",
+                      "additionalProperties": false
+                    },
+                    "#text": {
+                      "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/19/#text#",
+                      "type": "string",
+                      "default": "false",
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "@attribute-id",
+                    "#text"
+                  ]
+                },
+                {
+                  "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/20#",
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "@attribute-id": {
+                      "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/20/@attribute-id#",
+                      "type": "string",
+                      "default": "iscNotificationCollectReminder1",
+                      "additionalProperties": false
+                    },
+                    "#text": {
+                      "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/20/#text#",
+                      "type": "string",
+                      "default": "false",
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "@attribute-id",
+                    "#text"
+                  ]
+                },
+                {
+                  "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/21#",
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "@attribute-id": {
+                      "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/21/@attribute-id#",
+                      "type": "string",
+                      "default": "iscNotificationCollectReminder2",
+                      "additionalProperties": false
+                    },
+                    "#text": {
+                      "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/21/#text#",
+                      "type": "string",
+                      "default": "false",
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "@attribute-id",
+                    "#text"
+                  ]
+                },
+                {
+                  "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/22#",
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "@attribute-id": {
+                      "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/22/@attribute-id#",
+                      "type": "string",
+                      "default": "iscNotificationCollectReminder3",
+                      "additionalProperties": false
+                    },
+                    "#text": {
+                      "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/22/#text#",
+                      "type": "string",
+                      "default": "false",
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "@attribute-id",
+                    "#text"
+                  ]
+                },
+                {
+                  "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/23#",
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "@attribute-id": {
+                      "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/23/@attribute-id#",
+                      "type": "string",
+                      "default": "iscNotificationOrderDelayed",
+                      "additionalProperties": false
+                    },
+                    "#text": {
+                      "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/23/#text#",
+                      "type": "string",
+                      "default": "false",
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "@attribute-id",
+                    "#text"
+                  ]
+                },
+                {
+                  "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/24#",
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "@attribute-id": {
+                      "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/24/@attribute-id#",
+                      "type": "string",
+                      "default": "iscOrderType",
+                      "additionalProperties": false
+                    },
+                    "#text": {
+                      "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/24/#text#",
+                      "type": "string",
+                      "default": "COLLECTION_ONLY",
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "@attribute-id",
+                    "#text"
+                  ]
+                },
+                {
+                  "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/25#",
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "@attribute-id": {
+                      "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/25/@attribute-id#",
+                      "type": "string",
+                      "default": "iscParcelErrorProcessAction",
+                      "additionalProperties": false
+                    },
+                    "#text": {
+                      "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/25/#text#",
+                      "type": "string",
+                      "default": "NONE",
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "@attribute-id",
+                    "#text"
+                  ]
+                },
+                {
+                  "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/26#",
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "@attribute-id": {
+                      "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/26/@attribute-id#",
+                      "type": "string",
+                      "default": "iscParcelsRequireInStorePutaway",
+                      "additionalProperties": false
+                    },
+                    "#text": {
+                      "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/26/#text#",
+                      "type": "string",
+                      "default": "false",
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "@attribute-id",
+                    "#text"
+                  ]
+                },
+                {
+                  "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/27#",
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "@attribute-id": {
+                      "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/27/@attribute-id#",
+                      "type": "string",
+                      "default": "iscParcelsRequireReturnDispatch",
+                      "additionalProperties": false
+                    },
+                    "#text": {
+                      "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/27/#text#",
+                      "type": "string",
+                      "default": "false",
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "@attribute-id",
+                    "#text"
+                  ]
+                },
+                {
+                  "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/28#",
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "@attribute-id": {
+                      "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/28/@attribute-id#",
+                      "type": "string",
+                      "default": "iscPutawayStatus",
+                      "additionalProperties": false
+                    },
+                    "#text": {
+                      "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/28/#text#",
+                      "type": "string",
+                      "default": "NOT_SENT",
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "@attribute-id",
+                    "#text"
+                  ]
+                },
+                {
+                  "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/29#",
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "@attribute-id": {
+                      "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/29/@attribute-id#",
+                      "type": "string",
+                      "default": "iscStoreNo",
+                      "additionalProperties": false
+                    },
+                    "#text": {
+                      "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/29/#text#",
+                      "type": "string",
+                      "default": "4126",
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "@attribute-id",
+                    "#text"
+                  ]
+                },
+                {
+                  "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/30#",
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "@attribute-id": {
+                      "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/30/@attribute-id#",
+                      "type": "string",
+                      "default": "lockerBoxOnly",
+                      "additionalProperties": false
+                    },
+                    "#text": {
+                      "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/30/#text#",
+                      "type": "string",
+                      "default": "true",
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "@attribute-id",
+                    "#text"
+                  ]
+                },
+                {
+                  "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/31#",
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "@attribute-id": {
+                      "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/31/@attribute-id#",
+                      "type": "string",
+                      "default": "operatorID",
+                      "additionalProperties": false
+                    },
+                    "#text": {
+                      "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/31/#text#",
+                      "type": "string",
+                      "default": "storefront",
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "@attribute-id",
+                    "#text"
+                  ]
+                },
+                {
+                  "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/32#",
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "@attribute-id": {
+                      "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/32/@attribute-id#",
+                      "type": "string",
+                      "default": "orderConfirmationEmailSentStatus",
+                      "additionalProperties": false
+                    },
+                    "#text": {
+                      "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/32/#text#",
+                      "type": "string",
+                      "default": "true",
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "@attribute-id",
+                    "#text"
+                  ]
+                },
+                {
+                  "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/33#",
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "@attribute-id": {
+                      "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/33/@attribute-id#",
+                      "type": "string",
+                      "default": "orderConfirmationEmailSentTimestamp",
+                      "additionalProperties": false
+                    },
+                    "#text": {
+                      "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/33/#text#",
+                      "type": "string",
+                      "default": "2014-11-04T13:22:48.000+0000",
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "@attribute-id",
+                    "#text"
+                  ]
+                },
+                {
+                  "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/34#",
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "@attribute-id": {
+                      "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/34/@attribute-id#",
+                      "type": "string",
+                      "default": "orderExportStatus",
+                      "additionalProperties": false
+                    },
+                    "#text": {
+                      "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/34/#text#",
+                      "type": "string",
+                      "default": "NOTEXPORTED",
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "@attribute-id",
+                    "#text"
+                  ]
+                },
+                {
+                  "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/35#",
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "@attribute-id": {
+                      "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/35/@attribute-id#",
+                      "type": "string",
+                      "default": "pangaeaFraudExportPending",
+                      "additionalProperties": false
+                    },
+                    "#text": {
+                      "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/35/#text#",
+                      "type": "string",
+                      "default": "true",
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "@attribute-id",
+                    "#text"
+                  ]
+                },
+                {
+                  "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/36#",
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "@attribute-id": {
+                      "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/36/@attribute-id#",
+                      "type": "string",
+                      "default": "requiresGiftCertificateIssuing",
+                      "additionalProperties": false
+                    },
+                    "#text": {
+                      "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/36/#text#",
+                      "type": "string",
+                      "default": "false",
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "@attribute-id",
+                    "#text"
+                  ]
+                },
+                {
+                  "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/37#",
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "@attribute-id": {
+                      "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/37/@attribute-id#",
+                      "type": "string",
+                      "default": "sendFraudUpdateToOrderManagementStatus",
+                      "additionalProperties": false
+                    },
+                    "#text": {
+                      "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/37/#text#",
+                      "type": "string",
+                      "default": "PENDING",
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "@attribute-id",
+                    "#text"
+                  ]
+                },
+                {
+                  "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/38#",
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "@attribute-id": {
+                      "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/38/@attribute-id#",
+                      "type": "string",
+                      "default": "sendToOrderManagementStatus",
+                      "additionalProperties": false
+                    },
+                    "#text": {
+                      "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/38/#text#",
+                      "type": "string",
+                      "default": "PENDING",
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "@attribute-id",
+                    "#text"
+                  ]
+                },
+                {
+                  "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/39#",
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "@attribute-id": {
+                      "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/39/@attribute-id#",
+                      "type": "string",
+                      "default": "vtidFlag",
+                      "additionalProperties": false
+                    },
+                    "#text": {
+                      "id": "http://jsonschema.net/order/custom-attributes/custom-attribute/39/#text#",
+                      "type": "string",
+                      "default": "web",
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": [
+                    "@attribute-id",
+                    "#text"
+                  ]
+                }
+              ],
+              "required": [
+                "0",
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10",
+                "11",
+                "12",
+                "13",
+                "14",
+                "15",
+                "16",
+                "17",
+                "18",
+                "19",
+                "20",
+                "21",
+                "22",
+                "23",
+                "24",
+                "25",
+                "26",
+                "27",
+                "28",
+                "29",
+                "30",
+                "31",
+                "32",
+                "33",
+                "34",
+                "35",
+                "36",
+                "37",
+                "38",
+                "39"
+              ]
+            }
+          },
+          "required": [
+            "custom-attribute"
+          ]
+        }
+      },
+      "required": [
+        "@order-no",
+        "order-date",
+        "created-by",
+        "original-order-no",
+        "currency",
+        "customer-locale",
+        "invoice-no",
+        "customer",
+        "status",
+        "current-order-no",
+        "product-lineitems",
+        "shipping-lineitems",
+        "shipments",
+        "totals",
+        "payments",
+        "custom-attributes"
+      ]
+    }
+  },
+  "required": [
+    "order"
+  ]
+}
