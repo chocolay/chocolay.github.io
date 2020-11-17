@@ -1,3 +1,5 @@
+d3.select("#slow").transition()
+.style("opacity",1e-6)
 /*!
  * Bootstrap v3.3.5 (http://getbootstrap.com)
  * Copyright 2011-2015 Twitter, Inc.
@@ -222,6 +224,7 @@ margin.width = 1000 - margin.left - margin.right;
 margin.height = 300 - margin.top - margin.bottom;
 
 setTimeout(function() {
+ d3.select("#slow").remove()
     var svg = initialize({selector:"#d3_app", x:0, y:0, tooltip:1,geom:margin});
 //capture data
     d3.csv(fname, function(err,data) {
