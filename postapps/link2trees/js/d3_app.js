@@ -1033,16 +1033,16 @@ input2name = "/postapps/link2trees/data/input3.json",
                  temp = undefined;
                  break;
          }
-	     
-	     
-d3.selectAll("#VMdisplay, #VMdisplay *").on("click",function() {
-	var toggle = d3.select("#VMdisplay ul").style("display")=="none";
-	d3.selectAll("#VMdisplay *").style("display",toggle?"inline-block":"none");
-})
-
          return temp;
      }; //end replacer function
  }; //end VM_save
-
+ 
 }();
+
+d3.timeout(function() {	    	     
+d3.selectAll("#VMdisplay, #VMdisplay *").on("click",function() {
+	var toggle = d3.select("#VMdisplay ul").style("display")=="none";
+	d3.selectAll("#VMdisplay *").style("display",toggle?"inline-block":"none");
+})},1000)
+
 
