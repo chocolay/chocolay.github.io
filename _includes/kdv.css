@@ -7,11 +7,18 @@ div#miracle img {
   margin: 0 auto;
 }
 
+span {
+color: black;
+  font-weight:500;
+  font-size:1 rem;
+  cursor:auto;
+}
+
 span#miracle {
-    position: relative;
     display: inline-block;
-    color: $redTree;
+    color:  #D95D2A;
     font-weight:700;
     font-size:1.2 rem;
     cursor:pointer;
 }
+
