@@ -1,0 +1,23 @@
+<div style = {display:inline-block}>
+
+   <div id = VMdisplay> <!-- this div is just for this demo & is unnecessary -->
+	<ul>
+		<li>Red circles collapse and expand their branches.
+		<li>Add a mapping between objects in different trees by clicking on them or by using the input boxes below the table and submitting with the "enter mapping.." button.
+		<li>Mappings are one-to-one. When an object is in a map, it can not be used in a new one.
+		<li>Maps can be deleted by either clicking on their line or by clicking on rows in the table and then use the "Delete highlighted ..." button (or the delete key).
+		<li>The json can be saved, and downloaded through the "Save Mapping" button.
+	</ul>
+    The mappings may be saved and downloaded through the "Save Mapping" button.
+   </div>
+
+
+    <!-- module looks for a #VMsave  button to serialize to json and  create VMsaved_object in the global space-->
+   <button id = VMsave>Save mapping</button>
+
+   <!--module looks for this #VMdownload to output a json file -->
+   <a id = VMdownload href = "">Download file AFTER pressing "Save Mapping"</a> 
+
+</div> 
+
+<div id = VisualMapper></div>
