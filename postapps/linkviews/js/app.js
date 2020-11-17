@@ -99,7 +99,7 @@ tooltip.circle = function (d, Rings, info, linkWord) {
     d3.select("#toolTip").transition()
         .duration(duration)
         .style("opacity", ".9");
-
+ 
     d3.select("#header1").text(info["header1Tag"]);
     d3.select("#head").text(d[info.header]);
     d3.select("#header2").text("Total Access: " + d3.format(",.0f")(d.value));
