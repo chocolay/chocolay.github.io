@@ -132,12 +132,12 @@ function mkslider(amp) {
     slider = paper.append("g")
 
     slider.append("circle")
+        .style("opacity",1e-6)
         .attr("id", "slidr")
         .attr("cx", xscale(32) )
         .attr("cy", yscale(a))
         .attr("r",10)
         .style("fill", "#F7B140")
-        .style("opacity",1e-6)
         .datum(a)
         .call(dragster)
 }
@@ -167,9 +167,10 @@ var kind = "nsech2",
         return a * Math.exp(-alpha * (e - τ / 4) * (e - τ / 4))
     });
 
+var s = +d3.select("body").style("width").slice(0,-2);
     var  paper = d3.select('#d3_app')
         .append("svg")
-        .attr("width", +d3.select("body").style("width").slice(0,-2))
+        .attr("width", s)
         .attr("height",480);
     paper.on("mouseover",function() {
         d3.select("circle").style("opacity",1)
@@ -183,7 +184,7 @@ d3.select("body").node().onresize = function() {
 }
 
 var xscale = d3.scale.linear().domain([0, N]).range([0, s]),
-    yscale = d3.scale.linear().domain([0, 175]).range([s / 4, 0]),
+    yscale = d3.scale.linear().domain([0, 175]).range([240, 0]),
     line = d3.svg.line().x(function(d, i) {
         return xscale(i)
     }).y(function(d) {
