@@ -125,10 +125,10 @@ d3.json(fname, function(err, data) {if (err) console.log(err)
     P.enter().append("circle")
 	.style({"fill": ballcolor,"stroke": balledge,"opacity":1e-6})
         .style("opacity",1)
+	.attr({"r": ballradius,"class": "pts","id":function(d) {return d.key}})			    
 	.transition().delay(function(d) {return 500 + Math.random()*delayVariable})
-        .attr({"cx": function(d) {return d.x},"cy": function(d) {return d.y},"r": ballradius,"class": "pts","id":function(d) {return d.key}})
-   
-
+        .attr({"cx": function(d) {return d.x},"cy": function(d) {return d.y}})
+	       
 keyarray = [];
 keyarray[0] = ['ifpica'];
 keyarray[1] = ['iftbl','iftb','ifss','ifsb','iffb','iffbl'];
