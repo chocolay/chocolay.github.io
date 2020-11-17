@@ -133,7 +133,7 @@ function mkslider(amp) {
         .attr("id", "slidr")
         .attr("cx", xscale(32) )
         .attr("cy", yscale(a))
-        .attr("r",5)
+        .attr("r",10)
         .style("fill", "#F7B140")
         .datum(a)
         .call(dragster)
