@@ -123,9 +123,9 @@ d3.json(fname, function(err, data) {if (err) console.log(err)
 	}
     var P = svg.selectAll(".pts").data(pts);
     P.enter().append("circle")
+	.transition().delay(function(d) {return 500 + Math.random()*delayVariable})
         .attr({"cx": function(d) {return d.x},"cy": function(d) {return d.y},"r": ballradius,"class": "pts","id":function(d) {return d.key}})
         .style({"fill": ballcolor,"stroke": balledge,"opacity":1e-6})
-        .transition().delay(function(d) {return 500 + Math.random()*delayVariable})
         .style("opacity",1)
 
 
