@@ -194,7 +194,7 @@ function closestPoint(pathNode, point) {
 
 
 d3.select("#starter")
-    .style("background","rgb(247, 177, 64,128)")
+    .style("background","rgba(247, 177, 64,128)")
     .style("font-size","115%")
     .style("padding","5px")
     .style("border-radius","20px")
