@@ -2,7 +2,9 @@ d3.select("span#miracle").on("mouseenter",function() {
     console.log(d3.mouse())
     d3.select("div#miracle").style("display","block");
     ;})
-d3.select("div#miracle img").on("click",function() {d3.select(this).style("display","none");})
+d3.select("div#miracle img").on("click",function() {
+    d3.select("div#miracle").style("display","none");
+})
 
 function animate() {
     Uhat = rk4(kdv, Uhat, t, params)
