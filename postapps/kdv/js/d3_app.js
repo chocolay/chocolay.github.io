@@ -126,14 +126,6 @@ function mkslider(amp) {
             return a * Math.exp(-alpha * (e - τ / 4) * (e - τ / 4))
         });
 
-        thepath = patchbd.node();
-
-        p = closestPoint(thepath, [d3.event.x,d3.event.y]);
-        theline.attr("x1", p[0])
-            .attr("y1", p[1])
-            .attr("x2", w+xscale(32))
-            .attr("y2", yscale(a));
-
         patchbd.attr('d', line(u0))
 
 
@@ -228,7 +220,8 @@ var s = 960,
         .attr("height",s/2); //height is s/2 for straight line
 d3.select("#d3_app").style("height","250px");
 
-var theline = paper.append("line");
+var theline = paper.append("line")
+    .style("stroke-width",0.5);
 
 var xscale = d3.scale.linear().domain([0, N]).range([0, s]),
     yscale = d3.scale.linear().domain([0, 175]).range([s / 4, 0]),
@@ -243,7 +236,23 @@ var xscale = d3.scale.linear().domain([0, N]).range([0, s]),
     patchbd = paper.append('path')
         .style('fill','none')
         .style('stroke', '#D95D2A')
-        .style('stroke-width', 2.5);
+        .style('stroke-width', 2.5)
+        .on("mouseenter",function() {
+            thepath = patchbd.node();
+            p = closestPoint(thepath, [d3.event.x,d3.event.y]);
+            p[0] = d3.min(p[0],80)
+            p[1] = d3.min(p[1],100)
+            theline.attr("x1", p[0])
+                .attr("y1", p[1])
+                .attr("x2", w+xscale(32))
+                .attr("y2", yscale(a));
+            
+            theline.style("display","inline-block")
+            d3.select("circle").style("opacity",1)
+        }).on("mouseexit",function() {
+                theline.style("display","none");
+                d3.select("circle").style("opacity",0.2);
+            });
 
 mkslider([a]);
 
