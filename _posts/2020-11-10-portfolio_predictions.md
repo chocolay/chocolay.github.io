@@ -9,6 +9,7 @@ crossfilter:  True
 style:  agent1.css
 status: done
 orient: right
+truncation: 100
 ---
 
 
