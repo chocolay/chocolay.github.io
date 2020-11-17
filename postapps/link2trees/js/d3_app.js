@@ -923,7 +923,7 @@ input2name = "/postapps/link2trees/data/input3.json",
 	
   //if we're making the left side, then we're done with 
   // both sides of the tree; now make the table     
-  else mkTable();
+  
  }; 
 
   //function to save the new object into a json file 
