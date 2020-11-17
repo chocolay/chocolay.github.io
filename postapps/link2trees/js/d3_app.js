@@ -265,9 +265,7 @@ input2name = "/postapps/link2trees/data/input3.json",
        			var binding  = d3.selectAll("g#left").filter(function(d) {return d == VM.bindings[index].left})
                      	.insert("g", "text").attr({"class": "VMbinds","id": function(d) {return d.name}});
 				mkBinding(binding);
-				  
-				//update the table
-                mkTable();
+	
              } else {
                  //clicked on same side as the existing open line so instead initiate a newline 
 				d3.select("#VMstartline").style("opacity",0.25);
