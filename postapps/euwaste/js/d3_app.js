@@ -655,7 +655,7 @@ d3.request(fname)
                     .attr("id",function(d,i) {return "img"+i});
                 d3.select("#img0")
                     //    .attr("transform","matrix(0.109 0 0 0.109 650 7.7139)");
-                    .attr("xlink:href","assets/EEB_logo_RGB_s.jpg")
+                    .attr("xlink:href","/postapps/euwaste/data/EEB_logo_RGB_s.jpg")
                     .attr("transform","matrix(0.15 0 0 0.15 650 2.5)");
 
                 d3.select("#img1")
