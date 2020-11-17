@@ -94,78 +94,7 @@ input2name = "/postapps/link2trees/data/input3.json",
  d3.select("svg").append("path")
 	.attr("id","VMtempline");  
  VM.templine = [];  
-
-
-//create the table
- d3.select(div_id)
-     .append("div")
-     .attr("id", "VMtableDiv");
-
-//create a convenience checkbox so that all fields in the table can be highlighted
- d3.select("#VMtableDiv") 
-     .append("input")
-     .attr({
-         "type" : "checkbox",
-         "id"   : "VMcheckall"
-     })
-     .style({
-         "position" : "relative",
-         "left"     : "60px"
-     })
-	//behavior when the checkbox changes
-     .on("change", function() {  
-         if (d3.select(this)
-             .property("checked")) { //when the box is checked, highlight the fields
-             d3.selectAll("#VMtable tr:not(#VMhead)")
-                 .attr("class", "highlighted")
-                 .style("background-color", "rgb(230,138,128)")
-         } else     //if the box is unchecked, turn off the highlighting
-             d3.selectAll("#VMtable tr:not(#VMhead)")  
-             .style("background-color", function(d, i) {
-                 return i % 2 ? "#e5e5e5" : "#fdfdfd"
-             })
-             .attr("class", "")
-     });
-
-//insert the label "highlight all"  next to the checkbox
- d3.select("#VMtableDiv")  
-     .insert("text", "#VMcheckall")
-     .text("highlight all")
-     .attr("id", "VMselectboxtext")
-     .style({
-         "font-size" : "200%",
-         "position"  : "relative",
-         "left"      : "60px"
-     });
-     
-//attach a table to the DOM
- VM.table = d3.select("#VMtableDiv")
-     .append("table")
-     .attr("id", "VMtable")
-     .style("margin","0px 60px");
-  
-//insert the header row for the table
- VM.table.append("thead")
-     .append("tr")
-     .attr("id", "VMhead")
-     .selectAll("th")
-     .data(["Source Field", "Target Field"])
-     .enter()
-     .append("th")
-     .text(function(field) {return field});        
-
-//button for deleting the highlighted rows
- d3.select("#VMtableDiv")
-     .insert("button", "table")
-     .attr("id", "rowDelete")
-     .style({
-         "position"  : "relative",
-         "left"      : "100px",
-         "font-size" : "110%"
-     })
-     .text("Delete highlighted maps in table");
-//end table
-                 
+          
 	//attach the save-file behavior funciton to the #VMSave button
 	d3.select("#VMsave")
 		.on("click",VM_save);      
