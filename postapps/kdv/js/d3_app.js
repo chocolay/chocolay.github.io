@@ -8,6 +8,7 @@ function animate() {
     }))
 
     patchbd
+        .datum((expfn.mul(Uhat)).ifft().x))
         .attr('d', line((expfn.mul(Uhat)).ifft().x))//+" Z"
     d3.select("#timeDisplay").html("T = " + d3.round(t * 1000) / 1000)
     return (t > 0.1) || stopit
@@ -123,8 +124,16 @@ function mkslider(amp) {
         alpha = d3.round(16181 / (w * w));
         u0 = kind == "sech2" ? soliton(τ / 4, a / 2, x) : x.map(function(e) {
             return a * Math.exp(-alpha * (e - τ / 4) * (e - τ / 4))
-        })
+        });
+
+        p = closestPoint(path.node(), [d3.event.x,d3.event,y]);
+
+        line.attr("x1", p[0]).attr("y1", p[1]).attr("x2", m[0]).attr("y2", m[1]);
+
         patchbd.attr('d', line(u0))
+
+
+
     }).on("dragend", reset)
 
     slider = paper.append("g")
@@ -137,6 +146,49 @@ function mkslider(amp) {
         .style("fill", "#F7B140")
         .datum(a)
         .call(dragster)
+}
+
+function closestPoint(pathNode, point) {
+    var pathLength = pathNode.getTotalLength(),
+        precision = 8,
+        best,
+        bestLength,
+        bestDistance = Infinity;
+
+    // linear scan for coarse approximation
+    for (var scan, scanLength = 0, scanDistance; scanLength <= pathLength; scanLength += precision) {
+        if ((scanDistance = distance2(scan = pathNode.getPointAtLength(scanLength))) < bestDistance) {
+            best = scan, bestLength = scanLength, bestDistance = scanDistance;
+        }
+    }
+
+    // binary search for precise estimate
+    precision /= 2;
+    while (precision > 0.5) {
+        var before,
+            after,
+            beforeLength,
+            afterLength,
+            beforeDistance,
+            afterDistance;
+        if ((beforeLength = bestLength - precision) >= 0 && (beforeDistance = distance2(before = pathNode.getPointAtLength(beforeLength))) < bestDistance) {
+            best = before, bestLength = beforeLength, bestDistance = beforeDistance;
+        } else if ((afterLength = bestLength + precision) <= pathLength && (afterDistance = distance2(after = pathNode.getPointAtLength(afterLength))) < bestDistance) {
+            best = after, bestLength = afterLength, bestDistance = afterDistance;
+        } else {
+            precision /= 2;
+        }
+    }
+
+    best = [best.x, best.y];
+    best.distance = Math.sqrt(bestDistance);
+    return best;
+
+    function distance2(p) {
+        var dx = p.x - point[0],
+            dy = p.y - point[1];
+        return dx * dx + dy * dy;
+    }
 }
 
 d3.select("#starter")
