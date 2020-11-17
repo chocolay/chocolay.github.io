@@ -1,4 +1,7 @@
-d3.select("span#miracle").on("hover",() => {d3.select("div#miracle").style("display","block");})
+d3.select("span#miracle").on("hover",() => {
+    console.log(d3.mouse)
+    d3.select("div#miracle").style("display","block");
+    ;})
 d3.select("div#miracle img").on("click",()=>{d3.select(this).style("display","none");})
 
 function animate() {
