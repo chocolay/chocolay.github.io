@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  Pathways of Success
-date:   2018-07-17 15:01:35 +0300
+date:   2020-05-17 15:01:35 +0300
 image:  Happy-Families.png
 tags:   policy sunburst whimsy 
 app:    sunburst
