@@ -227,7 +227,6 @@ margin.width = 1000 - margin.left - margin.right;
 margin.height = 300 - margin.top - margin.bottom;
 
 setTimeout(function() {
- d3.select("#slow").remove()
     var svg = initialize({selector:"#d3_app", x:0, y:0, tooltip:1,geom:margin});
 //capture data
     d3.csv(fname, function(err,data) {
@@ -884,7 +883,7 @@ setTimeout(function() {
         }
     });//d3.csv callback
 
-},2000)
+},500)
 
 
 function pluck(arr,key) {
