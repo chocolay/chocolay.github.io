@@ -11,7 +11,7 @@ function animate() {
         .datum((expfn.mul(Uhat)).ifft().x)
         .attr('d', line((expfn.mul(Uhat)).ifft().x))//+" Z"
     d3.select("#timeDisplay").html("T = " + d3.round(t * 1000) / 1000)
-    return (t > 0.1) || stopit
+    return (t > 0.5) || stopit
 }
 
 function dftmtx_arg(N) {
