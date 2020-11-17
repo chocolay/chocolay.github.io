@@ -36,9 +36,16 @@ layout: default
     </div>
   {% else %}
     {% if page.image %}
-      <div class="post__head">
-        <div class="post-image" width = "100%" height = auto style="background-image: url({{site.baseurl}}/images/{{page.image}})"></div>
-      </div>
+      {% if page.image-text %}
+        <div class="post__head">
+          <div class="post-image" onclick="location.href={{ page.image-text }}" width = "100%" height = auto style="background-image: url({{site.baseurl}}/images/{{page.image}})"></div>
+        </div>
+      {% else %}
+        <div class="post__head">
+          <div class="post-image" width = "100%" height = auto style="background-image: url({{site.baseurl}}/images/{{page.image}})"></div>
+        </div>
+      {% endif %}
+    
     {% else %}
       {% assign no-image = 'post-no-image' %}
     {% endif %}
