@@ -153,10 +153,6 @@ function mkslider(amp) {
 
 
 d3.select("#starter")
-    .style("background","rgba(247, 177, 64,128)")
-    .style("font-size","115%")
-    .style("padding","5px")
-    .style("border-radius","20px")
     .on("click",dotheeig);
 
 var kind = "nsech2",
