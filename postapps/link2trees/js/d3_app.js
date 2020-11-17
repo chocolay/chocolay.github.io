@@ -1040,7 +1040,7 @@ input2name = "/postapps/link2trees/data/input3.json",
 }();
 
 d3.select("#VMdisplay, #VMdisplay *").on("click",function() {
-	var toggle = d3.select("#VMdisplay ul").style(display")=="none"
+	var toggle = d3.select("#VMdisplay ul").style("display")=="none"
 	d3.select("#VMdisplay *").style("display",toggle?"inline-block":"none")
 })
 
