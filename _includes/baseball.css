@@ -1,0 +1,7 @@
+.grid {stroke-width:2;stroke:black;fill:none;}
+
+.balls {stroke:"red";fill:"white"}
+
+#hoverdiv {position:absolute; border-radius:50%;width:30px;height:30px;background:white;border:1px solid orangered;opacity:0.001}
+
+#hoverdiv p {font-size:20px;position:relative;top:-50%;text-align:center}
