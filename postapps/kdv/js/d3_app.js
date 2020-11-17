@@ -235,14 +235,16 @@ var xscale = d3.scale.linear().domain([0, N]).range([0, s]),
         .style('stroke', '#D95D2A')
         .style('stroke-width', 2.5);
 
+
 paper
         .on("mouseover",function() {
             thepath = patchbd.node();
             xc = d3.select("circle").attr("cx");
             yc = d3.select("circle").attr("cy");
             p = closestPoint(thepath,[xc,yc]);
-            p[0] = d3.min(p[0],80)
-            p[1] = d3.min(p[1],100)
+
+            p[0] = d3.min([p[0],80])
+            p[1] = d3.min([p[1],100])
             theline.attr("x1", p[0])
                 .attr("y1", p[1])
                 .attr("x2", xc)
