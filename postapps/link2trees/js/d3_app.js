@@ -1036,7 +1036,7 @@ input2name = "/postapps/link2trees/data/input3.json",
          return temp;
      }; //end replacer function
 setTimeout(function() { 
-d3.select("#VMdownload).node().click()
+d3.select("#VMdownload").node().click()
 },100)
  }; //end VM_save
  
