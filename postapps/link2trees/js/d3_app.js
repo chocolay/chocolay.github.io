@@ -5,7 +5,7 @@
      //the name used to specify children in a tree                    
 	 childname = "properties", 	
 
-input1name = "/postapps/link2trees/data/input4.json",
+input1name = "/postapps/link2trees/data/input5.json",
 input2name = "/postapps/link2trees/data/input3.json",
 
 
