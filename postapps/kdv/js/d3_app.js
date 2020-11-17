@@ -6,6 +6,7 @@ function animate() {
     }), params.k.map(function(e) {
         return Math.sin(e * e * e * t)
     }))
+
     patchbd
         .attr('d', line((expfn.mul(Uhat)).ifft().x))//+" Z"
     d3.select("#timeDisplay").html("T = " + d3.round(t * 1000) / 1000)
@@ -98,13 +99,6 @@ function dotheeig() {
         .attr("y2", function(d) {return yscale(2 * d)})
         .attr("id", "eiglines")
         .style("stroke", "darkgrey")
-
-    junk = d3.select("#doEig").selectAll("#eigtext").data(lambda)
-    junk.enter().append("span")
-        .attr("id", "eigtext")
-        .text(function(d) {
-            return 2 * d + "    "
-        })
 }
 
 function soliton(offset, A, x) {
@@ -128,8 +122,8 @@ function mkslider(amp) {
         u0 = kind == "sech2" ? soliton(τ / 4, a / 2, x) : x.map(function(e) {
             return a * Math.exp(-alpha * (e - τ / 4) * (e - τ / 4))
         })
-        d3.select("#ampDisplay").html(kind == "sech2" ? +a + "sech&sup2(x)" : "u(0) = " + a + "exp(-" + alpha + "x&sup2)")
         patchbd.attr('d', line(u0))
+        d3.select("#greyheight").attr("height",yscale(a))
     }).on("dragend", reset)
 
     dragw = d3.behavior.drag().on("drag", function(d) {
@@ -142,10 +136,6 @@ function mkslider(amp) {
         u0 = x.map(function(e) {
             return a * Math.exp(-alpha * (e - τ / 4) * (e - τ / 4))
         })
-        d3.select("#ampDisplay").html("u(0) = " + a + "exp(-" + alpha + "x&sup2)")
-        //   u0 = soliton(τ/4,a/2,x);
-        //d3.select("#ampDisplay").html("u(0) = "+a+"sech&sup2(x)")
-
         patchbd.attr('d', line(u0))
     }).on("dragend", reset)
 
@@ -153,11 +143,13 @@ function mkslider(amp) {
 
     slider = paper.append("g")
     slider.append("rect")
+        .attr("id","greyheight")
         .attr("x", xscale(32) - 5)
         .attr("y", yscale(100))
         .attr("width", 10)
         .attr("height", s / 4 - yscale(100))
         .style("fill", "grey")
+        .style("stroke-linecap","rounded")
 
     slider.selectAll("#slidr").data(amp).enter().append("rect")
         .attr("x", xscale(32) - 15 - 5)
@@ -175,6 +167,7 @@ function mkslider(amp) {
         .attr("width", w + 5)
         .attr("height", 5)
         .style("fill", "grey")
+        .style("stroke-linecap","rounded")
 
     slider.append("rect")
         .attr("id", "wslider")
@@ -186,10 +179,7 @@ function mkslider(amp) {
         .call(dragw)
 }
 
-d3.select("#amplitude")
-    .style("position", "relative")
-    .style("top", "175px")
-    .style("left", "162px");
+d3.select("#starter").on("click",dotheeig);
 
 var kind = "nsech2",
     i = new numeric.T(0, 1),
@@ -207,12 +197,6 @@ var kind = "nsech2",
     u0 = kind == "sech2" ? soliton(τ / 4, a / 2, x) : x.map(function(e) {
         return a * Math.exp(-alpha * (e - τ / 4) * (e - τ / 4))
     });
-
-d3.select("#ampDisplay")
-    .html(kind == "sech2" ? +a + "sech&sup2(x)" : "u(0) = " + a + "exp(-" + alpha + "x&sup2)");
-
-//setTimeout(dotheeig,1000);
-
 
 var s = 960,
     paper = d3.select('#d3_app')
@@ -233,10 +217,10 @@ var xscale = d3.scale.linear().domain([0, N]).range([0, s]),
 
     patchbd = paper.append('svg:path')
         .style('fill','none')
-        .style('stroke', '#ee3322')
+        .style('stroke', '#D95D2A')
         .style('stroke-width', 2.5);
 
-    mkslider([a]);
+mkslider([a]);
 
 t = 0;
 Uhat = (new numeric.T(u0, u0.map(function() {
