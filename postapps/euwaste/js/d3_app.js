@@ -86,7 +86,7 @@ d3.request(fname)
             //these three lines get the svg into the html document
             var importedNode = document.importNode(xml.documentElement, true);
             var img = importedNode.cloneNode(true);
-            d3.select("#page").node().appendChild(d3.select(img).select("g#content svg").node());
+            d3.select("#d3_app").node().appendChild(d3.select(img).select("g#content svg").node());
 
 
 
