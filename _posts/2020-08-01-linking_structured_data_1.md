@@ -1,7 +1,7 @@
 ---
 layout:        post
 title:         Linking Structured Data I
-date:          2020-11-1 15:01:35 +0300
+date:          2020-8-1 15:01:35 +0300
 image:         linkviews.png
 tags:          tool bespoke whimsy
 app:           linkviews
