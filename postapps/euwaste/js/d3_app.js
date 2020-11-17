@@ -88,7 +88,7 @@ d3.request(fname)
             var img = importedNode.cloneNode(true);
             d3.select("#d3_app").node().appendChild(d3.select(img).select("g#content svg").node());
 
-
+            d3.select("#d3_app").style("height","600px")
 
 
             remakeMain(); //adds some ids and rewrites some of the text
@@ -988,5 +988,4 @@ d3.request(fname)
                 }
             }//updateCountry
         });
-        //will have to handle the extraneous rows...Please ... and NB
     }).get();
