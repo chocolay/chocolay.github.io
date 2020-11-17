@@ -128,9 +128,9 @@ function mkslider(amp) {
 
     dragw = d3.behavior.drag().on("drag", function(d) {
         stopit = true;
-        w = d3.min([d3.max([18, d3.event.x - xscale(32)]), 90]);
+        w = d3.min([d3.max([18, d3.event.x - xscale(32)]), 150]);
         d3.select(this)
-            .attr("x", xscale(32))
+            .attr("cx", w)
         alpha = d3.round(16181 / (w * w))
         d3.select("#graywslider").attr("width", w + 5)
         u0 = x.map(function(e) {
