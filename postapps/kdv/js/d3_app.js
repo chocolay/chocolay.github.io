@@ -110,22 +110,23 @@ function soliton(offset, A, x) {
 
 function mkslider(amp) {
 
+    w = xscale(Math.sqrt(-Math.log(1 / 2) / alpha) * 64 / Math.PI);
+
     dragster = d3.behavior.drag().on("drag", function(d) {
         stopit = true;
 
-        a = d3.round(d3.max([d3.min([yscale.invert(d3.event.y), 150]), 0]));
-        d3.select(this).data([a]);
+        a = d3.round(d3.max([d3.min([yscale.invert(d3.event.y), 120]), 0]));
+
         d3.select(this).attr("cy", function(d) {
             return yscale(a)
         });
+
         u0 = kind == "sech2" ? soliton(τ / 4, a / 2, x) : x.map(function(e) {
             return a * Math.exp(-alpha * (e - τ / 4) * (e - τ / 4))
         })
         patchbd.attr('d', line(u0))
-        //d3.select("#greyheight").attr("height",yscale(a))
     }).on("dragend", reset)
 
-    w = xscale(Math.sqrt(-Math.log(1 / 2) / alpha) * 64 / Math.PI);
 
     dragw = d3.behavior.drag().on("drag", function(d) {
         stopit = true;
@@ -144,29 +145,15 @@ function mkslider(amp) {
     }).on("dragend", reset)
 
     slider = paper.append("g")
-    slider.append("rect")
-        .attr("id","greyheight")
-        .attr("x", xscale(32))
-        .attr("y", yscale(a))
-        .attr("width", 10)
-        .attr("height", s / 4 - yscale(a))
-        .style("fill", "grey")
 
-    slider.select("#slidr").data(amp).enter().append("circle")
+
+    slider.append("circle")
+        .attr("id", "slidr")
         .attr("cx", xscale(32) )
         .attr("cy", yscale(a))
         .attr("r",5)
-        .attr("id", "slidr")
         .style("fill", "#F7B140")
         .call(dragster)
-
-    slider.append("rect")
-        .attr("id", "graywslider")
-        .attr("x", xscale(32) - 5)
-        .attr("y", yscale(0))
-        .attr("width", w + 5)
-        .attr("height", 5)
-        .style("fill", "grey")
 
 
     slider.append("circle")
