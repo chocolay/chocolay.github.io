@@ -8,7 +8,7 @@ app:           link2trees
 d3version:     https://cdnjs.cloudflare.com/ajax/libs/d3/3.4.2/d3.min.js
 crossfilter:   False
 style:         link2trees.css
-orient:        right
+orient:        left
 html:          true
 status:        done
 truncation: 100
