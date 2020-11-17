@@ -191,7 +191,7 @@ function closestPoint(pathNode, point) {
     }
 }
 
-var line = paper.append("line");
+
 
 d3.select("#starter")
     .style("background","rgb(247, 177, 64,128)")
@@ -224,6 +224,8 @@ var s = 960,
         .attr("width", s)
         .attr("height",s/2); //height is s/2 for straight line
 d3.select("#d3_app").style("height","250px");
+
+var line = paper.append("line");
 
 var xscale = d3.scale.linear().domain([0, N]).range([0, s]),
     yscale = d3.scale.linear().domain([0, 175]).range([s / 4, 0]),
