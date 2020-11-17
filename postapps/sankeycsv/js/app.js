@@ -188,7 +188,10 @@ d3.select("#slow").transition()
 .duration(5000)
 .style("opacity",1e-6);
 
-setTimeout(()=>d3.select("#slow").remove(),5000);
+setTimeout(()=>{
+ d3.select("#slow").remove();
+ d3.select(".check").style("visibility","visible")
+},5000);
 
 var fname = "/postapps/sankeycsv/data/cap-report.csv";
 
