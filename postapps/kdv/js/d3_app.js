@@ -132,7 +132,7 @@ function mkslider(amp) {
         line.attr("x1", p[0])
             .attr("y1", p[1])
             .attr("x2", d3.event.x)
-            .attr("y2", d3.event.y;
+            .attr("y2", d3.event.y);
 
         patchbd.attr('d', line(u0))
 
