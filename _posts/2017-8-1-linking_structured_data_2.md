@@ -10,7 +10,7 @@ crossfilter:   False
 style:         link2trees.css
 orient:        right
 html:          true
-status:        open
+status:        done
 truncation: 100
 ---
 
