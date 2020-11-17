@@ -3,7 +3,7 @@ var fname = "/postapps/baseball/data/24007.json"; //given file
 var ballradius = 8; 
 var balledge = "red";
 var ballcolor = "white"; 
-var delayVariable = 2500 //so the balls don't appear before the field does
+var delayVariable = 4000 //so the balls don't appear before the field does
 var svg = d3.select(div_id).append('svg').attr({"width": 950,"height": 950,"id": "base"}),
     img = svg.append("svg:image").attr({"xlink:href":"/images/genericpark.jpg", "width": 950, "height": 950}),
     ang45 = Math.PI/4;
@@ -127,7 +127,7 @@ d3.json(fname, function(err, data) {if (err) console.log(err)
         .style("opacity",1)
 	.attr({"r": ballradius,"class": "pts","id":function(d) {return d.key}})	
 	.attr({"cx":hitter[0],"cy":hitter[1]})			    
-	.transition().delay(function(d) {return 500 + Math.random()*delayVariable})
+	.transition().delay(function(d) {return 100 + Math.random()*delayVariable})
         .attr({"cx": function(d) {return d.x},"cy": function(d) {return d.y}})
 	       
 keyarray = [];
