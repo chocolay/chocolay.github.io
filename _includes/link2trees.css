@@ -13,6 +13,7 @@ button {font-size:150%; border-radius:25px}
  .VMbinds {fill:none; stroke-width:3}
 .high {fill:rgb(230,138,128)}
 .VMTable {
+	display: none; /* drop from the demo */
 	margin:0px 60px;padding:0px;
 	width:100%;
 	box-shadow: 10px 10px 5px #888888;
