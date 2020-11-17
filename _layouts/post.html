@@ -111,7 +111,7 @@ layout: default
         {% if page.next.description %}
           {{ page.next.description }}
         {% else %}
-                {{ page.next.content | strip_html | truncate: 110 }}
+                {{ page.next.content | strip_html | truncate: 0 }}
         {% endif %}
       </p>
     </div>
@@ -130,7 +130,7 @@ layout: default
         {% if page.previous.description %}
           {{ page.previous.description }}
         {% else %}
-                {{ page.next.content | strip_html | truncate: 110 }}
+                {{ page.next.content | strip_html | truncate: 0 }}
         {% endif %}
       </p>
     </div>
