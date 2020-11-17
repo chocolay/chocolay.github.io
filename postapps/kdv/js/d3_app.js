@@ -1,5 +1,5 @@
-d3.select("span#miracle").on("hover",() => d3.select("div#miracle").style("display","block");)
-d3.select("div#miracle img").on("click",()=>d3.select(this).style("display","none");))
+d3.select("span#miracle").on("hover",() => {d3.select("div#miracle").style("display","block");})
+d3.select("div#miracle img").on("click",()=>{d3.select(this).style("display","none");})
 
 function animate() {
     Uhat = rk4(kdv, Uhat, t, params)
