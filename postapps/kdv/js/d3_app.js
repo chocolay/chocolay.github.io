@@ -114,8 +114,8 @@ function mkslider(amp) {
 
     dragster = d3.behavior.drag().on("drag", function(d) {
         stopit = true;
-        a = d3.round(d3.max([d3.min([yscale.invert(d3.event.y), 120]), 0]));
-        w = d3.min([d3.max([18, d3.event.x - xscale(32)]), 100]);
+        a = d3.round(d3.max([d3.min([yscale.invert(d3.event.y), 100]), 0]));
+        w = d3.min([d3.max([18, d3.event.x - xscale(32)]), 80]);
         d3.select(this).datum(a)
         d3.select(this).attr("cy", function(d) {
             return yscale(a)
@@ -124,21 +124,6 @@ function mkslider(amp) {
         u0 = kind == "sech2" ? soliton(τ / 4, a / 2, x) : x.map(function(e) {
             return a * Math.exp(-alpha * (e - τ / 4) * (e - τ / 4))
         })
-        patchbd.attr('d', line(u0))
-    }).on("dragend", reset)
-
-
-    dragw = d3.behavior.drag().on("drag", function(d) {
-        stopit = true;
-        w = d3.min([d3.max([18, d3.event.x - xscale(32)]), 100]);
-        d3.select(this)
-            .attr("cx", w+xscale(32));
-
-
-        alpha = d3.round(16181 / (w * w));
-        u0 = x.map(function(e) {
-            return a * Math.exp(-alpha * (e - τ / 4) * (e - τ / 4))
-        });
         patchbd.attr('d', line(u0))
     }).on("dragend", reset)
 
@@ -152,15 +137,6 @@ function mkslider(amp) {
         .style("fill", "#F7B140")
         .datum(a)
         .call(dragster)
-
-
-    slider.append("circle")
-        .attr("id", "wslider")
-        .attr("cx", xscale(32) + w )
-        .attr("cy", yscale(0) )
-        .attr("r", 5)
-        .style("fill", "#F7B140")
-        .call(dragw)
 }
 
 d3.select("#starter")
