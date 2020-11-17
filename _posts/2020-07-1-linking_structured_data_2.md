@@ -1,7 +1,7 @@
 ---
 layout:        post
 title:         Linking Structured Data II
-date:          2017-8-1 15:01:35 +0300
+date:          2020-07-1 15:01:35 +0300
 image:         link2trees.png
 tags:          tool bespoke data-management
 app:           link2trees
