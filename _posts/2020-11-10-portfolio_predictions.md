@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Business Forecasting"
+title:  "What's in store?"
 image:  portfolio_predictions.png
 tags:   model agent-based
 app:    agent1
