@@ -1,0 +1,1318 @@
+{
+ "$schema": "http://json-schema.org/draft-04/schema#",
+ "id": "http://jsonschema.net#",
+ "type": "object",
+ "additionalProperties": false,
+ "properties": {
+  "customer": {
+   "id": "#customer",
+   "type": "object",
+   "additionalProperties": false,
+   "properties": {
+    "@customer-no": {
+     "id": "#@customer-no",
+     "type": "string",
+     "additionalProperties": {
+      "mappedTo": "http://jsonschema.net/order/customer/customer-no#"
+     },
+     "name": "@customer-no",
+     "depth": 2,
+     "value": 0
+    },
+    "credentials": {
+     "id": "#credentials",
+     "type": "object",
+     "additionalProperties": false,
+     "properties": {
+      "login": {
+       "id": "#login",
+       "type": "string",
+       "additionalProperties": false,
+       "name": "login",
+       "depth": 3,
+       "value": 0
+      },
+      "password": {
+       "id": "#password",
+       "type": "object",
+       "additionalProperties": false,
+       "properties": {
+        "@encrypted": {
+         "id": "#@encrypted",
+         "type": "string",
+         "additionalProperties": false,
+         "name": "@encrypted",
+         "depth": 4,
+         "value": 0
+        },
+        "@encryptionScheme": {
+         "id": "#@encryptionScheme",
+         "type": "string",
+         "additionalProperties": false,
+         "name": "@encryptionScheme",
+         "depth": 4,
+         "value": 0
+        },
+        "#text": {
+         "id": "##text",
+         "type": "string",
+         "additionalProperties": false,
+         "name": "#text",
+         "depth": 4,
+         "value": 0
+        }
+       },
+       "required": [],
+       "name": "password",
+       "depth": 3,
+       "value": 0
+      },
+      "enabled-flag": {
+       "id": "#enabled-flag",
+       "type": "string",
+       "additionalProperties": false,
+       "name": "enabled-flag",
+       "depth": 3,
+       "value": 0
+      },
+      "password-question": {
+       "id": "#password-question",
+       "type": "null",
+       "additionalProperties": false,
+       "name": "password-question",
+       "depth": 3,
+       "value": 0
+      },
+      "password-answer": {
+       "id": "#password-answer",
+       "type": "null",
+       "additionalProperties": false,
+       "name": "password-answer",
+       "depth": 3,
+       "value": 0
+      },
+      "provider-id": {
+       "id": "#provider-id",
+       "type": "null",
+       "additionalProperties": false,
+       "name": "provider-id",
+       "depth": 3,
+       "value": 0
+      },
+      "external-id": {
+       "id": "#external-id",
+       "type": "null",
+       "additionalProperties": false,
+       "name": "external-id",
+       "depth": 3,
+       "value": 0
+      }
+     },
+     "required": [],
+     "name": "credentials",
+     "depth": 2,
+     "value": 0
+    },
+    "profile": {
+     "id": "#profile",
+     "type": "object",
+     "additionalProperties": false,
+     "properties": {
+      "salutation": {
+       "id": "#salutation",
+       "type": "null",
+       "additionalProperties": false,
+       "name": "salutation",
+       "depth": 3,
+       "value": 0
+      },
+      "title": {
+       "id": "#title",
+       "type": "string",
+       "additionalProperties": false,
+       "name": "title",
+       "depth": 3,
+       "value": 0
+      },
+      "first-name": {
+       "id": "#first-name",
+       "type": "string",
+       "additionalProperties": false,
+       "name": "first-name",
+       "depth": 3,
+       "value": 0
+      },
+      "second-name": {
+       "id": "#second-name",
+       "type": "null",
+       "additionalProperties": false,
+       "name": "second-name",
+       "depth": 3,
+       "value": 0
+      },
+      "last-name": {
+       "id": "#last-name",
+       "type": "string",
+       "additionalProperties": {
+        "mappedTo": "http://jsonschema.net/order/customer/customer-name#"
+       },
+       "name": "last-name",
+       "depth": 3,
+       "value": 0
+      },
+      "suffix": {
+       "id": "#suffix",
+       "type": "null",
+       "additionalProperties": false,
+       "name": "suffix",
+       "depth": 3,
+       "value": 0
+      },
+      "company-name": {
+       "id": "#company-name",
+       "type": "null",
+       "additionalProperties": false,
+       "name": "company-name",
+       "depth": 3,
+       "value": 0
+      },
+      "job-title": {
+       "id": "#job-title",
+       "type": "null",
+       "additionalProperties": false,
+       "name": "job-title",
+       "depth": 3,
+       "value": 0
+      },
+      "email": {
+       "id": "#email",
+       "type": "string",
+       "additionalProperties": false,
+       "name": "email",
+       "depth": 3,
+       "value": 0
+      },
+      "phone-home": {
+       "id": "#phone-home",
+       "type": "string",
+       "additionalProperties": false,
+       "name": "phone-home",
+       "depth": 3,
+       "value": 0
+      },
+      "phone-business": {
+       "id": "#phone-business",
+       "type": "null",
+       "additionalProperties": false,
+       "name": "phone-business",
+       "depth": 3,
+       "value": 0
+      },
+      "phone-mobile": {
+       "id": "#phone-mobile",
+       "type": "null",
+       "additionalProperties": false,
+       "name": "phone-mobile",
+       "depth": 3,
+       "value": 0
+      },
+      "fax": {
+       "id": "#fax",
+       "type": "null",
+       "additionalProperties": false,
+       "name": "fax",
+       "depth": 3,
+       "value": 0
+      },
+      "birthday": {
+       "id": "#birthday",
+       "type": "string",
+       "additionalProperties": false,
+       "name": "birthday",
+       "depth": 3,
+       "value": 0
+      },
+      "gender": {
+       "id": "#gender",
+       "type": "string",
+       "additionalProperties": false,
+       "name": "gender",
+       "depth": 3,
+       "value": 0
+      },
+      "creation-date": {
+       "id": "#creation-date",
+       "type": "string",
+       "additionalProperties": false,
+       "name": "creation-date",
+       "depth": 3,
+       "value": 0
+      },
+      "last-login-time": {
+       "id": "#last-login-time",
+       "type": "string",
+       "additionalProperties": false,
+       "name": "last-login-time",
+       "depth": 3,
+       "value": 0
+      },
+      "last-visit-time": {
+       "id": "#last-visit-time",
+       "type": "string",
+       "additionalProperties": false,
+       "name": "last-visit-time",
+       "depth": 3,
+       "value": 0
+      },
+      "preferred-locale": {
+       "id": "#preferred-locale",
+       "type": "null",
+       "additionalProperties": false,
+       "name": "preferred-locale",
+       "depth": 3,
+       "value": 0
+      },
+      "custom-attributes": {
+       "id": "#custom-attributes",
+       "type": "object",
+       "additionalProperties": false,
+       "properties": {
+        "custom-attribute": {
+         "id": "#custom-attribute",
+         "type": "array",
+         "additionalProperties": false,
+         "items": [
+          {
+           "id": "#0",
+           "type": "object",
+           "additionalProperties": false,
+           "properties": {
+            "@attribute-id": {
+             "id": "#@attribute-id",
+             "type": "string",
+             "additionalProperties": false
+            },
+            "#text": {
+             "id": "##text",
+             "type": "string",
+             "additionalProperties": false
+            }
+           },
+           "required": []
+          },
+          {
+           "id": "#1",
+           "type": "object",
+           "additionalProperties": false,
+           "properties": {
+            "@attribute-id": {
+             "id": "#@attribute-id",
+             "type": "string",
+             "additionalProperties": false
+            },
+            "#text": {
+             "id": "##text",
+             "type": "string",
+             "additionalProperties": false
+            }
+           },
+           "required": []
+          },
+          {
+           "id": "#2",
+           "type": "object",
+           "additionalProperties": false,
+           "properties": {
+            "@attribute-id": {
+             "id": "#@attribute-id",
+             "type": "string",
+             "additionalProperties": false
+            },
+            "#text": {
+             "id": "##text",
+             "type": "string",
+             "additionalProperties": false
+            }
+           },
+           "required": []
+          },
+          {
+           "id": "#3",
+           "type": "object",
+           "additionalProperties": false,
+           "properties": {
+            "@attribute-id": {
+             "id": "#@attribute-id",
+             "type": "string",
+             "additionalProperties": false
+            },
+            "#text": {
+             "id": "##text",
+             "type": "string",
+             "additionalProperties": false
+            }
+           },
+           "required": []
+          },
+          {
+           "id": "#4",
+           "type": "object",
+           "additionalProperties": false,
+           "properties": {
+            "@attribute-id": {
+             "id": "#@attribute-id",
+             "type": "string",
+             "additionalProperties": false
+            },
+            "#text": {
+             "id": "##text",
+             "type": "string",
+             "additionalProperties": false
+            }
+           },
+           "required": []
+          },
+          {
+           "id": "#5",
+           "type": "object",
+           "additionalProperties": false,
+           "properties": {
+            "@attribute-id": {
+             "id": "#@attribute-id",
+             "type": "string",
+             "additionalProperties": false
+            },
+            "#text": {
+             "id": "##text",
+             "type": "string",
+             "additionalProperties": false
+            }
+           },
+           "required": []
+          },
+          {
+           "id": "#6",
+           "type": "object",
+           "additionalProperties": false,
+           "properties": {
+            "@attribute-id": {
+             "id": "#@attribute-id",
+             "type": "string",
+             "additionalProperties": false
+            },
+            "#text": {
+             "id": "##text",
+             "type": "string",
+             "additionalProperties": false
+            }
+           },
+           "required": []
+          },
+          {
+           "id": "#7",
+           "type": "object",
+           "additionalProperties": false,
+           "properties": {
+            "@attribute-id": {
+             "id": "#@attribute-id",
+             "type": "string",
+             "additionalProperties": false
+            },
+            "#text": {
+             "id": "##text",
+             "type": "string",
+             "additionalProperties": false
+            }
+           },
+           "required": []
+          },
+          {
+           "id": "#8",
+           "type": "object",
+           "additionalProperties": false,
+           "properties": {
+            "@attribute-id": {
+             "id": "#@attribute-id",
+             "type": "string",
+             "additionalProperties": false
+            },
+            "#text": {
+             "id": "##text",
+             "type": "string",
+             "additionalProperties": false
+            }
+           },
+           "required": []
+          },
+          {
+           "id": "#9",
+           "type": "object",
+           "additionalProperties": false,
+           "properties": {
+            "@attribute-id": {
+             "id": "#@attribute-id",
+             "type": "string",
+             "additionalProperties": false
+            },
+            "#text": {
+             "id": "##text",
+             "type": "string",
+             "additionalProperties": false
+            }
+           },
+           "required": []
+          },
+          {
+           "id": "#10",
+           "type": "object",
+           "additionalProperties": false,
+           "properties": {
+            "@attribute-id": {
+             "id": "#@attribute-id",
+             "type": "string",
+             "additionalProperties": false
+            },
+            "#text": {
+             "id": "##text",
+             "type": "string",
+             "additionalProperties": false
+            }
+           },
+           "required": []
+          }
+         ],
+         "required": [],
+         "name": "custom-attribute",
+         "depth": 4,
+         "value": 0
+        }
+       },
+       "required": [],
+       "name": "custom-attributes",
+       "depth": 3,
+       "value": 0
+      }
+     },
+     "required": [],
+     "name": "profile",
+     "depth": 2,
+     "value": 0
+    },
+    "addresses": {
+     "id": "#addresses",
+     "type": "object",
+     "additionalProperties": false,
+     "properties": {
+      "address": {
+       "id": "#address",
+       "type": "array",
+       "additionalProperties": {
+        "mappedTo": "http://jsonschema.net/order/customer/billing-address/address1#"
+       },
+       "items": [
+        {
+         "id": "#0",
+         "type": "object",
+         "additionalProperties": false,
+         "properties": {
+          "@address-id": {
+           "id": "#@address-id",
+           "type": "string",
+           "additionalProperties": false
+          },
+          "@preferred": {
+           "id": "#@preferred",
+           "type": "string",
+           "additionalProperties": false
+          },
+          "salutation": {
+           "id": "#salutation",
+           "type": "null",
+           "additionalProperties": false
+          },
+          "title": {
+           "id": "#title",
+           "type": "string",
+           "additionalProperties": false
+          },
+          "first-name": {
+           "id": "#first-name",
+           "type": "string",
+           "additionalProperties": false
+          },
+          "second-name": {
+           "id": "#second-name",
+           "type": "null",
+           "additionalProperties": false
+          },
+          "last-name": {
+           "id": "#last-name",
+           "type": "string",
+           "additionalProperties": false
+          },
+          "suffix": {
+           "id": "#suffix",
+           "type": "null",
+           "additionalProperties": false
+          },
+          "company-name": {
+           "id": "#company-name",
+           "type": "null",
+           "additionalProperties": false
+          },
+          "job-title": {
+           "id": "#job-title",
+           "type": "null",
+           "additionalProperties": false
+          },
+          "address1": {
+           "id": "#address1",
+           "type": "string",
+           "additionalProperties": false
+          },
+          "address2": {
+           "id": "#address2",
+           "type": "null",
+           "additionalProperties": false
+          },
+          "suite": {
+           "id": "#suite",
+           "type": "null",
+           "additionalProperties": false
+          },
+          "postbox": {
+           "id": "#postbox",
+           "type": "null",
+           "additionalProperties": false
+          },
+          "city": {
+           "id": "#city",
+           "type": "string",
+           "additionalProperties": false
+          },
+          "postal-code": {
+           "id": "#postal-code",
+           "type": "string",
+           "additionalProperties": false
+          },
+          "state-code": {
+           "id": "#state-code",
+           "type": "null",
+           "additionalProperties": false
+          },
+          "country-code": {
+           "id": "#country-code",
+           "type": "string",
+           "additionalProperties": false
+          },
+          "phone": {
+           "id": "#phone",
+           "type": "null",
+           "additionalProperties": false
+          },
+          "custom-attributes": {
+           "id": "#custom-attributes",
+           "type": "object",
+           "additionalProperties": false,
+           "properties": {
+            "custom-attribute": {
+             "id": "#custom-attribute",
+             "type": "array",
+             "additionalProperties": false,
+             "items": [
+              {
+               "id": "#0",
+               "type": "object",
+               "additionalProperties": false,
+               "properties": {
+                "@attribute-id": {
+                 "id": "#@attribute-id",
+                 "type": "string",
+                 "additionalProperties": false
+                },
+                "#text": {
+                 "id": "##text",
+                 "type": "string",
+                 "additionalProperties": false
+                }
+               },
+               "required": []
+              },
+              {
+               "id": "#1",
+               "type": "object",
+               "additionalProperties": false,
+               "properties": {
+                "@attribute-id": {
+                 "id": "#@attribute-id",
+                 "type": "string",
+                 "additionalProperties": false
+                },
+                "#text": {
+                 "id": "##text",
+                 "type": "string",
+                 "additionalProperties": false
+                }
+               },
+               "required": []
+              }
+             ],
+             "required": []
+            }
+           },
+           "required": []
+          }
+         },
+         "required": []
+        },
+        {
+         "id": "#1",
+         "type": "object",
+         "additionalProperties": false,
+         "properties": {
+          "@address-id": {
+           "id": "#@address-id",
+           "type": "string",
+           "additionalProperties": false
+          },
+          "@preferred": {
+           "id": "#@preferred",
+           "type": "string",
+           "additionalProperties": false
+          },
+          "salutation": {
+           "id": "#salutation",
+           "type": "null",
+           "additionalProperties": false
+          },
+          "title": {
+           "id": "#title",
+           "type": "string",
+           "additionalProperties": false
+          },
+          "first-name": {
+           "id": "#first-name",
+           "type": "string",
+           "additionalProperties": false
+          },
+          "second-name": {
+           "id": "#second-name",
+           "type": "null",
+           "additionalProperties": false
+          },
+          "last-name": {
+           "id": "#last-name",
+           "type": "string",
+           "additionalProperties": false
+          },
+          "suffix": {
+           "id": "#suffix",
+           "type": "null",
+           "additionalProperties": false
+          },
+          "company-name": {
+           "id": "#company-name",
+           "type": "null",
+           "additionalProperties": false
+          },
+          "job-title": {
+           "id": "#job-title",
+           "type": "null",
+           "additionalProperties": false
+          },
+          "address1": {
+           "id": "#address1",
+           "type": "string",
+           "additionalProperties": false
+          },
+          "address2": {
+           "id": "#address2",
+           "type": "null",
+           "additionalProperties": false
+          },
+          "suite": {
+           "id": "#suite",
+           "type": "null",
+           "additionalProperties": false
+          },
+          "postbox": {
+           "id": "#postbox",
+           "type": "null",
+           "additionalProperties": false
+          },
+          "city": {
+           "id": "#city",
+           "type": "string",
+           "additionalProperties": false
+          },
+          "postal-code": {
+           "id": "#postal-code",
+           "type": "string",
+           "additionalProperties": false
+          },
+          "state-code": {
+           "id": "#state-code",
+           "type": "null",
+           "additionalProperties": false
+          },
+          "country-code": {
+           "id": "#country-code",
+           "type": "string",
+           "additionalProperties": false
+          },
+          "phone": {
+           "id": "#phone",
+           "type": "string",
+           "additionalProperties": false
+          },
+          "custom-attributes": {
+           "id": "#custom-attributes",
+           "type": "object",
+           "additionalProperties": false,
+           "properties": {
+            "custom-attribute": {
+             "id": "#custom-attribute",
+             "type": "array",
+             "additionalProperties": false,
+             "items": [
+              {
+               "id": "#0",
+               "type": "object",
+               "additionalProperties": false,
+               "properties": {
+                "@attribute-id": {
+                 "id": "#@attribute-id",
+                 "type": "string",
+                 "additionalProperties": false
+                },
+                "#text": {
+                 "id": "##text",
+                 "type": "string",
+                 "additionalProperties": false
+                }
+               },
+               "required": []
+              },
+              {
+               "id": "#1",
+               "type": "object",
+               "additionalProperties": false,
+               "properties": {
+                "@attribute-id": {
+                 "id": "#@attribute-id",
+                 "type": "string",
+                 "additionalProperties": false
+                },
+                "#text": {
+                 "id": "##text",
+                 "type": "string",
+                 "additionalProperties": false
+                }
+               },
+               "required": []
+              }
+             ],
+             "required": []
+            }
+           },
+           "required": []
+          }
+         },
+         "required": []
+        },
+        {
+         "id": "#2",
+         "type": "object",
+         "additionalProperties": false,
+         "properties": {
+          "@address-id": {
+           "id": "#@address-id",
+           "type": "string",
+           "additionalProperties": false
+          },
+          "@preferred": {
+           "id": "#@preferred",
+           "type": "string",
+           "additionalProperties": false
+          },
+          "salutation": {
+           "id": "#salutation",
+           "type": "null",
+           "additionalProperties": false
+          },
+          "title": {
+           "id": "#title",
+           "type": "string",
+           "additionalProperties": false
+          },
+          "first-name": {
+           "id": "#first-name",
+           "type": "string",
+           "additionalProperties": false
+          },
+          "second-name": {
+           "id": "#second-name",
+           "type": "null",
+           "additionalProperties": false
+          },
+          "last-name": {
+           "id": "#last-name",
+           "type": "string",
+           "additionalProperties": false
+          },
+          "suffix": {
+           "id": "#suffix",
+           "type": "null",
+           "additionalProperties": false
+          },
+          "company-name": {
+           "id": "#company-name",
+           "type": "null",
+           "additionalProperties": false
+          },
+          "job-title": {
+           "id": "#job-title",
+           "type": "null",
+           "additionalProperties": false
+          },
+          "address1": {
+           "id": "#address1",
+           "type": "string",
+           "additionalProperties": false
+          },
+          "address2": {
+           "id": "#address2",
+           "type": "null",
+           "additionalProperties": false
+          },
+          "suite": {
+           "id": "#suite",
+           "type": "null",
+           "additionalProperties": false
+          },
+          "postbox": {
+           "id": "#postbox",
+           "type": "null",
+           "additionalProperties": false
+          },
+          "city": {
+           "id": "#city",
+           "type": "string",
+           "additionalProperties": false
+          },
+          "postal-code": {
+           "id": "#postal-code",
+           "type": "string",
+           "additionalProperties": false
+          },
+          "state-code": {
+           "id": "#state-code",
+           "type": "null",
+           "additionalProperties": false
+          },
+          "country-code": {
+           "id": "#country-code",
+           "type": "string",
+           "additionalProperties": false
+          },
+          "phone": {
+           "id": "#phone",
+           "type": "string",
+           "additionalProperties": false
+          },
+          "custom-attributes": {
+           "id": "#custom-attributes",
+           "type": "object",
+           "additionalProperties": false,
+           "properties": {
+            "custom-attribute": {
+             "id": "#custom-attribute",
+             "type": "array",
+             "additionalProperties": false,
+             "items": [
+              {
+               "id": "#0",
+               "type": "object",
+               "additionalProperties": false,
+               "properties": {
+                "@attribute-id": {
+                 "id": "#@attribute-id",
+                 "type": "string",
+                 "additionalProperties": false
+                },
+                "#text": {
+                 "id": "##text",
+                 "type": "string",
+                 "additionalProperties": false
+                }
+               },
+               "required": []
+              },
+              {
+               "id": "#1",
+               "type": "object",
+               "additionalProperties": false,
+               "properties": {
+                "@attribute-id": {
+                 "id": "#@attribute-id",
+                 "type": "string",
+                 "additionalProperties": false
+                },
+                "#text": {
+                 "id": "##text",
+                 "type": "string",
+                 "additionalProperties": false
+                }
+               },
+               "required": []
+              }
+             ],
+             "required": []
+            }
+           },
+           "required": []
+          }
+         },
+         "required": []
+        },
+        {
+         "id": "#3",
+         "type": "object",
+         "additionalProperties": false,
+         "properties": {
+          "@address-id": {
+           "id": "#@address-id",
+           "type": "string",
+           "additionalProperties": false
+          },
+          "@preferred": {
+           "id": "#@preferred",
+           "type": "string",
+           "additionalProperties": false
+          },
+          "salutation": {
+           "id": "#salutation",
+           "type": "null",
+           "additionalProperties": false
+          },
+          "title": {
+           "id": "#title",
+           "type": "string",
+           "additionalProperties": false
+          },
+          "first-name": {
+           "id": "#first-name",
+           "type": "string",
+           "additionalProperties": false
+          },
+          "second-name": {
+           "id": "#second-name",
+           "type": "null",
+           "additionalProperties": false
+          },
+          "last-name": {
+           "id": "#last-name",
+           "type": "string",
+           "additionalProperties": false
+          },
+          "suffix": {
+           "id": "#suffix",
+           "type": "null",
+           "additionalProperties": false
+          },
+          "company-name": {
+           "id": "#company-name",
+           "type": "null",
+           "additionalProperties": false
+          },
+          "job-title": {
+           "id": "#job-title",
+           "type": "null",
+           "additionalProperties": false
+          },
+          "address1": {
+           "id": "#address1",
+           "type": "null",
+           "additionalProperties": false
+          },
+          "address2": {
+           "id": "#address2",
+           "type": "null",
+           "additionalProperties": false
+          },
+          "suite": {
+           "id": "#suite",
+           "type": "null",
+           "additionalProperties": false
+          },
+          "postbox": {
+           "id": "#postbox",
+           "type": "null",
+           "additionalProperties": false
+          },
+          "city": {
+           "id": "#city",
+           "type": "string",
+           "additionalProperties": false
+          },
+          "postal-code": {
+           "id": "#postal-code",
+           "type": "string",
+           "additionalProperties": false
+          },
+          "state-code": {
+           "id": "#state-code",
+           "type": "string",
+           "additionalProperties": false
+          },
+          "country-code": {
+           "id": "#country-code",
+           "type": "string",
+           "additionalProperties": false
+          },
+          "phone": {
+           "id": "#phone",
+           "type": "null",
+           "additionalProperties": false
+          },
+          "custom-attributes": {
+           "id": "#custom-attributes",
+           "type": "object",
+           "additionalProperties": false,
+           "properties": {
+            "custom-attribute": {
+             "id": "#custom-attribute",
+             "type": "array",
+             "additionalProperties": false,
+             "items": [
+              {
+               "id": "#0",
+               "type": "object",
+               "additionalProperties": false,
+               "properties": {
+                "@attribute-id": {
+                 "id": "#@attribute-id",
+                 "type": "string",
+                 "additionalProperties": false
+                },
+                "#text": {
+                 "id": "##text",
+                 "type": "string",
+                 "additionalProperties": false
+                }
+               },
+               "required": []
+              },
+              {
+               "id": "#1",
+               "type": "object",
+               "additionalProperties": false,
+               "properties": {
+                "@attribute-id": {
+                 "id": "#@attribute-id",
+                 "type": "string",
+                 "additionalProperties": false
+                },
+                "#text": {
+                 "id": "##text",
+                 "type": "string",
+                 "additionalProperties": false
+                }
+               },
+               "required": []
+              }
+             ],
+             "required": []
+            }
+           },
+           "required": []
+          }
+         },
+         "required": []
+        },
+        {
+         "id": "#4",
+         "type": "object",
+         "additionalProperties": false,
+         "properties": {
+          "@address-id": {
+           "id": "#@address-id",
+           "type": "string",
+           "additionalProperties": false
+          },
+          "@preferred": {
+           "id": "#@preferred",
+           "type": "string",
+           "additionalProperties": false
+          },
+          "salutation": {
+           "id": "#salutation",
+           "type": "null",
+           "additionalProperties": false
+          },
+          "title": {
+           "id": "#title",
+           "type": "string",
+           "additionalProperties": false
+          },
+          "first-name": {
+           "id": "#first-name",
+           "type": "string",
+           "additionalProperties": false
+          },
+          "second-name": {
+           "id": "#second-name",
+           "type": "null",
+           "additionalProperties": false
+          },
+          "last-name": {
+           "id": "#last-name",
+           "type": "string",
+           "additionalProperties": false
+          },
+          "suffix": {
+           "id": "#suffix",
+           "type": "null",
+           "additionalProperties": false
+          },
+          "company-name": {
+           "id": "#company-name",
+           "type": "null",
+           "additionalProperties": false
+          },
+          "job-title": {
+           "id": "#job-title",
+           "type": "null",
+           "additionalProperties": false
+          },
+          "address1": {
+           "id": "#address1",
+           "type": "string",
+           "additionalProperties": false
+          },
+          "address2": {
+           "id": "#address2",
+           "type": "null",
+           "additionalProperties": false
+          },
+          "suite": {
+           "id": "#suite",
+           "type": "null",
+           "additionalProperties": false
+          },
+          "postbox": {
+           "id": "#postbox",
+           "type": "null",
+           "additionalProperties": false
+          },
+          "city": {
+           "id": "#city",
+           "type": "string",
+           "additionalProperties": false
+          },
+          "postal-code": {
+           "id": "#postal-code",
+           "type": "null",
+           "additionalProperties": false
+          },
+          "state-code": {
+           "id": "#state-code",
+           "type": "null",
+           "additionalProperties": false
+          },
+          "country-code": {
+           "id": "#country-code",
+           "type": "string",
+           "additionalProperties": false
+          },
+          "phone": {
+           "id": "#phone",
+           "type": "string",
+           "additionalProperties": false
+          },
+          "custom-attributes": {
+           "id": "#custom-attributes",
+           "type": "object",
+           "additionalProperties": false,
+           "properties": {
+            "custom-attribute": {
+             "id": "#custom-attribute",
+             "type": "array",
+             "additionalProperties": false,
+             "items": [
+              {
+               "id": "#0",
+               "type": "object",
+               "additionalProperties": false,
+               "properties": {
+                "@attribute-id": {
+                 "id": "#@attribute-id",
+                 "type": "string",
+                 "additionalProperties": false
+                },
+                "#text": {
+                 "id": "##text",
+                 "type": "string",
+                 "additionalProperties": false
+                }
+               },
+               "required": []
+              },
+              {
+               "id": "#1",
+               "type": "object",
+               "additionalProperties": false,
+               "properties": {
+                "@attribute-id": {
+                 "id": "#@attribute-id",
+                 "type": "string",
+                 "additionalProperties": false
+                },
+                "#text": {
+                 "id": "##text",
+                 "type": "string",
+                 "additionalProperties": false
+                }
+               },
+               "required": []
+              }
+             ],
+             "required": []
+            }
+           },
+           "required": []
+          }
+         },
+         "required": []
+        }
+       ],
+       "required": [],
+       "name": "address",
+       "depth": 3,
+       "value": 0
+      }
+     },
+     "required": [],
+     "name": "addresses",
+     "depth": 2,
+     "value": 0
+    },
+    "note": {
+     "id": "#note",
+     "type": "null",
+     "additionalProperties": false,
+     "name": "note",
+     "depth": 2,
+     "value": 0
+    }
+   },
+   "required": [],
+   "name": "customer",
+   "depth": 1,
+   "value": 0
+  }
+ },
+ "required": [],
+ "depth": 0,
+ "value": 0
+}
