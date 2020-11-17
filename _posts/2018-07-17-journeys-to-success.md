@@ -9,6 +9,7 @@ style:  sunburst.css
 d3version:  https://cdnjs.cloudflare.com/ajax/libs/d3/4.10.0/d3.js
 crossfilter:  False
 orient: right
+truncation: 100
 ---
 
 Australia's Department of Social Services develops models of care for families in crisis through a multi-pronged approach.
