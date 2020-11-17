@@ -106,4 +106,8 @@ button {font-size:150%; border-radius:25px}
 	border-width:0px 0px 1px 1px;
 }
 
+#VMdownload { 
+ visibility:hidden
+}
+
 
