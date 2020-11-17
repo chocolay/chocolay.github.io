@@ -140,22 +140,21 @@ function mkslider(amp) {
         u0 = x.map(function(e) {
             return a * Math.exp(-alpha * (e - τ / 4) * (e - τ / 4))
         });
-
         patchbd.attr('d', line(u0))
     }).on("dragend", reset)
 
     slider = paper.append("g")
     slider.append("rect")
         .attr("id","greyheight")
-        .attr("x", xscale(32) - 5)
-        .attr("y", yscale(d))
+        .attr("x", xscale(32))
+        .attr("y", yscale(0))
         .attr("width", 10)
         .attr("height", s / 4 - yscale(100))
         .style("fill", "grey")
 
     slider.selectAll("#slidr").data(amp).enter().append("circle")
         .attr("cx", xscale(32) )
-        .attr("cy", function(d) {return yscale(d)})
+        .attr("cy", yscale(a))
         .attr("r",5)
         .attr("id", "slidr")
         .style("fill", "#F7B140")
@@ -173,13 +172,18 @@ function mkslider(amp) {
     slider.append("circle")
         .attr("id", "wslider")
         .attr("cx", xscale(32) + w )
-        .attr("cy", yscale(0) )
+        .attr("cy", yscale(a) )
         .attr("r", 5)
         .style("fill", "#F7B140")
         .call(dragw)
 }
 
-d3.select("#starter").on("click",dotheeig);
+d3.select("#starter")
+    .style("background","#F7B140")
+    .style("font-size","115%")
+    .style("padding","5px")
+    .style("border-radius","10")
+    .on("click",dotheeig);
 
 var kind = "nsech2",
     i = new numeric.T(0, 1),
@@ -215,7 +219,7 @@ var xscale = d3.scale.linear().domain([0, N]).range([0, s]),
 
     //line = d3.svg.line().x(function(d,i) {return 340+(yscale(100-d))*Math.cos(x[i])}).y(function(d,i) {return 340+(yscale(100-d))*Math.sin(x[i])}).interpolate("basis")
 
-    patchbd = paper.append('svg:path')
+    patchbd = paper.append('path')
         .style('fill','none')
         .style('stroke', '#D95D2A')
         .style('stroke-width', 2.5);
