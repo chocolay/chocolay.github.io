@@ -233,7 +233,9 @@ var xscale = d3.scale.linear().domain([0, N]).range([0, s]),
     patchbd = paper.append('path')
         .style('fill','none')
         .style('stroke', '#D95D2A')
-        .style('stroke-width', 2.5)
+        .style('stroke-width', 2.5);
+
+paper
         .on("mouseover",function() {
             thepath = patchbd.node();
             xc = d3.select("circle").attr("cx");
