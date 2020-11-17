@@ -6,6 +6,7 @@ image:  Happy-Families.png
 tags:   policy sunburst whimsy 
 app:    sunburst
 style:  sunburst.css
+html: true
 d3version:  https://cdnjs.cloudflare.com/ajax/libs/d3/4.10.0/d3.js
 crossfilter:  False
 orient: right
