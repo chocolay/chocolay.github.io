@@ -1,5 +1,6 @@
 ---
 layout: post
+date: 2020-09-10 15:34:20 +0300
 title:  "What's in store?"
 image:  portfolio_predictions.png
 tags:   model agent-based
