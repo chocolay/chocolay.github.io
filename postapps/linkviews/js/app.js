@@ -234,6 +234,7 @@ function highlightLinks(data,on,l,partial_highlight) {
 
 //buildLinks
 function buildLinks(R,L,tag) {
+    console.log(R,L,tag)
     var C = d3.layout.chord()
         .padding(.05)
         .sortSubgroups(d3.descending)
