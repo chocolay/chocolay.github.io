@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  Pathways of Failure
-date:   2018-10-19 15:01:35 +0300
+date:   2030-06-19 15:01:35 +0300
 image:  journey-failure.png
 tags:   Sankey table
 app:    sankeycsv
