@@ -110,11 +110,10 @@ function soliton(offset, A, x) {
 
 function mkslider(amp) {
 
-    w = xscale(Math.sqrt(-Math.log(1 / 2) / alpha) * 64 / Math.PI)
-
     dragster = d3.behavior.drag().on("drag", function(d) {
         stopit = true;
-        a = d3.round(d3.max([d3.min([yscale.invert(d3.event.y), 100]), 0]));
+
+        a = d3.round(d3.max([d3.min([yscale.invert(d3.event.y), 150]), 0]));
         d3.select(this).data([a]);
         d3.select(this).attr("y", function(d) {
             return yscale(a)
@@ -126,20 +125,24 @@ function mkslider(amp) {
         d3.select("#greyheight").attr("height",yscale(a))
     }).on("dragend", reset)
 
+    w = xscale(Math.sqrt(-Math.log(1 / 2) / alpha) * 64 / Math.PI);
+
     dragw = d3.behavior.drag().on("drag", function(d) {
         stopit = true;
-        w = d3.min([d3.max([18, d3.event.x - xscale(32)]), 150]);
+
+        w = d3.min([d3.max([18, d3.event.x - xscale(32)]), 200]);
+
         d3.select(this)
-            .attr("cx", w+xscale(32))
-        alpha = d3.round(16181 / (w * w))
-        d3.select("#graywslider").attr("width", w + 5)
+            .attr("cx", w+xscale(32));
+        d3.select("#graywslider").attr("width", w + 5);
+
+        alpha = d3.round(16181 / (w * w));
         u0 = x.map(function(e) {
             return a * Math.exp(-alpha * (e - τ / 4) * (e - τ / 4))
-        })
+        });
+
         patchbd.attr('d', line(u0))
     }).on("dragend", reset)
-
-
 
     slider = paper.append("g")
     slider.append("rect")
@@ -151,9 +154,9 @@ function mkslider(amp) {
         .style("fill", "grey")
 
     slider.selectAll("#slidr").data(amp).enter().append("circle")
-        .attr("cx", xscale(32) - 15 - 5)
+        .attr("cx", xscale(32) )
         .attr("cy", function(d) {return yscale(d) - 2.5})
-        .attr("r",15)
+        .attr("r",5)
         .attr("id", "slidr")
         .style("fill", "orangered")
         .call(dragster)
@@ -169,9 +172,9 @@ function mkslider(amp) {
 
     slider.append("circle")
         .attr("id", "wslider")
-        .attr("cx", xscale(32) + w - 5)
-        .attr("cy", yscale(0) - 5)
-        .attr("r", 15)
+        .attr("cx", xscale(32) + w )
+        .attr("cy", yscale(0) )
+        .attr("r", 5)
         .style("fill", "orangered")
         .call(dragw)
 }
