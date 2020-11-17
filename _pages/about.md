@@ -13,4 +13,4 @@ My first degree is in physics and I was a tenured, award-winning physics profess
 
 After I left academia, I island-hopped around the tropical Pacific for months before settling down in the Upper Peninsula, just down the beach from where I grew up. Nowadays I garden, drink coffee with my parents, and work with entrepreneurs, hobbyists & established companies around the world, building complex deep learning models, physics-based simulations, and data visualizations over the web.
 
-I'm always happy to chat about possible projects, so please <a href="mailto:elise.ralph@gmail.com?subject=tell%20me%20more!"> <span class = redTreeChar>send me a message</span></a> if you might like to work with me.
+I'm always happy to chat about possible projects, so feel free to <a href="mailto:elise.ralph@gmail.com?subject=tell%20me%20more!"> <span class = redTreeChar>send me a message</span></a>.
