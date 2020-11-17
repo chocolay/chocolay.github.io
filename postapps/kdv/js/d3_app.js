@@ -219,6 +219,7 @@ var s = 960,
         .append("svg")
         .attr("width", s)
         .attr("height",s/2); //height is s/2 for straight line
+d3.select("#d3_app").style("height","250px");
 
 var xscale = d3.scale.linear().domain([0, N]).range([0, s]),
     yscale = d3.scale.linear().domain([0, 175]).range([s / 4, 0]),
