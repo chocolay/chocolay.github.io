@@ -67,7 +67,7 @@ function reset() {
     stopit = false;
     d3.selectAll("#eiglines").remove()
     d3.selectAll("#eigtext").remove()
-    a = d3.select("#slidr").data()
+    a = d3.select("#slidr").datum()
 
     u0 = kind == "sech2" ? soliton(τ / 4, a / 2, x) : x.map(function(e) {
         return a * Math.exp(-alpha * (e - τ / 4) * (e - τ / 4))
@@ -117,6 +117,7 @@ function mkslider(amp) {
 
         a = d3.round(d3.max([d3.min([yscale.invert(d3.event.y), 120]), 0]));
 
+        d3.select(this).datum(a)
         d3.select(this).attr("cy", function(d) {
             return yscale(a)
         });
@@ -146,13 +147,13 @@ function mkslider(amp) {
 
     slider = paper.append("g")
 
-
     slider.append("circle")
         .attr("id", "slidr")
         .attr("cx", xscale(32) )
         .attr("cy", yscale(a))
         .attr("r",5)
         .style("fill", "#F7B140")
+        .datum(a)
         .call(dragster)
 
 
