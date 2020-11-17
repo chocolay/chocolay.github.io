@@ -3,6 +3,11 @@
     margin-left: 120px
 }
 
+#slow {
+margin: 0 auto;
+color:@brand;
+}
+
 svg {
     border: #D95F2C solid 1px;
 }
