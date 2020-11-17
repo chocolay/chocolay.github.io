@@ -3,7 +3,7 @@
     margin-left: 120px
 }
 
-#slow {
+#slow * {
 margin: 15px auto;
 color:#D95E2A;
 }
