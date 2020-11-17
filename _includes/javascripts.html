@@ -28,6 +28,10 @@
   <script src= "{{ site.baseurl }}/js/vendors/numeric.js" ></script>
 {% endif %}
 
+{% if page.spreadsheet %}
+    <script src= "{{ site.baseurl }}/js.vendors/jszip.js"></script>
+    <script src= "{{ site.baseurl }}/js.vendors/xlsx.js"></script>
+{% endif %}
 
 {% for file in site.static_files %}
   {% if file.path contains page.app and file.extname == ".js" %}
