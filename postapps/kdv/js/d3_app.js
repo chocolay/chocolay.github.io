@@ -126,10 +126,11 @@ function mkslider(amp) {
             return a * Math.exp(-alpha * (e - τ / 4) * (e - τ / 4))
         });
 
-        p = closestPoint(path.node(), [d3.event.x,d3.event,y]);
-
+        path = u0.map((d,i)=>{
+            [xscale(i),yscale(d)]
+        })
+        p = closestPoint(, [d3.event.x,d3.event,y]);
         line.attr("x1", p[0]).attr("y1", p[1]).attr("x2", m[0]).attr("y2", m[1]);
-
         patchbd.attr('d', line(u0))
 
 
@@ -191,11 +192,14 @@ function closestPoint(pathNode, point) {
     }
 }
 
+var line = svg.append("line");
+
 d3.select("#starter")
-    .style("background","#F7B140")
+    .style("background","rgb(247, 177, 64,128)")
     .style("font-size","115%")
     .style("padding","5px")
-    .style("border-radius","10")
+    .style("border-radius","20px")
+    .style("")
     .on("click",dotheeig);
 
 var kind = "nsech2",
