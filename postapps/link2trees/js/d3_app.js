@@ -5,11 +5,9 @@
      //the name used to specify children in a tree                    
 	 childname = "properties", 	
 
-//   input1 = "3.input_json2schema.js.txt",
-	 input1name = "savedFile.json",
-     input2name = "6.output_json2schema.js.txt",
-//	 input1name = "input.json",
-//   input2name = "output.json",   
+
+	 input1name = "input1.json",
+     input2name = "input3.json",
 
 
 	//the namespace that'll contain the two object trees and some convenience variables
