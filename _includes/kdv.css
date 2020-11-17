@@ -24,7 +24,7 @@ span#miracle {
 
 span#starter {
   text-decoration: none;
-    color: $link-color;
+    color: #D95D2A;
     transition: $global-transition;
     &:hover {
       color: darken($link-color, 10%);
