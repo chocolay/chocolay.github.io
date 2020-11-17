@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Journeys of Failure
+title:  Pathways of Failure
 date:   2018-10-19 15:01:35 +0300
 image:  journey-failure.png
 tags:   Sankey table
