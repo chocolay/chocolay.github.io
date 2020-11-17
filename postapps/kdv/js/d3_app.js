@@ -115,14 +115,14 @@ function mkslider(amp) {
 
         a = d3.round(d3.max([d3.min([yscale.invert(d3.event.y), 150]), 0]));
         d3.select(this).data([a]);
-        d3.select(this).attr("y", function(d) {
+        d3.select(this).attr("cy", function(d) {
             return yscale(a)
-        })
+        });
         u0 = kind == "sech2" ? soliton(τ / 4, a / 2, x) : x.map(function(e) {
             return a * Math.exp(-alpha * (e - τ / 4) * (e - τ / 4))
         })
         patchbd.attr('d', line(u0))
-        d3.select("#greyheight").attr("height",yscale(a))
+        //d3.select("#greyheight").attr("height",yscale(a))
     }).on("dragend", reset)
 
     w = xscale(Math.sqrt(-Math.log(1 / 2) / alpha) * 64 / Math.PI);
@@ -152,7 +152,7 @@ function mkslider(amp) {
         .attr("height", s / 4 - yscale(a))
         .style("fill", "grey")
 
-    slider.selectAll("#slidr").data(amp).enter().append("circle")
+    slider.select("#slidr").data(amp).enter().append("circle")
         .attr("cx", xscale(32) )
         .attr("cy", yscale(a))
         .attr("r",5)
