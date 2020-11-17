@@ -234,7 +234,7 @@ var xscale = d3.scale.linear().domain([0, N]).range([0, s]),
         .style('fill','none')
         .style('stroke', '#D95D2A')
         .style('stroke-width', 2.5)
-        .on("mouseenter",function() {
+        .on("mouseover",function() {
             thepath = patchbd.node();
             xc = d3.select("circle").attr("cx");
             yc = d3.select("circle").attr("cy");
@@ -248,7 +248,7 @@ var xscale = d3.scale.linear().domain([0, N]).range([0, s]),
 
             theline.style("display","inline-block")
             d3.select("circle").style("opacity",1)
-        }).on("mouseexit",function() {
+        }).on("mouseout",function() {
                 theline.style("display","none");
                 d3.select("circle").style("opacity",0.2);
             });
