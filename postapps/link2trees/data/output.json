@@ -1,0 +1,51 @@
+{
+    "id": "http://jsonschema.net",
+    "schema": "http://json-schema.org/draft-04/schema",
+    "required": [],
+    "type": "object",
+    "mediaType": "application/schema+json",
+    "properties": {
+        "csv": {
+            "id": "http://jsonschema.net/csv",
+            "type": "array",
+            "name": "csv",
+            "items": [
+                {
+                    "id": "/csv/productId",
+                    "type": "number",
+                    "name": "productId"
+                },
+                {
+                    "id": "/csv/name",
+                    "type": "number",
+                    "name": "name"
+                },
+                {
+                    "id": "/csv/manufacturer",
+                    "type": "number",
+                    "name": "manufacturer"
+                },
+                {
+                    "id": "/csv/url",
+                    "type": "number",
+                    "name": "url"
+                },
+                {
+                    "id": "/csv/thumbUrl",
+                    "type": "number",
+                    "name": "thumbUrl"
+                },
+                {
+                    "id": "/csv/date",
+                    "type": "number",
+                    "name": "date"
+                },
+                {
+                    "id": "/csv/variations[colour|size]",
+                    "type": "number",
+                    "name": "variations[colour|size]"
+                }
+            ]
+        }
+    }
+}
