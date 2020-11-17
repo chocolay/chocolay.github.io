@@ -1,0 +1,1196 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://jsonschema.net#",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "customer": {
+      "id": "#customer",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "@customer-no": {
+          "id": "#@customer-no",
+          "type": "string",
+          "additionalProperties": false
+        },
+        "credentials": {
+          "id": "#credentials",
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "login": {
+              "id": "#login",
+              "type": "string",
+              "additionalProperties": false
+            },
+            "password": {
+              "id": "#password",
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "@encrypted": {
+                  "id": "#@encrypted",
+                  "type": "string",
+                  "additionalProperties": false
+                },
+                "@encryptionScheme": {
+                  "id": "#@encryptionScheme",
+                  "type": "string",
+                  "additionalProperties": false
+                },
+                "#text": {
+                  "id": "##text",
+                  "type": "string",
+                  "additionalProperties": false
+                }
+              },
+              "required": []
+            },
+            "enabled-flag": {
+              "id": "#enabled-flag",
+              "type": "string",
+              "additionalProperties": false
+            },
+            "password-question": {
+              "id": "#password-question",
+              "type": "null",
+              "additionalProperties": false
+            },
+            "password-answer": {
+              "id": "#password-answer",
+              "type": "null",
+              "additionalProperties": false
+            },
+            "provider-id": {
+              "id": "#provider-id",
+              "type": "null",
+              "additionalProperties": false
+            },
+            "external-id": {
+              "id": "#external-id",
+              "type": "null",
+              "additionalProperties": false
+            }
+          },
+          "required": []
+        },
+        "profile": {
+          "id": "#profile",
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "salutation": {
+              "id": "#salutation",
+              "type": "null",
+              "additionalProperties": false
+            },
+            "title": {
+              "id": "#title",
+              "type": "string",
+              "additionalProperties": false
+            },
+            "first-name": {
+              "id": "#first-name",
+              "type": "string",
+              "additionalProperties": false
+            },
+            "second-name": {
+              "id": "#second-name",
+              "type": "null",
+              "additionalProperties": false
+            },
+            "last-name": {
+              "id": "#last-name",
+              "type": "string",
+              "additionalProperties": false
+            },
+            "suffix": {
+              "id": "#suffix",
+              "type": "null",
+              "additionalProperties": false
+            },
+            "company-name": {
+              "id": "#company-name",
+              "type": "null",
+              "additionalProperties": false
+            },
+            "job-title": {
+              "id": "#job-title",
+              "type": "null",
+              "additionalProperties": false
+            },
+            "email": {
+              "id": "#email",
+              "type": "string",
+              "additionalProperties": false
+            },
+            "phone-home": {
+              "id": "#phone-home",
+              "type": "string",
+              "additionalProperties": false
+            },
+            "phone-business": {
+              "id": "#phone-business",
+              "type": "null",
+              "additionalProperties": false
+            },
+            "phone-mobile": {
+              "id": "#phone-mobile",
+              "type": "null",
+              "additionalProperties": false
+            },
+            "fax": {
+              "id": "#fax",
+              "type": "null",
+              "additionalProperties": false
+            },
+            "birthday": {
+              "id": "#birthday",
+              "type": "string",
+              "additionalProperties": false
+            },
+            "gender": {
+              "id": "#gender",
+              "type": "string",
+              "additionalProperties": false
+            },
+            "creation-date": {
+              "id": "#creation-date",
+              "type": "string",
+              "additionalProperties": false
+            },
+            "last-login-time": {
+              "id": "#last-login-time",
+              "type": "string",
+              "additionalProperties": false
+            },
+            "last-visit-time": {
+              "id": "#last-visit-time",
+              "type": "string",
+              "additionalProperties": false
+            },
+            "preferred-locale": {
+              "id": "#preferred-locale",
+              "type": "null",
+              "additionalProperties": false
+            },
+            "custom-attributes": {
+              "id": "#custom-attributes",
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "custom-attribute": {
+                  "id": "#custom-attribute",
+                  "type": "array",
+                  "additionalProperties": false,
+                  "items": [
+                    {
+                      "id": "#0",
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "@attribute-id": {
+                          "id": "#@attribute-id",
+                          "type": "string",
+                          "additionalProperties": false
+                        },
+                        "#text": {
+                          "id": "##text",
+                          "type": "string",
+                          "additionalProperties": false
+                        }
+                      },
+                      "required": []
+                    },
+                    {
+                      "id": "#1",
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "@attribute-id": {
+                          "id": "#@attribute-id",
+                          "type": "string",
+                          "additionalProperties": false
+                        },
+                        "#text": {
+                          "id": "##text",
+                          "type": "string",
+                          "additionalProperties": false
+                        }
+                      },
+                      "required": []
+                    },
+                    {
+                      "id": "#2",
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "@attribute-id": {
+                          "id": "#@attribute-id",
+                          "type": "string",
+                          "additionalProperties": false
+                        },
+                        "#text": {
+                          "id": "##text",
+                          "type": "string",
+                          "additionalProperties": false
+                        }
+                      },
+                      "required": []
+                    },
+                    {
+                      "id": "#3",
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "@attribute-id": {
+                          "id": "#@attribute-id",
+                          "type": "string",
+                          "additionalProperties": false
+                        },
+                        "#text": {
+                          "id": "##text",
+                          "type": "string",
+                          "additionalProperties": false
+                        }
+                      },
+                      "required": []
+                    },
+                    {
+                      "id": "#4",
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "@attribute-id": {
+                          "id": "#@attribute-id",
+                          "type": "string",
+                          "additionalProperties": false
+                        },
+                        "#text": {
+                          "id": "##text",
+                          "type": "string",
+                          "additionalProperties": false
+                        }
+                      },
+                      "required": []
+                    },
+                    {
+                      "id": "#5",
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "@attribute-id": {
+                          "id": "#@attribute-id",
+                          "type": "string",
+                          "additionalProperties": false
+                        },
+                        "#text": {
+                          "id": "##text",
+                          "type": "string",
+                          "additionalProperties": false
+                        }
+                      },
+                      "required": []
+                    },
+                    {
+                      "id": "#6",
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "@attribute-id": {
+                          "id": "#@attribute-id",
+                          "type": "string",
+                          "additionalProperties": false
+                        },
+                        "#text": {
+                          "id": "##text",
+                          "type": "string",
+                          "additionalProperties": false
+                        }
+                      },
+                      "required": []
+                    },
+                    {
+                      "id": "#7",
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "@attribute-id": {
+                          "id": "#@attribute-id",
+                          "type": "string",
+                          "additionalProperties": false
+                        },
+                        "#text": {
+                          "id": "##text",
+                          "type": "string",
+                          "additionalProperties": false
+                        }
+                      },
+                      "required": []
+                    },
+                    {
+                      "id": "#8",
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "@attribute-id": {
+                          "id": "#@attribute-id",
+                          "type": "string",
+                          "additionalProperties": false
+                        },
+                        "#text": {
+                          "id": "##text",
+                          "type": "string",
+                          "additionalProperties": false
+                        }
+                      },
+                      "required": []
+                    },
+                    {
+                      "id": "#9",
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "@attribute-id": {
+                          "id": "#@attribute-id",
+                          "type": "string",
+                          "additionalProperties": false
+                        },
+                        "#text": {
+                          "id": "##text",
+                          "type": "string",
+                          "additionalProperties": false
+                        }
+                      },
+                      "required": []
+                    },
+                    {
+                      "id": "#10",
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "@attribute-id": {
+                          "id": "#@attribute-id",
+                          "type": "string",
+                          "additionalProperties": false
+                        },
+                        "#text": {
+                          "id": "##text",
+                          "type": "string",
+                          "additionalProperties": false
+                        }
+                      },
+                      "required": []
+                    }
+                  ],
+                  "required": []
+                }
+              },
+              "required": []
+            }
+          },
+          "required": []
+        },
+        "addresses": {
+          "id": "#addresses",
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "address": {
+              "id": "#address",
+              "type": "array",
+              "additionalProperties": false,
+              "items": [
+                {
+                  "id": "#0",
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "@address-id": {
+                      "id": "#@address-id",
+                      "type": "string",
+                      "additionalProperties": false
+                    },
+                    "@preferred": {
+                      "id": "#@preferred",
+                      "type": "string",
+                      "additionalProperties": false
+                    },
+                    "salutation": {
+                      "id": "#salutation",
+                      "type": "null",
+                      "additionalProperties": false
+                    },
+                    "title": {
+                      "id": "#title",
+                      "type": "string",
+                      "additionalProperties": false
+                    },
+                    "first-name": {
+                      "id": "#first-name",
+                      "type": "string",
+                      "additionalProperties": false
+                    },
+                    "second-name": {
+                      "id": "#second-name",
+                      "type": "null",
+                      "additionalProperties": false
+                    },
+                    "last-name": {
+                      "id": "#last-name",
+                      "type": "string",
+                      "additionalProperties": false
+                    },
+                    "suffix": {
+                      "id": "#suffix",
+                      "type": "null",
+                      "additionalProperties": false
+                    },
+                    "company-name": {
+                      "id": "#company-name",
+                      "type": "null",
+                      "additionalProperties": false
+                    },
+                    "job-title": {
+                      "id": "#job-title",
+                      "type": "null",
+                      "additionalProperties": false
+                    },
+                    "address1": {
+                      "id": "#address1",
+                      "type": "string",
+                      "additionalProperties": false
+                    },
+                    "address2": {
+                      "id": "#address2",
+                      "type": "null",
+                      "additionalProperties": false
+                    },
+                    "suite": {
+                      "id": "#suite",
+                      "type": "null",
+                      "additionalProperties": false
+                    },
+                    "postbox": {
+                      "id": "#postbox",
+                      "type": "null",
+                      "additionalProperties": false
+                    },
+                    "city": {
+                      "id": "#city",
+                      "type": "string",
+                      "additionalProperties": false
+                    },
+                    "postal-code": {
+                      "id": "#postal-code",
+                      "type": "string",
+                      "additionalProperties": false
+                    },
+                    "state-code": {
+                      "id": "#state-code",
+                      "type": "null",
+                      "additionalProperties": false
+                    },
+                    "country-code": {
+                      "id": "#country-code",
+                      "type": "string",
+                      "additionalProperties": false
+                    },
+                    "phone": {
+                      "id": "#phone",
+                      "type": "null",
+                      "additionalProperties": false
+                    },
+                    "custom-attributes": {
+                      "id": "#custom-attributes",
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "custom-attribute": {
+                          "id": "#custom-attribute",
+                          "type": "array",
+                          "additionalProperties": false,
+                          "items": [
+                            {
+                              "id": "#0",
+                              "type": "object",
+                              "additionalProperties": false,
+                              "properties": {
+                                "@attribute-id": {
+                                  "id": "#@attribute-id",
+                                  "type": "string",
+                                  "additionalProperties": false
+                                },
+                                "#text": {
+                                  "id": "##text",
+                                  "type": "string",
+                                  "additionalProperties": false
+                                }
+                              },
+                              "required": []
+                            },
+                            {
+                              "id": "#1",
+                              "type": "object",
+                              "additionalProperties": false,
+                              "properties": {
+                                "@attribute-id": {
+                                  "id": "#@attribute-id",
+                                  "type": "string",
+                                  "additionalProperties": false
+                                },
+                                "#text": {
+                                  "id": "##text",
+                                  "type": "string",
+                                  "additionalProperties": false
+                                }
+                              },
+                              "required": []
+                            }
+                          ],
+                          "required": []
+                        }
+                      },
+                      "required": []
+                    }
+                  },
+                  "required": []
+                },
+                {
+                  "id": "#1",
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "@address-id": {
+                      "id": "#@address-id",
+                      "type": "string",
+                      "additionalProperties": false
+                    },
+                    "@preferred": {
+                      "id": "#@preferred",
+                      "type": "string",
+                      "additionalProperties": false
+                    },
+                    "salutation": {
+                      "id": "#salutation",
+                      "type": "null",
+                      "additionalProperties": false
+                    },
+                    "title": {
+                      "id": "#title",
+                      "type": "string",
+                      "additionalProperties": false
+                    },
+                    "first-name": {
+                      "id": "#first-name",
+                      "type": "string",
+                      "additionalProperties": false
+                    },
+                    "second-name": {
+                      "id": "#second-name",
+                      "type": "null",
+                      "additionalProperties": false
+                    },
+                    "last-name": {
+                      "id": "#last-name",
+                      "type": "string",
+                      "additionalProperties": false
+                    },
+                    "suffix": {
+                      "id": "#suffix",
+                      "type": "null",
+                      "additionalProperties": false
+                    },
+                    "company-name": {
+                      "id": "#company-name",
+                      "type": "null",
+                      "additionalProperties": false
+                    },
+                    "job-title": {
+                      "id": "#job-title",
+                      "type": "null",
+                      "additionalProperties": false
+                    },
+                    "address1": {
+                      "id": "#address1",
+                      "type": "string",
+                      "additionalProperties": false
+                    },
+                    "address2": {
+                      "id": "#address2",
+                      "type": "null",
+                      "additionalProperties": false
+                    },
+                    "suite": {
+                      "id": "#suite",
+                      "type": "null",
+                      "additionalProperties": false
+                    },
+                    "postbox": {
+                      "id": "#postbox",
+                      "type": "null",
+                      "additionalProperties": false
+                    },
+                    "city": {
+                      "id": "#city",
+                      "type": "string",
+                      "additionalProperties": false
+                    },
+                    "postal-code": {
+                      "id": "#postal-code",
+                      "type": "string",
+                      "additionalProperties": false
+                    },
+                    "state-code": {
+                      "id": "#state-code",
+                      "type": "null",
+                      "additionalProperties": false
+                    },
+                    "country-code": {
+                      "id": "#country-code",
+                      "type": "string",
+                      "additionalProperties": false
+                    },
+                    "phone": {
+                      "id": "#phone",
+                      "type": "string",
+                      "additionalProperties": false
+                    },
+                    "custom-attributes": {
+                      "id": "#custom-attributes",
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "custom-attribute": {
+                          "id": "#custom-attribute",
+                          "type": "array",
+                          "additionalProperties": false,
+                          "items": [
+                            {
+                              "id": "#0",
+                              "type": "object",
+                              "additionalProperties": false,
+                              "properties": {
+                                "@attribute-id": {
+                                  "id": "#@attribute-id",
+                                  "type": "string",
+                                  "additionalProperties": false
+                                },
+                                "#text": {
+                                  "id": "##text",
+                                  "type": "string",
+                                  "additionalProperties": false
+                                }
+                              },
+                              "required": []
+                            },
+                            {
+                              "id": "#1",
+                              "type": "object",
+                              "additionalProperties": false,
+                              "properties": {
+                                "@attribute-id": {
+                                  "id": "#@attribute-id",
+                                  "type": "string",
+                                  "additionalProperties": false
+                                },
+                                "#text": {
+                                  "id": "##text",
+                                  "type": "string",
+                                  "additionalProperties": false
+                                }
+                              },
+                              "required": []
+                            }
+                          ],
+                          "required": []
+                        }
+                      },
+                      "required": []
+                    }
+                  },
+                  "required": []
+                },
+                {
+                  "id": "#2",
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "@address-id": {
+                      "id": "#@address-id",
+                      "type": "string",
+                      "additionalProperties": false
+                    },
+                    "@preferred": {
+                      "id": "#@preferred",
+                      "type": "string",
+                      "additionalProperties": false
+                    },
+                    "salutation": {
+                      "id": "#salutation",
+                      "type": "null",
+                      "additionalProperties": false
+                    },
+                    "title": {
+                      "id": "#title",
+                      "type": "string",
+                      "additionalProperties": false
+                    },
+                    "first-name": {
+                      "id": "#first-name",
+                      "type": "string",
+                      "additionalProperties": false
+                    },
+                    "second-name": {
+                      "id": "#second-name",
+                      "type": "null",
+                      "additionalProperties": false
+                    },
+                    "last-name": {
+                      "id": "#last-name",
+                      "type": "string",
+                      "additionalProperties": false
+                    },
+                    "suffix": {
+                      "id": "#suffix",
+                      "type": "null",
+                      "additionalProperties": false
+                    },
+                    "company-name": {
+                      "id": "#company-name",
+                      "type": "null",
+                      "additionalProperties": false
+                    },
+                    "job-title": {
+                      "id": "#job-title",
+                      "type": "null",
+                      "additionalProperties": false
+                    },
+                    "address1": {
+                      "id": "#address1",
+                      "type": "string",
+                      "additionalProperties": false
+                    },
+                    "address2": {
+                      "id": "#address2",
+                      "type": "null",
+                      "additionalProperties": false
+                    },
+                    "suite": {
+                      "id": "#suite",
+                      "type": "null",
+                      "additionalProperties": false
+                    },
+                    "postbox": {
+                      "id": "#postbox",
+                      "type": "null",
+                      "additionalProperties": false
+                    },
+                    "city": {
+                      "id": "#city",
+                      "type": "string",
+                      "additionalProperties": false
+                    },
+                    "postal-code": {
+                      "id": "#postal-code",
+                      "type": "string",
+                      "additionalProperties": false
+                    },
+                    "state-code": {
+                      "id": "#state-code",
+                      "type": "null",
+                      "additionalProperties": false
+                    },
+                    "country-code": {
+                      "id": "#country-code",
+                      "type": "string",
+                      "additionalProperties": false
+                    },
+                    "phone": {
+                      "id": "#phone",
+                      "type": "string",
+                      "additionalProperties": false
+                    },
+                    "custom-attributes": {
+                      "id": "#custom-attributes",
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "custom-attribute": {
+                          "id": "#custom-attribute",
+                          "type": "array",
+                          "additionalProperties": false,
+                          "items": [
+                            {
+                              "id": "#0",
+                              "type": "object",
+                              "additionalProperties": false,
+                              "properties": {
+                                "@attribute-id": {
+                                  "id": "#@attribute-id",
+                                  "type": "string",
+                                  "additionalProperties": false
+                                },
+                                "#text": {
+                                  "id": "##text",
+                                  "type": "string",
+                                  "additionalProperties": false
+                                }
+                              },
+                              "required": []
+                            },
+                            {
+                              "id": "#1",
+                              "type": "object",
+                              "additionalProperties": false,
+                              "properties": {
+                                "@attribute-id": {
+                                  "id": "#@attribute-id",
+                                  "type": "string",
+                                  "additionalProperties": false
+                                },
+                                "#text": {
+                                  "id": "##text",
+                                  "type": "string",
+                                  "additionalProperties": false
+                                }
+                              },
+                              "required": []
+                            }
+                          ],
+                          "required": []
+                        }
+                      },
+                      "required": []
+                    }
+                  },
+                  "required": []
+                },
+                {
+                  "id": "#3",
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "@address-id": {
+                      "id": "#@address-id",
+                      "type": "string",
+                      "additionalProperties": false
+                    },
+                    "@preferred": {
+                      "id": "#@preferred",
+                      "type": "string",
+                      "additionalProperties": false
+                    },
+                    "salutation": {
+                      "id": "#salutation",
+                      "type": "null",
+                      "additionalProperties": false
+                    },
+                    "title": {
+                      "id": "#title",
+                      "type": "string",
+                      "additionalProperties": false
+                    },
+                    "first-name": {
+                      "id": "#first-name",
+                      "type": "string",
+                      "additionalProperties": false
+                    },
+                    "second-name": {
+                      "id": "#second-name",
+                      "type": "null",
+                      "additionalProperties": false
+                    },
+                    "last-name": {
+                      "id": "#last-name",
+                      "type": "string",
+                      "additionalProperties": false
+                    },
+                    "suffix": {
+                      "id": "#suffix",
+                      "type": "null",
+                      "additionalProperties": false
+                    },
+                    "company-name": {
+                      "id": "#company-name",
+                      "type": "null",
+                      "additionalProperties": false
+                    },
+                    "job-title": {
+                      "id": "#job-title",
+                      "type": "null",
+                      "additionalProperties": false
+                    },
+                    "address1": {
+                      "id": "#address1",
+                      "type": "null",
+                      "additionalProperties": false
+                    },
+                    "address2": {
+                      "id": "#address2",
+                      "type": "null",
+                      "additionalProperties": false
+                    },
+                    "suite": {
+                      "id": "#suite",
+                      "type": "null",
+                      "additionalProperties": false
+                    },
+                    "postbox": {
+                      "id": "#postbox",
+                      "type": "null",
+                      "additionalProperties": false
+                    },
+                    "city": {
+                      "id": "#city",
+                      "type": "string",
+                      "additionalProperties": false
+                    },
+                    "postal-code": {
+                      "id": "#postal-code",
+                      "type": "string",
+                      "additionalProperties": false
+                    },
+                    "state-code": {
+                      "id": "#state-code",
+                      "type": "string",
+                      "additionalProperties": false
+                    },
+                    "country-code": {
+                      "id": "#country-code",
+                      "type": "string",
+                      "additionalProperties": false
+                    },
+                    "phone": {
+                      "id": "#phone",
+                      "type": "null",
+                      "additionalProperties": false
+                    },
+                    "custom-attributes": {
+                      "id": "#custom-attributes",
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "custom-attribute": {
+                          "id": "#custom-attribute",
+                          "type": "array",
+                          "additionalProperties": false,
+                          "items": [
+                            {
+                              "id": "#0",
+                              "type": "object",
+                              "additionalProperties": false,
+                              "properties": {
+                                "@attribute-id": {
+                                  "id": "#@attribute-id",
+                                  "type": "string",
+                                  "additionalProperties": false
+                                },
+                                "#text": {
+                                  "id": "##text",
+                                  "type": "string",
+                                  "additionalProperties": false
+                                }
+                              },
+                              "required": []
+                            },
+                            {
+                              "id": "#1",
+                              "type": "object",
+                              "additionalProperties": false,
+                              "properties": {
+                                "@attribute-id": {
+                                  "id": "#@attribute-id",
+                                  "type": "string",
+                                  "additionalProperties": false
+                                },
+                                "#text": {
+                                  "id": "##text",
+                                  "type": "string",
+                                  "additionalProperties": false
+                                }
+                              },
+                              "required": []
+                            }
+                          ],
+                          "required": []
+                        }
+                      },
+                      "required": []
+                    }
+                  },
+                  "required": []
+                },
+                {
+                  "id": "#4",
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "@address-id": {
+                      "id": "#@address-id",
+                      "type": "string",
+                      "additionalProperties": false
+                    },
+                    "@preferred": {
+                      "id": "#@preferred",
+                      "type": "string",
+                      "additionalProperties": false
+                    },
+                    "salutation": {
+                      "id": "#salutation",
+                      "type": "null",
+                      "additionalProperties": false
+                    },
+                    "title": {
+                      "id": "#title",
+                      "type": "string",
+                      "additionalProperties": false
+                    },
+                    "first-name": {
+                      "id": "#first-name",
+                      "type": "string",
+                      "additionalProperties": false
+                    },
+                    "second-name": {
+                      "id": "#second-name",
+                      "type": "null",
+                      "additionalProperties": false
+                    },
+                    "last-name": {
+                      "id": "#last-name",
+                      "type": "string",
+                      "additionalProperties": false
+                    },
+                    "suffix": {
+                      "id": "#suffix",
+                      "type": "null",
+                      "additionalProperties": false
+                    },
+                    "company-name": {
+                      "id": "#company-name",
+                      "type": "null",
+                      "additionalProperties": false
+                    },
+                    "job-title": {
+                      "id": "#job-title",
+                      "type": "null",
+                      "additionalProperties": false
+                    },
+                    "address1": {
+                      "id": "#address1",
+                      "type": "string",
+                      "additionalProperties": false
+                    },
+                    "address2": {
+                      "id": "#address2",
+                      "type": "null",
+                      "additionalProperties": false
+                    },
+                    "suite": {
+                      "id": "#suite",
+                      "type": "null",
+                      "additionalProperties": false
+                    },
+                    "postbox": {
+                      "id": "#postbox",
+                      "type": "null",
+                      "additionalProperties": false
+                    },
+                    "city": {
+                      "id": "#city",
+                      "type": "string",
+                      "additionalProperties": false
+                    },
+                    "postal-code": {
+                      "id": "#postal-code",
+                      "type": "null",
+                      "additionalProperties": false
+                    },
+                    "state-code": {
+                      "id": "#state-code",
+                      "type": "null",
+                      "additionalProperties": false
+                    },
+                    "country-code": {
+                      "id": "#country-code",
+                      "type": "string",
+                      "additionalProperties": false
+                    },
+                    "phone": {
+                      "id": "#phone",
+                      "type": "string",
+                      "additionalProperties": false
+                    },
+                    "custom-attributes": {
+                      "id": "#custom-attributes",
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "custom-attribute": {
+                          "id": "#custom-attribute",
+                          "type": "array",
+                          "additionalProperties": false,
+                          "items": [
+                            {
+                              "id": "#0",
+                              "type": "object",
+                              "additionalProperties": false,
+                              "properties": {
+                                "@attribute-id": {
+                                  "id": "#@attribute-id",
+                                  "type": "string",
+                                  "additionalProperties": false
+                                },
+                                "#text": {
+                                  "id": "##text",
+                                  "type": "string",
+                                  "additionalProperties": false
+                                }
+                              },
+                              "required": []
+                            },
+                            {
+                              "id": "#1",
+                              "type": "object",
+                              "additionalProperties": false,
+                              "properties": {
+                                "@attribute-id": {
+                                  "id": "#@attribute-id",
+                                  "type": "string",
+                                  "additionalProperties": false
+                                },
+                                "#text": {
+                                  "id": "##text",
+                                  "type": "string",
+                                  "additionalProperties": false
+                                }
+                              },
+                              "required": []
+                            }
+                          ],
+                          "required": []
+                        }
+                      },
+                      "required": []
+                    }
+                  },
+                  "required": []
+                }
+              ],
+              "required": []
+            }
+          },
+          "required": []
+        },
+        "note": {
+          "id": "#note",
+          "type": "null",
+          "additionalProperties": false
+        }
+      },
+      "required": []
+    }
+  },
+  "required": []
+}
