@@ -167,11 +167,10 @@ var kind = "nsech2",
         return a * Math.exp(-alpha * (e - τ / 4) * (e - τ / 4))
     });
 
-var s = 960,
-    paper = d3.select('#d3_app')
+    var  paper = d3.select('#d3_app')
         .append("svg")
-        .attr("width", s)
-        .attr("height",s/2); //height is s/2 for straight line
+        .attr("width", +d3.select("body").style("width").slice(0,-2))
+        .attr("height",480);
     paper.on("mouseover",function() {
         d3.select("circle").style("opacity",1)
             .attr("r",10)
@@ -179,7 +178,9 @@ var s = 960,
         d3.select("circle").style("opacity",1e-6);
     })
 d3.select("#d3_app").style("height","250px");
-
+d3.select("body").node().onresize = function() {
+    paper.attr("width", +d3.select("body").style("width").slice(0,-2))
+}
 
 var xscale = d3.scale.linear().domain([0, N]).range([0, s]),
     yscale = d3.scale.linear().domain([0, 175]).range([s / 4, 0]),
