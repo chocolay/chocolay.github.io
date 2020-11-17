@@ -10,6 +10,7 @@ crossfilter:  True
 style:  sankeycsv.css
 html: true
 orient: right
+truncation: 100
 ---
 
 Large military organizations track everything! Records are kept regarding deficiencies in operation at all levels. Given the shear amount of information across a branch of the military, there needs to be a visual summary of where, who, what, why, etc to look for patterns and places to improve.
