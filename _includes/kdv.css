@@ -22,3 +22,13 @@ span#miracle {
     cursor:pointer;
 }
 
+span#starter {
+  text-decoration: none;
+    color: $link-color;
+    transition: $global-transition;
+    &:hover {
+      color: darken($link-color, 10%);
+    }
+    &:active {
+      color: darken($link-color, 20%);
+  }
