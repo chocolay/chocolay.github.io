@@ -186,7 +186,7 @@ var s = 960
 
 d3.select("#d3_app")
     .style("height","250px")
-    .style(width, "100%")
+    .style("width", "100%")
 
 
 var xscale = d3.scale.linear().domain([0, N]).range([0, s]),
