@@ -1875,6 +1875,14 @@ eqn.append("text")
 	.attr("transform","translate(202,-30)")
 	.text('x')	
 
+d3.select("#numerator").append("tspan").attr("baseline-shift","super").text('&alpha;-1')
+d3.select("#numerator").append("tspan").text('(1-x)')
+d3.select("#numerator").append("tspan").attr("baseline-shift","super").text('&beta;-1')     
+
+ eqn.append("text")
+	.attr("transform","translate(140,30)")
+	.text( '(&alpha;-1)! (&beta;-1)! / (&alpha;+&beta;-1)!');
+
 
 eqn.append("line")
     .attr("class","eqn")
