@@ -11,6 +11,7 @@ style:         linkviews.css
 orient:        left
 html:          true
 status:        done
+truncation: 100
 ---
 
 Understanding how to connect complicated datasets across different systems and departments is a perennial problem.
