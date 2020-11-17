@@ -5,7 +5,11 @@
 
 #slow {
 margin: 15px auto;
-color:@brand;
+color:#D95E2A;
+}
+
+.check {
+visibility:hidden;
 }
 
 svg {
