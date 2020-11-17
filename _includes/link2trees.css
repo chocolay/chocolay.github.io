@@ -105,3 +105,9 @@ button {font-size:150%; border-radius:25px}
 .VMTable tr:first-child td:last-child{
 	border-width:0px 0px 1px 1px;
 }
+
+#X {
+font-size:39;
+float:right;
+color:"@redTreeChar"	
+}
