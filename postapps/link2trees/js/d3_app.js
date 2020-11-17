@@ -1038,7 +1038,6 @@ input2name = "/postapps/link2trees/data/input3.json",
 d3.selectAll("#VMdisplay, #VMdisplay *").on("click",function() {
 	var toggle = d3.select("#VMdisplay ul").style("display")=="none";
 	d3.selectAll("#VMdisplay *").style("display",toggle?"inline-block":"none");
-	console.log(toggle)
 })
 
          return temp;
