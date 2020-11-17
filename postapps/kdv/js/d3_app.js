@@ -130,7 +130,7 @@ function mkslider(amp) {
     dragw = d3.behavior.drag().on("drag", function(d) {
         stopit = true;
 
-        w = d3.min([d3.max([18, d3.event.x - xscale(32)]), 200]);
+        w = d3.min([d3.max([18, d3.event.x - xscale(32)]), 100]);
 
         d3.select(this)
             .attr("cx", w+xscale(32));
@@ -148,17 +148,17 @@ function mkslider(amp) {
     slider.append("rect")
         .attr("id","greyheight")
         .attr("x", xscale(32) - 5)
-        .attr("y", yscale(100))
+        .attr("y", yscale(d))
         .attr("width", 10)
         .attr("height", s / 4 - yscale(100))
         .style("fill", "grey")
 
     slider.selectAll("#slidr").data(amp).enter().append("circle")
         .attr("cx", xscale(32) )
-        .attr("cy", function(d) {return yscale(d) - 2.5})
+        .attr("cy", function(d) {return yscale(d)})
         .attr("r",5)
         .attr("id", "slidr")
-        .style("fill", "orangered")
+        .style("fill", "#F7B140")
         .call(dragster)
 
     slider.append("rect")
@@ -175,7 +175,7 @@ function mkslider(amp) {
         .attr("cx", xscale(32) + w )
         .attr("cy", yscale(0) )
         .attr("r", 5)
-        .style("fill", "orangered")
+        .style("fill", "#F7B140")
         .call(dragw)
 }
 
