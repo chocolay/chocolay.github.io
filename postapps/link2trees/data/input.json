@@ -1,0 +1,325 @@
+{
+    "id": "http://jsonschema.net",
+    "schema": "http://json-schema.org/draft-04/schema",
+    "required": [],
+    "type": "object",
+    "mediaType": "application/schema+json",
+    "properties": {
+        "products": {
+            "id": "http://jsonschema.net/products",
+            "type": "object",
+            "name": "products",
+            "properties": {
+                "product": {
+                    "id": "/products/product",
+                    "type": "object",
+                    "name": "product",
+                    "properties": {
+                        "lastUpdated": {
+                            "id": "/products/product/lastUpdated",
+                            "type": "string",
+                            "name": "lastUpdated"
+                        },
+                        "title": {
+                            "id": "/products/product/title",
+                            "type": "string",
+                            "name": "title"
+                        },
+                        "brand": {
+                            "id": "/products/product/brand",
+                            "type": "string",
+                            "name": "brand"
+                        },
+                        "sku": {
+                            "id": "/products/product/sku",
+                            "type": "string",
+                            "name": "sku"
+                        },
+                        "url": {
+                            "id": "/products/product/url",
+                            "type": "string",
+                            "name": "url"
+                        },
+                        "thumbnailUrl": {
+                            "id": "/products/product/thumbnailUrl",
+                            "type": "string",
+                            "name": "thumbnailUrl"
+                        },
+                        "imageUrl": {
+                            "id": "/products/product/imageUrl",
+                            "type": "string",
+                            "name": "imageUrl"
+                        },
+                        "largeImageUrl": {
+                            "id": "/products/product/largeImageUrl",
+                            "type": "string",
+                            "name": "largeImageUrl"
+                        },
+                        "price": {
+                            "id": "/products/product/price",
+                            "type": "string",
+                            "name": "price"
+                        },
+                        "priceWas": {
+                            "id": "/products/product/priceWas",
+                            "type": "string",
+                            "name": "priceWas"
+                        },
+                        "inStock": {
+                            "id": "/products/product/inStock",
+                            "type": "string",
+                            "name": "inStock"
+                        },
+                        "stockMessage": {
+                            "id": "/products/product/stockMessage",
+                            "type": "string",
+                            "name": "stockMessage"
+                        },
+                        "description": {
+                            "id": "/products/product/description",
+                            "type": "string",
+                            "name": "description"
+                        },
+                        "keywords": {
+                            "id": "/products/product/keywords",
+                            "type": "string",
+                            "name": "keywords"
+                        },
+                        "categoryList": {
+                            "id": "/products/product/categoryList",
+                            "type": "string",
+                            "name": "categoryList"
+                        },
+                        "priceOriginal": {
+                            "id": "/products/product/priceOriginal",
+                            "type": "string",
+                            "name": "priceOriginal"
+                        },
+                        "careInstructions": {
+                            "id": "/products/product/careInstructions",
+                            "type": "string",
+                            "name": "careInstructions"
+                        },
+                        "colour": {
+                            "id": "/products/product/colour",
+                            "type": "string",
+                            "name": "colour"
+                        },
+                        "currency": {
+                            "id": "/products/product/currency",
+                            "type": "string",
+                            "name": "currency"
+                        },
+                        "isNew": {
+                            "id": "/products/product/isNew",
+                            "type": "string",
+                            "name": "isNew"
+                        },
+                        "isSale": {
+                            "id": "/products/product/isSale",
+                            "type": "string",
+                            "name": "isSale"
+                        },
+                        "materials": {
+                            "id": "/products/product/materials",
+                            "type": "string",
+                            "name": "materials"
+                        },
+                        "numberOfReviews": {
+                            "id": "/products/product/numberOfReviews",
+                            "type": "string",
+                            "name": "numberOfReviews"
+                        },
+                        "starRating": {
+                            "id": "/products/product/starRating",
+                            "type": "string",
+                            "name": "starRating"
+                        },
+                        "promotion": {
+                            "id": "/products/product/promotion",
+                            "type": "string",
+                            "name": "promotion"
+                        },
+                        "standardDeliveryCost": {
+                            "id": "/products/product/standardDeliveryCost",
+                            "type": "string",
+                            "name": "standardDeliveryCost"
+                        },
+                        "standardDeliveryTime": {
+                            "id": "/products/product/standardDeliveryTime",
+                            "type": "string",
+                            "name": "standardDeliveryTime"
+                        },
+                        "promotionAvailable": {
+                            "id": "/products/product/promotionAvailable",
+                            "type": "string",
+                            "name": "promotionAvailable"
+                        },
+                        "voucherPromotion": {
+                            "id": "/products/product/voucherPromotion",
+                            "type": "string",
+                            "name": "voucherPromotion"
+                        },
+                        "startDate": {
+                            "id": "/products/product/startDate",
+                            "type": "string",
+                            "name": "startDate"
+                        },
+                        "endDate": {
+                            "id": "/products/product/endDate",
+                            "type": "string",
+                            "name": "endDate"
+                        },
+                        "promotionalCode": {
+                            "id": "/products/product/promotionalCode",
+                            "type": "number",
+                            "name": "promotionalCode"
+                        },
+                        "promotionalTerms": {
+                            "id": "/products/product/promotionalTerms",
+                            "type": "string",
+                            "name": "promotionalTerms"
+                        },
+                        "variants": {
+                            "id": "/products/product/variants",
+                            "type": "object",
+                            "name": "variants",
+                            "properties": {
+                                "variant": {
+                                    "id": "/products/product/variants/variant",
+                                    "type": "object",
+                                    "name": "variant",
+                                    "properties": {
+                                        "sku": {
+                                            "id": "/products/product/variants/variant/sku",
+                                            "type": "string",
+                                            "name": "sku"
+                                        },
+                                        "price": {
+                                            "id": "/products/product/variants/variant/price",
+                                            "type": "string",
+                                            "name": "price"
+                                        },
+                                        "inStock": {
+                                            "id": "/products/product/variants/variant/inStock",
+                                            "type": "string",
+                                            "name": "inStock"
+                                        },
+                                        "colour": {
+                                            "id": "/products/product/variants/variant/colour",
+                                            "type": "string",
+                                            "name": "colour"
+                                        },
+                                        "size": {
+                                            "id": "/products/product/variants/variant/size",
+                                            "type": "string",
+                                            "name": "size"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "images": {
+                            "id": "/products/product/images",
+                            "type": "object",
+                            "name": "images",
+                            "properties": {
+                                "image": {
+                                    "id": "/products/product/images/image",
+                                    "type": "array",
+                                    "name": "image",
+                                    "items": [
+                                        {
+                                            "id": "/products/product/images/image/thumbnailUrl",
+                                            "type": "string",
+                                            "name": "thumbnailUrl"
+                                        },
+                                        {
+                                            "id": "/products/product/images/image/imageUrl",
+                                            "type": "string",
+                                            "name": "imageUrl"
+                                        },
+                                        {
+                                            "id": "/products/product/images/image/largeImageUrl",
+                                            "type": "string",
+                                            "name": "largeImageUrl"
+                                        }
+                                    ]
+                                }
+                            }
+                        },
+                        "reviews": {
+                            "id": "/products/product/reviews",
+                            "type": "object",
+                            "name": "reviews",
+                            "properties": {
+                                "review": {
+                                    "id": "/products/product/reviews/review",
+                                    "type": "object",
+                                    "name": "review",
+                                    "properties": {
+                                        "title": {
+                                            "id": "/products/product/reviews/review/title",
+                                            "type": "string",
+                                            "name": "title"
+                                        },
+                                        "dateReviewed": {
+                                            "id": "/products/product/reviews/review/dateReviewed",
+                                            "type": "string",
+                                            "name": "dateReviewed"
+                                        },
+                                        "bestUses": {
+                                            "id": "/products/product/reviews/review/bestUses",
+                                            "type": "string",
+                                            "name": "bestUses"
+                                        },
+                                        "comfortVsStyle": {
+                                            "id": "/products/product/reviews/review/comfortVsStyle",
+                                            "type": "number",
+                                            "name": "comfortVsStyle"
+                                        },
+                                        "comment": {
+                                            "id": "/products/product/reviews/review/comment",
+                                            "type": "string",
+                                            "name": "comment"
+                                        },
+                                        "cons": {
+                                            "id": "/products/product/reviews/review/cons",
+                                            "type": "number",
+                                            "name": "cons"
+                                        },
+                                        "pros": {
+                                            "id": "/products/product/reviews/review/pros",
+                                            "type": "string",
+                                            "name": "pros"
+                                        },
+                                        "recommend": {
+                                            "id": "/products/product/reviews/review/recommend",
+                                            "type": "string",
+                                            "name": "recommend"
+                                        },
+                                        "starRating": {
+                                            "id": "/products/product/reviews/review/starRating",
+                                            "type": "string",
+                                            "name": "starRating"
+                                        },
+                                        "location": {
+                                            "id": "/products/product/reviews/review/location",
+                                            "type": "string",
+                                            "name": "location"
+                                        },
+                                        "name": {
+                                            "id": "/products/product/reviews/review/name",
+                                            "type": "string",
+                                            "name": "name"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
