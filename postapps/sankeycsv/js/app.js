@@ -185,7 +185,7 @@ i&&d.appendTo(e),a.oFeatures.bSort&&(d.addClass(f.sSortingClass),!1!==f.bSortabl
         buttons:{normal:"",disabled:"disabled"}},print:{info:"DTTT_print_info"},select:{row:"active"}}),b.extend(!0,d.TableTools.DEFAULTS.oTags,{collection:{container:"ul",button:"li",liner:"a"}}));return d});
 
 d3.select("#slow").transition()
-.duration(3500)
+.duration(6000)
 .style("opacity",1e-6)
 
 var fname = "/postapps/sankeycsv/data/cap-report.csv";
