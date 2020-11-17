@@ -1,4 +1,4 @@
-var fname = "data/Final waste sheets.xlsx";
+var fname = "/postapps/euwaste/data/Final waste sheets.xlsx";
 
 var histViewLink = "http://eeb.org/eu-waste-negotiations-historical-view/";
 //original text
@@ -45,7 +45,7 @@ d3.request(fname)
             if(roa.length > 0){ workbook[sheetName] = roa}
         });
 
-        d3.xml("assets/EUwaste_v6.svg",function(err,xml) {
+        d3.xml("postapps/euwaste/assets/EUwaste_v6.svg",function(err,xml) {
             if (err) throw err;
             var answers =[
                 "Yes", "Yes, but...","No","No Response"
