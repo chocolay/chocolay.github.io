@@ -1,4 +1,4 @@
-d3.select("span#miracle").on("hover",() => {
+d3.select("span#miracle").on("mouseenter",() => {
     console.log(d3.mouse)
     d3.select("div#miracle").style("display","block");
     ;})
