@@ -1,4 +1,8 @@
 div#miracle {
   display: none;
+}
+
+div#miracle img {
+  display: block;
   margin: 0 auto;
 }
