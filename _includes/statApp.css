@@ -1,6 +1,11 @@
 .post-image {
   font:10px sans-serif;
 }
+
+#d3_app {
+height:500px;
+}
+
 .bar {
   fill: orangered; 
   shape-rendering: crispEdges;
