@@ -118,9 +118,9 @@ function mkslider(amp) {
         a = d3.round(d3.max([d3.min([yscale.invert(d3.event.y), 100]), 0]));
         w = d3.min([d3.max([18, d3.event.x - xscale(32)]), 80]);
         d3.select(this).datum(a)
-        d3.select(this).attr("cy", function(d) {
-            return yscale(a)
-        }).attr("cx", w+xscale(32));
+        d3.select(this)
+            .attr("cy",  yscale(a))
+            .attr("cx", w+xscale(32));
         alpha = d3.round(16181 / (w * w));
         u0 = kind == "sech2" ? soliton(τ / 4, a / 2, x) : x.map(function(e) {
             return a * Math.exp(-alpha * (e - τ / 4) * (e - τ / 4))
@@ -131,8 +131,8 @@ function mkslider(amp) {
         p = closestPoint(thepath, [d3.event.x,d3.event.y]);
         theline.attr("x1", p[0])
             .attr("y1", p[1])
-            .attr("x2", d3.event.x)
-            .attr("y2", d3.event.y);
+            .attr("x2", w+xscale(32))
+            .attr("y2", yscale(a));
 
         patchbd.attr('d', line(u0))
 
