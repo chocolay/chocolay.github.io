@@ -86,6 +86,8 @@ d3.select("input#newData").on("change",function() {
     main({view:view,angles:{startAngle: 0, endAngle: 0}});
 });
 
+d3.select(".headerLeft").on("click",function() {d3.select(this).style("display","none"})
+                                                
 var duration = 500;
 
 var tooltip = {};
