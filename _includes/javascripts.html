@@ -43,7 +43,9 @@
 <script src= "{{ site.baseurl }}/js/vendors/three.min.js"></script>
 <script src= "{{ site.baseurl }}/js/vendors/tween.js"></script>
 <script src= "{{ site.baseurl }}/js/vendors/CSS3DRenderer.js"></script>
-<script src= "{{ site.baseurl }}/js/vendors/TrackballControls.js"></script>              
+<script src= "{{ site.baseurl }}/js/vendors/TrackballControls.js"></script> 
+{% endif %}
+
 
 {% for file in site.static_files %}
   {% if file.path contains page.app and file.extname == ".js" %}
