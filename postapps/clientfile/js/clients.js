@@ -332,7 +332,7 @@ d3.csv("/postapps/clientfile/data/clients.csv").then(function(data,error) {
                     countries_.forEach(f=>{
                         context.beginPath();
                         path(f);
-                        context.fillStyle = "turquoise";
+                        context.fillStyle = "#2abcd9";
                         context.fill();
                         context.strokeStyle="white";
                         context.lineWidth=2;
@@ -461,13 +461,13 @@ d3.csv("/postapps/clientfile/data/clients.csv").then(function(data,error) {
                         .attr("id","rotate")
                         .attr("d","M50 50 L70 50 L70 70 L50 70 Z")
                         .attr("transform","translate(50,0)")
-                        .style("fill","turquoise")
+                        .style("fill","#2abcd9")
                         .style("pointer-events","none");
 
 
                     menu.append("path")
                         .attr("id","flip")
-                        .style("stroke","turquoise")
+                        .style("stroke","#2abcd9")
                         .attr("transform","translate(155,0)")
                         .style("stroke-linecap","round")
                         .style("pointer-events","none")
