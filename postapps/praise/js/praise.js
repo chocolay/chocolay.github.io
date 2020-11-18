@@ -1759,7 +1759,7 @@ THREE.TrackballControls.prototype = Object.create(THREE.EventDispatcher.prototyp
             VIZ.count = data.length;
             var margin = {top: 17, right: 0, bottom: 16, left: 20},
                 width  = 225 - margin.left - margin.right,
-                height = 140 - margin.top - margin.bottom,
+                height = 140 - margin.top - margin.bottom;
 
             createElements(data);
 
