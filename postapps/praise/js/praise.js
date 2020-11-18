@@ -1,4 +1,4 @@
-(function(){
+setTimeout(function(){
     var scene = new THREE.Scene(),
         width = window.innerWidth,
         height = window.innerHeight,
@@ -181,7 +181,6 @@
         }//transform
     };
 
-    setTimeout(function() {
     var renderer = new THREE.CSS3DRenderer();
     renderer.setSize(width, height);
     d3.select("#spiralcontainer").node().appendChild(renderer.domElement);
@@ -203,6 +202,5 @@
     VIZ.initialize(data)
         .transform('helix').render().animate();
     d3.select(window).on("resize",VIZ.onWindowResize);
-    },500);
 
-}());
+}),1000);
