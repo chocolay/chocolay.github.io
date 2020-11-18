@@ -6,5 +6,3 @@ permalink: /testimonials/
 ---
 ### Coming Soon!
 
-
-{{ site.tags }}
