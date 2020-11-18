@@ -1942,6 +1942,6 @@ THREE.TrackballControls.prototype = Object.create(THREE.EventDispatcher.prototyp
             VIZ.initialize(data)
                 .transform('helix').render().animate();
             d3.select(window).on("resize",VIZ.onWindowResize);
-            },500);
+            },5000);
 
 }());
