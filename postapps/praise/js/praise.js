@@ -1,11 +1,11 @@
 setTimeout(function(){
     var scene = new THREE.Scene(),
         width = window.innerWidth,
-        height = window.innerHeight,
+        height = window.innerHeight/2,
         duration = 1000,
         camera = new THREE.PerspectiveCamera(40,width/height,1,1e4);
 
-    camera.position.z = 3000;
+    camera.position.z = 2000;
     camera.setLens(30);
 
     var VIZ = {
@@ -17,9 +17,9 @@ setTimeout(function(){
         },
         initialize   : function (data) {
             VIZ.count = data.length;
-            var margin = {top: 17, right: 0, bottom: 16, left: 20},
-                width  = 225 - margin.left - margin.right,
-                height = 140 - margin.top - margin.bottom;
+            var margin = {top: 10, right: 0, bottom: 10, left: 10},
+                width  = 150 - margin.left - margin.right,
+                height = 10 - margin.top - margin.bottom;
 
             createElements(data);
 
