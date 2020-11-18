@@ -1831,10 +1831,10 @@ THREE.TrackballControls.prototype = Object.create(THREE.EventDispatcher.prototyp
                 random.position.z = Math.random() * 4000 - 2000;
                 d['random'] = random;
 
-                var Ï† = Math.acos(-1+(2*i)/(VIZ.count - 1)),
-                    Î¸ = Math.sqrt((VIZ.count-1)*Math.PI)*Ï†;
-                sphere.position.x = 800 * Math.cos(Î¸)*Math.sin(Ï†);
-                sphere.position.y = 800 * Math.sin(Î¸)*Math.sin(Ï†);
+                var a = Math.acos(-1+(2*i)/(VIZ.count - 1)),
+                    b = Math.sqrt((VIZ.count-1)*Math.PI)*a;
+                sphere.position.x = 800 * Math.cos(b)*Math.sin(a);
+                sphere.position.y = 800 * Math.sin(b)*Math.sin(a);
                 sphere.position.z = 800 * Math.cos(Ï†);
                 vector.copy(sphere.position).multiplyScalar(2);
                 sphere.lookAt(vector);
