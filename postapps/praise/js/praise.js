@@ -1763,7 +1763,7 @@ THREE.TrackballControls.prototype = Object.create(THREE.EventDispatcher.prototyp
 
             createElements(data);
 
-            d3.select("#container").insert("div","div")
+            d3.select("#spiralcontainer").insert("div","div")
                 .attr("id", "detail")
                 .style({
                     "position"   : "absolute",
@@ -1804,12 +1804,12 @@ THREE.TrackballControls.prototype = Object.create(THREE.EventDispatcher.prototyp
 
             function destroyDetail() {
                 d3.select("#detail").selectAll(".element").remove();
-                d3.select("#container #renderDiv")
+                d3.select("#spiralcontainer #renderDiv")
                     .style({
                         "visibility" : "visible",
                         "transform"  : "scale(1e-6)"
                     });
-                d3.select("#container #renderDiv")
+                d3.select("#spiralcontainer #renderDiv")
                     .transition().duration(duration)
                     .style("transform","scale(1)");
 
@@ -1923,7 +1923,7 @@ THREE.TrackballControls.prototype = Object.create(THREE.EventDispatcher.prototyp
 
     var renderer = new THREE.CSS3DRenderer();
     renderer.setSize(width, height);
-    d3.select("#container").node().appendChild(renderer.domElement);
+    d3.select("#spiralcontainer").node().appendChild(renderer.domElement);
     d3.select(renderer.domElement)
         .attr("id","renderDiv")
         .style("position","absolute");
