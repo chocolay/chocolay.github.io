@@ -1789,11 +1789,13 @@ THREE.TrackballControls.prototype = Object.create(THREE.EventDispatcher.prototyp
                 var elements = d3.selectAll('.element')
                     .data(data).enter()
                     .append('div')
-                    .attr('class', 'element')
+                    .attr('class', 'element card')
                     .on("click", showDetail);
 
                 elements.append('div')
-                    .attr('class', 'cat1')
+                    .attr('class', 'ccrd-body text-center')
+                    .append("p")
+                    .classed("card-text",1)
                     .text(d=>d);
 
                 elements.each(setElementPosition);
