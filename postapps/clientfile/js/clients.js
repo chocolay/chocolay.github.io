@@ -361,7 +361,7 @@ d3.csv("/postapps/clientfile/data/clients.csv").then(function(data,error) {
                         context.fillStyle = color;
                         context.fill()
                         context.strokeStyle = color;
-                        context.lineWidth = d3.select(".projflip").datum()=="globe"?20:20;
+                        context.lineWidth = d3.select(".projflip").datum()=="globe"?5:5;
                         context.stroke();
                     });
 
@@ -526,7 +526,6 @@ d3.csv("/postapps/clientfile/data/clients.csv").then(function(data,error) {
             function dragged() {
                 var gpos1 = projection.invert(d3.mouse(this));
                 o0 = projection.rotate();
-                console.log(gpos0,gpos1,o0)
                 let o1 = eulerAngles(gpos0, gpos1, o0);
                 o1[1] = Math.max(Math.min(15,o1[1]),-15)
                 projection.rotate([o1[0],o1[1],0]);
