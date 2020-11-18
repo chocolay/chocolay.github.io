@@ -127,7 +127,7 @@ d3.json(fname, function(err, data) {if (err) console.log(err)
         .style("opacity",1)
 	.attr({"r": ballradius,"class": "pts","id":function(d) {return d.key}})	
 	.attr({"cx":hitter[0],"cy":hitter[1]})			    
-	.transition().delay(function(d) {return 100 + Math.random()*delayVariable})
+	.transition().delay(function(d,i) {return 100 + Math.random()*20+i*50})
         .attr({"cx": function(d) {return d.x},"cy": function(d) {return d.y}})
 	       
 keyarray = [];
