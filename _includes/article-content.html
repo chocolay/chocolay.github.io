@@ -3,7 +3,7 @@
 <div class="article">
   <div class="container">
 
-    <div class="article__wrapper" {% if post.status=="done" %} style="opacity:0.2" {% endif %}>
+    <div class="article__wrapper" {% if post.status=="done" %} style="opacity:1" {% endif %}>
 
         {% if post.image %}
           <a href="{{post.url | prepend: site.baseurl}}" class="article__image" style="background-image: url({{site.baseurl}}/images/{{post.image}})">
