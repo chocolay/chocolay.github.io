@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Testimonials
+title: Praise
 image: Minocqua.png
 permalink: /testimonials/
 ---
