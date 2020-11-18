@@ -355,7 +355,6 @@ d3.csv("/postapps/clientfile/data/clientlist.csv").then(function(data,error) {
 
                 features
                     .forEach((f,i)=>{
-                    console.log(i,pincolor,f)
                         let color = pincolor;
                         context.beginPath();
                         path(f)
