@@ -144,6 +144,7 @@ var width = 960,
 
 var pincolor = "#2abcd9";
 var countrycolor = "#d9b32a";
+var redtree = "#d95d2a";
 
 var sphere = {type: "Sphere"};
 
