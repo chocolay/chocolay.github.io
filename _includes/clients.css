@@ -2,6 +2,9 @@
     position:relative;
     width:960px;
     height:720px;
+    background: #fcfcfa;
+    background:#555555;
+    color:white;
 }
 
 #d3_app svg, canvas {
@@ -39,11 +42,6 @@ a {
     text-decoration:none;
 }
 
-#projection-menu {
-    position: absolute;
-    right: 10px;
-    top: 10px;
-}
 
 .stroke {
     fill: none;
