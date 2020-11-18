@@ -67,6 +67,7 @@ i#zika {
 
 
 #tooltip {
+    display:none;
     opacity:0.9;
     position:absolute;
     background:white;
