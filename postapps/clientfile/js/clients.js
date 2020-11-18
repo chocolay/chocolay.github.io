@@ -262,6 +262,15 @@ d3.csv("/postapps/clientfile/data/clients.csv").then(function(data,error) {
                     rotatePoints(".pin, .country_used");
                 }
 
+               
+            tooltipIt = function(str,p) {
+                d3.select("#tooltip")
+                    .style("display","block")
+                    .style("left",(p[0]+10)+"px")
+                    .style("top",(p[1]-30)+"px")
+                d3.select("#tooltip").text(str)
+            }
+
 
                 d3.select("body").on("click",function() {
                     d3.select("#tooltip")
