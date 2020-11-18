@@ -142,6 +142,8 @@ var width = 960,
     height = 720,
     speed = 1.5e-2;
 
+var pincolor = "#2abcd9":
+var countrycolor = "#d9b32a:
 
 var sphere = {type: "Sphere"};
 
@@ -237,7 +239,7 @@ d3.csv("/postapps/clientfile/data/clients.csv").then(function(data,error) {
             .classed("pin",1)
             .attr("d",path_svg)
             .style("display","none")
-            .style("fill",(d,i)=>colors[i]);
+            .style("fill",pincolor);
 
 
         d3.json("/postapps/clientfile/data/world.json").then(function(c,error) {
@@ -332,7 +334,7 @@ d3.csv("/postapps/clientfile/data/clients.csv").then(function(data,error) {
                     countries_.forEach(f=>{
                         context.beginPath();
                         path(f);
-                        context.fillStyle = "#2abcd9";
+                        context.fillStyle = countrycolor;
                         context.fill();
                         context.strokeStyle="white";
                         context.lineWidth=2;
@@ -341,7 +343,7 @@ d3.csv("/postapps/clientfile/data/clients.csv").then(function(data,error) {
 
                     features
                         .forEach((f,i)=>{
-                            let color = colors[i];
+                            let color = pincolor;
                             context.beginPath();
                             path(f)
                             context.fillStyle = color;
@@ -478,7 +480,7 @@ d3.csv("/postapps/clientfile/data/clients.csv").then(function(data,error) {
                     .enter().append("path")
                     .classed("pin",1)
                     .attr("d",path_svg)
-                    .style("fill",(d,i)=>colors[i])
+                    .style("fill",(d,i)=>pincolor)
 
                 //drag to the longitude you want
                 var drag = d3.drag()
