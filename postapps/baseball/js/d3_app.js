@@ -167,6 +167,13 @@ d3.select("#hoverdiv").style("opacity",1e-6)
 }
 }
 }
+})
 
-
+d3.select("span#miracle").on("click",function() {
+    d3.select("div#miracle").style("display","block");
+})
+d3.select("div#miracle img").on("click",function() {
+    d3.select("div#miracle").style("display","none");
+    d3.select("span#miracle").on("mouseenter",null)
+    d3.select("span#miracle").attr("id","");
 })
