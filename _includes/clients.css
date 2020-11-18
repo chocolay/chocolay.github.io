@@ -2,7 +2,6 @@
     position:relative;
     width:960px;
     height:720px;
-    background: #fcfcfa;
     background:#555555;
     color:white;
 }
@@ -27,15 +26,6 @@
     color:paleturquoise;
 }
 
-
-body {
-    background: #fcfcfa;
-    height: 500px;
-    position: relative;
-    width: 960px;
-    background:#555555;
-    color:white;
-}
 
 a {
     color:paleturquoise;
@@ -70,24 +60,9 @@ a {
     stroke-width: .5px;
 }
 
-i#mad {
-    color:#ffd600;
-}
 
 i#zika {
     color:salmon;
 }
 
-#tooltip {
-    opacity:0.9;
-    position:absolute;
-    background:white;
-    border-radius:25px;
-    padding:5px;
-    font-size:18px;
-    display:none;
-    color:black;
-    width:200px;
-    padding:5px;
-    text-align:center;
-}
+
