@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  Dashboards
-date:   2017-06-25 15:01:35 +0300
+date:   2017-01-25 15:01:35 +0300
 image:  bank.png
 tags:   dashboard finance
 ---
