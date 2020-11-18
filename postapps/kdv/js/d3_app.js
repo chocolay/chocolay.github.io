@@ -1,4 +1,4 @@
-d3.select("span#miracle").on("mouseenter",function() {
+d3.select("span#miracle").on("click",function() {
     d3.select("div#miracle").style("display","block");
 })
 d3.select("div#miracle img").on("click",function() {
