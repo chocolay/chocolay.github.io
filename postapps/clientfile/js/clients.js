@@ -190,7 +190,7 @@ path_svg = path1_svg;
 
 var colors = ["#135761", "#EC2FBB", "#A6A15A", "#1E42BC", "#66B438", "#7A82AC", "#28E3D9", "#0F3C73", "#10389E", "#3E5B58", "#A9E23A", "#B9DB0B", "#AF12B9", "#5CD29C", "#0851A0", "#36D0E7", "#912EDF", "#730BFA", "#4E31D9", "#2178DA", "#5764D8", "#8E9C73", "#59B9BF", "#CD3C89", "#5A696E", "#096E69", "#3A840A", "#D02C56", "#5C41C1", "#D81B8C", "#1FCC5E", "#203CF2", "#0F6A23", "#DC0217", "#4679AF", "#EC23E8", "#1B0684", "#479E11", "#565A89", "#3FB227", "#083AAE", "#89387C", "#5B0610", "#3A7852", "#5F29A3", "#90C067", "#F7016F", "#34B98A", "#535973", "#32FAC5", "#6D3703", "#925BBF", "#922FE6", "#C62D2E", "#0C2C1A", "#47E174", "#237EDF", "#9E5D9D", "#47EC33", "#BA2815", "#06EA36", "#CF1911", "#EC41C9", "#53B79B", "#1016FE", "#E119A5", "#1A8144", "#19EFD4", "#27F22C", "#1F1CAC", "#0E48A3", "#53BF7D", "#AF0422", "#4633C7", "#D45F5D", "#26FFDA", "#5A4FBE", "#A12B04", "#545173", "#98D63E", "#0C7BB7", "#B2C939", "#722800", "#2D8A24", "#7C5F55", "#B56344", "#215860", "#56ACA0", "#BAA615", "#498203", "#6A277B", "#0C8090", "#C6C423", "#A30D01", "#E5891D", "#9C8B25"];
 
-d3.csv("/postapps/clientfiel/data/clients.csv").then(function(data,error) {
+d3.csv("/postapps/clientfile/data/clients.csv").then(function(data,error) {
         Z = data;
 
         let features = data.map(d=>{
