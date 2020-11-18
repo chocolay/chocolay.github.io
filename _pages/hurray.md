@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Praise
-header: she writes beautiful code! 										
+header: she writes beautiful code										
 app: praise
 permalink: /hurray/
 bootstrap: True
