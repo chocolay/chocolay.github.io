@@ -121,7 +121,7 @@ d3.json(fname, function(err, data) {if (err) console.log(err)
     for (var key in data[0].location) {
 		if (data[0].location[key] !=null) {for (var i = 0; i < data[0].location[key]; i++) {pts.push(randomPt(key));}}
 	}
-    var P = svg.selectAll(".pts").data(pts);
+    var P = svg.selectAll(".pts").data(d3.shuffle(pts));
     P.enter().append("circle")
 	.style({"fill": ballcolor,"stroke": balledge,"opacity":1e-6})
         .style("opacity",1)
