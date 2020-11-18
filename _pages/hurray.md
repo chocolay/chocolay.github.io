@@ -1,12 +1,12 @@
 ---
 layout: page
-title: Praise
+title: word of praise
 header: she writes beautiful code										
-app: praise
+image: wordcloud_24.svg 
 permalink: /hurray/
 bootstrap: True
 threeD: True
 d3version: https://cdnjs.cloudflare.com/ajax/libs/d3/3.4.1/d3.min.js
 ---
 
-{% include praise.html %}
+
