@@ -26,6 +26,11 @@
     color:paleturquoise;
 }
 
+.pin {
+    fill:#2abcd9;
+    stroke:#2abcd9;
+    stroke-width:5;
+}
 
 a {
     color:paleturquoise;
