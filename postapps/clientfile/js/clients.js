@@ -237,7 +237,7 @@ d3.csv("/postapps/clientfile/data/clients.csv").then(function(data,error) {
             .classed("pin",1)
             .attr("d",path_svg)
             .style("display","none")
-            .style("fill",(d,)=>colors[i]);
+            .style("fill",(d,i)=>colors[i]);
 
 
         d3.json("/postapps/clientfile/data/world.json").then(function(c,error) {
