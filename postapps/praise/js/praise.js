@@ -203,6 +203,6 @@
     VIZ.initialize(data)
         .transform('helix').render().animate();
     d3.select(window).on("resize",VIZ.onWindowResize);
-    },2500);
+    },500);
 
 }());
