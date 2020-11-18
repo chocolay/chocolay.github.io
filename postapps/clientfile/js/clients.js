@@ -229,7 +229,7 @@ d3.csv("/postapps/clientfile/data/clients.csv").then(function(data,error) {
        return {
            type:"LineString",
            coordinates:[
-               [base.longitude,base.latitude],
+               base.geometry.coordinates,
                [d.longitude,d.latitude]
            ]
        }
