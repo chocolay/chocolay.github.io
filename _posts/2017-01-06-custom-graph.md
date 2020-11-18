@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  Connecting the Dots
-date:   2017-01-1 15:01:35 +0300
+date:   2017-06-1 15:01:35 +0300
 image:  connectTheDots.png
 tags:   tool graph network table bespoke
 d3version: https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js
