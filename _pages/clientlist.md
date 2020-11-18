@@ -1,6 +1,6 @@
 ---
 layout: page
-title: clients
+title: 
 permalink: /clients/
 d3version: https://d3js.org/d3.v5.min.js
 topo: True
