@@ -7,6 +7,7 @@ d3.select("div#miracle img").on("click",function() {
     d3.select("span#miracle").attr("id","");
 })
 
+
 function animate() {
     Uhat = rk4(kdv, Uhat, t, params)
     t += dt;
@@ -154,6 +155,7 @@ function mkslider(amp) {
 
 d3.select("#starter")
     .on("click",dotheeig);
+d3.select("#starter").style("cursor","pointer");
 
 var kind = "nsech2",
     i = new numeric.T(0, 1),
