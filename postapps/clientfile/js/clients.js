@@ -340,8 +340,8 @@ d3.csv("/postapps/clientfile/data/clients.csv").then(function(data,error) {
                     });
 
                     features
-                        .forEach(f=>{
-                            let color = "salmon";
+                        .forEach((f,i)=>{
+                            let color = colors[i];
                             context.beginPath();
                             path(f)
                             context.fillStyle = color;
