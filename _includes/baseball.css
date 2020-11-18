@@ -15,3 +15,12 @@ div#miracle img {
   display: block;
   margin: 0 auto;
 }
+
+
+span#miracle {
+    display: inline-block;
+    color:  #D95D2A;
+    font-weight:700;
+    font-size:1.2 rem;
+    cursor:pointer;
+}
