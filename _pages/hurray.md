@@ -1,6 +1,6 @@
 ---
 layout: page
-title: word of praise
+title: words of praise
 header: she writes beautiful code										
 image: wordcloud_24.svg 
 permalink: /hurray/
