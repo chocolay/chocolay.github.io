@@ -56,7 +56,7 @@ setTimeout(function(){
                     .attr('class', 'ccrd-body text-center')
                     .append("p")
                     .classed("card-text",1)
-                .text(function (d) {return d;});
+                .text(function (d) {return d.text;});
 
                 elements.each(setElementPosition);
                 elements.each(objectify);
