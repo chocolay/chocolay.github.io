@@ -387,7 +387,10 @@ d3.csv("/postapps/clientfile/data/clients.csv").then(function(data,error) {
                                     .data(features)
                                     .enter().append("path")
                                     .classed("pin",1)
-                                    .attr("d",path_svg);
+                                    .attr("d",path_svg)
+                                    .style("fill","#2abcd9")
+                                    .style("stroke","#2abcd9")
+                                    .style("stroke-width",4);
                                 
                             }
                         })
