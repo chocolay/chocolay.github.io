@@ -271,7 +271,7 @@ d3.csv("/postapps/clientfile/data/clients.csv").then(function(data,error) {
             grid = graticule();
 
             timerCallback = function() {
-                projection1.rotate([speed * (Date.now() - start) - 125, -15, 0]);
+                projection1.rotate([speed * (Date.now() - start) +85, -15, 0]);
                 drawSphere(sphere, land, borders,countries_,features);
                 rotatePoints(".pin, .country_used");
             }
