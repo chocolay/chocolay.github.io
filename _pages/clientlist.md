@@ -1,5 +1,6 @@
 ---
 layout: page
+title: clients
 header: local roots, global reach
 permalink: /clients/
 d3version: https://d3js.org/d3.v5.min.js
