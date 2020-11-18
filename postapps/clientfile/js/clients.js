@@ -200,6 +200,7 @@ d3.csv("/postapps/clientfile/data/clients.csv").then(function(data,error) {
         properties: {}
     };
 
+    Z = data;
 
     let features = data.map(d=>{
         var keys = Object.keys(d);
