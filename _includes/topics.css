@@ -1,0 +1,7 @@
+#sankey {
+text-transform: capitalize;
+}
+
+#fft, #stem {
+text-transform: uppercase;
+}
