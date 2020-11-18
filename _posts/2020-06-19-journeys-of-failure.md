@@ -3,7 +3,7 @@ layout: post
 title:  Pathways of Failure
 date:   2020-06-19 15:01:35 +0300
 image:  journey-failure.png
-tags:   Sankey table
+tags:   sankey table
 app:    sankeycsv
 d3version:  https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js
 crossfilter:  True
