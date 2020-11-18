@@ -369,8 +369,6 @@ d3.csv("/postapps/clientfile/data/clients.csv").then(function(data,error) {
                    let color = redtree;
                     context.beginPath();
                     path(r)
-                    context.fillStyle = color;
-                    context.fill()
                     context.strokeStyle = color;
                     context.lineWidth = d3.select(".projflip").datum()=="globe"?2:2;
                     context.stroke();
