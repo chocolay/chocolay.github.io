@@ -5,3 +5,13 @@
 #hoverdiv {position:absolute; border-radius:50%;width:30px;height:30px;background:white;border:1px solid orangered;opacity:0.001}
 
 #hoverdiv p {font-size:20px;position:relative;top:-50%;text-align:center}
+
+
+div#miracle {
+  display: none;
+}
+
+div#miracle img {
+  display: block;
+  margin: 0 auto;
+}
