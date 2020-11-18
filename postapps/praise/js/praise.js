@@ -13,7 +13,7 @@
             requestAnimationFrame(VIZ.animate);
             TWEEN.update();
             controls.update();
-            return this
+            return this;
         },
         initialize   : function (data) {
             VIZ.count = data.length;
@@ -56,7 +56,7 @@
                     .attr('class', 'ccrd-body text-center')
                     .append("p")
                     .classed("card-text",1)
-                    .text(d=>d);
+                .text(function (d) {return d;});
 
                 elements.each(setElementPosition);
                 elements.each(objectify);
@@ -91,7 +91,7 @@
                 random.position.x = Math.random() * 4000 - 2000;
                 random.position.y = Math.random() * 4000 - 2000;
                 random.position.z = Math.random() * 4000 - 2000;
-                d['random'] = random;
+                d.random = random;
 
                 var a = Math.acos(-1+(2*i)/(VIZ.count - 1)),
                     b = Math.sqrt((VIZ.count-1)*Math.PI)*a;
@@ -100,7 +100,7 @@
                 sphere.position.z = 800 * Math.cos(a);
                 vector.copy(sphere.position).multiplyScalar(2);
                 sphere.lookAt(vector);
-                d['sphere'] = sphere;
+                d.sphere = sphere;
 
                 a = (i + 12) * 0.250 + Math.PI;
                 helix.position.x = 1000 * Math.sin(a);
@@ -110,12 +110,12 @@
                 vector.y = helix.position.y;
                 vector.z = helix.position.z * 2;
                 helix.lookAt(vector);
-                d['helix'] = helix;
+                d.helix = helix;
 
                 grid.position.x = ((i % 5 ) * 400) - 800;
                 grid.position.y = (-( Math.floor(i / 5) % 5) * 400) + 800;
                 grid.position.z = (Math.floor(i / 25)) * 1000 - 2000;
-                d['grid'] = grid;
+                d.grid = grid;
                 d3.select(this).datum(d);
             }//setElementPosition
             function showDetail() {
@@ -140,23 +140,23 @@
                         "width":"75%",
                         "margin" : "0 auto",
                         "position" : "fixed"
-                    })
+                    });
 
-            };//showDetail
+            }//showDetail
 
-            return this
+            return this;
         },
         onWindowResize : function () {
             camera.aspect = width / height;
             camera.updateProjectionMatrix();
             renderer.setSize(window.innerWidth, window.innerHeight);
             VIZ.render();
-            return this
+            return this;
         },//onWindowResize
         render         : function () {
             S = scene; C = camera;
             renderer.render(scene, camera);
-            return this
+            return this;
         },//render
         transform      : function (layout) {
             //this gets called to change layout: spiral, sphere, grid
@@ -177,11 +177,11 @@
                 .to({}, duration)
                 .onUpdate(VIZ.render)
                 .start();
-            return this
+            return this;
         }//transform
     };
 
-    function() {
+    setTimeout(function() {
     var renderer = new THREE.CSS3DRenderer();
     renderer.setSize(width, height);
     d3.select("#spiralcontainer").node().appendChild(renderer.domElement);
