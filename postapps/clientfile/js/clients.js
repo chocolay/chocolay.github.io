@@ -233,8 +233,8 @@ d3.csv("/postapps/clientfile/data/clients.csv").then(function(data,error) {
             .style("fill",d=>d.properties.disease=="zika"?"salmon":"#ffd600");
 
 
-        d3.json("/postapps/clientfile/data/world-110m.json").then(function(c,error) {
-            d3.json("data/world-110m.json").then(function(topo,error) {
+        d3.json("/postapps/clientfile/data/world.json").then(function(c,error) {
+            d3.json("/postapps/clientfile/data/world-110m.json").then(function(topo,error) {
                 if (error) throw error;
                 const land = topojson.feature(topo, topo.objects.land),
                     borders = topojson.mesh(topo, topo.objects.countries, function(a, b) {return a !== b; }),
