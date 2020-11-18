@@ -437,13 +437,15 @@ d3.csv("/postapps/clientfile/data/clients.csv").then(function(data,error) {
                             d3.select("#tooltip").style("display","none")
                         })
                         .on("click",function(d){
-                            d3.event.stopImmediatePropagation()
+                            d3.event.stopImmediatePropagation();
                             bool = d.status=="globe"
                             d3.select("path#rotate")
                                 .style("visibility",bool?"hidden":"visible")
                             d3.select("circle.rotate")
                                 .style("fill",bool?"lightgrey":"black");
 
+                           d3.selectAll(".pin").remove();
+                       
                             d3.select("path#flip")
                                 .attr("d",bool?"M23 60 L 27 60" :"M15 60 L 35 60")
                                 .style("stroke-width",bool?25:15)
