@@ -1840,7 +1840,7 @@ THREE.TrackballControls.prototype = Object.create(THREE.EventDispatcher.prototyp
                 sphere.lookAt(vector);
                 d['sphere'] = sphere;
 
-                Ï† = (i + 12) * 0.250 + Math.PI;
+                a = (i + 12) * 0.250 + Math.PI;
                 helix.position.x = 1000 * Math.sin(a);
                 helix.position.y = -(i * 8) + 500;
                 helix.position.z = 1000 * Math.cos(a);
