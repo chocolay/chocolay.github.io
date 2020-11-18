@@ -7,6 +7,7 @@ tags:   sankey table
 app:    sankeycsv
 d3version:  https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js
 crossfilter:  True
+datatables: True
 style:  sankeycsv.css
 html: true
 orient: right
