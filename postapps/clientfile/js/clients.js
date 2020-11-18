@@ -385,13 +385,8 @@ d3.csv("/postapps/clientfile/data/clients.csv").then(function(data,error) {
                                     .data(features)
                                     .enter().append("path")
                                     .classed("pin",1)
-                                    .attr("d",path_svg)
-                                    .style("visibility",d=>
-                                        ((d.properties.disease=="mad cow") &
-                                            (d3.select("circle.plus").datum().status=="shown")
-                                        )?"visible":"hidden")
-                                      .style("fill",(d,)=>colors[i]);
-
+                                    .attr("d",path_svg);
+                                
                             }
                         })
                         .on("mouseleave",function() {
@@ -521,11 +516,7 @@ d3.csv("/postapps/clientfile/data/clients.csv").then(function(data,error) {
                             .enter().append("path")
                             .classed("pin",1)
                             .attr("d",path_svg)
-                            .style("visibility",d=>
-                                ((d.properties.disease=="mad cow") &
-                                    (d3.select("circle.plus").datum().status=="shown")
-                                )?"visible":"hidden")
-                            .style("fill",d=>d.properties.disease=="zika"?"salmon":"#fdd600")
+                           
                     }
                 }
 
