@@ -66,3 +66,17 @@ i#zika {
 }
 
 
+#tooltip {
+    opacity:0.9;
+    position:absolute;
+    background:white;
+    border-radius:25px;
+    padding:5px;
+    font-size:18px;
+    display:none;
+    color:black;
+    width:200px;
+    padding:5px;
+    text-align:center;
+}
+
