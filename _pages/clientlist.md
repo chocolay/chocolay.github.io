@@ -1,6 +1,6 @@
 ---
 layout: page
-title: local roots, global reach
+header: local roots, global reach
 permalink: /clients/
 d3version: https://d3js.org/d3.v5.min.js
 topo: True
