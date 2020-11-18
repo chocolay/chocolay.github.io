@@ -142,8 +142,8 @@ var width = 960,
     height = 720,
     speed = 1.5e-2;
 
-var pincolor = "#2abcd9":
-var countrycolor = "#d9b32a:
+var pincolor = "#2abcd9";
+var countrycolor = "#d9b32a";
 
 var sphere = {type: "Sphere"};
 
