@@ -203,4 +203,4 @@ setTimeout(function(){
         .transform('helix').render().animate();
     d3.select(window).on("resize",VIZ.onWindowResize);
 
-}),1000);
+},500);
