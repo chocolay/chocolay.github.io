@@ -550,7 +550,7 @@ d3.csv("/postapps/clientfile/data/clients.csv").then(function(data,error) {
 
             //begin
             makeMenu();
-            projection.rotate([-85,-15,0]);
+            projection.rotate([85,-15,0]);
             drawSphere(sphere, land, borders,countries_,features);
 
         });//data/world-110m
