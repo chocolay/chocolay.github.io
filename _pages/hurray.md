@@ -25,7 +25,6 @@ app: praise
 
 - Elise was wonderful to work with, very knowledgeable and delivered exactly what I was looking for.
 
-- Elise is incredible with D3.js! She has a great eye for design, writes beautiful code, and is a pleasure to work with. If you have any D3 work then she's a perfect fit - I can't say enough good things about her and look forward to working with her again!
 
 - Excellent experience. very fast results of excellent quality.
 
