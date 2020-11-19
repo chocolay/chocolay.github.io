@@ -30,11 +30,11 @@ words[i] = {
   color: T.style("fill"),
   size: parseInt(T.style("font-size")),
   box: box,
-  bx: box.x+box.width/2+(+coord[1]),
-  by: box.y+box.height/2+(+coord[2]),
+  x: box.x+box.width/2+(+coord[1]),
+  y: box.y+box.height/2+(+coord[2]),
   br: Math.sqrt(box.width*box.width+box.height*box.height)/2,
-  x: +T.attr("x")+(+coord[1]),
-  y: +T.attr("y")+(+coord[2]),
+  tx: +T.attr("x")+(+coord[1]),
+  ty: +T.attr("y")+(+coord[2]),
   rotate:coord[5], 
   transform:coord,
   length: T.node().getComputedTextLength()
@@ -53,8 +53,8 @@ svg.selectAll("circle")
   .enter()
   .append("circle")
   .attr("id",d=>d.word)
-  .attr("cx",d=>d.bx)
-  .attr("cy",d=>d.by)
+  .attr("cx",d=>d.x)
+  .attr("cy",d=>d.y)
   .style("fill",d=>d.color)
 .transition().duration(500)
   .attr("r",d=>d.br);
@@ -66,7 +66,7 @@ d3.select("#svg1")
 
 function ticked() {
  d3.selectAll("circle")
-  .attr("cx",d=>d.x+d.r)
-  .attr("cy",d=>d.y)
+  .attr("cx",d=>d.cx+d.r)
+  .attr("cy",d=>d.cy)
 }
 
