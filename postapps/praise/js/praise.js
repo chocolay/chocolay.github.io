@@ -32,7 +32,7 @@ words[i] = {
   box: box,
   x: box.x+box.width/2+(+coord[1]),
   y: box.y+box.height/2+(+coord[2]),
-  br: Math.sqrt(box.width*box.width+box.height*box.height)/2,
+  br: d.size/11;
   tx: +T.attr("x")+(+coord[1]),
   ty: +T.attr("y")+(+coord[2]),
   rotate:coord[5], 
