@@ -1,5 +1,7 @@
 //All rights reserved. 
-var s = 960,
+var s = 32
+
+0,
     radius = 180,
     rpatch = 64,
     gamma = 1,
