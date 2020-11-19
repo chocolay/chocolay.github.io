@@ -48,7 +48,7 @@ function animate() {
     resample();
     patchbd.attr({
         'd': line(p),
-        "transform": "rotate(" + (it * dt * 360 / (Ï„ * period)) + ",480,240)"
+        "transform": "rotate(" + (it * dt * 360 / (tau * period)) + ",480,240)"
     })
     return it > Nt
 }
@@ -58,7 +58,7 @@ function dblv(vold, aold) {
         mv = [aold[0] + vold[0], aold[1] + vold[1]],
         d2 = dv[0] * dv[0] + dv[1] * dv[1],
         m2 = mv[0] * mv[0] + mv[1] * mv[1];
-    return [-(gamma * dt) / Ï„ * (dv[1] / d2 + mv[1] / m2), (gamma * dt) / Ï„ * (dv[0] / d2 + mv[0] / m2)]
+    return [-(gamma * dt) /tau * (dv[1] / d2 + mv[1] / m2), (gamma * dt) /tau * (dv[0] / d2 + mv[0] / m2)]
 }
 
 function init(arg) {
