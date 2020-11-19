@@ -73,4 +73,4 @@ function ticked() {
   .attr("cx",d=>d.x+d.br)
   .attr("cy",d=>d.y)
 }
-*/
+
