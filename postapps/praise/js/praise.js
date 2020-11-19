@@ -13,13 +13,14 @@ d3.select("#svg1")
   .style("top",(-h)+"px");
    
 let words = [];
-d3.select("svg1")
+d3.select("#svg1")
   .selectAll("text")
   .each(function(d,i) { 
   console.log(d)
 let T = d3.select(this);
 let P = d3.select(this.parentElement);
 let coord = d.transform.split(/,|\s|\(|\)/g);
+  
 words[i] = {
   word: T.text(),
   color: T.style("fill"),
@@ -30,6 +31,7 @@ words[i] = {
   transform:coord,
   length: T.node().getComputedTextLength()
   };
+  
 });
   
 svg.selectAll("circle")
