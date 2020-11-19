@@ -4,7 +4,8 @@
 
 #svg1 {
 display:inline;
-background:#aaa;  
+position:relative;
+top:-75%  
 }
 
 #svg2 {
