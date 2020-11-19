@@ -11,7 +11,7 @@ d3.select(".page-title-box").remove();
 
 d3.select(".content .container")
   .style("text-align","center")
-  .append("h1").text(header);
+  .append("h3").text(header);
 /*
 let svg = d3.select("#svg2");
 resize();
