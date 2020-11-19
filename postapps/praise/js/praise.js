@@ -5,6 +5,7 @@ function resize() {
     .style("top",(-h)+"px");
 }
 
+
 let header = d3.select("h1").text();
 d3.select(".page-title-box").remove();
 
@@ -39,6 +40,13 @@ words[i] = {
   length: T.node().getComputedTextLength()
   };
 });
+
+ const simulation = d3.forceSimulation(words)
+      .velocityDecay(0.2)
+      .force("x", d3.forceX().strength(0.002))
+      .force("y", d3.forceY().strength(0.002))
+      .force("collide", d3.forceCollide().radius(d => d.br + 0.5).iterations(2))
+      .on("tick", ticked);
   
 svg.selectAll("circle")
   .data(words,d=>d.word)
@@ -56,4 +64,9 @@ d3.select("#svg1")
 .style("opacity",1e-6)
 .remove();
 
+function ticked() {
+ d3.selectAll("circle")
+  .attr("cx",d=>d.x+d.r)
+  .attr("cy",d="d.y)
+}
 
