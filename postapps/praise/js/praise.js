@@ -1,6 +1,7 @@
-d3.select(".page-title-box").remove()
+
 d3.select("svg").style("background","#322");
 
+d3.select("#svg1").style("top",-parseInt(d3.select("#svg2").style("height"))+"px")
              
 let words = [];
 
