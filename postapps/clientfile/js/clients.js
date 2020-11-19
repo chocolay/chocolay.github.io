@@ -361,7 +361,7 @@ d3.csv("/postapps/clientfile/data/clientlist.csv").then(function(data,error) {
                         context.fillStyle = color;
                         context.fill()
                         context.strokeStyle = color;
-                        context.lineWidth = d3.select(".projflip").datum()=="globe"?5:5;
+                        context.lineWidth = d3.select(".projflip").datum()=="globe"?2:2;
                         context.stroke();
                     });
 
