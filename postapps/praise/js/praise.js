@@ -59,7 +59,7 @@ d3.select("#svg1")
 .style("opacity",1e-6)
 .remove();
 
-setTimeInterval(function() {
+setInterval(function() {
  const simulation = d3.forceSimulation(words)
       .velocityDecay(0.2)
       .force("x", d3.forceX().strength(0.002))
