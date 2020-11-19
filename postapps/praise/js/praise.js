@@ -7,7 +7,7 @@ d3.select(".content .container")
   .append("h1").text(header);
 
 let svg = d3.select("#svg2");
-let h = parseInt(svg).style("height"));
+let h = parseInt(svg).style("height");
 
 d3.select("#svg1")
   .style("top",(-h)+"px");
