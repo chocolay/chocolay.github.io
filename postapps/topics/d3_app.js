@@ -17,7 +17,7 @@ tau = 2 * Math.PI, period = tau * 4 * Math.pow(radius, 2) / gamma, dt = period /
     v1o = v1mid = v1new = [radius, 0],
     patchbd = paper.append('path').style({
         'fill': '#D95D2A;',
-        'stroke':  '#D95D2A;,
+        'stroke':  '#D95D2A;',
         'stroke-width': 1
     }),
     p = d3.range(0, stop, stop / ns).map(init),
