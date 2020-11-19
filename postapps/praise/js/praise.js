@@ -1,4 +1,10 @@
 
+function resize() {
+  let h = parseInt(svg.style("height"));
+  d3.select("#svg1")
+    .style("top",(-h)+"px");
+}
+
 let header = d3.select("h1").text();
 d3.select(".page-title-box").remove();
 
@@ -7,11 +13,9 @@ d3.select(".content .container")
   .append("h1").text(header);
 
 let svg = d3.select("#svg2");
-let h = parseInt(svg.style("height"));
+resize();
+d3.select("body").node().onresize(resize);
 
-d3.select("#svg1")
-  .style("top",(-h)+"px");
-   
 let words = [];
 d3.select("#svg1")
   .selectAll("text")
