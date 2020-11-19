@@ -8,7 +8,7 @@ imageText: near Kavieng, New Ireland, Papua New Guinea
 content-image: 13028173.jpg
 ---
 
--   [![Elise](/images/13028173.jpg)](){: .image-left } I have created data models and visualizations for bankers, mining companies, geoscientists, life hackers, sound engineers, geneticists, election followers, department stores, historians, financial managers, network engineers, musicians, policy makers, STEM educators, students, and baseball enthusiasts.
+  [![Elise](/images/13028173.jpg)](){: .image-left } I have created data models and visualizations for bankers, mining companies, geoscientists, life hackers, sound engineers, geneticists, election followers, department stores, historians, financial managers, network engineers, musicians, policy makers, STEM educators, students, and baseball enthusiasts.
 
 
 I especially enjoy building customized interactive tools that elegantly solve a client's particular issue with data -- whether management, analysis, or modeling.
