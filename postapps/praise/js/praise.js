@@ -50,12 +50,12 @@ svg.selectAll("circle")
   .attr("cy",d=>d.y)
   .style("fill",d=>d.color)
 .transition()
+  .delay(3000)
   .duration(5000)
   .attr("r",d=>d.br);
 
 d3.select("#svg1")
-.delay(3000)
-.transition().duration(5000)
+.transition().delay(3000).duration(5000)
 .style("opacity",1e-6)
 .remove();
 
