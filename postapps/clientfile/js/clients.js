@@ -3,7 +3,7 @@
 let h = d3.select("h1");
 h.style("float","left")
 .text("local roots...")
-d3.select(h.parentElement).insert("h1","h1")
+d3.select(h.node().parentElement).insert("h1","h1")
 .style("float","right")
 .text("...global reach");
 
