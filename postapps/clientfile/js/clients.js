@@ -1,9 +1,4 @@
-let h = d3.select("h1");
-h1.style("float","left")
-.text("local roots...")
-d3.select(h.parentElement).insert("h1","h1")
-.style("float","right")
-.text("...global reach");
+
 
 /***** ALL MATH FUNCTIONS ****/
 
@@ -263,7 +258,16 @@ d3.csv("/postapps/clientfile/data/clientlist.csv").then(function(data,error) {
 
     d3.json("/postapps/clientfile/data/world.json").then(function(c,error) {
         d3.json("/postapps/clientfile/data/world-110m.json").then(function(topo,error) {
+        
             if (error) throw error;
+            
+            let h = d3.select("h1");
+h1.style("float","left")
+.text("local roots...")
+d3.select(h.parentElement).insert("h1","h1")
+.style("float","right")
+.text("...global reach");
+            
             const land = topojson.feature(topo, topo.objects.land),
                 borders = topojson.mesh(topo, topo.objects.countries, function(a, b) {return a !== b; }),
                 countries_ = topojson.feature(c, c.objects.countries1).features
