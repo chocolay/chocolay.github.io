@@ -4,8 +4,8 @@ var s = 960,
     rpatch = 64,
     gamma = 1,
     paper = d3.select('#d3_app').append('svg').style('background-color', 'black').attr({
-        "width": 500,
-        "height": 250,
+        "width": 300,
+        "height": 150,
         "viewbox":"0 0 960 480"
     });
 tau = 2 * Math.PI, period = tau * 4 * Math.pow(radius, 2) / gamma, dt = period / 100,
@@ -48,7 +48,7 @@ function animate() {
     resample();
     patchbd.attr({
         'd': line(p),
-        "transform": "rotate(" + (it * dt * 360 / (tau * period)) + ",250,125)"
+        "transform": "rotate(" + (it * dt * 360 / (tau * period)) + ",150,75)"
     })
     return it > Nt
 }
