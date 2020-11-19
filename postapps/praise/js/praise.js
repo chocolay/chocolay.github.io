@@ -56,11 +56,11 @@ svg.selectAll("circle")
   .attr("cx",d=>d.x)
   .attr("cy",d=>d.y)
   .style("fill",d=>d.color)
-.transition().duration(500)
+.transition().duration(5000)
   .attr("r",d=>d.br);
 
 d3.select("#svg1")
-.transition().duration(500)
+.transition().duration(5000)
 .style("opacity",1e-6)
 .remove();
 
