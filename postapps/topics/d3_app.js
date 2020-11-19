@@ -1,11 +1,11 @@
 //All rights reserved. 
-var s = 960,
+var s = 300,
     radius = 180,
     rpatch = 64,
     gamma = 1,
-    paper = d3.select('#d3_app').append('svg').attr({
-        "width": 500,
-        "height": 250,
+    paper = d3.select('#d3_app').append('svg').style('background-color', 'black').attr({
+        "width": 300,
+        "height": 150,
         "viewbox":"0 0 960 480"
     });
 tau = 2 * Math.PI, period = tau * 4 * Math.pow(radius, 2) / gamma, dt = period / 100,
@@ -16,9 +16,9 @@ tau = 2 * Math.PI, period = tau * 4 * Math.pow(radius, 2) / gamma, dt = period /
     yscale = d3.scale.linear().domain([-250, 250]).range([s / 2, 0]),
     v1o = v1mid = v1new = [radius, 0],
     patchbd = paper.append('path').style({
-        'fill': 'black',
-        'stroke': '#D95D2A;',
-        'stroke-width': 2
+        'fill': 'white',
+        'stroke': '#ee3322',
+        'stroke-width': 1
     }),
     p = d3.range(0, stop, stop / ns).map(init),
     line = d3.svg.line().x(function(d) {
@@ -29,25 +29,8 @@ tau = 2 * Math.PI, period = tau * 4 * Math.pow(radius, 2) / gamma, dt = period /
 
 patchbd.attr({
     'd': line(p)
-});
-
+})
 d3.timer(animate, 1000);
-
-d3.select("svg").on("click",function() {
-  p = d3.range(0, stop, stop / ns).map(init),
-    line = d3.svg.line().x(function(d) {
-        return xscale(d[0])
-    }).y(function(d) {
-        return yscale(d[1])
-    });
-
-patchbd.attr({
-    'd': line(p)
-});
-    
-d3.timer(animate, 1000);
-
-});
 
 function advance() {
     v1mid = [v1o[0] * comega - v1o[1] * somega, v1o[0] * somega + v1o[1] * comega];
@@ -65,7 +48,7 @@ function animate() {
     resample();
     patchbd.attr({
         'd': line(p),
-        "transform": "rotate(" + (it * dt * 360 / (tau * period)) + ",500,250)"
+        "transform": "rotate(" + (it * dt * 360 / (tau * period)) + ",150,75)"
     })
     return it > Nt
 }
