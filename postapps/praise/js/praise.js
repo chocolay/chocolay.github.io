@@ -28,6 +28,7 @@ words[i] = {
   word: T.text(),
   color: T.style("fill"),
   size: parseInt(T.style("font-size")),
+  box: box,
   bx: box.x+box.width/2,
   by: box.y+box.height/2,
   br: Math.sqrt(box.width*box.width+box.height*box.height)/2,
