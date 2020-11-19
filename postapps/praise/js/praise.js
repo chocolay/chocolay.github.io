@@ -23,7 +23,7 @@ let coord = P.attr("transform").split(/,|\s|\(|\)/g);
 words[i] = {
   word: T.text(),
   color: T.style("fill"),
-  size: T.style("font-size"),
+  size: parseInt(T.style("font-size")),
   x: +T.attr("x")+(+coord[1]),
   y: +T.attr("y")+(+coord[2]),
   rotate:coord[5], 
@@ -37,7 +37,7 @@ svg.selectAll("circle")
   .enter()
   .append("circle")
   .attr("id",d=>d.word)
-  .attr("r",d=>d.length/2)
+  .attr("r",d=>d.size/20)
   .attr("cx",d=>d.x)
   .attr("cy",d=>d.y)
   .style("fill",d=>d.color);
