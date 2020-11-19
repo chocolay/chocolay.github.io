@@ -9,5 +9,5 @@ text-transform: uppercase;
 #d3_app {
 position:absolute;
 top:200px;
-right:20px;  
+right:-20px;  
 }
