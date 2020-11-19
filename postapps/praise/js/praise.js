@@ -22,7 +22,7 @@ words[i] = {
   size: T.style("font-size"),
   x: +T.attr("x"),
   y: +T.attr("y"),
-  tranform: P.style("transform"),
+  transform: P.attr("transform"),
   length: T.node().getComputedTextLength()
   };
 });
