@@ -1,11 +1,11 @@
 //All rights reserved. 
-var s = 300,
+var s = 960,
     radius = 180,
     rpatch = 64,
     gamma = 1,
     paper = d3.select('#d3_app').append('svg').attr({
-        "width": 300,
-        "height": 150,
+        "width": s,
+        "height": s/2,
         "viewbox":"0 0 960 480"
     });
 tau = 2 * Math.PI, period = tau * 4 * Math.pow(radius, 2) / gamma, dt = period / 100,
@@ -48,7 +48,7 @@ function animate() {
     resample();
     patchbd.attr({
         'd': line(p),
-        "transform": "rotate(" + (it * dt * 360 / (tau * period)) + ",150,75)"
+        "transform": "rotate(" + (it * dt * 360 / (tau * period)+Math.PI/4) + ",s/2,s/4)"
     })
     return it > Nt
 }
