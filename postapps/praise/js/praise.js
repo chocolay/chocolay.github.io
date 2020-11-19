@@ -24,6 +24,7 @@ words[i] = {
   x: +T.attr("x")+(+coord[1]),
   y: +T.attr("y")+(+coord[2]),
   rotate:coord[5], 
+  transform:coord,
   length: T.node().getComputedTextLength()
   };
 });
