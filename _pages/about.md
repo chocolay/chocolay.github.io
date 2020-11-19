@@ -18,7 +18,7 @@ I'm always happy to chat about possible projects, so feel free to <a href="mailt
 
  - In my prior life: tenured, award-winning physics professor, program director at the National Science Foundation, senior research administrator on 2 college campuses
  
- -Academic research: modeling of nonlinear partial differential equations, analysis of oceanic surface currents, observations and modeling of Lake Superior & Issyk Kul
+ - Academic research: modeling of nonlinear partial differential equations, analysis of oceanic surface currents, observations and modeling of Lake Superior & Issyk Kul
  
  - I've spent months at sea collecting data and countless hours tinkering with instrumentation and numerical models in the lab 
 
