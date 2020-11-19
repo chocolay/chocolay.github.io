@@ -7,7 +7,8 @@ var s = 320,
         "width": s,
         "height": s/2,
         "viewbox":"-1000 -1000 -500 500"
-    }).append("g"),
+    }).style("border","1px solid black")
+    .append("g"),
     tau = 2 * Math.PI, period = tau * 4 * Math.pow(radius, 2) / gamma, dt = period / 100,
     comega = Math.cos(dt / (2 * period)), somega = Math.sin(dt / (2 * period)),
     angstep = dt * 360 / (tau * period)
