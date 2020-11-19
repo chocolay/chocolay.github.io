@@ -2,13 +2,12 @@
   text-align:center;
 }
 
-#svg2 {
+#svg1 {
 display:inline;
 background:#333;  
-  top:-25%
 }
 
-#svg1 {
+#svg2 {
 display:inline;
 background:#aaa; 
 }
