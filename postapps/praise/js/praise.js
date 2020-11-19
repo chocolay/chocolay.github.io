@@ -1,3 +1,6 @@
+d3.select("svg").style("background","#322");
+
+             
 let words = [];
 
 d3.selectAll("text").each(function(d,i) { 
