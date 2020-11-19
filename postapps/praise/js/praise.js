@@ -45,9 +45,15 @@ svg.selectAll("circle")
   .enter()
   .append("circle")
   .attr("id",d=>d.word)
-  .attr("r",d=>d.br/4)
   .attr("cx",d=>d.bx)
   .attr("cy",d=>d.by)
-  .style("fill",d=>d.color);
+  .style("fill",d=>d.color)
+.transition().duration(500)
+  .attr("r",d=>d.br);
+
+d3.select("#svg1")
+.transition().duration(500)
+.style("opacity",1e-6)
+.remove();
 
 
