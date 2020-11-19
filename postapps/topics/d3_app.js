@@ -65,7 +65,7 @@ function animate() {
     resample();
     patchbd.attr({
         'd': line(p),
-        "transform": "rotate(" + (it * dt * 360 / (tau * period)) + ",250,125)"
+        "transform": "rotate(" + (it * dt * 360 / (tau * period)) + ",480,240)"
     })
     return it > Nt
 }
