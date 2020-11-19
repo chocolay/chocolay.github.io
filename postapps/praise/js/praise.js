@@ -1,3 +1,4 @@
+d3.select(".page-title-box").remove()
 d3.select("svg").style("background","#322");
 
              
