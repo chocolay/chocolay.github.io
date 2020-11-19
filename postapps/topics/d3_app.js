@@ -6,7 +6,7 @@ var s = 320,
     paper = d3.select('#d3_app').append('svg').attr({
         "width": s,
         "height": s/2,
-        "viewbox":"-1000 -1000 5000 500"
+        "viewbox":"-1000 -1000 -500 500"
     }).append("g"),
     tau = 2 * Math.PI, period = tau * 4 * Math.pow(radius, 2) / gamma, dt = period / 100,
     comega = Math.cos(dt / (2 * period)), somega = Math.sin(dt / (2 * period)),
