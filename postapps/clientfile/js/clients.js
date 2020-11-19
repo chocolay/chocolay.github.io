@@ -8,7 +8,7 @@ d3.select(h.parentElement).insert("h1","h1")
 .text("...global reach");
 },500);
 
-***** ALL MATH FUNCTIONS ****/
+/***** ALL MATH FUNCTIONS ****/
 
 var to_radians = Math.PI / 180;
 var to_degrees = 180 / Math.PI;
