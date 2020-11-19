@@ -41,13 +41,6 @@ words[i] = {
   };
 });
 
- const simulation = d3.forceSimulation(words)
-      .velocityDecay(0.2)
-      .force("x", d3.forceX().strength(0.002))
-      .force("y", d3.forceY().strength(0.002))
-      .force("collide", d3.forceCollide().radius(d => d.br + 0.5).iterations(2))
-      .on("tick", ticked);
-  
 svg.selectAll("circle")
   .data(words,d=>d.word)
   .enter()
@@ -56,13 +49,24 @@ svg.selectAll("circle")
   .attr("cx",d=>d.x)
   .attr("cy",d=>d.y)
   .style("fill",d=>d.color)
-.transition().duration(5000)
+.transition()
+  .duration(5000)
   .attr("r",d=>d.br);
 
 d3.select("#svg1")
+.delay(3000)
 .transition().duration(5000)
 .style("opacity",1e-6)
 .remove();
+
+setTimeInterval(function() {
+ const simulation = d3.forceSimulation(words)
+      .velocityDecay(0.2)
+      .force("x", d3.forceX().strength(0.002))
+      .force("y", d3.forceY().strength(0.002))
+      .force("collide", d3.forceCollide().radius(d => d.br + 0.5).iterations(2))
+      .on("tick", ticked);
+},5000)
 
 function ticked() {
  d3.selectAll("circle")
