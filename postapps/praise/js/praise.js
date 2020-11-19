@@ -24,5 +24,6 @@ words[i] = {
   };
 });
   
+  console.log("hi")
 },1000);
 
