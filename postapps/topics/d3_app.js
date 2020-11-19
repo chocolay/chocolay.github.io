@@ -1,12 +1,11 @@
 //All rights reserved. 
-var s = 320,
+var s = 960, S = 500
     radius = 180,
     rpatch = 64,
     gamma = 1,
     paper = d3.select('#d3_app').append('svg').attr({
         "width": s,
-        "height": s/2,
-        "viewbox":"-1000 -1000 -500 500"
+        "height": s/2
     }).style("border","1px solid black")
     .append("g"),
     tau = 2 * Math.PI, period = tau * 4 * Math.pow(radius, 2) / gamma, dt = period / 100,
@@ -14,8 +13,8 @@ var s = 320,
     angstep = dt * 360 / (tau * period)
     Nt = 77, it = 0,
     ns = 600, stop = 2 * Math.PI * (1 + 1 / ns), b = 0.1, c = 1,
-    xscale = d3.scale.linear().domain([0, 1000]).range([0, s]),
-    yscale = d3.scale.linear().domain([-500, 500]).range([-s/4, s/4]),
+    xscale = d3.scale.linear().domain([-S, 0]).range([0,s/2]),
+    yscale = d3.scale.linear().domain([-S/2, S/2]).range([0,s/2]),
     v1o = v1mid = v1new = [radius, 0],
     patchbd = paper.append('path').style({
         'fill': '#D95D2A',
@@ -30,7 +29,7 @@ var s = 320,
     });
 
 patchbd.attr('d', line(p))
-//d3.timer(animate, 1000);
+d3.timer(animate, 1000);
 
 function advance() {
     v1mid = [v1o[0] * comega - v1o[1] * somega, v1o[0] * somega + v1o[1] * comega];
@@ -47,7 +46,7 @@ function animate() {
     advance();
     resample();
     patchbd.attr('d', line(p))
-    .attr("transform","rotate("+(it*angstep)+")")
+    .attr("transform","rotate("+(it*angstep)+","+(s/2)+","+(s/4)+")")
     return it > Nt
 }
 
