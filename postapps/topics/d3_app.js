@@ -10,6 +10,7 @@ var s = 320,
     }).append("g"),
     tau = 2 * Math.PI, period = tau * 4 * Math.pow(radius, 2) / gamma, dt = period / 100,
     comega = Math.cos(dt / (2 * period)), somega = Math.sin(dt / (2 * period)),
+    angstep = dt * 360 / (tau * period)
     Nt = 77, it = 0,
     ns = 600, stop = 2 * Math.PI * (1 + 1 / ns), b = 0.1, c = 1,
     xscale = d3.scale.linear().domain([-500, 0]).range([-s/4, s / 4]),
@@ -46,7 +47,7 @@ function animate() {
     resample();
     patchbd.attr({
         'd': line(p),
-        "transform": "rotate(" + (it * dt * 360 / (tau * period))")
+        "transform": "rotate(" + (it * angstep)+")")
     })
     return it > Nt
 }
