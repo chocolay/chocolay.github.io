@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ICDP - Análisis</title>
+    
+    <!-- Styles -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,700,800" rel="stylesheet" type="text/css"><!-- Google web fonts -->
+    <link href="font-awesome-4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"><!-- font-awesome -->
+    <link href="js/dropdown-menu/dropdown-menu.css" rel="stylesheet" type="text/css"><!-- dropdown-menu -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"><!-- Bootstrap -->
+    <link href="js/fancybox/jquery.fancybox.css" rel="stylesheet" type="text/css"><!-- Fancybox -->
+    <link href="js/audioplayer/audioplayer.css" rel="stylesheet" type="text/css"><!-- Audioplayer -->
+    <link href="style.css" rel="stylesheet" type="text/css"><!-- theme styles -->
+
+<!-- Style created for the map -->
+      <link href="css/map.css" rel="stylesheet" type=""text/css">
+  </head>
+  
+  <body role="document" class="page">
+    <!-- device test, don't remove. javascript needed! -->
+    <span class="visible-xs"></span><span class="visible-sm"></span><span class="visible-md"></span><span class="visible-lg"></span>
+    <!-- device test end -->
+    <div id="k-head" class="container"><!-- container + head wrapper -->
+    	<div class="row"><!-- row -->
+            <nav class="k-functional-navig"><!-- functional navig -->
+                <ul class="list-inline pull-right">
+                    <li><a href="#" style="pointer-events:none; cursor:not-allowed;">English version</a></li>
+                </ul>
+            </nav><!-- functional navig end -->
+        	<div class="col-lg-12">
+        		<div id="k-site-logo" class="pull-left"><!-- site logo -->
+                    <h1 class="k-logo">
+                        <a href="index.html" title="Home Page">
+                            <img src="img/site-logo.png" alt="Site Logo" class="img-responsive" />
+                        </a>
+                    </h1>
+                    <a id="mobile-nav-switch" href="#drop-down-left"><span class="alter-menu-icon"></span></a><!-- alternative menu button -->
+            	</div><!-- site logo end -->
+            	<nav id="k-menu" class="k-main-navig"><!-- main navig -->
+                    <ul id="drop-down-left" class="k-dropdown-menu">
+                        <li>
+                            <a href="que_es.html" title="Qué es el ICPM">Qué es el ICPD</a>
+                        </li>
+                        <li class="current-menu-item">
+                            <a href="mapa.html" title="Mapa Interactivo">Mapa Interactivo</a>
+                        </li>
+                        <li>
+                            <a href="#" title="Análisis">Análisis</a>
+                            <ul class="sub-menu">
+                                <li><a href="info_paises.html">Información por países</a></li>
+                                <li><a href="a_comparativo.html">Análisis comparativo</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" class="Pages Collection" title="Documentos">Documentos</a>
+                            <ul class="sub-menu">
+                                <li><a href="formacion.html">Formación</a></li>
+                                <li><a href="documentacion.html">Documentación</a></li>
+                                <li><a href="noticias.html">Noticias</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="prensa.html" title="Prensa">Prensa</a>
+                        </li>
+                        <li>
+                            <a href="quienes_somos.html" title="Quiénes somos">Quiénes somos</a>
+                        </li>
+                    </ul>
+            	</nav><!-- main navig end -->
+            </div>
+        </div><!-- row end -->
+    </div><!-- container + head wrapper end -->
+    <div id="k-body"><!-- content wrapper -->
+    	<div class="container"><!-- container -->
+        	<div class="row"><!-- row -->
+                <div id="k-top-search" class="col-lg-12 clearfix"><!-- top search -->
+                    <form action="#" id="top-searchform" method="get" role="search">
+                        <div class="input-group">
+                            <input type="text" name="s" id="sitesearch" class="form-control" autocomplete="off" placeholder="Type in keyword(s) then hit Enter on keyboard" />
+                        </div>
+                    </form>
+                    <div id="bt-toggle-search" class="search-icon text-center"><i class="s-open fa fa-search"></i><i class="s-close fa fa-times"></i></div><!-- toggle search button -->
+                </div><!-- top search end -->
+            	<div class="k-breadcrumbs col-lg-12 clearfix"><!-- breadcrumbs -->
+                	<ol class="breadcrumb">
+                    	<li><a href="index.html">Home</a></li>
+                        <li>Mapa Interactivo</li>
+                    </ol>
+                </div><!-- breadcrumbs end -->               
+            </div><!-- row end -->
+            <div class="row fullwidth"><!-- row -->
+                <div class="col-lg-12 col-md-12"><!-- doc body wrapper -->
+                    <div class="col-padded"><!-- inner custom column -->
+                        <h1 class="page-title">Mapa Interactivo</h1>
+                        <div class="news-body">
+                            <!--
+                            <p>Aliquam at porta elit. Proin lorem lacus, tempus id diam sit amet, porttitor tempor lectus. Praesent id felis sagittis, suscipit ligula sed, condimentum nisi. In non commodo risus. Praesent fringilla ligula in orci consectetur pulvinar. Nunc facilisis metus pellentesque, vestibulum libero eget, varius elit. Aliquam sed gravida dui, a imperdiet eros. Cras dignissim libero id feugiat pharetra. Nullam ut bibendum est, sed tincidunt massa. </p>
+                            -->
+<!--------------------------------------------------------------------------------------------------------------------->
+<!---------------------------PONER EL MAPA AQUÍ ----------------------------------------------------------------------->
+                            <div id=mapModule>
+                                <div id=loading>
+                                    <!--put in some kind of loading page here -->
+                                    <img src="loading17.gif" width="100px">
+                                </div>
+                                <div id=main>
+                                    <div id=map>
+                                        <div class=zoomControl>
+                                            <i class="fa fa-search-plus fa-2x"></i>
+                                            <i class="fa fa-search-minus fa-2x"></i>
+                                        </div>
+                                        <div id=tooltip>
+                                            <img id=flag>
+                                            <h2 id=cname></h2>
+                                            <p><span id=description1></span> <span id=number></span><span id=description2></span></p>
+                                        </div>
+                                        <div id=zoomer></div>
+                                    </div>
+                                    <div id=legend>
+                                        <p></p>
+                                    </div>
+                                    <!-- buttons and panels might belong inside the nav tag -->
+                                    <div id="leftButtons">
+                                        <div>
+                                            <i class="fa fa-list-ul fa-2x"></i>
+                                        </div>
+                                    </div>
+
+                                    <div id=leftPanel>
+                                        <i class = "fa fa-times closer"></i>
+                                        <h6 id = cname></h6>
+                                        <p id=description></p>
+                                        <div class=scroll>
+                                            <table>
+                                                <tbody></tbody>
+                                            </table>
+                                            <div id=countryDetail>
+                                                <img src ="img/country_info.jpg" alt ="Country Info">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id=sunburstMenu>
+                                        <div id = label></div>
+                                        <!--
+                                        <div id = overall>
+                                            <span>Índice compuesto</span>
+                                        -->
+                                        </div>
+                                    </div>
+                                    <nav id=menu>
+                                        <div id=timeSlider></div>
+                                        <!--right panel should probably go in here -->
+                                    </nav>
+                                </div>
+                            </div>
+
+
+                        </div><!-- news-body end -->
+                </div><!-- doc body wrapper end -->
+            </div><!-- row end -->
+        </div><!-- container end -->
+    </div><!-- content wrapper end -->
+    <div id="k-footer"><!-- footer -->
+    	<div class="container"><!-- container -->
+        	<div class="row no-gutter"><!-- row -->
+            	<div class="col-lg-4 col-md-4"><!-- widgets column left -->
+                    <div class="col-padded col-naked">
+                        <ul class="list-unstyled clear-margins"><!-- widgets -->
+                        	<li class="widget-container widget_nav_menu"><!-- widgets list -->
+                                <h1 class="title-widget">Enlaces de interés</h1>
+                                <ul>
+                                	<li><a href="#" title="menu item">Lorem ipsum dolor sit amet</a></li>
+                                    <li><a href="#" title="menu item">Nam liber tempor cum nobis</a></li>
+                                    <li><a href="#" title="menu item">Sed quiram cundidat</a></li>
+                                    <li><a href="#" title="menu item">Nos amice et nebevol</a></li>
+                                    <li><a href="#" title="menu item">Cum nobis eligend optio</a></li>
+                                </ul>
+							</li>
+                        </ul>
+                    </div>
+                </div><!-- widgets column left end -->
+                <div class="col-lg-4 col-md-4"><!-- widgets column center -->
+                    <div class="col-padded col-naked">
+                        <ul class="list-unstyled clear-margins"><!-- widgets -->
+                        	<li class="widget-container widget_recent_news"><!-- widgets list -->
+                                <h1 class="title-widget">Contacto</h1>
+                                <div itemscope itemtype="http://data-vocabulary.org/Organization"> 
+                                	<h2 class="title-median m-contact-subject" itemprop="name">Plataforma 2015 y más</h2>
+                                	<div class="m-contact-address" itemprop="address" itemscope itemtype="http://data-vocabulary.org/Address">
+
+                                        <span class="m-contact-email" itemprop="street-address"><a href="mailto:elise@wiseeddy.com">email</a></span>
+                                	</div>
+                                	<div class="m-contact-tel-fax">
+                                    	<span class="m-contact-tel">Tel: <span itemprop="tel">906-360-4076</span></span>
+                                    	<span class="m-contact-fax">Fax: <span itemprop="fax">633-333-3333</span></span>
+                                    </div>
+                                </div>
+                                <div class="social-icons">
+                                	<ul class="list-unstyled list-inline">
+                                    	<li><a href="#" title="Contact us"><i class="fa fa-envelope"></i></a></li>
+                                        <li><a href="#" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                                        <li><a href="#" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                                    </ul>
+                                </div>
+							</li>
+                        </ul>
+                    </div>
+                </div><!-- widgets column center end -->
+                <div class="col-lg-4 col-md-4"><!-- widgets column right -->
+                    <div class="col-padded col-naked">
+                        <ul class="list-unstyled clear-margins"><!-- widgets -->
+                        	<li class="widget-container widget_sofa_flickr"><!-- widgets list -->
+                                <h1 class="title-widget">Datos técnicos</h1>
+                                <img src="img/datos_tecnicos.png" alt=" ">
+							</li>
+                        </ul> 
+                    </div>
+                </div><!-- widgets column right end -->
+            </div><!-- row end -->
+        </div><!-- container end -->
+    </div><!-- footer end -->
+    <div id="k-subfooter"><!-- subfooter -->
+    	<div class="container"><!-- container -->
+        	<div class="row"><!-- row -->
+            	<div class="col-lg-12">
+                	<p class="copy-text text-inverse">
+                    &copy; 2015. Elise A. Ralph
+                    </p>
+                </div>
+            </div><!-- row end -->
+        </div><!-- container end -->
+    </div><!-- subfooter end -->
+    <!-- jQuery -->
+    <script src="jQuery/jquery-2.1.1.min.js"></script>
+    <script src="jQuery/jquery-migrate-1.2.1.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <!-- Drop-down -->
+    <script src="js/dropdown-menu/dropdown-menu.js"></script>
+    <!-- Fancybox -->
+	<script src="js/fancybox/jquery.fancybox.pack.js"></script>
+    <script src="js/fancybox/jquery.fancybox-media.js"></script><!-- Fancybox media -->
+    <!-- Responsive videos -->
+    <script src="js/jquery.fitvids.js"></script>
+    <!-- Audio player -->
+	<script src="js/audioplayer/audioplayer.min.js"></script>
+    <!-- Pie charts -->
+    <script src="js/jquery.easy-pie-chart.js"></script>
+    <!-- Google Maps -->
+    <script src="https://maps.googleapis.com/maps/api/js?sensor=true"></script>
+    <!-- Theme -->
+    <script src="js/theme.js"></script>
+
+        <!-- libraries for the interactive map -->
+        <script src=js/d3.min.js></script>
+        <script src=js/d3.geo.projection.min.js></script>
+        <script src=js/topojson.min.js></script>
+        <script src=js/queue.v1.min.js></script>
+        <script src=js/world-100m.js></script>
+        <script src=js/dummydata.js></script>
+        <script src=js/world-country-names.js></script>
+        <script src="js/world-country-flags.js"></script>
+        <script src=js/index.js></script>
+  </body>
+</html>
