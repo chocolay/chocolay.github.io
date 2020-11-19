@@ -1,12 +1,12 @@
 
-setInterval(function() {
+
 let h = d3.select("h1");
 h1.style("float","left")
 .text("local roots...")
 d3.select(h.parentElement).insert("h1","h1")
 .style("float","right")
 .text("...global reach");
-},500);
+
 
 /***** ALL MATH FUNCTIONS ****/
 
