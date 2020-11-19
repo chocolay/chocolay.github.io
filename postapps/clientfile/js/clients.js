@@ -157,8 +157,9 @@ var canvas = d3.select("#d3_app").append("canvas")
     .attr("height", height);
 
 var svg = d3.select("#d3_app").append("svg")
-    .attr("width", width)
-    .attr("height", height)
+    .attr("width", "100%")
+    .attr("height", "100%")
+.attr("viewbox","0 0 "+width+" "+height)
     .style("background","none")
     .style("opacity",0.9)
     .style("pointer-events","none");
