@@ -1,4 +1,5 @@
-let header = d3.select("h1").text();
+setTimeout(function() {
+  let header = d3.select("h1").text();
 d3.select(".page-title-box").remove();
 
 d3.select(".content .container")
@@ -22,3 +23,6 @@ words[i] = {
   tranform: P.style("transform")
   };
 });
+  
+},500);
+
