@@ -29,8 +29,25 @@ tau = 2 * Math.PI, period = tau * 4 * Math.pow(radius, 2) / gamma, dt = period /
 
 patchbd.attr({
     'd': line(p)
-})
+});
+
 d3.timer(animate, 1000);
+
+d3.select("svg").on("click",function() {
+  p = d3.range(0, stop, stop / ns).map(init),
+    line = d3.svg.line().x(function(d) {
+        return xscale(d[0])
+    }).y(function(d) {
+        return yscale(d[1])
+    });
+
+patchbd.attr({
+    'd': line(p)
+});
+    
+d3.timer(animate, 1000);
+
+});
 
 function advance() {
     v1mid = [v1o[0] * comega - v1o[1] * somega, v1o[0] * somega + v1o[1] * comega];
