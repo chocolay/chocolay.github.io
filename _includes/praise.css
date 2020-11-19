@@ -2,8 +2,13 @@
   text-align:center;
 }
 
-svg {
+#svg2 {
 display:inline;
 background:#333;  
+}
+
+#svg1 {
+display:inline;
+background:#aaa;  
 }
 
