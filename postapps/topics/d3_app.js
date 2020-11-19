@@ -13,8 +13,8 @@ var s = 320,
     angstep = dt * 360 / (tau * period)
     Nt = 77, it = 0,
     ns = 600, stop = 2 * Math.PI * (1 + 1 / ns), b = 0.1, c = 1,
-    xscale = d3.scale.linear().domain([-500, 0]).range([-s/4, s / 4]),
-    yscale = d3.scale.linear().domain([-250, 250]).range([s / 4, -s/4]),
+    xscale = d3.scale.linear().domain([-1000, 0]).range([-s/2, s / 2]),
+    yscale = d3.scale.linear().domain([-500, 500]).range([s / 2, -s/2]),
     v1o = v1mid = v1new = [radius, 0],
     patchbd = paper.append('path').style({
         'fill': '#D95D2A',
