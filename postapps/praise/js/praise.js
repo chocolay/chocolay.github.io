@@ -14,8 +14,7 @@ d3.select(".content .container")
 
 let svg = d3.select("#svg2");
 resize();
-d3.select("body").node().onresize(resize);
-
+d3.select("body").node().onresize = resize;
 let words = [];
 d3.select("#svg1")
   .selectAll("text")
