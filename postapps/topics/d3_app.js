@@ -31,7 +31,7 @@ var s = 960, S = 500
     });
 
 patchbd.attr('d', line(p))
-d3.timer(animate, 1000);
+animate
 
 function advance() {
     v1mid = [v1o[0] * comega - v1o[1] * somega, v1o[0] * somega + v1o[1] * comega];
