@@ -19,10 +19,10 @@ let words = [];
 d3.select("#svg1")
   .selectAll("text")
   .each(function(d,i) { 
-let box = this.getBBox();
-let T = d3.select(this);
-let P = d3.select(this.parentElement);
-let coord = P.attr("transform").split(/,|\s|\(|\)/g);
+    let box = this.getBBox(); //text box
+    let T = d3.select(this);
+    let P = d3.select(this.parentElement);
+    let coord = P.attr("transform").split(/,|\s|\(|\)/g);
   
 words[i] = {
   word: T.text(),
@@ -45,7 +45,7 @@ svg.selectAll("circle")
   .enter()
   .append("circle")
   .attr("id",d=>d.word)
-  .attr("r",d=>d.br)
+  .attr("r",d=>d.br/4)
   .attr("cx",d=>d.bx)
   .attr("cy",d=>d.by)
   .style("fill",d=>d.color);
