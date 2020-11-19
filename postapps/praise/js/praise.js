@@ -66,7 +66,7 @@ d3.select("#svg1")
 
 function ticked() {
  d3.selectAll("circle")
-  .attr("cx",d=>d.x+d.r)
+  .attr("cx",d=>d.x+d.br)
   .attr("cy",d=>d.y)
 }
 
