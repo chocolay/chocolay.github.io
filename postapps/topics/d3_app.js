@@ -3,7 +3,7 @@ var s = 960,
     radius = 180,
     rpatch = 64,
     gamma = 1,
-    paper = d3.select('#d3_app').append('svg').style('background-color', 'black').attr({
+    paper = d3.select('#d3_app').append('svg').attr({
         "width": 300,
         "height": 150,
         "viewbox":"0 0 960 480"
@@ -16,8 +16,8 @@ tau = 2 * Math.PI, period = tau * 4 * Math.pow(radius, 2) / gamma, dt = period /
     yscale = d3.scale.linear().domain([-250, 250]).range([s / 2, 0]),
     v1o = v1mid = v1new = [radius, 0],
     patchbd = paper.append('path').style({
-        'fill': 'white',
-        'stroke': '#ee3322',
+        'fill': '#D95D2A;',
+        'stroke':  '#D95D2A;,
         'stroke-width': 1
     }),
     p = d3.range(0, stop, stop / ns).map(init),
