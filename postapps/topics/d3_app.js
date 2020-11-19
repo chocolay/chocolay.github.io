@@ -7,8 +7,8 @@ var s = 320,
         "width": s,
         "height": s/2,
         "viewbox":"-480 -240 480 240"
-    }).append("g")
-ccccctau = 2 * Math.PI, period = tau * 4 * Math.pow(radius, 2) / gamma, dt = period / 100,
+    }).append("g"),
+    tau = 2 * Math.PI, period = tau * 4 * Math.pow(radius, 2) / gamma, dt = period / 100,
     comega = Math.cos(dt / (2 * period)), somega = Math.sin(dt / (2 * period)),
     Nt = 77, it = 0,
     ns = 600, stop = 2 * Math.PI * (1 + 1 / ns), b = 0.1, c = 1,
@@ -16,8 +16,8 @@ ccccctau = 2 * Math.PI, period = tau * 4 * Math.pow(radius, 2) / gamma, dt = per
     yscale = d3.scale.linear().domain([-250, 250]).range([s / 4, -s/4]),
     v1o = v1mid = v1new = [radius, 0],
     patchbd = paper.append('path').style({
-        'fill': '#D95D2A;',
-        'stroke':  '#D95D2A;',
+        'fill': '#D95D2A',
+        'stroke':  '#D95D2A',
         'stroke-width': 1
     }),
     p = d3.range(0, stop, stop / ns).map(init),
@@ -27,9 +27,7 @@ ccccctau = 2 * Math.PI, period = tau * 4 * Math.pow(radius, 2) / gamma, dt = per
         return yscale(d[1])
     });
 
-patchbd.attr({
-    'd': line(p)
-})
+patchbd.attr('d', line(p))
 d3.timer(animate, 1000);
 
 function advance() {
