@@ -1,3 +1,10 @@
+let h = d3.select("h1");
+h1.style("float","left")
+.text("local roots...")
+d3.select(h.parentElement).insert("h1","h1")
+.style("float","right")
+.text("...global reach");
+
 /***** ALL MATH FUNCTIONS ****/
 
 var to_radians = Math.PI / 180;
@@ -369,6 +376,12 @@ d3.csv("/postapps/clientfile/data/clientlist.csv").then(function(data,error) {
                    let color = redtree;
                     context.beginPath();
                     path(r)
+                    context.strokeStyle = color;
+                    context.lineWidth = d3.select(".projflip").datum()=="globe"?2:2;
+                    context.stroke();
+                 
+                    context.beginPath();
+                    path(base)
                     context.strokeStyle = color;
                     context.lineWidth = d3.select(".projflip").datum()=="globe"?2:2;
                     context.stroke();
