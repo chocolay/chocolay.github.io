@@ -6,14 +6,14 @@ var s = 320,
     paper = d3.select('#d3_app').append('svg').attr({
         "width": s,
         "height": s/2,
-        "viewbox":"0 0 960 480"
-    }).append("g");
-tau = 2 * Math.PI, period = tau * 4 * Math.pow(radius, 2) / gamma, dt = period / 100,
+        "viewbox":"-480 -240 480 240"
+    }).append("g")
+ccccctau = 2 * Math.PI, period = tau * 4 * Math.pow(radius, 2) / gamma, dt = period / 100,
     comega = Math.cos(dt / (2 * period)), somega = Math.sin(dt / (2 * period)),
     Nt = 77, it = 0,
     ns = 600, stop = 2 * Math.PI * (1 + 1 / ns), b = 0.1, c = 1,
-    xscale = d3.scale.linear().domain([-500, 0]).range([0, s / 2]),
-    yscale = d3.scale.linear().domain([-250, 250]).range([s / 2, 0]),
+    xscale = d3.scale.linear().domain([-500, 0]).range([-s/4, s / 4]),
+    yscale = d3.scale.linear().domain([-250, 250]).range([s / 4, -s/4]),
     v1o = v1mid = v1new = [radius, 0],
     patchbd = paper.append('path').style({
         'fill': '#D95D2A;',
@@ -48,7 +48,7 @@ function animate() {
     resample();
     patchbd.attr({
         'd': line(p),
-        "transform": "rotate(" + (it * dt * 360 / (tau * period)) + ","+(s/2)+","+(s/4)+")"
+        "transform": "rotate(" + (it * dt * 360 / (tau * period)))")
     })
     return it > Nt
 }
