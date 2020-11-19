@@ -46,7 +46,7 @@ function animate() {
     advance();
     resample();
     patchbd.attr('d', line(p))
-    //.attr("transform","rotate("+(it*angstep)+")")
+    .attr("transform","rotate("+(it*angstep)+")")
     return it > Nt
 }
 
