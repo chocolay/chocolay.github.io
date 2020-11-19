@@ -62,8 +62,8 @@ d3.select("#svg1")
 setInterval(function() {
  const simulation = d3.forceSimulation(words)
       .velocityDecay(0.2)
-      .force("x", d3.forceX().strength(0.002))
-      .force("y", d3.forceY().strength(0.002))
+      .force("x", d3.forceX().strength(0.0002))
+      .force("y", d3.forceY().strength(0.0002))
       .force("collide", d3.forceCollide().radius(d => d.br + 0.5).iterations(2))
       .on("tick", ticked);
 },5000)
