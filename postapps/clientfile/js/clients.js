@@ -373,7 +373,7 @@ d3.csv("/postapps/clientfile/data/clientlist.csv").then(function(data,error) {
                         context.fillStyle = color;
                         context.fill()
                         context.strokeStyle = color;
-                        context.lineWidth = d3.select(".projflip").datum()=="globe"?2:2;
+                        context.lineWidth = d3.select(".projflip").datum()=="globe"?1:1;
                         context.stroke();
                     });
 
@@ -388,7 +388,7 @@ d3.csv("/postapps/clientfile/data/clientlist.csv").then(function(data,error) {
                     context.beginPath();
                     path(base)
                     context.strokeStyle = color;
-                    context.lineWidth = d3.select(".projflip").datum()=="globe"?2:2;
+                    context.lineWidth = d3.select(".projflip").datum()=="globe"?3:3;
                     context.stroke();
                 });
 
