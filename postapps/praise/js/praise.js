@@ -16,13 +16,14 @@ let words = [];
 d3.selectAll("text").each(function(d,i) { 
 let T = d3.select(this);
 let P = d3.select(this.parentElement);
+let coord = d.transform.split(/,|\s|\(|\)/g);
 words[i] = {
   word: T.text(),
   color: T.style("fill"),
   size: T.style("font-size"),
-  x: +T.attr("x"),
-  y: +T.attr("y"),
-  transform: P.attr("transform"),
+  x: +T.attr("x")+(+coord[1]),
+  y: +T.attr("y")+(+coord[2]),
+  rotate:coord[5], 
   length: T.node().getComputedTextLength()
   };
 });
