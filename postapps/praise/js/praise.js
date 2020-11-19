@@ -58,16 +58,16 @@ d3.select("#svg1")
 .transition().delay(3000).duration(5000)
 .style("opacity",1e-6)
 .remove();
-
+/*
 setInterval(function() {
  const simulation = d3.forceSimulation(words)
       .velocityDecay(0.2)
-      .force("x", d3.forceX().strength(0.0002))
-      .force("y", d3.forceY().strength(0.0002))
+      .force("x", d3.forceX().strength(0.001))
+      .force("y", d3.forceY().strength(0.001))
       .force("collide", d3.forceCollide().radius(d => d.br + 0.5).iterations(2))
       .on("tick", ticked);
 },5000)
-
+*/
 function ticked() {
  d3.selectAll("circle")
   .attr("cx",d=>d.x+d.br)
