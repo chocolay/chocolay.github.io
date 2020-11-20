@@ -10,3 +10,11 @@ text-transform: uppercase;
 position:absolute;
 top:0px; 
 }
+
+h3, p {
+margin: 0px;
+}
+
+img {
+margin-left:5px;
+}
