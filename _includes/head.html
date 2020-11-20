@@ -21,8 +21,8 @@
 	
 	
 {% if page.d3version %}
-<script src="{{ page.d3version }} ></script>
-	
+<script src={{ page.d3version }} ></script>
+{% else %}	
  	<script src="{{ site.baseurl }}/js/vendors/d3.v6.min.js" ></script>
 {%endif %}
 								
