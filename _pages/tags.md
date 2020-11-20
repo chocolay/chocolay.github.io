@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Topics
+header: Topics
 permalink: /topics/
 style: topics.css
 app: topics
