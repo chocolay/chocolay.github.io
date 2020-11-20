@@ -17,6 +17,7 @@ window.onresize = function() {
     d3.select("svg")
      .attr( "width",ss/6)
      .attr("height",ss/12);
+}
 
     tau = 2 * Math.PI, period = tau * 4 * Math.pow(radius, 2) / gamma, dt = period / 100,
     comega = Math.cos(dt / (2 * period)), somega = Math.sin(dt / (2 * period)),
