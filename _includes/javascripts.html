@@ -1,8 +1,14 @@
-{% if page.d3version == 6 %}
-    <script src="{{ site.baseurl }}/js/vendors/d3.v6.min.js"></script>
-{% else %}
-    <script src={{page.d3version}}></script>
+{% if page.d3version %}
+<script src="{{ page.d3version }} ></script>
+	
+ 	<script src="{{ site.baseurl }}/js/vendors/d3.v6.min.js" ></script>
+{%endif %}
+								
+{% if page.topo %}
+   <script src="//d3js.org/topojson.v1.min.js"></script>
 {% endif %}
+
+                                              
 <script src="{{ site.baseurl }}/js/vendors/jquery-3.3.1.min.js"></script>
 <script src="{{ site.baseurl }}/js/vendors/simple-jekyll-search.min.js"></script>
 <script>
