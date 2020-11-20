@@ -31,7 +31,7 @@ window.onresize = function() {
 }
 
     patchbd = paper.append('path')
-     .style('fill',"D95D2A") // '#978F67',
+     .style('fill', "#96B6B1") //"D95D2A") // '#978F67', #4A696E
         .style('opacity', 1),
     p = d3.range(0, stop, stop / ns).map(init),
     line = d3.line().x(function(d) {
@@ -41,7 +41,7 @@ window.onresize = function() {
     });
 
 patchbd.attr('d', line(p))
-let timer = d3.timer(animate,0)
+let timer = d3.timer(animate,1000)
 
 function advance() {
     v1mid = [v1o[0] * comega - v1o[1] * somega, v1o[0] * somega + v1o[1] * comega];
