@@ -1,0 +1,9 @@
+{
+"charge":-200,
+"linkDistance": 40,
+"minRadius":6,
+"maxRadius": 10,
+"similarityCutoff":240,
+"width":480,
+"height":240
+}

@@ -1,0 +1,346 @@
+/*This isn't needed but if DOM elements above the #mapModule div are changed, then
+some position aboslute elements might need to be changed */
+
+#mapModule {
+    background: #fcffff;
+    width: 100%;
+    position:relative;
+}
+
+#mapModule #loading {
+    margin: 0px auto;
+    position:absolute;
+    top:50%;
+    transform:translate(0,-50%);
+    height:500px;
+}
+
+#main {
+    position: relative;
+    display:none;
+}
+
+#legend {
+    position: absolute;
+    top:6px;
+    left:10px;
+    border: solid 5px #fbf8f0;
+    border-radius:10px;
+}
+
+#legend p {
+    padding: 10px 0px 10px 0px;
+    font-size:1em;
+    color:black;
+    background-color:#fbf8f0;
+}
+
+#sunburstMenu {
+    background-color: white;
+    border: solid 5px #ccabab;
+    border-radius: 10px;
+    width: 4em;
+    height: 4em;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+#sunburstMenu .instruction {
+    font-size:1.5em;
+}
+
+#sunburstMenu #instruction {
+    display:none;
+    text-align:center;
+}
+
+#sunburstMenu #label {
+    position: absolute;
+    border-radius: 5px;
+    border: solid 1px #ccabab;
+    background-color: #eeeeee;
+    padding: 3px 5px;
+    display: none;
+}
+
+#sunburstMenu #overall {
+    display: none;
+    padding: 1em;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    stroke:black;
+    font-size:200%;
+}
+
+#sunburstMenu #overall span {
+    padding: 20px;
+    border-radius: 5px;
+    border: solid 1px #ecabab;
+    font-size: 1.2em;
+}
+
+#policyToggle ul {
+    float: right;
+}
+
+#policyToggle li {
+    display: inline;
+    padding: 0 20px;
+    color: #666;
+    font-size: 200%;
+}
+
+#policyToggle li.selected {
+    color: #07aac5;
+}a
+
+#policys {
+    width: 100%;
+    height: 50px;
+    background-color: #eeeeee;
+}
+
+.sun {
+    stroke-width: 2px;
+    stroke: white;
+    fill: white;
+}
+
+.axis {
+    fill: black;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+
+.domain {
+    stroke: #000;
+    stroke-opacity: .3;
+    stroke-width: 10px;
+    stroke-linecap: round;
+}
+
+.slider .handle {
+    fill: #fff;
+    stroke: #000;
+    stroke-opacity: .5;
+    stroke-width: 1.25px;
+    cursor: crosshair;
+}
+
+#map {
+    width: 100%;
+    background: #fbf8f0;
+    height:65%;
+}
+
+.overlay {
+    fill: none;
+    pointer-events: all;
+}
+
+.country {
+    fill: #cdcdcd;
+    stroke-width: 1px;
+    stroke: #ccabab;
+}
+
+.boundary {
+    stroke-width: 1px;
+    stroke: #ccabab;
+    fill: none;
+}
+
+
+#map #tooltip {
+    opacity: 0.00001;
+    position: absolute;
+    background: #fbf8f0;
+    color: black;
+    width: 240px;
+    height: 120px;
+    pointer-events: none;
+    border: solid 1px #8e7777;
+    border-radius:20px;
+}
+
+#map #tooltip #flag {
+    display: block;
+    margin: 10px auto;
+    width: 40px;
+    border: solid 1px #8e7777;
+    padding:2px;
+}
+
+#map #tooltip h2 {
+    color:#8e7777;
+    margin:5px;
+}
+#map #tooltip #cname {
+    text-align: center;
+}
+
+#map #tooltip span {
+    padding: 0px 10px;
+}
+
+#map #tooltip #description2 {
+    float: right;
+}
+
+.zoomControl {
+    position: absolute;
+    right:80px;
+    top:1em;
+}
+
+.zoomControl i {
+    display: inline;
+    color: #ccabab;
+}
+
+#leftButtons {
+    position: absolute;
+    top:  5em;
+    right: 1em;
+}
+
+#leftButtons div i {
+    color: #ccabab;
+}
+
+#leftPanel {
+    position: absolute;
+    width: 260px;
+    background-color: #fff;
+    top: 55px;
+    height:90%;
+    left: -375px;
+    border: solid 4px #cca;
+}
+
+
+#leftPanel h6 {
+    margin:5px;
+
+}
+
+#leftPanel i {
+    float: right;
+    height:95%;
+}
+
+#leftPanel table {
+    margin:0px 10px;
+    font-size:0.75em;
+}
+
+#leftPanel #countryDetail * {
+    position: absolute;
+}
+
+#leftPanel #countryDetail #cname {
+    top: 100px;
+}
+
+#leftPanel #countryDetail img {
+    top:32px;
+
+}
+#leftPanel table tr td:nth-child(3) {
+    padding:0px 0px 0px 5px;
+}
+
+.hide {
+    opacity: 1 e-6;
+}
+
+.scroll {
+    overflow-y: scroll;
+    height: 90%;
+}
+
+.primary-1 {
+    fill: #80CAAA
+}
+
+.primary-2 {
+    fill: #50AB84
+}
+
+.primary-0 {
+    fill: #31946A
+}
+
+.primary-3 {
+    fill: #1A8054
+}
+
+.primary-4 {
+    fill: #09663E
+}
+
+.secondary-1-1 {
+    fill: #849DC6
+}
+
+.secondary-1-2 {
+    fill: #5574A4
+}
+
+.secondary-1-0 {
+    fill: #385A8F
+}
+
+.secondary-1-3 {
+    fill: #22457C
+}
+
+.secondary-1-4 {
+    fill: #113162
+}
+
+.secondary-2-1 {
+    fill: #FFDDA2
+}
+
+.secondary-2-2 {
+    fill: #F9C974
+}
+
+.secondary-2-0 {
+    fill: #D8A448
+}
+
+.secondary-2-3 {
+    fill: #BB8526
+}
+
+.secondary-2-4 {
+    fill: #95640E
+}
+
+.complement-1 {
+    fill: #FFBCA2
+}
+
+.complement-2 {
+    fill: #F99A74
+}
+
+.complement-0 {
+    fill: #D87148
+}
+
+.complement-3 {
+    fill: #BB5026
+}
+
+.complement-4 {
+    fill: #95340E
+}
+

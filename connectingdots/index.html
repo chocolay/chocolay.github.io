@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel = dns-prefetch href = //cdnjs.cloudflare.com>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Cluster Visualization</title>
+
+    <!-- Lib-->
+   <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-colorpicker/2.3.3/css/bootstrap-colorpicker.css" rel="stylesheet" type="text/css">
+    <link rel=stylesheet href=https://cdn.datatables.net/1.10.10/css/dataTables.bootstrap.min.css>
+    <link href = //cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/7.1.0/css/bootstrap-slider.css rel="stylesheet">
+    <!-- Custom -->
+    <link href="css/sb-admin-2.css" rel="stylesheet">
+    <link href="css/custom-chart.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
+
+
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    </head>
+
+    <body>
+
+    <div id="wrapper">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="https://chocolay.github.io/2017/01/01/Custom-Graph/">Cluster Visualization</a>
+        </div>
+        <!-- /.navbar-header -->
+    </nav>
+            <div id="page-wrapper" style="opacity:1e-6">
+                <div class="row m-t-s">
+
+                <!-- Middle Controls -->
+                <div class="col-lg-8">
+                    <!-- Visualization -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bar-chart-o fa-fw"></i> Similarity Visualization
+                        </div>
+                        <div class="panel-body">
+                            <div id = "threshold">
+                                Threshold: 0
+                                <input id = "thresholdSlider"
+                                       type = "text"
+                                       data-slider-min="0"
+                                       data-slider-max="100"
+                                       data-slider-step="1"
+                                       data-slider-value="50"
+                                       data-slider-tooltip="show"
+                                        > 100
+                                <a id="saver" class="btn btn-default" href="#" role="button">Save</a>
+                            </div>
+                            <div id="scatter"></div>
+                        </div>
+                    </div>
+                    <!-- / Data Visualization -->
+
+                    <!-- Current View Plots -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bar-chart-o fa-fw"></i> Node Links
+                        </div>
+                        <div class="panel-body">
+                            <div class = "table-responsive">
+                                <table class="table table-striped table-bordered" cellspacing = 0 width = "100%" style="display:none">
+                                    <!-- table content will get created & destroyed by the user interactions with the graph -->
+                                <thead>
+                                    <tr></tr>
+                                </thead>
+                                    <tbody>
+                                    </tbody>
+                               </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    <!-- /Current View Plot
+                <!-- / Middle Controls -->
+
+
+            <!-- Right Side Controls -->
+            <div class="col-lg-4">
+                <!-- Controls -->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <i class="fa fa-edit fa-fw"></i> Node Management
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label>Self Similarity</label>
+                            <input class="form-control " type="number" id="weightInput" step="1" min="0" max="100" required="required"/>
+                        </div>
+                        <div class="form-group">
+                            <label>Label</label>
+                            <input class="form-control " type="text" id="labelInput" required="required"/>
+                        </div>
+                        <div class="form-group" id="colorInputGroup">
+                            <label>Color</label>
+                            <div id="colorInput" class="input-group colorpicker-component" data-format="hex">
+                                <input type="text" value="#00AABB" class="form-control" />
+                                <span class="input-group-addon"><i></i></span>
+                            </div>
+                        </div>
+                        <button class="btn btn-info" id="saveEditBtn" style="display:none">Save</button>
+                        <button class="btn btn-default" id="cancelEditBtn" style="display:none">Cancel</button>
+                        <button class="btn btn-danger" id="deleteEditBtn" style="display:none">Delete</button>
+                    </div>
+                </div>
+            </div>
+            <!-- / Right Side Controls -->
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Libs -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/js/bootstrap.min.js"></script>
+<script src = //cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-colorpicker/2.3.3/js/bootstrap-colorpicker.min.js"></script>
+<script src = //cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/7.1.0/bootstrap-slider.min.js></script>
+
+<script type="text/javascript">
+    toastr.options = {
+        "positionClass": "toast-top-center",
+    }
+</script>
+
+<!-- Custom Theme JavaScript -->
+<script src="js/audioDataRepository.js?abc123124123"></script>
+<script src="js/audioDataScatterPlot.js?123124151236"></script>
+
+</body>
+
+</html>
