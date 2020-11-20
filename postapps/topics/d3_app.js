@@ -1,11 +1,11 @@
 //All rights reserved. 
-var s = 200, S = 500
+var s = 960, S = 500, ss = 100
     radius = 180,
     rpatch = 64,
     gamma = 1,
     paper = d3.select('#d3_app').append('svg').attr({
-        "width": s,
-        "height": s
+        "width": ss,
+        "height": ss
     }).attr("viewbox","0 -s/4 s s/2")
     .append("g")
 .attr("transform","translate(0,40)");
