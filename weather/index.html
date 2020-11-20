@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang=e n>
+
+<head>
+    <meta charset=utf-8>
+    <link rel=”author” href=”http://www.linkedin.com/in/eliseralph″>
+    <script src = http://d3js.org/d3.v3.min.js></script>
+    <script src = http://d3js.org/topojson.v1.min.js></script>
+    <script src = http://d3js.org/d3.geo.projection.v0.min.js></script>
+    <script src = conrecGlobe.js></script>
+    <script src = http://d3js.org/queue.v1.min.js></script>
+
+    <style>
+        body {
+            background: #fdf8ef
+        }
+        .sphere {
+            fill: none;
+            stroke: #000;
+            stroke-width: 2px
+        }
+        .graticule {
+            fill: none;
+            stroke: #777;
+            stroke-width: 1px;
+            opacity: 0.3
+        }
+        .land {
+            fill: gray;
+            stroke: black;
+            opacity: 0.3
+        }
+        .boundary {
+            fill: none;
+            stroke: #000;
+            stroke-width: 1px;
+            opacity: 0.3
+        }
+        #datanamelabel {
+            text-anchor: middle: font-size: 20
+        }
+        .description-menu {
+            font-size: 20px
+        }
+        div {
+            font-size: 16px
+        }
+        input {
+            font-size: 16px
+        }
+        #menu1 {
+            position:absolute;
+            left:42px;
+            top:140px;
+            width: 940px;
+            padding:10px;
+            background-color: white;
+            box-shadow: 5px 5px 5px 5px #888888;
+        }
+        #graphic1 {
+            position:absolute;
+            left:40px;
+            top:350px;
+        }
+        p {margin:5px}
+        #dispDataRange {font-weight:bold; font-style:italic}
+        button#mkplot{
+            position: absolute;
+            left: 850px;
+            top: 150px;
+            -moz-box-shadow: inset 0px 1px 0px 0px #caefab;
+            -webkit-box-shadow: inset 0px 1px 0px 0px #caefab;
+            box-shadow: inset 0px 1px 0px 0px #caefab;
+            background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #77d42a), color-stop(1, #5cb811));
+            background: -moz-linear-gradient( center top, #77d42a 5%, #5cb811 100%);
+            filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#77d42a', endColorstr='#5cb811');
+            background-color: #77d42a;
+            -webkit-border-top-left-radius: 37px;
+            -moz-border-radius-topleft: 37px;
+            border-top-left-radius: 37px;
+            -webkit-border-top-right-radius: 0px;
+            -moz-border-radius-topright: 0px;
+            border-top-right-radius: 0px;
+            -webkit-border-bottom-right-radius: 37px;
+            -moz-border-radius-bottomright: 37px;
+            border-bottom-right-radius: 37px;
+            -webkit-border-bottom-left-radius: 0px;
+            -moz-border-radius-bottomleft: 0px;
+            border-bottom-left-radius: 0px;
+            text-indent: 0;
+            border: 1px solid #268a16;
+            color: #306108;
+            font-family: Times New Roman;
+            font-size: 15px;
+            font-weight: bold;
+            font-style: normal;
+            height: 40px;
+            line-height: 40px;
+            width: 100px;
+            text-decoration: none;
+            text-align: center;
+        }
+        button#mkplot:hover {
+            background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #5cb811), color-stop(1, #77d42a));
+            background: -moz-linear-gradient( center top, #5cb811 5%, #77d42a 100%);
+            filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#5cb811', endColorstr='#77d42a');
+            background-color: #5cb811;
+        }
+    </style>
+</head>
+
+<body>
+<header></header>
+<div id = temp style = "font-weight:bold">This is the working draft...</div>
+<div id = menu1>
+    <p><select id = dataset-menu></select>
+    <p><select id = variable-menu></select> in <select id = units-menu></select>
+    <p><select id = height-menu></select> millibar level
+    <p> <select id = monthstamp></select>
+        <select id = yearstamp></select>
+        <select id = daystamp></select>
+        <select id = hourstamp></select>
+    <p id = dispDataRange style = "float:right"></p>
+    <p>from <input id = mincontour style="width:50px"> to <input id = maxcontour style = "width:50px"> in steps of <input id = stepcontour style = "width:50px"><span id = unitsForRange></span>
+    <p><select id = projection-menu></select> projection <span style = "float:right"><select id = land-menu></select> land</span>
+</div>
+<button id = mkplot onclick = WE.state.changeData()>Make Plot</button>
+
+<div id = graphic1></div>
+<div id = dataDisplay>
+    <button onclick = WE.mapping.getLocation()>Get Local Position</button>
+    Interpolate data to a position by entering a lat,lon pair: <input id = latitude type = "number" max ="90" min = "-90"></input>, <input id = longitude type = "number" max = "360" min = "-180"></input>: <span id = datavalue style = "font-size:150%; font-weight:bold"></span>.
+    <button onclick = WE.mapping.interp2()>Find data at chosen position.</button>
+</div>
+
+<footer id = bottomfooter style = "position:absolute; top:800px"></footer>
+<script src = WE.js></script>
+<script src = "/header.js"></script>
+
+</body>
