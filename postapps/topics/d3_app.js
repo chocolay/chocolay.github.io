@@ -6,7 +6,7 @@ var s = 960, S = 500,
     rpatch = 64,
     gamma = 1,
     p = d3.select("h3").node().parentElement,    
-    paper = p.insert("h3","svg").attr({
+    paper = d3.select(p).insert("h3","svg").attr({
         "width": ss,
         "height": ss/2
     }).style("pointer-events","none")
