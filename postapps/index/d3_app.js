@@ -5,11 +5,10 @@
     radius = 180,
     rpatch = 64,
     gamma = 1,
-    paper = d3.select(".hero__image").append("svg").attr({
-        "width": ss/5,
-        "height": ss/12
-    }).style("pointer-events","none")
-        .attr("viewBox","0 0 "+s+" "+ (s/2))   
+    paper = d3.select(".hero__image").append("svg")
+     .attr( "width",ss/6)
+     .attr("height",ss/12)
+    .attr("viewBox","0 0 "+s+" "+ (s/2))   
     .append("g")
 .attr("transform","translate(0,0)");
 
