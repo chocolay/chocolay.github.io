@@ -1,0 +1,74 @@
+
+<!DOCTYPE html><html lang = "en"><head>
+<meta charset="utf-8">
+<title>Elise A. Ralph</title>
+<meta name = "Description" content = "Welcome to Elise A. Ralph Portfolio Page">
+<meta name = "Author" content = "Elise A. Ralph">
+<link rel="shortcut icon" href="/favicon.png" type="image/x-icon">
+<link rel=”author” href=”http://www.linkedin.com/in/eliseralph″>
+
+<script src = "/js/d3.v3.min.js"></script>
+<script src="/js/Box2dWeb-2.1.a.3.min.js"></script>
+<script src = "/js/box2d_er.js"></script>
+</head><body>
+<header></header>
+
+<div id = "desc">Clicking in either box creates circles that fall. <button onclick = zoom() id = zoom>Zoom</button>
+</div>
+<div id = titles>
+    <span style = "font-size:20px; font-style:bold; position:relative; left:20px">SVG</span>
+    <span style = "font-size:20px; font-style:bold; position:relative; left:460px">Canvas</span>
+</div>
+
+<div id = "mysvg" style = "width:440px;height:360px;background-color:#a9bdb1;"></div>
+<div id = "mycanvas" style = "position:relative; top:-360px;left:480px;width:440px;height:360px">
+<canvas id= c width=440 height=360 style="background-color:#a9bdb1; "></canvas></div>
+
+<script>
+function zoom() {
+var z = document.body.style.zoom;
+document.body.style.zoom = (z=="6"?1:6)
+window.scrollTo(z=="6"?1622:0,z=="6"?2436:0)
+}
+
+d3.select("#desc").style({"position":"relative","top":"420px"})
+var SCALE = 32, gravity = 9.8, hooke = 0, world, fixDef, shapes = {}, debug = false, addWithClick = true, assetsToLoad = [], assetsLoaded = 0, volume = 0, harr = {}, timeseries = {}, line = {}, axis = {}, timepath = {},
+Tfinal = 15, stepRate = 0.0166666,
+helpers = {randomColor:function() {color = "#"+("000000"+Math.round((Math.random()*Math.pow(16,6))).toString(16)).slice(-6); return color}},
+sname = "#mysvg", w = parseInt(d3.select(sname).style("width")), h = parseInt(d3.select(sname).style("height")),
+svg = d3.select(sname).append("svg").attr({
+"width" : "440px",
+"height" : "360px"
+})
+
+music = document.querySelector("#music"),
+snap = document.querySelector("#snap"),
+crumple = document.querySelector("#crumple"),
+springCenter = new b2Vec2(w/(2*SCALE),h/(2*SCALE)), 
+
+m = {t:20,r:20,b:20,l:20,w:520,h:520};
+
+var canvas = document.getElementById("c"),
+ctx = canvas.getContext("2d");
+
+//svg.append("rect").attr({"width":w,"height":h,"stroke":"cornflowerblue","fill":"none","class":"static"});
+
+
+init.surroundings = function() { 
+add.box({x:5,y:3,height:0.25,width:5,isStatic:true,color:"#2A3038"}), //tabletop
+  add.box({x:w/SCALE+1,y:0.5*h/SCALE,height:h/SCALE,width:2,isStatic:true}), //right
+  add.box({x:0.5*w/SCALE,y:h/SCALE+1,height:2,width:w/SCALE,isStatic:true}), //ground
+  add.box({x:-1,y:0.5*h/SCALE,height:h/SCALE,width:2,isStatic:true}),  //left
+  add.box({x:0.5*w/SCALE,y:-2,height:2,width:w/SCALE,isStatic:true})}; //top 
+
+init.setup();
+
+function redoit() {loop.step();loop.update(); loop.drawCanvas(); loop.drawSVG()}
+d3.timer(redoit)
+</script>
+<footer id = "bottomfooter"></footer>
+<script src = "/header.js"></script>
+<script>
+d3.select("footer").style("top","-300px")
+</script>
+</body></html>
