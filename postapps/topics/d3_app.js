@@ -7,7 +7,7 @@ var s = 960, S = 500,
     gamma = 1,
     paper = d3.select('#d3_app').append('svg').attr({
         "width": ss,
-        "height": ss
+        "height": ss/2
     }).attr("viewBox","0 0 "+s+" "+ (s/2))
            
     .append("g")
