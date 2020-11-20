@@ -8,7 +8,6 @@
 {% for tag in sortedtags %}
   <h3 id="{{ tag }}">{{ tag }}</h3>
   {% for post in site.tags[tag] %}
-<a href="{{post.url | prepend: site.baseurl}}"> {{ post.title }} </a>
 <a href="{{post.url | prepend: site.baseurl}}">{ { post.title }} <img src="{{site.baseurl}}/images/{{post.image}}" width="100" height="100"> </a>
 
   {% endfor %}
