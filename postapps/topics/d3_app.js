@@ -13,7 +13,7 @@ var s = 960, S = 500,
     .append("g")
 .attr("transform","translate(0,0)");
 
-d3.select("svg").on("click",function() {})
+d3.select("svg").on("click",function() {console.log("click")})
 
 window.onresize = function() {
     let ss = parseInt(d3.select("body").style("width"))
