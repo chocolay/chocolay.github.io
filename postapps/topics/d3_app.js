@@ -1,6 +1,6 @@
 //All rights reserved. 
 var s = 960, S = 500, 
-    let ss = parseInt(d3.select("#d3_app").style("width"))
+    ss = parseInt(d3.select("#d3_app").style("width"))
     
     radius = 180,
     rpatch = 64,
