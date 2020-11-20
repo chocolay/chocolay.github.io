@@ -9,7 +9,8 @@ text-transform: uppercase;
 #d3_app {
 position:absolute;
 top:100px; 
-right:50px;  
+right:50px;
+width:80%;  
 }
 
 h3, p {
@@ -18,4 +19,5 @@ margin: 0px;
 
 img {
 margin-left:5px;
+border: 1px solid #eee;
 }
