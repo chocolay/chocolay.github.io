@@ -1,5 +1,5 @@
 //All rights reserved. 
-var s = 960, S = 500, 
+ s = 960, S = 500, 
     ss = parseInt(d3.select("body").style("width"))
     
     radius = 180,
@@ -12,8 +12,6 @@ var s = 960, S = 500,
         .attr("viewBox","0 0 "+s+" "+ (s/2))   
     .append("g")
 .attr("transform","translate(0,0)");
-
-d3.select("svg").on("click",function() {console.log("click")})
 
 window.onresize = function() {
     let ss = parseInt(d3.select("body").style("width"))
