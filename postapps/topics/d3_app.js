@@ -31,7 +31,7 @@ window.onresize = function() {
     yscale = d3.scale.linear().domain([-S/2, S/2]).range([s/2,0]),
     v1o = v1mid = v1new = [radius, 0],
     patchbd = paper.append('path').style({
-        'fill': '#978F67',
+        'fill':"D95D2A", // '#978F67',
         'opacity': 0.2
     }),
     p = d3.range(0, stop, stop / ns).map(init),
