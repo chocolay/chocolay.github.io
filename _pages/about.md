@@ -22,7 +22,7 @@ I'm always happy to chat about possible projects, so feel free to <a href="mailt
  
  - I've spent months at sea collecting data and countless hours tinkering with instrumentation and numerical models in the lab 
 
-- Tropical Pacific island-hopper, I've lived on Guam (Håfa adai!) and travelled to Palau, Rota, Yap, Kosrae, Pohnpei, Majuro, Fiji, New Caledonia, New Britain, New Ireland, Tahiti, Moorea, Easter Island, Oahu, and Hawaii
+- Tropical Pacific island-hopper, I've lived on Guam (Håfa adai!) and travelled to Palau, Rota, Yap, Kosrae, Pohnpei, Majuro,  Rapa Nui, Oahu, Hawai'i, Fiji, New Caledonia, New Britain, New Ireland, Tahiti, and Moorea.
 
 - Once a member of the Upper Peninsula diaspora, I have returned and now live on the beach where I grew up
 
