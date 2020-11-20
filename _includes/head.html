@@ -20,7 +20,7 @@
 <link rel="manifest" href="/favicon_io/site.webmanifest">
 	
 	
-{% if page.d3version %}
+{% if page.d3version != 6 %}
 <script src={{ page.d3version }} ></script>
 {% else %}	
  	<script src="{{ site.baseurl }}/js/vendors/d3.v6.min.js" ></script>
