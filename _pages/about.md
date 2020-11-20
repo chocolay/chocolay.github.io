@@ -28,4 +28,4 @@ I'm always happy to chat about possible projects, so feel free to <a href="mailt
 
 - Gardener, coffee drinker, genetic genealogist, baker
 
-- builder of complex deep learning models, physics-based simulations, and data visualizations over the web and around the world
+- Builder of complex deep learning models, physics-based simulations, and data visualizations over the web and around the world
