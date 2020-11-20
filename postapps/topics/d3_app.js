@@ -9,7 +9,7 @@ var s = 960, S = 500,
         "width": ss,
         "height": ss
     }).attr("viewBox","0 0 "+s+" "+ (s/2))
-            .style("border","5px solid red")
+           
     .append("g")
 .attr("transform","translate(0,0)");
 
