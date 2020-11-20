@@ -31,7 +31,7 @@ window.onresize = function() {
      .style('fill',"D95D2A") // '#978F67',
         .style('opacity', 1),
     p = d3.range(0, stop, stop / ns).map(init),
-    line = d3.svg.line().x(function(d) {
+    line = d3.line().x(function(d) {
         return xscale(d[0])
     }).y(function(d) {
         return yscale(d[1])
