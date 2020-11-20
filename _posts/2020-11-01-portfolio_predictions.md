@@ -3,7 +3,7 @@ layout: post
 date: 2020-11-01 15:34:20 +0300
 title:  "What's in store?"
 image:  portfolio_predictions.png
-tags:   model agent-based
+tags:   agent-based
 app:    agent1
 d3version:  6
 crossfilter:  True
