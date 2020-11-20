@@ -19,6 +19,13 @@
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 <link rel="manifest" href="/site.webmanifest">
 	
+	
+{% if page.d3version %}
+<script src="{{ page.d3version }} ></script>
+	
+ 	<script src="{{ site.baseurl }}/js/vendors/d3.v6.min.js" ></script>
+{%endif %}
+								
 {% if page.datatables %}
    <link rel=stylesheet href=https://cdn.datatables.net/1.10.10/css/dataTables.bootstrap.min.css>
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.10/css/dataTables.bootstrap.min.css">
