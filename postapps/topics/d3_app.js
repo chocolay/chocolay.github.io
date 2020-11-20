@@ -9,10 +9,11 @@ var s = 960, S = 500,
         "width": ss,
         "height": ss/2
     }).style("pointer-events","none")
-        .attr("viewBox","0 0 "+s+" "+ (s/2))
-           
+        .attr("viewBox","0 0 "+s+" "+ (s/2))   
     .append("g")
 .attr("transform","translate(0,0)");
+
+d3.select("svg").on("click",function() {})
 
 window.onresize = function() {
     let ss = parseInt(d3.select("body").style("width"))
