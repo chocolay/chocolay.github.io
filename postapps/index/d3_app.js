@@ -52,6 +52,7 @@ function advance() {
 
 function animate() {
     it++;
+ console.log(it)
     advance();
     resample();
     patchbd.attr('d', line(p))
