@@ -2,6 +2,7 @@
 layout: page
 header: Topics
 link: topics
+title: Topics
 permalink: /topics/
 style: topics.css
 app: topics
