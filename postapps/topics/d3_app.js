@@ -12,7 +12,7 @@ var s = 960, S = 500,
     .append("g")
 .attr("transform","translate(0,0)");
 
-windw.onresize = function() {
+window.onresize = function() {
     let ss = document.body.clientWidth
     d3.select("svg").attr({
         "width": ss,
