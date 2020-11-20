@@ -1,6 +1,7 @@
 //All rights reserved. 
 var s = 960, S = 500, 
-    ss = document.body.clientWidth
+    let ss = parseInt(d3.select("#d3_app").style("width"))
+    
     radius = 180,
     rpatch = 64,
     gamma = 1,
@@ -13,7 +14,8 @@ var s = 960, S = 500,
 .attr("transform","translate(0,0)");
 
 window.onresize = function() {
-    let ss = document.body.clientWidth
+    let ss = parseInt(d3.select("#d3_app").style("width"))
+    
     d3.select("svg").attr({
         "width": ss,
         "height": ss
