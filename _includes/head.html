@@ -3,7 +3,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>{% if page.title %}
+<title>{% if page.title & !page.header %}
 		{{ site.data.settings.title }}_{{ page.title }}
 	{% else %}
 		{{ site.data.settings.title }}
