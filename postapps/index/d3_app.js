@@ -31,7 +31,7 @@ window.onresize = function() {
 }
 
     patchbd = paper.append('path')
-     .style('fill', "#96B6B1") //"D95D2A") // '#978F67', #4A696E
+     .style('fill', "D95D2A") //"#96B6B1") //"D95D2A") // '#978F67', #4A696E
         .style('opacity', 1),
     p = d3.range(0, stop, stop / ns).map(init),
     line = d3.line().x(function(d) {
