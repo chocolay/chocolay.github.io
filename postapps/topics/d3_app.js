@@ -8,7 +8,8 @@ var s = 960, S = 500,
     paper = d3.select("#d3_app").insert('svg',".container").attr({
         "width": ss,
         "height": ss/2
-    }).attr("viewBox","0 0 "+s+" "+ (s/2))
+    }).style("pointer-events","none")
+        .attr("viewBox","0 0 "+s+" "+ (s/2))
            
     .append("g")
 .attr("transform","translate(0,0)");
