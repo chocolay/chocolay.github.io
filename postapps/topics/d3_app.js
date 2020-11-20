@@ -1,6 +1,6 @@
 //All rights reserved. 
 var s = 960, S = 500, 
-    ss = parseInt(d3.select(body).style("width"))
+    ss = parseInt(d3.select("body").style("width"))
     
     radius = 180,
     rpatch = 64,
@@ -14,7 +14,7 @@ var s = 960, S = 500,
 .attr("transform","translate(0,0)");
 
 window.onresize = function() {
-    let ss = parseInt(d3.select(body).style("width"))
+    let ss = parseInt(d3.select("body").style("width"))
     
     d3.select("svg").attr({
         "width": ss,
