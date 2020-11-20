@@ -26,7 +26,7 @@ window.onresize = function() {
     xscale = d3.scaleLinear().domain([-S, 0]).range([0,s/2]),
     yscale = d3.scaleLinear().domain([-S/2, S/2]).range([s/2,0]),
     v1o = v1mid = v1new = [radius, 0],
-    patchbd = paper.append('path').style(
+    patchbd = paper.append('path')
      .style('fill',"D95D2A") // '#978F67',
         .style('opacity', 1),
     p = d3.range(0, stop, stop / ns).map(init),
