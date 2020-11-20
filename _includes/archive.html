@@ -6,11 +6,10 @@
 {% assign sortedtags = tags | split:' ' | sort %}
 
 {% for tag in sortedtags %}
-  <h3 id="{{ tag }}">{{ tag }}</h3>
-  {% for post in site.tags[tag] %}
+<h3 id="{{ tag }}">{{ tag }}</h3>
+{% for post in site.tags[tag] %}
 <a href="{{post.url | prepend: site.baseurl}}"><img src="{{site.baseurl}}/images/{{post.image}}" width="100" height="100"> </a>
-
-  {% endfor %}
+{% endfor %}
 {% endfor %}
 
 <div id=d3_app></div>
