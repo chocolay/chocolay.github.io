@@ -1,16 +1,27 @@
 //All rights reserved. 
- s = 960, S = 500, 
-    ss = parseInt(d3.select("body").style("width"))
-    
+   let ss = parseInt(d3.select("body").style("width"))
+
+   const s = 960, S = 500,     
     radius = 180,
     rpatch = 64,
-    gamma = 1,
-    paper = d3.select(".hero__image").append("svg")
-     .attr( "width",ss/6)
-     .attr("height",ss/12)
+    gamma = 1;
+
+
+    let paper = d3.select(".hero__image").append("svg")
+     .attr( "width",ss/3)
+     .attr("height",ss/6)
     .attr("viewBox","0 0 "+s+" "+ (s/2))   
     .append("g")
 .attr("transform","translate(0,0)");
+
+const tau = 2 * Math.PI, period = tau * 4 * Math.pow(radius, 2) / gamma, dt = period / 100,
+    comega = Math.cos(dt / (2 * period)), somega = Math.sin(dt / (2 * period)),
+    angstep = dt * 360 / (tau * period)
+    Nt = 77, it = 0,
+    ns = 600, stop = 2 * Math.PI * (1 + 1 / ns), b = 0.1, c = 1,
+    xscale = d3.scaleLinear().domain([-S, 0]).range([0,s/2]),
+    yscale = d3.scaleLinear().domain([-S/2, S/2]).range([s/2,0]),
+    v1o = v1mid = v1new = [radius, 0],
 
 window.onresize = function() {
     let ss = parseInt(d3.select("body").style("width"))
@@ -19,14 +30,6 @@ window.onresize = function() {
      .attr("height",ss/12);
 }
 
-    tau = 2 * Math.PI, period = tau * 4 * Math.pow(radius, 2) / gamma, dt = period / 100,
-    comega = Math.cos(dt / (2 * period)), somega = Math.sin(dt / (2 * period)),
-    angstep = dt * 360 / (tau * period)
-    Nt = 77, it = 0,
-    ns = 600, stop = 2 * Math.PI * (1 + 1 / ns), b = 0.1, c = 1,
-    xscale = d3.scaleLinear().domain([-S, 0]).range([0,s/2]),
-    yscale = d3.scaleLinear().domain([-S/2, S/2]).range([s/2,0]),
-    v1o = v1mid = v1new = [radius, 0],
     patchbd = paper.append('path')
      .style('fill',"D95D2A") // '#978F67',
         .style('opacity', 1),
@@ -38,7 +41,7 @@ window.onresize = function() {
     });
 
 patchbd.attr('d', line(p))
-d3.timer(animate,0)
+let timer = d3.timer(animate,0)
 
 function advance() {
     v1mid = [v1o[0] * comega - v1o[1] * somega, v1o[0] * somega + v1o[1] * comega];
@@ -52,12 +55,11 @@ function advance() {
 
 function animate() {
     it++;
- console.log(it)
     advance();
     resample();
     patchbd.attr('d', line(p))
     .attr("transform","rotate("+(it*angstep)+","+(s/2)+","+(s/4)+")")
-    return it > Nt
+    if (it>Nt) timer.stop();
 }
 
 function dblv(vold, aold) {
