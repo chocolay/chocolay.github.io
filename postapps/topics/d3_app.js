@@ -14,7 +14,7 @@ var s = 960, S = 500,
 
 windw.onresize = function() {
     let ss = document.body.clientWidth
-    d3.select("svg")).attr({
+    d3.select("svg").attr({
         "width": ss,
         "height": ss
     })
