@@ -7,11 +7,11 @@
 
 {% for tag in sortedtags %}
   <h3 id="{{ tag }}">{{ tag }}</h3>
-  <ul>
+  <div>
   {% for post in site.tags[tag] %}
     <div class="post-image" onclick="location.href={{ page.image-text }}" width = "8.3%" height = auto style="background-image: url(./images/{{page.image}})"></div>   
   {% endfor %}
-  </ul>
+</div>
 {% endfor %}
 
 <div id=d3_app></div>
