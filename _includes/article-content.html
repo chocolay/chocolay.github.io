@@ -1,4 +1,6 @@
 {% assign without-image = nil %}
+
+{% if post.content !="" %}
 <!-- begin article -->
 <div class="article">
   <div class="container">
@@ -41,3 +43,4 @@
   </div>
 </div>
 <!-- end article -->
+{% endif %}
