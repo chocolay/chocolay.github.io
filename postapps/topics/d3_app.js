@@ -5,10 +5,9 @@ var s = 960, S = 500,
     radius = 180,
     rpatch = 64,
     gamma = 1,
-    p = d3.select("h3").node().parentElement,    
-    paper = d3.select(p).insert("svg","h3").attr({
-        "width": ss,
-        "height": ss/2
+    paper = d3.select(".hero__image").append("svg").attr({
+        "width": ss/5,
+        "height": ss/12
     }).style("pointer-events","none")
         .attr("viewBox","0 0 "+s+" "+ (s/2))   
     .append("g")
