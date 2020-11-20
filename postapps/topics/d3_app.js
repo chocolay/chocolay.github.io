@@ -1,5 +1,6 @@
 //All rights reserved. 
-var s = 960, S = 500, ss = 960
+var s = 960, S = 500, 
+    ss = document.body.clientWidth
     radius = 180,
     rpatch = 64,
     gamma = 1,
@@ -10,6 +11,13 @@ var s = 960, S = 500, ss = 960
             .style("border","5px solid red")
     .append("g")
 .attr("transform","translate(0,0)");
+
+windw.onresize = function() {
+    let ss = document.body.clientWidth
+    d3.select("svg")).attr({
+        "width": ss,
+        "height": ss
+    })
 
     tau = 2 * Math.PI, period = tau * 4 * Math.pow(radius, 2) / gamma, dt = period / 100,
     comega = Math.cos(dt / (2 * period)), somega = Math.sin(dt / (2 * period)),
