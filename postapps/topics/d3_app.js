@@ -9,7 +9,7 @@ var s = 960, S = 500, ss = 960
     }).attr("viewbox","0 0 "+s+" "+ (s/2))
             .style("border","5px solid red")
     .append("g")
-.attr("transform","translate(0,40)");
+.attr("transform","translate(0,0)");
 
     tau = 2 * Math.PI, period = tau * 4 * Math.pow(radius, 2) / gamma, dt = period / 100,
     comega = Math.cos(dt / (2 * period)), somega = Math.sin(dt / (2 * period)),
