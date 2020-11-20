@@ -1,5 +1,5 @@
 //All rights reserved. 
-var s = 960, S = 500
+var s = 480, S = 500
     radius = 180,
     rpatch = 64,
     gamma = 1,
