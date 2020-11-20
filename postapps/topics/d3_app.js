@@ -16,7 +16,7 @@ var s = 960, S = 500
     Nt = 77, it = 0,
     ns = 600, stop = 2 * Math.PI * (1 + 1 / ns), b = 0.1, c = 1,
     xscale = d3.scale.linear().domain([-S, 0]).range([0,s/2]),
-    yscale = d3.scale.linear().domain([-S/2, S/2]).range([0,s/2]),
+    yscale = d3.scale.linear().domain([-S/2, S/2]).range([s/2,0]),
     v1o = v1mid = v1new = [radius, 0],
     patchbd = paper.append('path').style({
         'fill': '#978F67',
