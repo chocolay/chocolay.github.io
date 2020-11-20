@@ -14,25 +14,21 @@
 
 window.onresize = function() {
     let ss = parseInt(d3.select("body").style("width"))
-    
-    d3.select("svg").attr({
-        "width": ss,
-        "height": ss
-    })
-};
+    d3.select("svg")
+     .attr( "width",ss/6)
+     .attr("height",ss/12);
 
     tau = 2 * Math.PI, period = tau * 4 * Math.pow(radius, 2) / gamma, dt = period / 100,
     comega = Math.cos(dt / (2 * period)), somega = Math.sin(dt / (2 * period)),
     angstep = dt * 360 / (tau * period)
     Nt = 77, it = 0,
     ns = 600, stop = 2 * Math.PI * (1 + 1 / ns), b = 0.1, c = 1,
-    xscale = d3.scale.linear().domain([-S, 0]).range([0,s/2]),
-    yscale = d3.scale.linear().domain([-S/2, S/2]).range([s/2,0]),
+    xscale = d3.scaleLinear().domain([-S, 0]).range([0,s/2]),
+    yscale = d3.scaleLinear().domain([-S/2, S/2]).range([s/2,0]),
     v1o = v1mid = v1new = [radius, 0],
-    patchbd = paper.append('path').style({
-        'fill':"D95D2A", // '#978F67',
-        'opacity': 0.2
-    }),
+    patchbd = paper.append('path').style(
+     .style('fill':"D95D2A") // '#978F67',
+        .style('opacity', 0.2),
     p = d3.range(0, stop, stop / ns).map(init),
     line = d3.svg.line().x(function(d) {
         return xscale(d[0])
