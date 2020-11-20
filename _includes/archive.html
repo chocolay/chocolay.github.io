@@ -10,7 +10,7 @@
   {% for post in site.tags[tag] %}
     
 <a href="{{post.url | prepend: site.baseurl}}"> {{ post.title }} </a>
-      <a href="{{post.url | prepend: site.baseurl}}" style="background-image: url({{site.baseurl}}/images/{{post.image}}) width=8% height=8%">  url({{site.baseurl}}/images/{{post.image}} </a>
+      <a href="{{post.url | prepend: site.baseurl}}" style="background-image: url({{site.baseurl}}/images/{{post.image}}) width=30% height=30%"> ... </a>
   {% endfor %}
 {% endfor %}
 
