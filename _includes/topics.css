@@ -6,7 +6,7 @@ text-transform: capitalize;
 text-transform: uppercase;
 }
 
-#d3_app {
+svg {
 position:absolute;
 top:100px; 
 left:100px;
