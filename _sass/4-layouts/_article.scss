@@ -1,6 +1,5 @@
 .article {
   margin-bottom: 40px;
-  nth-child(even) {background: #EEE};
 
   .article__wrapper {
     display: flex;
@@ -25,6 +24,8 @@
       padding-bottom: 70%;
     }
   }
+  
+ .article:nth-child(even) {background: #EEE};  
 
   .article__content {
     width: 60%;
