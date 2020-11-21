@@ -1,5 +1,6 @@
 .article {
   margin-bottom: 40px;
+  nth-child(even) {background: #DDDDDD}
 
   .article__wrapper {
     display: flex;
